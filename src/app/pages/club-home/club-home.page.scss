@@ -1,0 +1,24 @@
+body {
+    overflow: scroll;
+    h1 {
+        $font-family: Microsoft Sans Serif;
+        font-family: $font-family;
+        $textcolor: #11C2D4;
+        color: $textcolor;
+        font-size: 40px;
+        margin-left: 18px;
+    }
+    .buu {
+        top: 450px;
+        margin-left: 18px;
+        margin-right: 18px;
+    }
+    .jay {
+        width: 15%;
+        height: 80%;
+    }
+    .tee {
+        width: 80%;
+        height: 80%;
+    }
+}

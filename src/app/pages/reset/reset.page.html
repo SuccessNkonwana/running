@@ -1,0 +1,56 @@
+
+
+<ion-content>
+  <body>
+
+    <form [formGroup]="forgotpasswordForm" *ngIf="!isForgotPassword">
+        <div id="bg">
+
+            <div id="div1">
+
+                <img src="assets/images/logo.png" alt="Avatar" class="imgC">
+                <div id="div2">
+                    <ion-item id="item" color="transparent">
+                        <ion-label position="floating">Enter Email</ion-label>
+                        <ion-input type="email" formControlName="email"></ion-input>
+                    </ion-item>
+                    <div class="error" *ngIf="forgotpasswordForm.get('email').hasError('required') && forgotpasswordForm.get('email').touched">
+                        Please input your email
+                    </div>
+                    <div class="error" *ngIf="forgotpasswordForm.get('email').hasError('pattern') && forgotpasswordForm.get('email').touched">
+                        Email address invalid
+                    </div>
+                    <br>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>
+                                <!-- <ion-button expand="block" color="primary" (click)="Cancel()">Cancel</ion-button> -->
+                                <div id="but">
+                                    <ion-fab-button color="primary">
+                                        <ion-icon name="close-circle-outline"></ion-icon>
+                                    </ion-fab-button>
+
+                                </div>
+                            </ion-col>
+                            <ion-col>
+                                <!-- <ion-button expand="block" color="primary" [disabled]="!forgotpasswordForm.valid" (click)="reset()">Reset</ion-button> -->
+                                <div id="but">
+                                    <ion-fab-button color="primary">
+
+                                        <ion-icon name="refresh"></ion-icon>
+                                    </ion-fab-button>
+
+                                </div>
+                            </ion-col>
+                        </ion-row>
+
+
+
+                    </ion-grid>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</body>
+</ion-content>

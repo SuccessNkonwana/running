@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+    $textcolor: white;
+    color: $textcolor;
+    height: 100%;
+    width: 100%;
+    background-image: url('/assets/icon/bgs.PNG');
+    background-repeat: no-repeat;
+    background-position: center;
+    // background: url(/assets/icon/bgs.PNG) no-repeat center center;
+    // -webkit-background-size: cover;
+    // -moz-background-size: cover;
+    // -o-background-size: cover;
+    // background-size: cover;
+    #h1 {
+        $fontsize: 25px;
+        font-size: $fontsize;
+        $font-family: "Times New Roman", Times, serif;
+        font-family: $font-family;
+        margin-bottom: 200%;
+        text-align: center;
+    }
+    #img {
+        $myheight: 60%;
+        height: $myheight;
+    }
+    .gett {
+        text-align: center;
+        font-family: "Times New Roman", Times, serif;
+    }
+    .content {
+        max-width: 500px;
+        margin: auto;
+        bottom: 400px;
+    }
+}

@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  isSlide: boolean = true;
+  slides: any;
   constructor() {}
-
+  slideChanged() {
+    this.slides.startAutoplay();
+  }
 }
