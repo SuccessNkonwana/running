@@ -1,55 +1,64 @@
-
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Home
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
 
 <ion-content>
-  
-        <body>
-            <br>
-            <img src="assets/images/rep.jpg" alt="Avatar" class="img">
-            <h1>
-                BE
-            </h1>
-            <h1>
-                HEALTHY
-            </h1>
-            <h1>
-                MAKE FRIENDS
-            </h1>
-            <h1>
-                HAVE FUN
-            </h1>
-            <br>
-            <br>
-            <div class="cent">
-                <div class="cet">
-                    <!-- <p>Paint Fun Race Club</p>
+
+    <body>
+        <br>
+        <img src="assets/images/rep.jpg" alt="Avatar" class="img">
+        <h1>
+            BE
+        </h1>
+        <h1>
+            HEALTHY
+        </h1>
+        <h1>
+            MAKE FRIENDS
+        </h1>
+        <h1>
+            HAVE FUN
+        </h1>
+        <br>
+        <br>
+        <div class="cent">
+            <div class="cet">
+                <!-- <p>Paint Fun Race Club</p>
                     <p>Redbull Run Sat</p>
                     <p>Date: 12/12/2019 Time: 11:00</p> -->
-                    <img src="assets/images/go.png" alt="Avatar" class="imgC">
-                </div>
+                <img src="assets/images/go.png" alt="Avatar" class="imgC">
             </div>
-            <br>
-            <br>
-            <br>
-            <div *ngIf="isSlide">
-                <ion-slides startAutoplay>
-                    <ion-slide>
-                        <ion-card>
-                            <ion-card-content>
-                                <h2>Running 1</h2>
-                            </ion-card-content>
-                        </ion-card>
-                        <ion-card>
-                            <ion-card-content>
-                                <h3>Running 2</h3>
-                            </ion-card-content>
-                        </ion-card>
-                        <ion-card>
-                            <ion-card-content>
-                                <h3>Running 3</h3>
-                            </ion-card-content>
-                        </ion-card>
-                    </ion-slide>
-                </ion-slides>
-            </div>
-        </body>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div *ngIf="isSlide">
+            <ion-slides startAutoplay>
+                <ion-slide>
+                    <ion-card>
+                        <ion-card-content>
+                            <h2>Running 1</h2>
+                        </ion-card-content>
+                    </ion-card>
+                    <ion-card>
+                        <ion-card-content>
+                            <h3>Running 2</h3>
+                        </ion-card-content>
+                    </ion-card>
+                    <ion-card>
+                        <ion-card-content>
+                            <h3>Running 3</h3>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-slide>
+            </ion-slides>
+        </div>
+    </body>
 </ion-content>
