@@ -38,7 +38,16 @@ const routes: Routes = [
   {
     path: 'club-home',
     loadChildren: () => import('./pages/club-home/club-home.module').then( m => m.ClubHomePageModule)
+  },
+  // {
+  //   path: 'profile',
+  //   loadChildren: () => import('./page/profile/profile.module').then( m => m.ProfilePageModule)
+  // },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   }
+
 ];
 
 @NgModule({

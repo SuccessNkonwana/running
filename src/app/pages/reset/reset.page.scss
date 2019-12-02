@@ -20,7 +20,7 @@ body {
         $z-index: -1;
         z-index: $z-index;
     }
-    .div2 {
+    #div2 {
         $background-color: #fff;
         background-color: $background-color;
         $mywidth: 100%;
@@ -42,10 +42,13 @@ body {
         $textcolor: #11C2D4;
         color: $textcolor;
     }
-    .div1 {
+    #div1 {
         $background-color: #11C2D4;
         background-color: $background-color;
         $myheight: 100%;
         height: $myheight;
+    }
+    #buts {
+        margin-left: 85px;
     }
 }
