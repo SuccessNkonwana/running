@@ -16,12 +16,12 @@
                             </ion-label>
                         </ion-item>
                     </ion-menu-toggle>
-                    <br><br><br><br><br>
-                    <ion-item lines="none">
 
-                        <!-- <ion-icon name="log-out"></ion-icon> -->
-                        <ion-button color="primary">LOGOUT</ion-button>
-
+                    <ion-item>
+                        <ion-icon color="primary" slot="start" name="log-out" (click)="log()"></ion-icon>
+                        <ion-label (click)="log()">
+                            Logout
+                        </ion-label>
                     </ion-item>
                 </ion-list>
             </ion-content>
