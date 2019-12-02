@@ -12,13 +12,14 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA-kTR7fRDa0qxM0hBMROLG8APChD8RTxY",
-  authDomain: "internetcafe-8ab2b.firebaseapp.com",
-  databaseURL: "https://internetcafe-8ab2b.firebaseio.com",
-  projectId: "internetcafe-8ab2b",
-  storageBucket: "internetcafe-8ab2b.appspot.com",
-  messagingSenderId: "194688123148",
-  appId: "1:194688123148:web:0329ce7412e2b9ad2d4929"
+  apiKey: "AIzaSyAv85O55WcgVEXgWUTr5GVqspI__ywOSn4",
+    authDomain: "runningclub-46ede.firebaseapp.com",
+    databaseURL: "https://runningclub-46ede.firebaseio.com",
+    projectId: "runningclub-46ede",
+    storageBucket: "runningclub-46ede.appspot.com",
+    messagingSenderId: "248528881431",
+    appId: "1:248528881431:web:efbea0811a4460f39f5952",
+    measurementId: "G-X04V0DEYV3"
 }; 
 // Initialize Firebase
 // firebase.initializeApp(firebaseConfig);

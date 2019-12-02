@@ -21,7 +21,7 @@ export class SignupPage implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     public alertCtrl: AlertController,
-    private db: AngularFirestore,
+    private afs: AngularFirestore,
     public navCtrl: NavController,
     private afAuth: AngularFireAuth) {
 
@@ -47,8 +47,26 @@ export class SignupPage implements OnInit {
   }
 
 
-  tryRegister(name,email,password,gender,age){
-    this.authService.signup(name,gender,email,password,age)
+  tryRegister(){
+    this.authService.signup(this.signupForm.value.email, this.signupForm.value.password).then(() => {
+      this.afs.collection('users').doc(this.afAuth.auth.currentUser.uid).set({
+        displayName: this.signupForm.value.username,
+        uid: this.afAuth.auth.currentUser.uid,
+        Timestamp: Date.now(),
+        Email: this.signupForm.value.email,
+        Age: this.signupForm.value.age,
+        gender: this.signupForm.value.gender,
+        photoURL: '',
+        Registered: "no",
+      }).then(() => {
+        this.navCtrl.navigateRoot('home');
+      }).catch(err => {
+​
+        alert(err.message)
+      });
+​
+    });
+
      
   }
  

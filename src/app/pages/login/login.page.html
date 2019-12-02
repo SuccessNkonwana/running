@@ -16,7 +16,7 @@
                           <div class="div2">
 
                               <!-- <form #form="ngForm" (ngSubmit)="login(form)"> -->
-                              <form [formGroup]="loginForm" *ngIf="loginForm">
+                              <form [formGroup]="loginForm">
 
                                   <div padding>
                                       <div text-center>
@@ -54,7 +54,7 @@
                                       </div>
 
                                       <div id="but">
-                                          <ion-fab-button color="primary" size="small">
+                                          <ion-fab-button [disabled]="!loginForm.valid" (click)="login()"  color="primary" size="small">
                                               <ion-icon name="arrow-forward"></ion-icon>
                                           </ion-fab-button>
 
