@@ -20,6 +20,19 @@ body {
         border-top-left-radius: $border-top-left-radius;
         $border-bottom-left-radius: 20%;
         border-bottom-left-radius: $border-bottom-left-radius;
+
+        .imgC {
+            $myheight: 105%;
+            height: $myheight;
+            margin-left: 261px;
+            margin-top: -1px;
+            $border-top-left-radius: 35%;
+            border-top-left-radius: $border-top-left-radius;
+            $border-bottom-left-radius: 0%;
+            border-bottom-left-radius: $border-bottom-left-radius;
+         
+            
+        }
     }
     .cent {
         margin-left: 20px;
@@ -37,18 +50,7 @@ body {
         font-size: 10px;
         margin-left: 20px;
     }
-    .imgC {
-        $myheight: 105%;
-        height: $myheight;
-        margin-left: 261px;
-        margin-top: -1px;
-        $border-top-left-radius: 35%;
-        border-top-left-radius: $border-top-left-radius;
-        $border-bottom-left-radius: 0%;
-        border-bottom-left-radius: $border-bottom-left-radius;
-        
-        
-    }
+   
     .img {
         position: absolute;
     height: 145px;
