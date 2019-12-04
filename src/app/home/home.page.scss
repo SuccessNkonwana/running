@@ -18,7 +18,7 @@ body {
         margin-bottom: $margin-bottom;
         $border-top-left-radius: 30%;
         border-top-left-radius: $border-top-left-radius;
-        $border-bottom-left-radius: 15%;
+        $border-bottom-left-radius: 20%;
         border-bottom-left-radius: $border-bottom-left-radius;
     }
     .cent {
@@ -41,6 +41,10 @@ body {
         $myheight: 100%;
         height: $myheight;
         margin-left: 250px;
+        $border-top-left-radius: 35%;
+        border-top-left-radius: $border-top-left-radius;
+        $border-bottom-left-radius: 0%;
+        border-bottom-left-radius: $border-bottom-left-radius;
     }
     .img {
         position: absolute;
