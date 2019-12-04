@@ -90,8 +90,8 @@ getTodos()
  this.clubsTemp=[]
   let ans=[]
   let ans2=[]
-   user=this.readCurrentSession()
-  let userID=user.uid
+  //  user=this.readCurrentSession()
+  // let userID=user.uid
 
   //
 return new Promise((resolve, reject) => {
@@ -118,11 +118,11 @@ this.dbfire.collection("todos").get().then((querySnapshot) => {
    {
     console.log( this.clubsTemp[x].userID,"userid at x")
 
-        if(this.clubsTemp[x].userID===userID)
-        {
-          this.clubs.push(this.clubsTemp[x])
+        // if(this.clubsTemp[x].userID===userID)
+        // {
+        //   this.clubs.push(this.clubsTemp[x])
 
-        }
+        // }
 
    }
    resolve(this.clubs)

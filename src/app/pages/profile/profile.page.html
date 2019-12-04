@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-<ion-header>
-   
-        <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>
-            profile
-        </ion-title>
-
-</ion-header>
-=======
->>>>>>> 3b18ed7c2e6b3630361d422d81e56e67acb25e7e
 
 
 <ion-content>
@@ -27,14 +14,76 @@
                     <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
                        
                         <div class="div1">
-                            <ion-avatar class="avatar">
-                                <!-- <img src="assets/dc.png" alt="Avatar"> -->
+                            <!-- <ion-avatar class="avatar">
                                 <img src="assets/images/rep.jpg" alt="Avatar" class="img">
-                            </ion-avatar>
-                           
+                            </ion-avatar> -->
+                            <h2 id="heading">My Profile!</h2>
+                            <p id="name">user name</p>
+                            <div class="profile-image">
+                                    <div *ngIf="urlPath =='' ">
+                                        <img src="/assets/images/avatar.svg">
+                                    </div>
+            
+                                    <div *ngIf="urlPath !='' ">
+                                        <img data-src="{{urlPath}}" (click)="zoom(user)">
+                                    </div>
+            
+                                    <div class="image-upload">
+                                        <ion-fab horizontal="center" vertical="top" class="fab">
+                                            <ion-fab-button color="primary" size="small">
+                                                <ion-icon name="camera" class="input"> </ion-icon>
+                                            </ion-fab-button>
+                                            <ion-fab-list side="start">
+                                                <ion-fab-button color="primary">
+                                                    <ion-icon name="camera" (click)="pickImage()" class="camera"> </ion-icon>
+                                                </ion-fab-button>
+            
+                                            </ion-fab-list>
+            
+                                            <ion-fab-list side="end">
+                                                <ion-fab-button color="primary">
+                                                    <label for="file-input2">
+                                                                    <ion-icon name="document" class="document"> </ion-icon> 
+                                                            </label>
+                                                </ion-fab-button>
+                                            </ion-fab-list>
+                                        </ion-fab>
+            
+            
+                                        <input id="file-input2" class="input" type="file" (change)="Pic($event)" />
+                                    </div>
+                                </div>
                             <br><br><br>
                             <div class="div2">
+                                    <br><br><br>
+                                    <ion-item>
 
+                                            <ion-label>user.Email</ion-label>
+                        
+                                            <ion-icon name="mail" color="primary" slot="start"></ion-icon>
+                                            <ion-icon name="create" color="primary" slot="end" (click)=" NameUpdate(user)"></ion-icon>
+                                    </ion-item>
+                                    <ion-item>
+
+                                            <ion-label>user.location</ion-label>
+                        
+                                            <ion-icon name="navigate" color="primary" slot="start"></ion-icon>
+                                            <ion-icon name="create" color="primary" slot="end" (click)=" AddressUpdate(user)"></ion-icon>
+                                    </ion-item>
+                                    <ion-item>
+
+                                            <ion-label>user.age</ion-label>
+                        
+                                            <ion-icon name="navigate" color="primary" slot="start"></ion-icon>
+                                            <ion-icon name="create" color="primary" slot="end" (click)=" AgeUpdate(user)"></ion-icon>
+                                    </ion-item>
+                                    <ion-item>
+
+                                            <ion-label>user.gender</ion-label>
+                        
+                                            <ion-icon name="transgender" color="primary" slot="start"></ion-icon>
+                                            <ion-icon name="create" color="primary" slot="end" (click)=" GenderUpdate(user)"></ion-icon>
+                                    </ion-item>
 
 
                             </div>
