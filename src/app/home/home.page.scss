@@ -38,26 +38,28 @@ body {
         margin-left: 20px;
     }
     .imgC {
-        // $myheight: 100%;
-        // height: $myheight;
-        // margin-left: 250px;
-        position: absolute;
-        top: 264px;
-        right: 0;
-        width: 200px;
-        height: 100px;
+        $myheight: 105%;
+        height: $myheight;
+        margin-left: 261px;
+        margin-top: -1px;
+        $border-top-left-radius: 35%;
+        border-top-left-radius: $border-top-left-radius;
+        $border-bottom-left-radius: 0%;
+        border-bottom-left-radius: $border-bottom-left-radius;
+        
+        
     }
     .img {
-        // position: absolute;
-        // height: 145px;
-        // width: 120px;
-        // border-radius: 50%;
-        // margin-left: 200px;
         position: absolute;
-        top: 264px;
-        right: 0;
-        width: 200px;
-        height: 100px;
+    height: 145px;
+        width: 120px;
+        border-radius: 50%;
+        margin-left: 200px;
+      
+        top: 64px;
+        right: 10px;
+        width: 150px;
+        height: 150px;
     }
     ion-card {
         width: 90% !important;
