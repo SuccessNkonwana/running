@@ -15,10 +15,10 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
-  {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  },
+  // {
+  //   path: 'list',
+  //   loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+  // },
   {
     path: 'landing',
     loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
@@ -46,7 +46,15 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'add-club',
+    loadChildren: () => import('./pages/add-club/add-club.module').then( m => m.AddClubPageModule)
+  }, {
+    path: 'add-event',
+    loadChildren: () => import('./pages/add-event/add-event.module').then( m => m.AddEventPageModule)
   }
+
 
 ];
 

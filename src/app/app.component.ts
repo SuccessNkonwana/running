@@ -19,12 +19,17 @@ export class AppComponent {
     },
     {
       title: 'profile',
-      url: '/profile',
+      url: 'profile',
       icon: 'contact'
     },
+    // {
+    //   title: 'list',
+    //   url: '/list',
+    //   icon: 'list'
+    // },
     {
-      title: 'list',
-      url: '/list',
+      title: 'Add Club',
+      url: 'add-club',
       icon: 'list'
     }
   ];
