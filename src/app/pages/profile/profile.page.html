@@ -11,7 +11,7 @@
             <ion-grid>
                 <ion-row color="primary" justify-content-center>
 <br>
-                    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                    <ion-col align-self-center size-md="12" size-lg="11" size-xs="12">
                        
                         <div class="div1">
                             <!-- <ion-avatar class="avatar">
@@ -20,13 +20,10 @@
                             <h2 id="heading">My Profile!</h2>
                             <p id="name">user name</p>
                             <div class="profile-image">
-                                    <div *ngIf="urlPath =='' ">
+                                    <div>
                                         <img src="/assets/images/avatar.svg">
                                     </div>
             
-                                    <div *ngIf="urlPath !='' ">
-                                        <img data-src="{{urlPath}}" (click)="zoom(user)">
-                                    </div>
             
                                     <div class="image-upload">
                                         <ion-fab horizontal="center" vertical="top" class="fab">
@@ -56,6 +53,7 @@
                             <br><br><br>
                             <div class="div2">
                                     <br><br><br>
+                                    <br><br><br>
                                     <ion-item>
 
                                             <ion-label>user.Email</ion-label>
@@ -84,11 +82,11 @@
 
                                             <ion-label>user.gender</ion-label>
                         
-                                            <ion-icon name="transgender" color="primary" slot="start"></ion-icon>
+                                            <ion-icon name="male" color="primary" slot="start"></ion-icon>
                                             <ion-icon name="create" color="primary" slot="end" (click)=" GenderUpdate(user)"></ion-icon>
                                     </ion-item>
 
-
+                                      
                             </div>
                         </div>
 

@@ -10,7 +10,7 @@
           <ion-grid>
               <ion-row color="primary" justify-content-center>
 <br>
-                  <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                  <ion-col align-self-center size-md="6" size-lg="11" size-xs="12">
                      
                       <div class="div1">
                         <ion-item id="item" color="transparent">
@@ -25,7 +25,7 @@
                           </ion-avatar> -->
                           <div class="profile-image">
                             <div *ngIf="urlPath =='' ">
-                                <img src="/assets/images/avatar.svg">
+                                <img src="/assets/images/avatar.svg" class="x">
                             </div>
     
                             <div *ngIf="urlPath !='' ">
@@ -117,20 +117,29 @@
 
 
                             <br>
-                            <ion-item lines="none">
+                            <!-- <ion-item lines="none">
                                 <div id="h">
                                     <h2 color="primary">Submit</h2>
                                 </div>
                                
-                                <div id="but">
-                                    <ion-fab-button [disabled]="!clubForm.valid" (click)="trySubmit()" color="primary" size="small">
-                                        <ion-icon name="arrow-forward"></ion-icon>
+                                <div id="but">  -->
+                                        <!-- <ion-fab horizontal="end" slot="fixed">
+                                    <ion-fab-button  [disabled]="!clubForm.valid" (click)="trySubmit()" color="primary" size="small">
+                                        <ion-icon  name="arrow-forward"></ion-icon>
                                     </ion-fab-button>
-
-                                </div>
+                                </ion-fab> -->
+                              
+                                <!-- </div>
                               </ion-item>
 
-
+                              <ion-fab horizontal="end" slot="fixed">
+                                <ion-fab-button color="danger">
+                                  <ion-icon name="add"></ion-icon>
+                                </ion-fab-button>
+                              </ion-fab> -->
+                              <div id="h">
+                              <ion-button horizontal="center" expand="block" [disabled]="!clubForm.valid" (click)="trySubmit()" size="large" color="primary">Submit</ion-button>
+                            </div>
                           </div>
                       
 

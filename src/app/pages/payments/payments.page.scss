@@ -140,4 +140,16 @@ body {
         color: #11C2D4;
         text-decoration: none;
     }
+    .roundedInput {
+        --border-color: var(--ion-color-medium-shade);
+        --border-radius: 40px;
+        // --border-width: 1px;
+        --box-shadow: 2px gray;
+        --highlight-height: 0;
+        --background: #bebcbc;
+       }
+       .labels{
+           float: left;
+           border: none;
+       }
 }

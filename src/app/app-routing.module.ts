@@ -47,6 +47,14 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
+  // {
+  //   path: 'payments',
+  //   loadChildren: () => import('./pages/payments/payments.module').then( m => m.PaymentsPageModule)
+  // },
+  {
+    path: 'payments',
+    loadChildren: () => import('./pages/payments/payments.module').then( m => m.PaymentsPageModule)
+  },
   {
     path: 'add-club',
     loadChildren: () => import('./pages/add-club/add-club.module').then( m => m.AddClubPageModule)
@@ -54,6 +62,7 @@ const routes: Routes = [
     path: 'add-event',
     loadChildren: () => import('./pages/add-event/add-event.module').then( m => m.AddEventPageModule)
   }
+
 
 
 ];
