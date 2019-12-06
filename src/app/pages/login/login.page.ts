@@ -18,24 +18,25 @@ export class LoginPage implements OnInit {
  
   constructor(private  authService:  AuthService,
      private  router:  Router,
-     private fb: FormBuilder,
+     public fb: FormBuilder,
      private alertCtrl: AlertController,
     public menuCtrl: MenuController,
     public loadingCtrl: LoadingController
      ) { 
 
-    this.loginForm = fb.group({
-      email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
-      password: ['', Validators.compose([Validators.minLength(6), Validators.maxLength(12), Validators.required])],
-    });
-    this.forgotpasswordForm = fb.group({
-      email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
-    })
   }
 
   
 
 ngOnInit() {
+  
+  this.loginForm = this.fb.group({
+    email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
+    password: ['', Validators.compose([Validators.minLength(6), Validators.maxLength(12), Validators.required])],
+  });
+  this.forgotpasswordForm = this.fb.group({
+    email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
+  })
 }
 ionViewWillEnter() {
   this.menuCtrl.enable(false);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -10,7 +10,7 @@ import { AuthService } from './services/auth.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'Home',
@@ -45,7 +45,7 @@ export class AppComponent {
     private statusBar: StatusBar,
     private authService : AuthService
   ) {
-    this.initializeApp();
+   
   }
 
   initializeApp() {
@@ -56,5 +56,8 @@ export class AppComponent {
   }
   log() {
     this.authService.logout();
+  }
+  ngOnInit() {
+    this.initializeApp();
   }
 }
