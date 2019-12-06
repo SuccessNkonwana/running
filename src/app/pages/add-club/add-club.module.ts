@@ -19,4 +19,8 @@ import { AddClubPage } from './add-club.page';
   ],
   declarations: [AddClubPage]
 })
-export class AddClubPageModule {}
+export class AddClubPageModule {
+
+
+  
+}

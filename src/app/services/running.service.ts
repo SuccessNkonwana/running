@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import 'firebase/firestore';
+import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
 export class RunningService {
   database = firebase.database();
   dbfire=firebase.firestore();
-  
+  userProfile = []
+  currentState : boolean 
+  currentUser
+  currentSessionId 
   user
   clubs=[]
   clubsTemp=[]
@@ -23,19 +27,35 @@ export class RunningService {
   editClosingHours: string="";
   ///
 
-  constructor()
+  constructor(public auths:AuthService)
   { 
 
   }
-
+  async rtClubs()
+  {
+    let result :any
+   await this.getClubs().then(data =>{
+    result = data
+  ​
+   console.log(result.length);
+  })
+  console.log(result);
+  //this.LandMarks()
+  return  result 
+  
+  // console.log(this.todos,"hh")
+   // return this.todos
+  }
   //add a club
   addClub(newName,newAddress,newOpeningHours,newClosingHours)
   {
+    var styt=newOpeningHours.substring(11,16);
+    var etyt=newClosingHours.substring(11,16);
     this.dbfire.collection("clubs").add({
       name: newName,
       address: newAddress,
-      openingHours: newOpeningHours,
-      closingHours: newClosingHours,
+      openingHours: styt,
+      closingHours: etyt
       
     }).then((data)=>{
     
@@ -44,6 +64,7 @@ export class RunningService {
       console.log(data)
     }).catch((error)=>{
 
+      console.log(error)
     })
   }
 
@@ -84,18 +105,18 @@ this.dbfire.collection("clubs").doc(clubs.clubKey).update('address',editClosingH
 
 //retrieve a club
 ///////get todos
-getTodos()
+getClubs()
 {
  this.clubs=[]
  this.clubsTemp=[]
   let ans=[]
   let ans2=[]
-  //  user=this.readCurrentSession()
-  // let userID=user.uid
+  let user=this.readCurrentSession()
+  let userID=user.uid
 
   //
 return new Promise((resolve, reject) => {
-this.dbfire.collection("todos").get().then((querySnapshot) => {
+this.dbfire.collection("clubs").get().then((querySnapshot) => {
    querySnapshot.forEach((doc) => {
     
     // ans.push(doc.data())
@@ -151,6 +172,59 @@ deleteTodo(clubs)
 
 }
 
+//
+who()
+{
+  this.user=this.auths.who()
+  console.log("logged in user ",this.user)
+}
+
+ ///set user session start
+ setCurrentSession(user){
+  console.log("running");
+  var uid
+  if (user !== null){
+    uid = user.currentUser.uid;
+    this.user = user.currentUser
+    console.log(uid);
+    
+    var userRoot = firebase.database().ref("Users").child(uid)
+    userRoot.once("value", snap => {
+      //console.log(userRoot);
+      let values = snap.val()
+        console.log(values["name"]);
+        console.log(values["email"]);
+        this.userProfile.push({
+        key: snap.key,
+        displayName : values["name"],
+        email : values["email"],
+
+        })
+    })  
+  }
+   this.currentSessionId = uid
+   console.log(uid);
+   console.log(user);
+   console.log(this.user);  
+}
+
+ ///set user session end
+ destroyUserData(){
+  this.userProfile.pop()
+  console.log(this.userProfile);
+  
+}
+readCurrentSession(){
+  this.who()
+  console.log(this.user);
+  return this.user
+}
+
+returnUserProfile(){
+  console.log(this.userProfile);
+  return this.userProfile
+}
+ 
 ///create event 
 
 
