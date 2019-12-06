@@ -121,6 +121,7 @@ body {
         // $order-top-right-radius: 20%;
         // border-top-left-radius: 20%;
         padding-left: 15px;
+        padding: 10px 0px 0px 0px !important;
     }
     #img {
         $myheight: 60%;
@@ -233,11 +234,11 @@ body {
     
     .camera {
 
-        font-size: 20px;
+        font-size: 18px;
         
     }
     
     .fab {
-        top: 150px !important;
+        top: 100px !important;
     }
 }
