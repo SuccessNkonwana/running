@@ -31,6 +31,11 @@ export class AppComponent {
       title: 'Add Club',
       url: 'add-club',
       icon: 'list'
+    },
+    {
+      title: 'Add Event',
+      url: 'add-event',
+      icon: 'list'
     }
   ];
 
