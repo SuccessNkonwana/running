@@ -144,12 +144,17 @@ body {
         --border-color: var(--ion-color-medium-shade);
         --border-radius: 40px;
         // --border-width: 1px;
-        --box-shadow: 2px gray;
+        // --box-shadow: 2px rgb(228, 222, 222);
         --highlight-height: 0;
-        --background: #bebcbc;
+        --background: #e9e0e0;
+       
        }
        .labels{
            float: left;
            border: none;
+       }
+       .card{
+           padding-top:10%;
+           width: 90%;
        }
 }
