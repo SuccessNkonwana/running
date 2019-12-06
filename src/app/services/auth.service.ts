@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AlertController, NavController, LoadingController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
+import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,11 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   user: Observable<User>;
-  ​
+  ​ currentSession
+  currentUser
+  currentSessionId
+  userProfile = []
+  currentState : boolean  
     selectedFile = null;
     uploadPercent: any;
     downloadU: any;
@@ -22,6 +27,7 @@ export class AuthService {
     dateTime = this.date + "" + this.time;
   ​
     progress
+  theUser
   
     constructor(public alertCtrl:AlertController,  
       private afs: AngularFirestore,
@@ -46,8 +52,9 @@ export class AuthService {
         message: 'Registering, Please wait...'
       });
       (await loading).present();
+    
       await this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(async (success) => {
-  ​
+  ​ this.setCurrentSession(firebase.auth())
         console.log(success);
         (await loading).dismiss();
   ​
@@ -64,10 +71,21 @@ export class AuthService {
   ​
       })
     }
+    who()
+    {
+
+      return this.theUser
+    }
     async login(email: string, password: string) {
-      await this.afAuth.auth.signInWithEmailAndPassword(email, password).then((success) => {
-        console.log(success);
-        this.navCtrl.navigateRoot("home");
+
+      //
+     
+        await this.afAuth.auth.signInWithEmailAndPassword(email, password).then((success) => {
+         this.setCurrentSession(firebase.auth())
+          console.log(success);
+          this.theUser=firebase.auth()
+          this.navCtrl.navigateRoot("home");
+        return this.theUser
       }).catch((err) => {
         this.alertCtrl.create({
           // message: 'You can not order more than six',
@@ -77,9 +95,11 @@ export class AuthService {
           alert => alert.present()
         );
       })
+   
     }
     async sendPasswordResetEmail(passwordResetEmail: string) {
       return await this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail);
+  
     }
   ​
     async logout() {
@@ -92,5 +112,48 @@ export class AuthService {
       })
     }
   
+    ///set user session start
+ setCurrentSession(user){
+  console.log("running");
+  var uid
+  if (user !== null){
+    uid = user.currentUser.uid;
+    this.user = user.currentUser
+    console.log(uid);
+    
+    var userRoot = firebase.database().ref("Users").child(uid)
+    userRoot.once("value", snap => {
+      //console.log(userRoot);
+      let values = snap.val()
+        console.log(values["name"]);
+        console.log(values["email"]);
+        this.userProfile.push({
+        key: snap.key,
+        displayName : values["name"],
+        email : values["email"],
+
+        })
+    })  
+  }
+   this.currentSessionId = uid
+   console.log(uid);
+   console.log(user);
+   console.log(this.user);  
+}
+   ///set user session end
+   destroyUserData(){
+    this.userProfile.pop()
+    console.log(this.userProfile);
+    
+  }
+  readCurrentSession(){
+    console.log(this.user);
+    return this.user
+  }
+
+  returnUserProfile(){
+    console.log(this.userProfile);
+    return this.userProfile
+  }
 
 }

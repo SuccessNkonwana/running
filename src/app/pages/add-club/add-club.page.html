@@ -42,7 +42,7 @@
                                     </ion-fab-list>
     
                                     <ion-fab-list side="end">
-                                        <ion-fab-button color="primary">
+                                        <ion-fab-button color="primary" >
                                             <label for="file-input2">
                                                             <ion-icon name="document" class="document"> </ion-icon> 
                                                     </label>
@@ -116,11 +116,11 @@
                                 <br>
                                 <ion-item lines="none">
                                     <div id="h">
-                                        <h2 color="primary">Submit</h2>
+                                        <h2 color="primary" >Submit</h2>
                                     </div>
 
                                     <div id="but">
-                                        <ion-fab-button [disabled]="!clubForm.valid" (click)="trySubmit()" color="primary" size="small">
+                                        <ion-fab-button (click)="addClub(club,Address,Hours,Close)"  [disabled]="!clubForm.valid"  color="primary" size="small">
                                             <ion-icon name="arrow-forward"></ion-icon>
                                         </ion-fab-button>
 
