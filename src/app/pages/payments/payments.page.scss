@@ -12,6 +12,7 @@
     background: rgba(0, 0, 0, 0.6);
     text-align: center;
 }
+
 $bgcolor: #11C2D4;
 $textcolor: #11C2D4;
 $fontsize: 18px;
@@ -44,7 +45,7 @@ body {
         // left: -10px;
         // margin-left: 10%;
         // right: 10px;
-        top:-20px;
+        top: -20px;
     }
     #bd {
         // -webkit-text-fill-color: aliceblue;
@@ -111,8 +112,8 @@ body {
         width: $mywidth;
         $margin-left: 0%;
         margin-left: $margin-left;
-        $myheight: 500px;
-        height: $myheight;
+        // $myheight: 500px;
+        // height: $myheight;
         $margin-bottom: 0%;
         margin-bottom: $margin-bottom;
         $order-top-right-radius: 20%;
@@ -136,7 +137,7 @@ body {
         $margin-left: 62%;
         margin-left: $margin-left;
     }
-    a{
+    a {
         color: #11C2D4;
         text-decoration: none;
     }
@@ -144,12 +145,16 @@ body {
         --border-color: var(--ion-color-medium-shade);
         --border-radius: 40px;
         // --border-width: 1px;
-        --box-shadow: 2px gray;
+        // --box-shadow: 2px rgb(228, 222, 222);
         --highlight-height: 0;
-        --background: #bebcbc;
-       }
-       .labels{
-           float: left;
-           border: none;
-       }
+        --background: #e9e0e0;
+    }
+    .labels {
+        float: left;
+        border: none;
+    }
+    .card {
+        padding-top: 10%;
+        width: 90%;
+    }
 }
