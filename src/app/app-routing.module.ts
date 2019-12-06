@@ -58,10 +58,16 @@ const routes: Routes = [
   {
     path: 'add-club',
     loadChildren: () => import('./pages/add-club/add-club.module').then( m => m.AddClubPageModule)
-  }, {
+  }, 
+  {
     path: 'add-event',
     loadChildren: () => import('./pages/add-event/add-event.module').then( m => m.AddEventPageModule)
+  },
+  {
+    path: 'book-event',
+    loadChildren: () => import('./pages/book-event/book-event.module').then( m => m.BookEventPageModule)
   }
+  
 
 
 

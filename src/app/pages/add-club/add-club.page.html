@@ -1,8 +1,5 @@
-
-
-<ion-content >
-    <form [formGroup]="clubForm">
-
+<ion-content>
+<form [formGroup]="clubForm">
   <body>
     
       <div id="bg">
@@ -49,111 +46,103 @@
                                             <label for="file-input2">
                                                             <ion-icon name="document" class="document"> </ion-icon> 
                                                     </label>
-                                        </ion-fab-button>
-                                    </ion-fab-list>
-                                </ion-fab>
-    
-    
-                                <input id="file-input2" class="input" type="file" (change)="Pic($event)" />
-                            </div>
-                        </div>
-                          <br><br><br>
-                        </div>
-                         
-                          <div class="div2">
-                              <br><br><br><br>
-                            <ion-item id="item" color="transparent">
-                                <ion-label position="floating">Club name</ion-label>
-                                <ion-input type="text" formControlName="club"></ion-input>
-                            </ion-item>
-                            <div class="error" *ngIf="clubForm.get('club').hasError('required') && clubForm.get('club').touched">
-                                Please input your club
-                            </div>
-                            <div class="error" *ngIf="clubForm.get('club').hasError('minlength') && clubForm.get('club').touched">
-                                Minimum 4 characters
-                            </div>
-                            <div class="error" *ngIf="clubForm.get('club').hasError('maxlength') && clubForm.get('club').touched">
-                                Maximum 30 characters
-                            </div>
-
-                            <ion-item id="item" color="transparent">
-                                <ion-label position="floating">Address</ion-label>
-                                <ion-input type="text" formControlName="Address" ></ion-input>
-                            </ion-item>
-        
-                            <div *ngIf="clubForm.controls.Address.invalid && clubForm.controls.Address.dirty">
-                            </div>
-                            <div class="error" *ngIf="clubForm.get('Address').hasError('required') && clubForm.get('Address').touched">
-                                Please input your Address
-                            </div>
-
-                            <ion-grid>
-                                <ion-row>
-                                    <ion-col>
-                                        <ion-item  id="item" color="transparent">
-                                            <ion-label position="floating">Open Time</ion-label>
-                                            <ion-datetime formControlName="Hours" displayFormat="H:mm a"></ion-datetime>
-                                        </ion-item>
-                                        <div *ngIf="clubForm.controls.Hours.invalid && clubForm.controls.Hours.dirty">
-                                        </div>
-                                        <div class="error" *ngIf="clubForm.get('Hours').hasError('required') && clubForm.get('Hours').touched">
-                                            Please input your Open Hour
-                                        </div>
-                                    </ion-col>
-                                    <ion-col>
-                                        <ion-item  id="item" color="transparent">
-                                            <ion-label position="floating">Close Time</ion-label>
-                                            <ion-datetime formControlName="Close" displayFormat="H:mm a"></ion-datetime>
-                                        </ion-item>
-                                        <div *ngIf="clubForm.controls.Close.invalid && clubForm.controls.Hours.Close">
-                                        </div>
-                                        <div class="error" *ngIf="clubForm.get('Close').hasError('required') && clubForm.get('Close').touched">
-                                            Please input your Close Hour
-                                        </div>
-                                    </ion-col>
-                                </ion-row>
-                            </ion-grid>
-                            
+                                                </ion-fab-button>
+                                            </ion-fab-list>
+                                        </ion-fab>
 
 
-                            <br>
-                            <!-- <ion-item lines="none">
-                                <div id="h">
-                                    <h2 color="primary">Submit</h2>
+                                        <input id="file-input2" class="input" type="file" (change)="Pic($event)" />
+                                    </div>
                                 </div>
-                               
-                                <div id="but">  -->
-                                        <!-- <ion-fab horizontal="end" slot="fixed">
-                                    <ion-fab-button  [disabled]="!clubForm.valid" (click)="trySubmit()" color="primary" size="small">
-                                        <ion-icon  name="arrow-forward"></ion-icon>
-                                    </ion-fab-button>
-                                </ion-fab> -->
-                              
-                                <!-- </div>
-                              </ion-item>
-
-                              <ion-fab horizontal="end" slot="fixed">
-                                <ion-fab-button color="danger">
-                                  <ion-icon name="add"></ion-icon>
-                                </ion-fab-button>
-                              </ion-fab> -->
-                              <div id="h">
-                              <ion-button horizontal="center" expand="block" [disabled]="!clubForm.valid" (click)="trySubmit()" size="large" color="primary">Submit</ion-button>
+                                <br><br><br>
                             </div>
-                          </div>
-                      
 
-                  </ion-col>
+                            <div class="div2">
+                                <br><br><br><br>
+                                <ion-item id="item" color="transparent">
+                                    <ion-label position="floating">Club name</ion-label>
+                                    <ion-input type="text" formControlName="club"></ion-input>
+                                </ion-item>
+                                <div class="error" *ngIf="clubForm.get('club').hasError('required') && clubForm.get('club').touched">
+                                    Please input your club
+                                </div>
+                                <div class="error" *ngIf="clubForm.get('club').hasError('minlength') && clubForm.get('club').touched">
+                                    Minimum 4 characters
+                                </div>
+                                <div class="error" *ngIf="clubForm.get('club').hasError('maxlength') && clubForm.get('club').touched">
+                                    Maximum 30 characters
+                                </div>
 
-              </ion-row>
-          </ion-grid>
+                                <ion-item id="item" color="transparent">
+                                    <ion-label position="floating">Address</ion-label>
+                                    <ion-input type="text" formControlName="Address"></ion-input>
+                                </ion-item>
+
+                                <div *ngIf="clubForm.controls.Address.invalid && clubForm.controls.Address.dirty">
+                                </div>
+                                <div class="error" *ngIf="clubForm.get('Address').hasError('required') && clubForm.get('Address').touched">
+                                    Please input your Address
+                                </div>
+
+                                <ion-grid>
+                                    <ion-row>
+                                        <ion-col>
+                                            <ion-item id="item" color="transparent">
+                                                <ion-label position="floating">Open Time</ion-label>
+                                                <ion-datetime formControlName="Hours" displayFormat="H:mm a"></ion-datetime>
+                                            </ion-item>
+                                            <div *ngIf="clubForm.controls.Hours.invalid && clubForm.controls.Hours.dirty">
+                                            </div>
+                                            <div class="error" *ngIf="clubForm.get('Hours').hasError('required') && clubForm.get('Hours').touched">
+                                                Please input your Open Hour
+                                            </div>
+                                        </ion-col>
+                                        <ion-col>
+                                            <ion-item id="item" color="transparent">
+                                                <ion-label position="floating">Close Time</ion-label>
+                                                <ion-datetime formControlName="Close" displayFormat="H:mm a"></ion-datetime>
+                                            </ion-item>
+                                            <div *ngIf="clubForm.controls.Close.invalid && clubForm.controls.Hours.Close">
+                                            </div>
+                                            <div class="error" *ngIf="clubForm.get('Close').hasError('required') && clubForm.get('Close').touched">
+                                                Please input your Close Hour
+                                            </div>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-grid>
+
+
+
+                                <br>
+                                <ion-item lines="none">
+                                    <div id="h">
+                                        <h2 color="primary">Submit</h2>
+                                    </div>
+
+                                    <div id="but">
+                                        <ion-fab-button [disabled]="!clubForm.valid" (click)="trySubmit()" color="primary" size="small">
+                                            <ion-icon name="arrow-forward"></ion-icon>
+                                        </ion-fab-button>
+
+                                    </div>
+                                </ion-item>
+
+
+                            </div>
+
+
+                        </ion-col>
+
+                    </ion-row>
+                </ion-grid>
 
 
 
 
 
-      </div>
 
-  </body>
-</form>
+            </div>
+
+        </body>
+    </form>
 </ion-content>
