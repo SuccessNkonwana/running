@@ -49,11 +49,13 @@ export class RunningService {
   //add a club
   addClub(newName,newAddress,newOpeningHours,newClosingHours)
   {
+    var styt=newOpeningHours.substring(11,16);
+    var etyt=newClosingHours.substring(11,16);
     this.dbfire.collection("clubs").add({
       name: newName,
       address: newAddress,
-      openingHours: newOpeningHours,
-      closingHours: newClosingHours,
+      openingHours: styt,
+      closingHours: etyt
       
     }).then((data)=>{
     
@@ -62,6 +64,7 @@ export class RunningService {
       console.log(data)
     }).catch((error)=>{
 
+      console.log(error)
     })
   }
 

@@ -38,17 +38,17 @@ export class AddClubPage implements OnInit {
 
   lng;
   lat;
-  
-  photoURL: string;
-  clubName: string;
-  Address: string;
-  Hours: string;
-  Close: string;
-  constructor( 
-    private fb: FormBuilder,
-    private clubService:RunningService
-  ) { 
 
+  newName;
+  newAddress;
+  newOpeningHours;
+  newClosingHours;
+
+  photoURL: string;
+  
+  constructor(private fb: FormBuilder,private clubService:RunningService) 
+  { 
+     
 
     this.clubForm = fb.group({
 
@@ -57,10 +57,22 @@ export class AddClubPage implements OnInit {
       Hours: ['', Validators.required],
       Close: ['', Validators.required],
 
+
+
     },
     );
   }
-  
+
+
+  addClub(newName,newAddress,newOpeningHours,newClosingHours)
+  {
+       this.newName = this.clubForm.get('club').value
+    this.newAddress = this.clubForm.get('Address').value
+    this.newOpeningHours = this.clubForm.get('Hours').value   
+    this.newClosingHours = this.clubForm.get('Close').value
+
+    this.clubService.addClub(this.newName,this.newAddress,this.newOpeningHours,this.newClosingHours)
+  }
   ngOnInit() {
     if (this.UpdateForm == "true") {
      
