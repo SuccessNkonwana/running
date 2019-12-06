@@ -85,6 +85,7 @@ body {
     #item {
         $textcolor: #11C2D4;
         color: $textcolor;
+        margin-right: 10px;
     }
     #cen {
         $margin: 5px 20px 5px 300px;
@@ -102,25 +103,29 @@ body {
     }
     #but {
         ion-fab-button {
-            margin-left: 0%;
+            float: right;
         }
-        $margin-left: 60%;
-        margin-left: $margin-left;
+        // $margin-left: 65%;
+        // margin-left: $margin-left;
     }
     .div2 {
         $background-color: #ffff;
         background-color: $background-color;
         $mywidth: 100%;
         width: $mywidth;
-        $margin-left: 0%;
-        margin-left: $margin-left;
-        $myheight: 590px;
+        $margin-right: 20%;
+        margin-right: $margin-right;
+        $myheight: 500px;
         height: $myheight;
         $margin-bottom: 0%;
         margin-bottom: $margin-bottom;
         // $order-top-right-radius: 20%;
         // border-top-left-radius: 20%;
         padding-left: 15px;
+        // padding: 10px 0px 0px 0px !important;
+        
+
+      
     }
     #img {
         $myheight: 60%;
@@ -157,6 +162,10 @@ body {
         color: #11C2D4;
         text-decoration: none;
     }
+    #h{
+       width: 35%;
+       text-align: center;
+    }
     img {
         border-radius: 50%;
         text-align: center;
@@ -188,6 +197,7 @@ body {
     }
     
     .profile-image {
+       
         img {
             height: 120px;
             width: 120px;
@@ -196,6 +206,7 @@ body {
             -webkit-box-shadow: 0px 0px 142px -37px rgb(32, 114, 125);
             -moz-box-shadow: 0px 0px 142px -37px rgb(32, 114, 125);
             box-shadow: 0px 0px 142px -37px rgb(32, 114, 125);
+          
         }
     }
     .profile-image{
@@ -203,9 +214,11 @@ body {
         position: absolute;
         z-index: 5;
         top: 10%;
-        left:65%;
+        left: 75%;
+        
        
     }
+    
     .image-upload>input {
         display: none;
         margin-top: 20px;
@@ -233,11 +246,11 @@ body {
     
     .camera {
 
-        font-size: 20px;
+        font-size: 18px;
         
     }
     
     .fab {
-        top: 150px !important;
+        top: 100px !important;
     }
 }

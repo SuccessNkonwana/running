@@ -1,0 +1,48 @@
+body {
+    background-color: #11C2D4;
+    $mywidth: 100%;
+    width: $mywidth;
+    $myheight: 100%;
+    height: $myheight;
+    text-align: center;
+    overflow: scroll;
+    h2 {
+        $fontsize: 25px;
+        font-size: $fontsize;
+        $font-family: "Comic Sans MS";
+        font-family: $font-family;
+        $textcolor: #ffff;
+        color: $textcolor;
+    }
+    .card2 {
+        background-color: white;
+        width: 95%;
+        height: 40%;
+        color: #11C2D4;
+    }
+    .card1 {
+        background-color: white;
+        width: 95%;
+        // height: 20%;
+        border: 55px;
+        color: #11C2D4;
+    }
+    .go {
+        margin-left: 95px;
+    }
+    .ends {
+        text-align: end;
+    }
+    .bot {
+        font-size: 25px;
+    }
+    .money {
+        color: #11C2D4;
+        width: 40px;
+        height: 40px;
+    }
+    ion-item {
+        color: #11C2D4;
+        text-align: center;
+    }
+}

@@ -1,9 +1,107 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>addEvent</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
 
+    <form [formGroup]="eventForm">
+
+        <body>
+
+            <div id="bg">
+                <ion-grid>
+                    <ion-row justify-content-center>
+
+                        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+
+                            <div class="div1">
+
+                                <h2 id="heading">Add Your Event!</h2>
+                                <br><br><br>
+                                <div class="div2">
+
+                                    <!-- <form #form="ngForm" (ngSubmit)="login(form)"> -->
+
+
+                                    <div padding>
+
+                                        <ion-item id="item" color="transparent">
+                                            <ion-label position="floating">Event name</ion-label>
+                                            <ion-input type="text" formControlName="event"></ion-input>
+                                        </ion-item>
+                                        <div class="error" *ngIf="eventForm.get('event').hasError('required') && eventForm.get('event').touched">
+                                            Please input your event
+                                        </div>
+                                        <div class="error" *ngIf="eventForm.get('event').hasError('minlength') && eventForm.get('event').touched">
+                                            Minimum 4 characters
+                                        </div>
+                                        <div class="error" *ngIf="eventForm.get('event').hasError('maxlength') && eventForm.get('event').touched">
+                                            Maximum 30 characters
+                                        </div>
+                                        <ion-item id="item" color="transparent">
+                                            <ion-label position="floating">Address</ion-label>
+                                            <ion-input type="text" formControlName="Address"></ion-input>
+                                        </ion-item>
+
+                                        <div *ngIf="eventForm.controls.Address.invalid && eventForm.controls.Address.dirty">
+                                        </div>
+                                        <div class="error" *ngIf="eventForm.get('Address').hasError('required') && eventForm.get('Address').touched">
+                                            Please input your Address
+                                        </div>
+                                        <ion-grid>
+                                            <ion-row>
+                                                <ion-col>
+                                                    <ion-item id="item" color="transparent">
+                                                        <ion-label position="floating">Open Time</ion-label>
+                                                        <ion-datetime formControlName="Hours" displayFormat="H:mm a"></ion-datetime>
+                                                    </ion-item>
+                                                    <div *ngIf="eventForm.controls.Hours.invalid && eventForm.controls.Hours.dirty">
+                                                    </div>
+                                                    <div class="error" *ngIf="eventForm.get('Hours').hasError('required') && eventForm.get('Hours').touched">
+                                                        Please input your Open Hour
+                                                    </div>
+                                                </ion-col>
+                                                <ion-col>
+                                                    <ion-item id="item" color="transparent">
+                                                        <ion-label position="floating">Close Time</ion-label>
+                                                        <ion-datetime formControlName="Close" displayFormat="H:mm a"></ion-datetime>
+                                                    </ion-item>
+                                                    <div *ngIf="eventForm.controls.Close.invalid && eventForm.controls.Hours.Close">
+                                                    </div>
+                                                    <div class="error" *ngIf="eventForm.get('Close').hasError('required') && eventForm.get('Close').touched">
+                                                        Please input your Close Hour
+                                                    </div>
+                                                </ion-col>
+                                            </ion-row>
+                                        </ion-grid>
+
+
+
+
+                                        <ion-item color="transparent" lines="none">
+                                            <div id="h">
+                                                <h2>Submit</h2>
+                                            </div>
+
+                                            <div id="but">
+                                                <ion-fab-button [disabled]="!eventForm.valid" (click)="trySubmit()" color="light" size="small">
+                                                    <ion-icon color="primary" name="arrow-forward"></ion-icon>
+                                                </ion-fab-button>
+
+                                            </div>
+                                        </ion-item>
+                                        <br>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-col>
+
+                    </ion-row>
+                </ion-grid>
+
+
+
+            </div>
+
+        </body>
+    </form>
 </ion-content>

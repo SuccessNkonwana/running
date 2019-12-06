@@ -136,11 +136,11 @@ this.dbfire.collection("clubs").get().then((querySnapshot) => {
    {
     console.log( this.clubsTemp[x].userID,"userid at x")
 
-        if(this.clubsTemp[x].userID===userID)
-        {
-          this.clubs.push(this.clubsTemp[x])
+        // if(this.clubsTemp[x].userID===userID)
+        // {
+        //   this.clubs.push(this.clubsTemp[x])
 
-        }
+        // }
 
    }
    resolve(this.clubs)

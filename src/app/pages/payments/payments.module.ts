@@ -4,18 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddEventPageRoutingModule } from './add-event-routing.module';
+import { PaymentsPageRoutingModule } from './payments-routing.module';
 
-import { AddEventPage } from './add-event.page';
+import { PaymentsPage } from './payments.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddEventPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PaymentsPageRoutingModule
   ],
-  declarations: [AddEventPage]
+  declarations: [PaymentsPage]
 })
-export class AddEventPageModule {}
+export class PaymentsPageModule {}

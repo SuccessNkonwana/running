@@ -5,6 +5,9 @@ body {
         color: white;
         color: white;
     }
+    .go{
+        left: 80%;
+    }
     .cet {
         $background-color: #11C2D4;
         background-color: $background-color;
@@ -22,9 +25,10 @@ body {
         border-bottom-left-radius: $border-bottom-left-radius;
 
         .imgC {
-            $myheight: 105%;
+            $myheight: 100%;
             height: $myheight;
-            margin-left: 261px;
+            float: right;
+            width: 100px;
             margin-top: -1px;
             $border-top-left-radius: 35%;
             border-top-left-radius: $border-top-left-radius;
@@ -40,7 +44,7 @@ body {
     }
     h1 {
         font-family: Microsoft Sans Serif;
-        font-size: 25px;
+        font-size: 20px;
         color: rgba(0, 0, 0, 1);
         margin-left: 18px;
         font-weight: bold;
@@ -53,10 +57,10 @@ body {
    
     .img {
         position: absolute;
-    height: 145px;
-        width: 120px;
+    height: 90px;
+        width: 90px;
         border-radius: 50%;
-        margin-left: 200px;
+        float: right;
       
         top: 64px;
         right: 10px;
