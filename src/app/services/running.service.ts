@@ -20,23 +20,20 @@ export class RunningService {
   newAddress: string="";
   newOpeningHours: string="";
   newClosingHours: string="";
-
   editName: string="";
   editAddress: string="";
   editOpeningHours: string="";
   editClosingHours: string="";
   ///
-
   constructor(public auths:AuthService)
   { 
-
   }
   async rtClubs()
   {
     let result :any
    await this.getClubs().then(data =>{
     result = data
-  ​
+  
    console.log(result.length);
   })
   console.log(result);
@@ -51,6 +48,9 @@ export class RunningService {
   {
     var styt=newOpeningHours.substring(11,16);
     var etyt=newClosingHours.substring(11,16);
+    let user=this.readCurrentSession()
+    let userID=user.uid
+    console.log("HOT ",userID)
     this.dbfire.collection("clubs").add({
       name: newName,
       address: newAddress,
@@ -63,11 +63,9 @@ export class RunningService {
      
       console.log(data)
     }).catch((error)=>{
-
       console.log(error)
     })
   }
-
   ///update a club
 updateTodo(clubs,editName,editAddress,editOpeningHours,editClosingHours)
 {
@@ -86,7 +84,6 @@ this.dbfire.collection("clubs").doc(clubs.clubKey).update('address',editAddress)
 }).catch(function(error) {
   console.error("Error updating document: ", error);
 });
-
 //opening hours
 this.dbfire.collection("clubs").doc(clubs.clubKey).update('address',editOpeningHours).then((data)=> {
   
@@ -102,8 +99,20 @@ this.dbfire.collection("clubs").doc(clubs.clubKey).update('address',editClosingH
   console.error("Error updating document: ", error);
 });
 }
-
 //retrieve a club
+async rtTodo()
+{
+  let result :any
+ await this.getClubs().then(data =>{
+  result = data
+ console.log(result.length);
+})
+console.log(result);
+//this.LandMarks()
+return  result 
+// console.log(this.todos,"hh")
+ // return this.todos
+}
 ///////get todos
 getClubs()
 {
@@ -113,7 +122,6 @@ getClubs()
   let ans2=[]
   let user=this.readCurrentSession()
   let userID=user.uid
-
   //
 return new Promise((resolve, reject) => {
 this.dbfire.collection("clubs").get().then((querySnapshot) => {
@@ -122,7 +130,7 @@ this.dbfire.collection("clubs").get().then((querySnapshot) => {
     // ans.push(doc.data())
      console.log(doc.id, '=>', doc.data());
      this.clubsTemp.push({
-       todoKey: doc.id,
+       clubKey: doc.id,
        name: doc.data().name,
        time: doc.data().time,
        userID: doc.data().userID
@@ -138,28 +146,18 @@ this.dbfire.collection("clubs").get().then((querySnapshot) => {
    for(let x=0;x< this.clubsTemp.length;x++)
    {
     console.log( this.clubsTemp[x].userID,"userid at x")
-
-        // if(this.clubsTemp[x].userID===userID)
-        // {
-        //   this.clubs.push(this.clubsTemp[x])
-
-        // }
-
+        if(this.clubsTemp[x].userID===userID)
+        {
+          this.clubs.push(this.clubsTemp[x])
+        }
    }
-   resolve(this.clubs)
+   resolve(this.clubsTemp)
 });
-
 });
 console.log(this.clubsTemp,"clubs array")
-
-
-
 console.log(ans,"ans array")
  
-
 }
-
-
 ///////delete todo
 deleteTodo(clubs)
 {
@@ -169,19 +167,17 @@ deleteTodo(clubs)
 }).catch(function(error) {
    console.error("Error removing document: ", error);
 });
-
 }
-
 //
 who()
 {
   this.user=this.auths.who()
+  this.setCurrentSession(this.user)
   console.log("logged in user ",this.user)
 }
-
  ///set user session start
  setCurrentSession(user){
-  console.log("running");
+  console.log("running now", user.currentUser.uid);
   var uid
   if (user !== null){
     uid = user.currentUser.uid;
@@ -198,16 +194,14 @@ who()
         key: snap.key,
         displayName : values["name"],
         email : values["email"],
-
         })
     })  
   }
    this.currentSessionId = uid
    console.log(uid);
-   console.log(user);
-   console.log(this.user);  
+   console.log("last in set ",user);
+   console.log("last in set 2",this.user);  
 }
-
  ///set user session end
  destroyUserData(){
   this.userProfile.pop()
@@ -219,22 +213,14 @@ readCurrentSession(){
   console.log(this.user);
   return this.user
 }
-
 returnUserProfile(){
   console.log(this.userProfile);
   return this.userProfile
 }
  
 ///create event 
-
-
 ///retrieve event
-
-
-
 ///update event
-
-
 ///delete event
-
 }
+

@@ -44,6 +44,7 @@ ionViewWillEnter() {
 async login() {
   const loading = this.loadingCtrl.create({
     message: 'Signing in, Please wait...',
+    duration: 4000
   });
   (await loading).present();
 ​ 
