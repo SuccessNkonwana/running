@@ -99,7 +99,8 @@
                                         </ion-row>
                                         <ion-row>
                                             <ion-col>
-                                                <ion-button shape="round" expand="full"><b>Pay now</b></ion-button>
+                                                <ion-button shape="round" expand="full" [disabled]="!paymentsForm.valid" (click)="trySubmit()"><b>Pay now</b></ion-button>
+
                                                 <br><br>
                                             </ion-col>
                                         </ion-row>

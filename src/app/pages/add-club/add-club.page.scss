@@ -19,11 +19,11 @@ body {
     height: $myheight;
     text-align: center;
     overflow: scroll;
-    .avatar{
+    .avatar {
         position: absolute;
-    z-index: 5;
-    top: 10%;
-    left:80%;
+        z-index: 5;
+        top: 10%;
+        left: 80%;
     }
     #bg {
         // background-color: #11C2D4;
@@ -64,15 +64,12 @@ body {
         text-align: start;
     }
     h2 {
-    
-            $fontsize: 25px;
-            font-size: $fontsize;
-            $font-family:"Comic Sans MS";
-            font-family: $font-family;
-            $textcolor: #11C2D4;
-            color: $textcolor;
-        
-      
+        $fontsize: 25px;
+        font-size: $fontsize;
+        $font-family: "Comic Sans MS";
+        font-family: $font-family;
+        $textcolor: #11C2D4;
+        color: $textcolor;
         // $padding: 0px 280px 50px 0px;
         // padding: $padding;
     }
@@ -123,9 +120,6 @@ body {
         // border-top-left-radius: 20%;
         padding-left: 15px;
         // padding: 10px 0px 0px 0px !important;
-        
-
-      
     }
     #img {
         $myheight: 60%;
@@ -139,8 +133,6 @@ body {
         border-bottom-right-radius: 20%;
         border-bottom-left-radius: 20%;
         padding: 10px 0px 0px 0px !important;
-
-      
     }
     #out {
         text-align: start;
@@ -149,31 +141,27 @@ body {
         $margin-left: 62%;
         margin-left: $margin-left;
     }
-    #heading{
+    #heading {
         $fontsize: 25px;
         font-size: $fontsize;
-        $font-family:"Comic Sans MS";
+        $font-family: "Comic Sans MS";
         font-family: $font-family;
         $textcolor: #ffff;
         color: $textcolor;
-    
     }
     a {
         color: #11C2D4;
         text-decoration: none;
     }
-    #h{
-       width: 35%;
-       text-align: center;
+    #h {
+        width: 35%;
+        text-align: center;
     }
     img {
         border-radius: 50%;
         text-align: center;
     }
-    
-    
-    
-    :root {
+     :root {
         .profile {
             height: 100%;
             width: 100%;
@@ -182,22 +170,17 @@ body {
             box-shadow: 0px 0px 142px -37px rgba(0, 0, 0, 0.75);
         }
     }
-    
     .profile-image img {
         display: block;
         margin-left: auto;
         margin-right: auto;
     }
-    
     .input {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        
     }
-    
     .profile-image {
-       
         img {
             height: 120px;
             width: 120px;
@@ -206,31 +189,21 @@ body {
             -webkit-box-shadow: 0px 0px 142px -37px rgb(32, 114, 125);
             -moz-box-shadow: 0px 0px 142px -37px rgb(32, 114, 125);
             box-shadow: 0px 0px 142px -37px rgb(32, 114, 125);
-          
         }
     }
-    .profile-image{
-   
+    .profile-image {
         position: absolute;
         z-index: 5;
         top: 10%;
         left: 75%;
-        
-       
     }
-    
     .image-upload>input {
         display: none;
         margin-top: 20px;
-       
-      
     }
-    
     .input {
         font-size: 25px;
-        
     }
-    
     ion-spinner {
         display: block;
         margin: auto;
@@ -238,18 +211,13 @@ body {
         width: 30px;
         height: 30px;
     }
-    
     // ion-fab {}
     .document {
         font-size: 20px;
     }
-    
     .camera {
-
         font-size: 18px;
-        
     }
-    
     .fab {
         top: 100px !important;
     }

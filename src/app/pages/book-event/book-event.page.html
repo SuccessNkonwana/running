@@ -6,7 +6,7 @@
         <br><br>
         <ion-card class="card1">
 
-            <ion-item lines="none">
+            <!-- <ion-item lines="none">
                 <h5>Open hours</h5>
 
 
@@ -26,7 +26,31 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <h6 class="ends"> 17:00</h6>
 
-            </ion-item>
+            </ion-item> -->
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <h5>Open hours</h5>
+                    </ion-col>
+                    <ion-col>
+                        <ion-icon class="wak" color="dark" name="walk"></ion-icon>
+                    </ion-col>
+                    <ion-col>
+                        <h5 class="ends"> Close hours</h5>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <h6 class="endo">07:00</h6>
+                    </ion-col>
+                    <ion-col>
+                        <h6 class="end"> 10 Km</h6>
+                    </ion-col>
+                    <ion-col>
+                        <h6 class="endi"> 17:00</h6>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
             <ion-item></ion-item>
             <ion-item lines="none" class="mon">
                 <ion-icon class="money" name="cash"></ion-icon> &nbsp;&nbsp;
@@ -41,12 +65,12 @@
             <h5>how many tickets do you want?</h5>
             <br><br>
             <ion-item lines="none" class="go">
-                <ion-fab-button color="primary" size="small">
-                    -
+                <ion-fab-button color="light" size="small">
+                    <ion-icon color="primary" name="remove"></ion-icon>
                 </ion-fab-button>
                 1
-                <ion-fab-button color="primary" size="small">
-                    +
+                <ion-fab-button color="light" size="small">
+                    <ion-icon color="primary" name="add"></ion-icon>
                 </ion-fab-button>
             </ion-item>
             <br><br>
@@ -55,7 +79,7 @@
 
             </h1>
             <br><br><br>
-            <ion-button shape="round" expand="block"><b>Pay now</b></ion-button>
+            <ion-button shape="round" expand="block"><b>Book now</b></ion-button>
         </ion-card>
     </body>
 

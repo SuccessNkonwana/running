@@ -66,6 +66,10 @@ const routes: Routes = [
   {
     path: 'book-event',
     loadChildren: () => import('./pages/book-event/book-event.module').then( m => m.BookEventPageModule)
+  },
+  {
+    path: 'schedule-event',
+    loadChildren: () => import('./pages/schedule-event/schedule-event.module').then( m => m.ScheduleEventPageModule)
   }
   
 

@@ -38,8 +38,9 @@ body {
         top: 25px;
         margin-left: 180px;
     }
-    .ends {
-        text-align: end;
+    .endi {
+        margin-left: 40px;
+        font-size: 30px;
     }
     .bot {
         font-size: 25px;
@@ -49,12 +50,28 @@ body {
         width: 40px;
         height: 40px;
     }
+    .wak {
+        text-align: center;
+        margin-top: 30px;
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .end {
+        margin-left: 18px;
+        font-size: 30px;
+    }
+    .endo {
+        font-size: 30px;
+    }
     ion-item {
         color: #11C2D4;
         text-align: center;
     }
     ion-fab-button {
-        width: 55px;
-        height: 55px;
+        width: 67px;
+        height: 67px;
+    }
+    ion-row {
+        text-align: center;
     }
 }
