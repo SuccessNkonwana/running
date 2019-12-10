@@ -36,12 +36,8 @@ export class AppComponent {
       title: 'Add Event',
       url: 'add-event',
       icon: 'list'
-    },
-    {
-      title: 'Schedule Event',
-      url: 'schedule-event',
-      icon: 'list'
     }
+   
   ];
 
   constructor(
