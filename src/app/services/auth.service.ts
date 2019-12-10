@@ -44,7 +44,7 @@ export class AuthService {
   
         afAuth.auth.onAuthStateChanged((user) => {
           if (user) {
-            this.navCtrl.navigateRoot("home");
+            // this.navCtrl.navigateRoot("home");
           } else {
             this.navCtrl.navigateRoot("");
           }
@@ -91,7 +91,7 @@ export class AuthService {
            
             this.theUser=firebase.auth()
             console.log("success",this.theUser);
-            // this.navCtrl.navigateRoot("home");
+            this.navCtrl.navigateRoot("home");
           return this.theUser
         }).catch((err) => {
           this.alertCtrl.create({
@@ -183,12 +183,10 @@ export class AuthService {
       finalize(() => {
         this.downloadU = fileRef.getDownloadURL().subscribe(urlPath => {
           console.log(urlPath);
-          // this.MUsers.update({
-          //   photoURL: urlPath
-          // })
-          // this.afs.doc('users/' + this.getUID()).update({
-          //   photoURL: urlPath
-          // })
+         
+          this.afs.doc('users/' + userID).update({
+            photoURL: urlPath
+          })
           this.uploadPercent = null;
         });
       })
