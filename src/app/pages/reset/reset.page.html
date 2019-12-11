@@ -4,12 +4,12 @@
         <div id="bg">
             <ion-grid>
                 <ion-row color="primary" justify-content-center>
-                    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                    <ion-col align-self-center size-md="11" size-lg="11" size-xs="12">
                         <div id="div1">
                             <br>
                             <br>
                             <br>
-                            <img src="assets/images/logo.png" alt="Avatar" class="imgC">
+                            <img src="assets/images/Captures.JPG" alt="Avatar" class="imgC">
                             <br>
                             <br>
                             <br>
@@ -30,20 +30,26 @@
                                 <ion-grid>
                                     <ion-row>
                                         <ion-col>
-                                            <!-- <ion-button expand="block" color="primary" (click)="Cancel()">Cancel</ion-button> -->
-                                            <div id="but">
+
+                                            <!-- <div id="but">
                                                 <ion-fab-button color="primary" (click)="Cancel()">
                                                     <ion-icon name="close-circle-outline"></ion-icon>
                                                 </ion-fab-button>
-                                            </div>
+                                            </div> -->
+                                            <ion-button shape="round" color="primary" (click)="Cancel()">
+                                                <ion-icon name="close"></ion-icon>
+                                            </ion-button>
                                         </ion-col>
                                         <ion-col>
-                                            <!-- <ion-button expand="block" color="primary" [disabled]="!forgotpasswordForm.valid" (click)="reset()">Reset</ion-button> -->
-                                            <div id="buts">
+
+                                            <!-- <div id="buts">
                                                 <ion-fab-button color="primary" [disabled]="!forgotpasswordForm.valid" (click)="reset()">
                                                     <ion-icon name="refresh"></ion-icon>
                                                 </ion-fab-button>
-                                            </div>
+                                            </div> -->
+                                            <ion-button shape="round" color="primary" [disabled]="!forgotpasswordForm.valid" (click)="reset()">
+                                                <ion-icon name="refresh"></ion-icon>
+                                            </ion-button>
                                         </ion-col>
                                     </ion-row>
                                 </ion-grid>

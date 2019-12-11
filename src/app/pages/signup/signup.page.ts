@@ -25,7 +25,11 @@ export class SignupPage implements OnInit {
     public navCtrl: NavController,
     private afAuth: AngularFireAuth) {
 
-    this.signupForm = fb.group({
+  }
+
+  ngOnInit() {
+    
+    this.signupForm = this.fb.group({
 
       username: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30), Validators.required])],
       // surname: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30),Validators.required])],
@@ -41,9 +45,6 @@ export class SignupPage implements OnInit {
       //   validator: MustMatch('password', 'cpassword')
       // }
     );
-  }
-
-  ngOnInit() {
   }
 
 

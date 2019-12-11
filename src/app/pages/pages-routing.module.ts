@@ -19,7 +19,12 @@ const routes: Routes = [
   {
     path: 'payments',
     loadChildren: () => import('./payments/payments.module').then( m => m.PaymentsPageModule)
+  },
+  {
+    path: 'schedule-event',
+    loadChildren: () => import('./schedule-event/schedule-event.module').then( m => m.ScheduleEventPageModule)
   }
+
 
 ];
 

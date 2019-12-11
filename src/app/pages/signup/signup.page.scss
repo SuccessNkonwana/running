@@ -19,12 +19,10 @@ body {
     height: $myheight;
     text-align: center;
     overflow: scroll;
-    $font-family:"Microsoft Sans Serif";
+    $font-family: "Microsoft Sans Serif";
     font-family: $font-family;
-    
     // 
     #bg {
-        
         overflow: scroll;
         // background-color: #11C2D4;
         // $mywidth: 100%;
@@ -53,7 +51,7 @@ body {
     h3 {
         $fontsize: 25px;
         font-size: $fontsize;
-        $font-family:"Comic Sans MS";
+        $font-family: "Comic Sans MS";
         font-family: $font-family;
         $textcolor: #11C2D4;
         color: $textcolor;
@@ -62,7 +60,7 @@ body {
     h2 {
         $fontsize: 25px;
         font-size: $fontsize;
-        $font-family:"Comic Sans MS";
+        $font-family: "Comic Sans MS";
         font-family: $font-family;
         $textcolor: #11C2D4;
         color: $textcolor;
@@ -111,8 +109,6 @@ body {
         margin-bottom: $margin-bottom;
         $order-top-right-radius: 20%;
         border-top-left-radius: 20%;
-       
-      
     }
     #img {
         $myheight: 60%;
@@ -123,5 +119,10 @@ body {
         background-color: $background-color;
         $myheight: 100%;
         height: $myheight;
+    }
+    .imgC {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
     }
 }

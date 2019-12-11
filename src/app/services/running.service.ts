@@ -37,14 +37,13 @@ export class RunningService {
 
   constructor(public auths:AuthService,private storage:AngularFireStorage)
   { 
-
   }
   async rtClubs()
   {
     let result :any
    await this.getClubs().then(data =>{
     result = data
-  ​
+  
    console.log(result.length);
   })
   console.log(result);
@@ -86,7 +85,6 @@ export class RunningService {
      
       console.log(data)
     }).catch((error)=>{
-
       console.log(error)
     })
     
@@ -98,7 +96,6 @@ return this.uploadPercent = this.task.percentageChanges();
    this.file=null;
 
   }
-
   ///update a club
 updateTodo(clubs,editName,editAddress,editOpeningHours,editClosingHours)
 {
@@ -117,7 +114,6 @@ this.dbfire.collection("clubs").doc(clubs.clubKey).update('address',editAddress)
 }).catch(function(error) {
   console.error("Error updating document: ", error);
 });
-
 //opening hours
 this.dbfire.collection("clubs").doc(clubs.clubKey).update('address',editOpeningHours).then((data)=> {
   
@@ -133,7 +129,6 @@ this.dbfire.collection("clubs").doc(clubs.clubKey).update('address',editClosingH
   console.error("Error updating document: ", error);
 });
 }
-
 //retrieve a club
 async rtTodo()
 {
@@ -146,7 +141,6 @@ async rtTodo()
 console.log(result);
 //this.LandMarks()
 return  result 
-
 // console.log(this.todos,"hh")
  // return this.todos
 }
@@ -159,7 +153,6 @@ getClubs()
   let ans2=[]
   let user=this.readCurrentSession()
   let userID=user.uid
-
   //
 return new Promise((resolve, reject) => {
 this.dbfire.collection("clubs").get().then((querySnapshot) => {
@@ -195,15 +188,10 @@ this.dbfire.collection("clubs").get().then((querySnapshot) => {
    }
    resolve(this.clubsTemp)
 });
-
 });
 console.log(this.clubsTemp,"clubs array")
-
-
-
 console.log(ans,"ans array")
  
-
 }
 ////upload a club pic
 uploadClubPic(event) {
@@ -229,9 +217,7 @@ deleteTodo(clubs)
 }).catch(function(error) {
    console.error("Error removing document: ", error);
 });
-
 }
-
 //
 who()
 {
@@ -239,7 +225,6 @@ who()
   this.setCurrentSession(this.user)
   console.log("logged in user ",this.user)
 }
-
  ///set user session start
  setCurrentSession(user){
   console.log("running now", user.currentUser.uid);
@@ -259,7 +244,6 @@ who()
         key: snap.key,
         displayName : values["name"],
         email : values["email"],
-
         })
     })  
   }
@@ -268,7 +252,6 @@ who()
    console.log("last in set ",user);
    console.log("last in set 2",this.user);  
 }
-
  ///set user session end
  destroyUserData(){
   this.userProfile.pop()
@@ -280,22 +263,14 @@ readCurrentSession(){
   console.log(this.user);
   return this.user
 }
-
 returnUserProfile(){
   console.log(this.userProfile);
   return this.userProfile
 }
  
 ///create event 
-
-
 ///retrieve event
-
-
-
 ///update event
-
-
 ///delete event
-
 }
+
