@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
       url: 'add-event',
       icon: 'list'
     }
+   
   ];
   async presentLoading() {
     const loading = await this.loadingController.create({

@@ -11,8 +11,8 @@
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.6);
     text-align: center;
-    
 }
+
 body {
     text-align: center;
     $textcolor: white;
@@ -26,7 +26,7 @@ body {
     // -webkit-background-size: cover;
     // -moz-background-size: cover;
     // -o-background-size: cover;
-      background-size: 100% 100%;
+    background-size: 100% 100%;
     //   background-size: auto;
     #h1 {
         $fontsize: 25px;
@@ -40,6 +40,11 @@ body {
         $myheight: 60%;
         height: $myheight;
     }
+    .imgC {
+        width: 360px;
+        height: 360px;
+        border-radius: 50%;
+    }
     .gett {
         text-align: center;
         font-family: "Times New Roman", Times, serif;
@@ -48,5 +53,12 @@ body {
         max-width: 500px;
         margin: auto;
         bottom: 400px;
+    }
+    ion-button {
+        width: 186px;
+        font-size: 28px;
+    }
+    h1 {
+        font-size: 42px;
     }
 }
