@@ -13,7 +13,8 @@ export class AddClubPage implements OnInit {
   public clubForm: FormGroup;
   RegisterForm: string = "true";
   UpdateForm: string = "false";
-
+  selectedFile = null;
+  
   map: any;
 
   itemList;
@@ -27,7 +28,7 @@ export class AddClubPage implements OnInit {
   selectedAddress = null;
   selectedcoodinates = null;
 
-  uploadPercent: Observable<number>;
+  uploadPercent: number;
   downloadU: any;
   uniqkey: any;
 
@@ -67,11 +68,15 @@ export class AddClubPage implements OnInit {
   addClub(newName,newAddress,newOpeningHours,newClosingHours)
   {
        this.newName = this.clubForm.get('club').value
-    this.newAddress = this.clubForm.get('Address').value
-    this.newOpeningHours = this.clubForm.get('Hours').value   
-    this.newClosingHours = this.clubForm.get('Close').value
+       this.newAddress = this.clubForm.get('Address').value
+       this.newOpeningHours = this.clubForm.get('Hours').value   
+       this.newClosingHours = this.clubForm.get('Close').value
+
 
     this.clubService.addClub(this.newName,this.newAddress,this.newOpeningHours,this.newClosingHours)
+  }
+  uploadClubPic(event){
+    this.clubService.uploadClubPic(event)
   }
   ngOnInit() {
     if (this.UpdateForm == "true") {

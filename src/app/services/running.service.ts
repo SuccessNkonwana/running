@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import 'firebase/firestore';
 import { AuthService } from './auth.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { switchMap, finalize } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,14 +22,20 @@ export class RunningService {
   newAddress: string="";
   newOpeningHours: string="";
   newClosingHours: string="";
-
+   fileRef
   editName: string="";
   editAddress: string="";
   editOpeningHours: string="";
   editClosingHours: string="";
+  downloadU: any;
+  uniqkey: string;
+  dateTime: string;
+  uploadPercent: any;
+  task: any;
+  file: any;
   ///
 
-  constructor(public auths:AuthService)
+  constructor(public auths:AuthService,private storage:AngularFireStorage)
   { 
 
   }
@@ -49,13 +57,28 @@ export class RunningService {
   //add a club
   addClub(newName,newAddress,newOpeningHours,newClosingHours)
   {
+   
     var styt=newOpeningHours.substring(11,16);
     var etyt=newClosingHours.substring(11,16);
+    let user=this.readCurrentSession()
+    let userID=user.uid
+    console.log("HOT ",userID)
+
+     this.uniqkey = newName+'Logo';
+  const filePath = this.uniqkey;
+  this.fileRef = this.storage.ref(filePath);
+  this.task = this.storage.upload(filePath, this.file);
+    this.task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadU = this.fileRef.getDownloadURL().subscribe(urlPath => {
+          console.log(urlPath);
     this.dbfire.collection("clubs").add({
       name: newName,
       address: newAddress,
       openingHours: styt,
-      closingHours: etyt
+      closingHours: etyt,
+      userID:userID,
+      photoURL:urlPath
       
     }).then((data)=>{
     
@@ -66,6 +89,14 @@ export class RunningService {
 
       console.log(error)
     })
+    
+    this.uploadPercent = null;
+  });
+})
+).subscribe();
+return this.uploadPercent = this.task.percentageChanges();
+   this.file=null;
+
   }
 
   ///update a club
@@ -104,6 +135,21 @@ this.dbfire.collection("clubs").doc(clubs.clubKey).update('address',editClosingH
 }
 
 //retrieve a club
+async rtTodo()
+{
+  let result :any
+ await this.getClubs().then(data =>{
+  result = data
+​
+ console.log(result.length);
+})
+console.log(result);
+//this.LandMarks()
+return  result 
+
+// console.log(this.todos,"hh")
+ // return this.todos
+}
 ///////get todos
 getClubs()
 {
@@ -122,10 +168,11 @@ this.dbfire.collection("clubs").get().then((querySnapshot) => {
     // ans.push(doc.data())
      console.log(doc.id, '=>', doc.data());
      this.clubsTemp.push({
-       todoKey: doc.id,
+       clubKey: doc.id,
        name: doc.data().name,
        time: doc.data().time,
-       userID: doc.data().userID
+       userID: doc.data().userID,
+       photoURL: doc.data().photoURL
      })
        console.log( this.clubsTemp,"club array")
        console.log(name,"club array")
@@ -139,14 +186,14 @@ this.dbfire.collection("clubs").get().then((querySnapshot) => {
    {
     console.log( this.clubsTemp[x].userID,"userid at x")
 
-        // if(this.clubsTemp[x].userID===userID)
-        // {
-        //   this.clubs.push(this.clubsTemp[x])
+        if(this.clubsTemp[x].userID===userID)
+        {
+          this.clubs.push(this.clubsTemp[x])
 
-        // }
+        }
 
    }
-   resolve(this.clubs)
+   resolve(this.clubsTemp)
 });
 
 });
@@ -158,7 +205,20 @@ console.log(ans,"ans array")
  
 
 }
-
+////upload a club pic
+uploadClubPic(event) {
+  let user=this.readCurrentSession()
+let userID=user['uid']
+console.log("the user",userID);
+this.file = event.target.files[0];
+  console.log(this.file)
+ 
+  // observe percentage changes
+  
+       
+       
+  //////////////////////
+}
 
 ///////delete todo
 deleteTodo(clubs)
@@ -176,12 +236,13 @@ deleteTodo(clubs)
 who()
 {
   this.user=this.auths.who()
+  this.setCurrentSession(this.user)
   console.log("logged in user ",this.user)
 }
 
  ///set user session start
  setCurrentSession(user){
-  console.log("running");
+  console.log("running now", user.currentUser.uid);
   var uid
   if (user !== null){
     uid = user.currentUser.uid;
@@ -204,8 +265,8 @@ who()
   }
    this.currentSessionId = uid
    console.log(uid);
-   console.log(user);
-   console.log(this.user);  
+   console.log("last in set ",user);
+   console.log("last in set 2",this.user);  
 }
 
  ///set user session end

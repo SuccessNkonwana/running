@@ -82,8 +82,9 @@ export class AuthService {
      
         await this.afAuth.auth.signInWithEmailAndPassword(email, password).then((success) => {
          this.setCurrentSession(firebase.auth())
-          console.log(success);
+         
           this.theUser=firebase.auth()
+          console.log("success",this.theUser);
           this.navCtrl.navigateRoot("home");
         return this.theUser
       }).catch((err) => {
