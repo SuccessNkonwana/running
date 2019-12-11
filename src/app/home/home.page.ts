@@ -20,7 +20,6 @@ slideOpts = {
       slideShadows: true,
     }
     }
-
   constructor(private  router:  Router,public runn: RunningService)
   {
     
@@ -41,10 +40,13 @@ slideOpts = {
           todoKey:  data[x].todoKey,
           name:  data[x].name,
           time:  data[x].time,
-          userID:  data[x].userID})
+          userID:  data[x].userID,
+          photoURL:data[x].photoURL})
+          
     
         }
       console.log(this.clubs,"LAST ONE")
+
      })
     })
   
@@ -55,11 +57,12 @@ slideOpts = {
    }
   go()
   {
-    this.router.navigateByUrl("profile")
+    this.router.navigateByUrl("add-club")
   }
 //  getClubs()
 //   {
      
 //    this.runn.getClubs();
 //   }
+
 }

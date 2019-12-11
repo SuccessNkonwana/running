@@ -1,11 +1,11 @@
 
 
-
 <ion-content>
+      
     <body>
             <ion-buttons  slot="start">
-                <ion-menu-button color="dark"></ion-menu-button>
-             </ion-buttons>
+                    <ion-menu-button color="dark"></ion-menu-button>
+                 </ion-buttons>
         <br>
         <img src="\assets\images\beyonce-splash-of-color-by-gbs-anibal-diaz.jpg" alt="Avatar" class="img">
         <h1>
@@ -37,9 +37,11 @@
         <div *ngIf="isSlide" >
                 <h2 text-center class="cent"> Running Clubs </h2>
                 <br>
+                <br>
+                <br>
             <ion-slides startAutoplay [options]="slideOpts">
                 <ion-slide *ngFor="let clubss of clubs">
-                    <ion-card>
+                    <ion-card class="slideCards" [ngStyle]="{'background-image':'url('+clubss.photoURL+')'}" >
                         <ion-card-content>
                             <h2>{{clubss.name}}</h2>
                         </ion-card-content>

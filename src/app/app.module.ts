@@ -11,7 +11,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-
 const firebaseConfig = {
   apiKey: "AIzaSyAv85O55WcgVEXgWUTr5GVqspI__ywOSn4",
     authDomain: "runningclub-46ede.firebaseapp.com",
