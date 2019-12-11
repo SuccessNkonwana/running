@@ -66,7 +66,7 @@ export class AddClubPage implements OnInit {
 
   addClub(newName,newAddress,newOpeningHours,newClosingHours)
   {
-       this.newName = this.clubForm.get('club').value
+    this.newName = this.clubForm.get('club').value
     this.newAddress = this.clubForm.get('Address').value
     this.newOpeningHours = this.clubForm.get('Hours').value   
     this.newClosingHours = this.clubForm.get('Close').value
