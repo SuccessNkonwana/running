@@ -269,6 +269,36 @@ returnUserProfile(){
 }
  
 ///create event 
+addEvent(club,newName,newAddress,newOpeningHours,newClosingHours)
+  {
+   
+    var styt=newOpeningHours.substring(11,16);
+    var etyt=newClosingHours.substring(11,16);
+    let user=this.readCurrentSession()
+    let userID=user.uid
+    let clubID= club.ID
+    console.log("HOT ",userID)
+
+   
+    this.dbfire.collection("clubs").add({
+      name: newName,
+      address: newAddress,
+      openingHours: styt,
+      closingHours: etyt,
+      userID:userID,
+      clubID: clubID
+      
+    }).then((data)=>{
+    
+    
+     
+      console.log(data)
+    }).catch((error)=>{
+      console.log(error)
+    })
+  
+
+  }
 ///retrieve event
 ///update event
 ///delete event

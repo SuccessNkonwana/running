@@ -22,6 +22,15 @@
         </h1>
         <br>
         <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <h2 text-center class="cent"> Events You Going Too </h2>
+                <br>
+                <br>
         <div class="cent">
             <div class="cet">
                 <!-- <p>Paint Fun Race Club</p>
@@ -33,17 +42,16 @@
         <br>
         <br>
         <br>
-       
+        <br>
         <div *ngIf="isSlide" >
                 <h2 text-center class="cent"> Running Clubs </h2>
-                <br>
                 <br>
                 <br>
             <ion-slides startAutoplay [options]="slideOpts">
                 <ion-slide *ngFor="let clubss of clubs">
                     <ion-card class="slideCards" [ngStyle]="{'background-image':'url('+clubss.photoURL+')'}" >
                         <ion-card-content>
-                            <h2>{{clubss.name}}</h2>
+                            <h2 class="cName">{{clubss.name}}</h2>
                         </ion-card-content>
                     </ion-card>
                    
