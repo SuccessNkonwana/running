@@ -31,4 +31,7 @@ export class AddEventPage implements OnInit {
   ngOnInit() {
   }
 
+
+
+
 }

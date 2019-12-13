@@ -5,7 +5,7 @@ body {
         color: white;
         color: white;
     }
-    .go{
+    .go {
         left: 80%;
     }
     .cet {
@@ -23,7 +23,6 @@ body {
         border-top-left-radius: $border-top-left-radius;
         $border-bottom-left-radius: 20%;
         border-bottom-left-radius: $border-bottom-left-radius;
-
         .imgC {
             $myheight: 100%;
             height: $myheight;
@@ -34,8 +33,6 @@ body {
             border-top-left-radius: $border-top-left-radius;
             $border-bottom-left-radius: 0%;
             border-bottom-left-radius: $border-bottom-left-radius;
-         
-            
         }
     }
     .cent {
@@ -43,32 +40,34 @@ body {
         margin-right: 20px;
         color: rgb(190, 186, 186);
     }
-    .slideCards{
-        height:250px;
-         width:300px;
-         background-size:cover;                     
-         background-repeat: no-repeat;
-         background-position: center center;
-         left: 0;
-         right: 0;
-         top: 0;
-         bottom: 0;
-         z-index: 10;
-         background: black;
-         opacity: 0.6;
+    .slideCards {
+        height: 250px;
+        width: 300px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 10;
+        background: black;
+        opacity: 0.6;
     }
-    .cName
-    {
+    .cName {
         margin-top: 10px;
-       // margin-bottom: 50px;
-        zoom:4;
+        // margin-bottom: 50px;
+        zoom: 4;
     }
-    .iconSize
-    {
-       // margin-top: 50px;
+    .iconSize {
+        // margin-top: 50px;
         zoom: 1.5;
         position: relative;
+<<<<<<< HEAD
         top:6;
+=======
+        top: 6px;
+>>>>>>> d191f8e89731f43aca02c859334830a6dc22f605
     }
     h1 {
         font-family: Microsoft Sans Serif;
@@ -82,19 +81,15 @@ body {
         font-size: 10px;
         margin-left: 20px;
     }
-    .booke
-    {
+    .booke {
         right: 3000px;
-
     }
-   
     .img {
         position: absolute;
-    height: 90px;
+        height: 90px;
         width: 90px;
         border-radius: 50%;
         float: right;
-      
         top: 64px;
         right: 10px;
         width: 150px;
