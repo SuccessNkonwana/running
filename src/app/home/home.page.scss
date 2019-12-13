@@ -41,17 +41,32 @@ body {
     .cent {
         margin-left: 20px;
         margin-right: 20px;
+        color: rgb(190, 186, 186);
     }
     .slideCards{
         height:250px;
          width:300px;
-         background-position:center;
+         background-size:cover;                     
          background-repeat: no-repeat;
+         background-position: center center;
+         left: 0;
+         right: 0;
+         top: 0;
+         bottom: 0;
+         z-index: 10;
+         background: black;
+         opacity: 0.6;
     }
     .cName
     {
-
-        zoom: 5;
+        margin-top: 10px;
+       // margin-bottom: 50px;
+        zoom:4;
+    }
+    .iconSize
+    {
+       // margin-top: 50px;
+        zoom: 1.5;
     }
     h1 {
         font-family: Microsoft Sans Serif;
