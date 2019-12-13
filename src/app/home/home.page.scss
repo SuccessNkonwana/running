@@ -5,7 +5,7 @@ body {
         color: white;
         color: white;
     }
-    .go{
+    .go {
         left: 80%;
     }
     .cet {
@@ -23,7 +23,6 @@ body {
         border-top-left-radius: $border-top-left-radius;
         $border-bottom-left-radius: 20%;
         border-bottom-left-radius: $border-bottom-left-radius;
-
         .imgC {
             $myheight: 100%;
             height: $myheight;
@@ -34,19 +33,20 @@ body {
             border-top-left-radius: $border-top-left-radius;
             $border-bottom-left-radius: 0%;
             border-bottom-left-radius: $border-bottom-left-radius;
-         
-            
         }
     }
     .cent {
         margin-left: 20px;
         margin-right: 20px;
     }
-    .slideCards{
-        height:250px;
-         width:300px;
-         background-position:center;
-         background-repeat: no-repeat;
+    .slideCards {
+        height: 250px;
+        width: 300px;
+        // background-position: center;
+        // background-repeat: no-repeat;
+        box-shadow: 0 10px 20px #11C2D4, 0 6px 6px #11C2D4;
+        opacity: 0.6;
+        background: black;
     }
     h1 {
         font-family: Microsoft Sans Serif;
@@ -60,14 +60,12 @@ body {
         font-size: 10px;
         margin-left: 20px;
     }
-   
     .img {
         position: absolute;
-    height: 90px;
+        height: 90px;
         width: 90px;
         border-radius: 50%;
         float: right;
-      
         top: 64px;
         right: 10px;
         width: 150px;
