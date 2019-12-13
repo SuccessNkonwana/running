@@ -41,9 +41,9 @@ body {
         height: $myheight;
     }
     .imgC {
-        width: 360px;
-        height: 360px;
-        border-radius: 50%;
+       width: 250px;
+        height: 250px;
+       // border-radius: 50%;
     }
     .gett {
         text-align: center;
@@ -53,6 +53,7 @@ body {
         max-width: 500px;
         margin: auto;
         bottom: 400px;
+        margin-top: 130px;
     }
     ion-button {
         width: 160px;
