@@ -59,6 +59,19 @@ slideOpts = {
   {
     this.router.navigateByUrl("add-club")
   }
+  // goHome()
+  // {
+  //   this.router.navigateByUrl("home")
+  // }
+  // gotoProfile(){
+  //   this.router.navigateByUrl("profile")
+  // }
+  // gotoEvents(){
+  //   this.router.navigateByUrl("events")
+  // }
+  // gotoAdd(){
+  //   this.router.navigateByUrl("add")
+  // }
 //  getClubs()
 //   {
      

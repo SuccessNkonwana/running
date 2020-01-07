@@ -195,13 +195,17 @@ body {
     
     .profile-image {
         img {
+            background-color: white;
             height: 100px;
             width: 100px;
             border-radius: 50%;
-            border: 4px solid #20727d;
+            border: 3px solid #000;
             -webkit-box-shadow: 0px 0px 142px -37px rgb(32, 114, 125);
             -moz-box-shadow: 0px 0px 142px -37px rgb(32, 114, 125);
             box-shadow: 0px 0px 142px -37px rgb(32, 114, 125);
+        }
+        .pro-pic{
+            size: 16px;
         }
     }
     .profile-image{
@@ -210,7 +214,8 @@ body {
         z-index: 5;
         top: 20%;
       left: 5%;
-       
+      
+     
     }
     .image-upload>input {
         display: none;
@@ -246,4 +251,8 @@ body {
     .fab {
         top: 80px !important;
     }
+   
+}
+.icons{
+    zoom: 1.5;
 }

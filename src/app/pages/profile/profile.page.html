@@ -1,12 +1,33 @@
 
 
 <ion-content>
-    
+        
 
     <body>
-        <ion-buttons slot="start" >
-            <ion-menu-button color="light"></ion-menu-button>
-        </ion-buttons>
+            <ion-tabs class="icons">
+                    <ion-tab-bar slot="bottom">
+                      <ion-tab-button tab="home" routerLink="/home">
+                        <ion-icon name="home"></ion-icon>
+                        <!-- <ion-label>Home</ion-label> -->
+                        <!-- <ion-badge>6</ion-badge> -->
+                      </ion-tab-button>
+                  
+                      <ion-tab-button tab="profile" routerLink="/profile">
+                        <ion-icon name="person"></ion-icon>
+                        <!-- <ion-label>Profile</ion-label> -->
+                      </ion-tab-button>
+                  
+                      <ion-tab-button tab="events" routerLink="/events">
+                        <ion-icon name="calendar"></ion-icon>
+                        <!-- <ion-label>Events</ion-label> -->
+                      </ion-tab-button>
+                  
+                      <ion-tab-button tab="add" routerLink="/add">
+                        <ion-icon name="add"></ion-icon>
+                        <!-- <ion-label>About</ion-label> -->
+                      </ion-tab-button>
+                    </ion-tab-bar>
+                  </ion-tabs>
         <div id="bg">
             <ion-grid>
                 <ion-row color="primary" justify-content-center>
@@ -21,7 +42,7 @@
                             <p id="name">user name</p>
                             <div class="profile-image">
                                     <div>
-                                        <img src="/assets/images/avatar.svg">
+                                        <img  src="/assets/images/profile-user.png">
                                     </div>
             
             

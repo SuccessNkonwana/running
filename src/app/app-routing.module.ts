@@ -70,6 +70,14 @@ const routes: Routes = [
   {
     path: 'schedule-event',
     loadChildren: () => import('./pages/schedule-event/schedule-event.module').then( m => m.ScheduleEventPageModule)
+  },
+  {
+    path: 'events',
+    loadChildren: () => import('./pages/events/events.module').then( m => m.EventsPageModule)
+  },
+  {
+    path: 'add',
+    loadChildren: () => import('./pages/add/add.module').then( m => m.AddPageModule)
   }
   
 
