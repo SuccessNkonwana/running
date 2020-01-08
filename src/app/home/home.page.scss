@@ -53,7 +53,6 @@
         z-index: 10;
         background: black;
         opacity: 0.6;
-       
     }
     .cName {
         margin-top: 10px;
@@ -113,26 +112,12 @@
         margin-bottom: 5px;
         --background: black;
     }
-<<<<<<< HEAD
     .icons {
         zoom: 1.5;
+        position: fixed;
+    }
+    .tabIcons {
+        width: 16px;
+        height: 16px;
     }
 }
-=======
-    .icons{
-        zoom: 1.5;
-        position:fixed;
-    }
- 
-    .tabIcons
-    {
-     width:16px;
-     height: 16px;
- 
-    
- }
-  
-}
-
-    
->>>>>>> ad655a19d6699f4ceb17eb1b5c5aafbc3b3dde14

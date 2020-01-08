@@ -32,15 +32,15 @@ export class ProfilePage implements OnInit {
     this.theUser=[]    
     this.getdata()
 
-    this.users=this.afs.collection('users',ref =>ref.orderBy('displayName')).valueChanges();
-    this.currentuser=this.authService.getUID();
-    console.log("current user=>>"+this.currentuser)
-    this.MUsers=afs.doc('users/${authService.getUID()}')
-    this.sub= this.MUsers.valueChanges().subscribe(event=>{
-      this.username=event.displayName
-      this.photoURL=event.photoURL
-      console.log("the user name"+ this.username)
-    })
+    // this.users=this.afs.collection('users',ref =>ref.orderBy('displayName')).valueChanges();
+    // this.currentuser=this.authService.getUID();
+    // console.log("current user=>>"+this.currentuser)
+    // this.MUsers=afs.doc('users/${authService.getUID()}')
+    // this.sub= this.MUsers.valueChanges().subscribe(event=>{
+    //   this.username=event.displayName
+    //   this.photoURL=event.photoURL
+    //   console.log("the user name"+ this.username)
+    // })
   }
 
   ngOnInit() {
@@ -102,7 +102,7 @@ export class ProfilePage implements OnInit {
          console.log(x);
          
         this.theUser.push({ 
-          todoKey:  data[x].todoKey,
+          userKey:  data[x].userKey,
           name:  data[x].name,
           age:  data[x].age,
           email:  data[x].email,
