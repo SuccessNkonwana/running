@@ -20,6 +20,7 @@ export class ProfilePage implements OnInit {
   username: string;
   photoURL: string;
   uploadPercent: number;
+  thegender: string;
   constructor(
     private authService: AuthService,
     public afs:AngularFirestore,
