@@ -3,7 +3,7 @@
 <ion-content>
         
 
-    <body>
+    <body  *ngIf="authService.user  | async as user">
             <ion-tabs class="icons">
                     <ion-tab-bar slot="bottom">
                       <ion-tab-button tab="home" routerLink="/home">
