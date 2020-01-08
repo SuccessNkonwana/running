@@ -3,30 +3,8 @@
 <ion-content>
       
     <body>
-            <ion-tabs class="icons">
-                    <ion-tab-bar slot="bottom">
-                      <ion-tab-button tab="home" routerLink="/home">
-                        <ion-icon name="home"></ion-icon>
-                        <!-- <ion-label>Home</ion-label> -->
-                        <!-- <ion-badge>6</ion-badge> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="profile" routerLink="/profile">
-                        <ion-icon name="person"></ion-icon>
-                        <!-- <ion-label>Profile</ion-label> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="events" routerLink="/events">
-                        <ion-icon name="calendar"></ion-icon>
-                        <!-- <ion-label>Events</ion-label> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="add" routerLink="/add">
-                        <ion-icon name="add"></ion-icon>
-                        <!-- <ion-label>About</ion-label> -->
-                      </ion-tab-button>
-                    </ion-tab-bar>
-                  </ion-tabs>
+       
+            
             
         <br>
         <img src="\assets\images\beepic.jpg" alt="Avatar" class="img">
@@ -80,5 +58,30 @@
                 </ion-slide>
             </ion-slides>
         </div>
+        
     </body>
+    <ion-tabs class="icons">
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button tab="home" routerLink="/home">
+            <ion-icon name="home"></ion-icon>
+            <!-- <ion-label>Home</ion-label> -->
+            <!-- <ion-badge>6</ion-badge> -->
+          </ion-tab-button>
+      
+          <ion-tab-button tab="profile" (click)="gotoProfile()">
+            <ion-icon name="person"></ion-icon>
+            <!-- <ion-label>Profile</ion-label> -->
+          </ion-tab-button>
+      
+          <ion-tab-button tab="events" routerLink="/events">
+            <ion-icon name="calendar"></ion-icon>
+            <!-- <ion-label>Events</ion-label> -->
+          </ion-tab-button>
+      
+          <ion-tab-button tab="add" routerLink="/add">
+            <ion-icon name="add"></ion-icon>
+            <!-- <ion-label>About</ion-label> -->
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
 </ion-content>

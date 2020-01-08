@@ -3,7 +3,7 @@
 <ion-content>
         
 
-    <body  *ngIf="authService.user  | async as user">
+    <body>
             <ion-tabs class="icons">
                     <ion-tab-bar slot="bottom">
                       <ion-tab-button tab="home" routerLink="/home">
@@ -39,7 +39,7 @@
                                 <img src="assets/images/rep.jpg" alt="Avatar" class="img">
                             </ion-avatar> -->
                             <h2 id="heading">My Profile!</h2>
-                            <p id="name">{{user.displayName}}</p>
+                            <p id="name">{{displayName}}</p>
                             <div class="profile-image">
                                     <div>
                                         <img  src="/assets/images/profile-user.png">
