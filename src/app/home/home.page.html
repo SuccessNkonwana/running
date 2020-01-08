@@ -1,33 +1,9 @@
-
-
 <ion-content>
-      
+
     <body>
-            <ion-tabs class="icons">
-                    <ion-tab-bar slot="bottom">
-                      <ion-tab-button tab="home" routerLink="/home">
-                        <ion-icon name="home"></ion-icon>
-                        <!-- <ion-label>Home</ion-label> -->
-                        <!-- <ion-badge>6</ion-badge> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="profile" routerLink="/profile">
-                        <ion-icon name="person"></ion-icon>
-                        <!-- <ion-label>Profile</ion-label> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="events" routerLink="/events">
-                        <ion-icon name="calendar"></ion-icon>
-                        <!-- <ion-label>Events</ion-label> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="add" routerLink="/add">
-                        <ion-icon name="add"></ion-icon>
-                        <!-- <ion-label>About</ion-label> -->
-                      </ion-tab-button>
-                    </ion-tab-bar>
-                  </ion-tabs>
-            
+
+
+
         <br>
         <img src="\assets\images\beepic.jpg" alt="Avatar" class="img">
         <h1>
@@ -47,38 +23,69 @@
         <br>
         <br>
         <br>
+
+
+        <h2 text-center class="cent"> Events You Going To
+            <ion-icon class="iconSize" name="compass"></ion-icon>
+        </h2>
         <br>
         <br>
-        
-        <h2 text-center class="cent"> Events You Going To <ion-icon class="iconSize" name="compass"></ion-icon></h2>
-                <br>
-                <br>
         <div class="cent">
             <div class="cet">
                 <!-- <p>Paint Fun Race Club</p>
                     <p>Redbull Run Sat</p>
                     <p>Date: 12/12/2019 Time: 11:00</p> -->
-                <img class="imgC" src="assets/images/go.png" alt="Avatar"  (click)="go()">
+                <img class="imgC" src="assets/images/go.png" alt="Avatar" (click)="go()">
             </div>
         </div>
+
         <br>
         <br>
         <br>
-        <br>
-        <div *ngIf="isSlide" >
-                <h2 text-center class="cent"> Running Clubs <ion-icon class="iconSize" name="people"></ion-icon></h2>
-                <br>
-                <br>
+        <div *ngIf="isSlide">
+            <h2 text-center class="cent"> Running Clubs
+                <ion-icon class="iconSize" name="people"></ion-icon>
+            </h2>
+            <br>
+            <br>
             <ion-slides startAutoplay [options]="slideOpts">
                 <ion-slide *ngFor="let clubss of clubs">
-                    <ion-card class="slideCards" [ngStyle]="{'background-image':'url('+clubss.photoURL+')'}" >
+                    <ion-card class="slideCards" [ngStyle]="{'background-image':'url('+clubss.photoURL+')'}">
                         <ion-card-content>
                             <h2 class="cName">{{clubss.name}}</h2>
                         </ion-card-content>
                     </ion-card>
-                   
+
                 </ion-slide>
             </ion-slides>
+
         </div>
+
+
+
     </body>
+    <ion-tabs class="icons">
+        <ion-tab-bar slot="bottom">
+            <ion-tab-button tab="home" routerLink="/home">
+                <ion-icon name="home" color="primary"></ion-icon>
+                <!-- <ion-label>Home</ion-label> -->
+                <!-- <ion-badge>6</ion-badge> -->
+            </ion-tab-button>
+
+            <ion-tab-button tab="profile" routerLink="/profile">
+                <ion-icon name="person" color="primary"></ion-icon>
+                <!-- <ion-label>Profile</ion-label> -->
+            </ion-tab-button>
+
+            <ion-tab-button tab="events" routerLink="/events">
+                <ion-icon name="calendar" color="primary"></ion-icon>
+                <!-- <ion-label>Events</ion-label> -->
+            </ion-tab-button>
+
+            <ion-tab-button tab="add" routerLink="/add">
+                <ion-icon name="add" color="primary"></ion-icon>
+                <!-- <ion-label>About</ion-label> -->
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
 </ion-content>

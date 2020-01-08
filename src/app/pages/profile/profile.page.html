@@ -1,113 +1,88 @@
-
-
 <ion-content>
-        
 
-    <body  *ngIf="authService.user  | async as user">
-            <ion-tabs class="icons">
-                    <ion-tab-bar slot="bottom">
-                      <ion-tab-button tab="home" routerLink="/home">
-                        <ion-icon name="home"></ion-icon>
-                        <!-- <ion-label>Home</ion-label> -->
-                        <!-- <ion-badge>6</ion-badge> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="profile" routerLink="/profile">
-                        <ion-icon name="person"></ion-icon>
-                        <!-- <ion-label>Profile</ion-label> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="events" routerLink="/events">
-                        <ion-icon name="calendar"></ion-icon>
-                        <!-- <ion-label>Events</ion-label> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="add" routerLink="/add">
-                        <ion-icon name="add"></ion-icon>
-                        <!-- <ion-label>About</ion-label> -->
-                      </ion-tab-button>
-                    </ion-tab-bar>
-                  </ion-tabs>
+
+    <body *ngIf="authService.user  | async as user">
+
         <div id="bg">
             <ion-grid>
                 <ion-row color="primary" justify-content-center>
-<br>
+                    <br>
                     <ion-col align-self-center size-md="12" size-lg="11" size-xs="12">
-                       
-                        <div class="div1" >
+
+                        <div class="div1">
                             <!-- <ion-avatar class="avatar">
                                 <img src="assets/images/rep.jpg" alt="Avatar" class="img">
                             </ion-avatar> -->
                             <h2 id="heading">My Profile!</h2>
                             <p id="name">{{user.displayName}}</p>
                             <div class="profile-image">
-                                    <div>
-                                        <img  src="/assets/images/profile-user.png">
-                                    </div>
-            
-            
-                                    <div class="image-upload">
-                                        <ion-fab horizontal="center" vertical="top" class="fab">
-                                            <ion-fab-button color="primary" size="small">
-                                                <ion-icon name="camera" class="input"> </ion-icon>
+                                <div>
+                                    <img src="/assets/images/profile-user.png">
+                                </div>
+
+
+                                <div class="image-upload">
+                                    <ion-fab horizontal="center" vertical="top" class="fab">
+                                        <ion-fab-button color="primary" size="small">
+                                            <ion-icon name="camera" class="input"> </ion-icon>
+                                        </ion-fab-button>
+                                        <ion-fab-list side="start">
+                                            <ion-fab-button color="primary">
+                                                <ion-icon name="camera" (click)="pickImage()" class="camera"> </ion-icon>
                                             </ion-fab-button>
-                                            <ion-fab-list side="start">
-                                                <ion-fab-button color="primary">
-                                                    <ion-icon name="camera" (click)="pickImage()" class="camera"> </ion-icon>
-                                                </ion-fab-button>
-            
-                                            </ion-fab-list>
-            
-                                            <ion-fab-list side="end">
-                                                <ion-fab-button color="primary">
-                                                    <label for="file-input2">
+
+                                        </ion-fab-list>
+
+                                        <ion-fab-list side="end">
+                                            <ion-fab-button color="primary">
+                                                <label for="file-input2">
                                                                     <ion-icon name="document" class="document"> </ion-icon> 
                                                             </label>
-                                                </ion-fab-button>
-                                            </ion-fab-list>
-                                        </ion-fab>
-            
-            
-                                        <input id="file-input2" class="input" type="file" (change)="uploadProfilePic($event)" />
-                                    </div>
+                                            </ion-fab-button>
+                                        </ion-fab-list>
+                                    </ion-fab>
+
+
+                                    <input id="file-input2" class="input" type="file" (change)="uploadProfilePic($event)" />
                                 </div>
+                            </div>
                             <br><br><br>
                             <div class="div2">
-                                    <br><br><br>
-                                    <br><br><br>
-                                    <ion-item>
+                                <br><br><br>
+                                <br><br><br>
+                                <ion-item>
 
-                                            <ion-label>user.Email</ion-label>
-                        
-                                            <ion-icon name="mail" color="primary" slot="start"></ion-icon>
-                                            <ion-icon name="create" color="primary" slot="end" (click)=" NameUpdate(user)"></ion-icon>
-                                    </ion-item>
-                                    <br><br>
-                                    <ion-item>
+                                    <ion-label>user.Email</ion-label>
 
-                                            <ion-label>user.location</ion-label>
-                        
-                                            <ion-icon name="navigate" color="primary" slot="start"></ion-icon>
-                                            <ion-icon name="create" color="primary" slot="end" (click)=" AddressUpdate(user)"></ion-icon>
-                                    </ion-item>
-                                    <br><br>
-                                    <ion-item>
+                                    <ion-icon name="mail" color="primary" slot="start"></ion-icon>
+                                    <ion-icon name="create" color="primary" slot="end" (click)=" NameUpdate(user)"></ion-icon>
+                                </ion-item>
+                                <br><br>
+                                <ion-item>
 
-                                            <ion-label>user.age</ion-label>
-                        
-                                            <ion-icon name="navigate" color="primary" slot="start"></ion-icon>
-                                            <ion-icon name="create" color="primary" slot="end" (click)=" AgeUpdate(user)"></ion-icon>
-                                    </ion-item>
-                                    <br><br>
-                                    <ion-item>
+                                    <ion-label>user.location</ion-label>
 
-                                            <ion-label>user.gender</ion-label>
-                        
-                                            <ion-icon name="male" color="primary" slot="start"></ion-icon>
-                                            <ion-icon name="create" color="primary" slot="end" (click)=" GenderUpdate(user)"></ion-icon>
-                                    </ion-item>
+                                    <ion-icon name="navigate" color="primary" slot="start"></ion-icon>
+                                    <ion-icon name="create" color="primary" slot="end" (click)=" AddressUpdate(user)"></ion-icon>
+                                </ion-item>
+                                <br><br>
+                                <ion-item>
 
-                                      
+                                    <ion-label>user.age</ion-label>
+
+                                    <ion-icon name="navigate" color="primary" slot="start"></ion-icon>
+                                    <ion-icon name="create" color="primary" slot="end" (click)=" AgeUpdate(user)"></ion-icon>
+                                </ion-item>
+                                <br><br>
+                                <ion-item>
+
+                                    <ion-label>user.gender</ion-label>
+
+                                    <ion-icon name="male" color="primary" slot="start"></ion-icon>
+                                    <ion-icon name="create" color="primary" slot="end" (click)=" GenderUpdate(user)"></ion-icon>
+                                </ion-item>
+
+
                             </div>
                         </div>
 
@@ -123,5 +98,28 @@
         </div>
 
     </body>
+    <ion-tabs class="icons">
+        <ion-tab-bar slot="bottom">
+            <ion-tab-button tab="home" routerLink="/home">
+                <ion-icon name="home" color="primary"></ion-icon>
+                <!-- <ion-label>Home</ion-label> -->
+                <!-- <ion-badge>6</ion-badge> -->
+            </ion-tab-button>
 
+            <ion-tab-button tab="profile" routerLink="/profile">
+                <ion-icon name="person" color="primary"></ion-icon>
+                <!-- <ion-label>Profile</ion-label> -->
+            </ion-tab-button>
+
+            <ion-tab-button tab="events" routerLink="/events">
+                <ion-icon name="calendar" color="primary"></ion-icon>
+                <!-- <ion-label>Events</ion-label> -->
+            </ion-tab-button>
+
+            <ion-tab-button tab="add" routerLink="/add">
+                <ion-icon name="add" color="primary"></ion-icon>
+                <!-- <ion-label>About</ion-label> -->
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
 </ion-content>
