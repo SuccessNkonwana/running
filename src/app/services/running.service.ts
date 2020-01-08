@@ -17,6 +17,8 @@ export class RunningService {
   user
   clubs=[]
   clubsTemp=[]
+  usersTemp=[]
+  users=[]
   //INI values
   newName: string="";
   newAddress: string="";
@@ -299,6 +301,61 @@ addEvent(club,newName,newAddress,newOpeningHours,newClosingHours)
   
 
   }
+  updateUser(){
+    let user=this.readCurrentSession()
+    let userID=user.uid
+    
+  }
+  getUser(){
+    this.users=[]
+    this.usersTemp=[]
+     let ans=[]
+     let ans2=[]
+
+    let user=this.readCurrentSession()
+    let userID=user.uid
+   
+    return new Promise((resolve, reject) => {
+      this.dbfire.collection("users").get().then((querySnapshot) => {
+         querySnapshot.forEach((doc) => {
+          
+          // ans.push(doc.data())
+           console.log(doc.id, '=>', doc.data());
+           this.usersTemp.push({
+            userKey: doc.id,
+             name: doc.data().displayName,
+             age: doc.data().Age,
+             email: doc.data().Email,
+             gender: doc.data().gender,
+             photoURL: doc.data().photoURL
+           })
+             console.log( this.usersTemp,"users array")
+             console.log(name,"users array")
+         
+             console.log( this.usersTemp.length,"users array SIZE")
+         //  this.todoTemp.push()
+           
+         });
+         console.log( this.usersTemp.length,"users array SIZE")
+         for(let x=0;x< this.usersTemp.length;x++)
+         {
+          console.log( this.usersTemp[x].userID,"userid at x")
+      
+              if(this.usersTemp[x].userID===userID)
+              {
+                this.users.push(this.usersTemp[x])
+      
+              }
+      
+         }
+         resolve(this.usersTemp)
+      });
+      });
+      console.log(this.usersTemp,"clubs array")
+     console.log(ans,"ans array")
+       
+      }
+  
 ///retrieve event
 ///update event
 ///delete event

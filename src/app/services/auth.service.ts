@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase'
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AlertController, NavController, LoadingController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { resolve } from 'url';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 // import { AngularFireStorage } from '@angular/fire/storage';
@@ -40,6 +40,7 @@ export class AuthService {
       private db: AngularFirestore,
       public navCtrl: NavController, 
       private storage:AngularFireStorage,
+      
       private afAuth:AngularFireAuth) {
   
         afAuth.auth.onAuthStateChanged((user) => {
@@ -49,7 +50,16 @@ export class AuthService {
             this.navCtrl.navigateRoot("");
           }
         })
-       
+       this.user= this.afAuth.authState.pipe(
+        switchMap(user=>{
+          if(user){
+
+            return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
+          } else {
+            return of(null)
+          }
+        })
+       )
     
        }
        
@@ -193,6 +203,12 @@ export class AuthService {
     ).subscribe();
     return this.uploadPercent = task.percentageChanges();
   }
-
+  getUsers() {
+    return this.afs.collection('users', ref => ref.orderBy('displayName')).valueChanges()
+  }
+  getUID(): string {
+    return this.afAuth.auth.currentUser.uid;
+  }
+ 
 
 }
