@@ -9,7 +9,7 @@ $fontsize: 18px;
 
 /* Use the variables */
 
-body {
+.body{
     // background: $bgcolor;
     // color: $textcolor;
     font-size: $fontsize;
@@ -252,14 +252,14 @@ body {
     .fab {
         top: 80px !important;
     }
-   
+    .icons{
+        zoom: 1.5;
+    }
+    .tabIcons
+    {
+        width:16px;
+        height: 16px;
+    
+    }
 }
-.icons{
-    zoom: 1.5;
-}
-.tabIcons
-{
-    width:16px;
-    height: 16px;
 
-}

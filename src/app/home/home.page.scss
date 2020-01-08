@@ -1,4 +1,4 @@
-body {
+.body {
     overflow: scroll;
     height: 100%;
     ion-toolbar {
@@ -53,6 +53,7 @@ body {
         z-index: 10;
         background: black;
         opacity: 0.6;
+       
     }
     .cName {
         margin-top: 10px;
@@ -112,13 +113,19 @@ body {
         margin-bottom: 5px;
         --background: black;
     }
-   .icons{
-       zoom: 1.5;
-   }
-   .tabIcons
-   {
-    width:16px;
-    height: 16px;
-
-   }
+    .icons{
+        zoom: 1.5;
+        position:fixed;
+    }
+ 
+    .tabIcons
+    {
+     width:16px;
+     height: 16px;
+ 
+    
+ }
+  
 }
+
+    

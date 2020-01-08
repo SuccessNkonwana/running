@@ -1,34 +1,11 @@
 
 
-<ion-content>
+<ion-content class="body" >
         
 
-    <body  *ngIf="authService.user  | async as user">
-            <ion-tabs class="icons">
-                    <ion-tab-bar slot="bottom">
-                      <ion-tab-button tab="home" routerLink="/home">
-                        <img class="tabIcons" src="\assets\images\home-icon-silhouette - Copy.png"  />
-                        <!-- <ion-label>Home</ion-label> -->
-                        <!-- <ion-badge>6</ion-badge> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="profile" routerLink="/profile">
-                        <img class="tabIcons" src="\assets\images\man-user (1).png" />
-                        <!-- <ion-label>Profile</ion-label> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="events" routerLink="/events">
-                        <img class="tabIcons" src="\assets\images\event-date-and-time-symbol - Copy.png"  />
-                        <!-- <ion-label>Events</ion-label> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="add" routerLink="/add">
-                        <img class="tabIcons" src="\assets\images\add-icon.png"  />
-                        <!-- <ion-label>About</ion-label> -->
-                      </ion-tab-button>
-                    </ion-tab-bar>
-                  </ion-tabs>
-        <div id="bg">
+    <!-- <body  > -->
+           
+        <div id="bg" >
             <ion-grid>
                 <ion-row color="primary" justify-content-center>
 <br>
@@ -38,7 +15,7 @@
                             <!-- <ion-avatar class="avatar">
                                 <img src="assets/images/rep.jpg" alt="Avatar" class="img">
                             </ion-avatar> -->
-                            <h2 id="heading" tetxt-center>My Profile</h2>
+                            <h2 id="heading" text-center>My Profile</h2>
                             <p id="name">Nokwanda</p>
                             <div class="profile-image">
                                     <div>
@@ -123,6 +100,29 @@
 
         </div>
 
-    </body>
-
+    <!-- </body> -->
+    <ion-tabs class="icons">
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button tab="home" routerLink="/home">
+            <img class="tabIcons" src="\assets\images\home-icon-silhouette - Copy.png"  />
+            <!-- <ion-label>Home</ion-label> -->
+            <!-- <ion-badge>6</ion-badge> -->
+          </ion-tab-button>
+      
+          <ion-tab-button tab="profile" routerLink="/profile">
+            <img class="tabIcons" src="\assets\images\man-user (1).png" />
+            <!-- <ion-label>Profile</ion-label> -->
+          </ion-tab-button>
+      
+          <ion-tab-button tab="events" routerLink="/events">
+            <img class="tabIcons" src="\assets\images\event-date-and-time-symbol - Copy.png"  />
+            <!-- <ion-label>Events</ion-label> -->
+          </ion-tab-button>
+      
+          <ion-tab-button tab="add" routerLink="/add">
+            <img class="tabIcons" src="\assets\images\add-icon.png"  />
+            <!-- <ion-label>About</ion-label> -->
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
 </ion-content>
