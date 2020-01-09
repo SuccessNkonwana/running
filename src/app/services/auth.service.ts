@@ -101,7 +101,7 @@ export class AuthService {
            
             this.theUser=firebase.auth()
             console.log("success",this.theUser);
-            this.navCtrl.navigateRoot("home");
+            this.navCtrl.navigateRoot("tabs/home");
           return this.theUser
         }).catch((err) => {
           this.alertCtrl.create({
@@ -177,7 +177,6 @@ export class AuthService {
   }
 
   uploadProfilePic(event) {
-
     let user=this.readCurrentSession()
   let userID=user['uid']
   console.log("the user",userID);
@@ -186,9 +185,7 @@ export class AuthService {
     const filePath = this.uniqkey;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
-
     // observe percentage changes
-
     task.snapshotChanges().pipe(
       finalize(() => {
         this.downloadU = fileRef.getDownloadURL().subscribe(urlPath => {
@@ -203,6 +200,12 @@ export class AuthService {
     ).subscribe();
     return this.uploadPercent = task.percentageChanges();
   }
+
+
+
+
+
+
   getUsers() {
     return this.afs.collection('users', ref => ref.orderBy('displayName')).valueChanges()
   }

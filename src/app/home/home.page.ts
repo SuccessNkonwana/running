@@ -7,7 +7,9 @@ import { RunningService } from '../services/running.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  clubs= []
+  clubs= [];
+  theUser=[];
+  defaultpic=true;
   isSlide: boolean = true;
   slides: any;
 slideOpts = {
@@ -23,8 +25,10 @@ slideOpts = {
   constructor(private  router:  Router,public runn: RunningService)
   {
     
-    this.clubs=[]    
+    this.clubs=[]  
+    this.theUser=[]     
     this.getdata()
+    this.getUser()
   }
   getdata()
   {
@@ -47,6 +51,44 @@ slideOpts = {
         }
       console.log(this.clubs,"LAST ONE")
 
+     })
+    })
+  
+  }
+
+  getUser()
+  {
+    return new Promise((resolve, reject) => {
+      this.runn.rtUsers().then(data =>{
+     
+        console.log( data.length);
+        for( let x = 0; x < data.length; x++ )
+        {
+         console.log(x);
+         
+        this.theUser.push({ 
+          userKey:  data[x].userKey,
+          name:  data[x].name,
+          age:  data[x].age,
+          email:  data[x].email,
+          gender:  data[x].gender,
+          photoURL:data[x].photoURL}
+          
+          )
+          // userKey: doc.id,
+          //    name: doc.data().displayName,
+          //    age: doc.data().Age,
+          //    Email: doc.data().Email,
+          //    gender: doc.data().gender,
+          //    photoURL: doc.data().photoURL
+    
+        }
+      console.log(this.theUser,"the LAST ONE vele" )
+           if(this.theUser[0].photoURL==null)
+           {
+              this.defaultpic=false;
+            
+           }
      })
     })
   

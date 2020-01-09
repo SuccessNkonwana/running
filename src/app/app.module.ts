@@ -11,6 +11,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { TabsPage } from './pages/tabs/tabs.page';
+// import { TabsPageModule } from './pages/tabs/tabs.module';
 const firebaseConfig = {
   apiKey: "AIzaSyAv85O55WcgVEXgWUTr5GVqspI__ywOSn4",
     authDomain: "runningclub-46ede.firebaseapp.com",
@@ -25,7 +27,7 @@ const firebaseConfig = {
 // firebase.initializeApp(firebaseConfig);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,TabsPage],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ const firebaseConfig = {
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
+    // TabsPageModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [

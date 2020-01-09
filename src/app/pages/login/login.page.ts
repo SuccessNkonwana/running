@@ -18,6 +18,7 @@ export class LoginPage implements OnInit {
  
   constructor(private  authService:  AuthService,
      private  router:  Router,
+     
      public fb: FormBuilder,
      private alertCtrl: AlertController,
     public menuCtrl: MenuController,
