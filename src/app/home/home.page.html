@@ -1,7 +1,5 @@
+<ion-content class="body">
 
-
-<ion-content  class="body">
-      
     <!-- <body> -->
         <div *ngFor="let user of theUser ">
         <br>
@@ -41,30 +39,33 @@
                 <!-- <p>Paint Fun Race Club</p>
                     <p>Redbull Run Sat</p>
                     <p>Date: 12/12/2019 Time: 11:00</p> -->
-                <img class="imgC" src="assets/images/go.png" alt="Avatar"  (click)="go()">
-            </div>
+            <img class="imgC" src="assets/images/go.png" alt="Avatar" (click)="go()">
         </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <div *ngIf="isSlide">
+        <h2 text-center class="cent"> Running Clubs
+            <ion-icon class="iconSize" name="people"></ion-icon>
+        </h2>
         <br>
         <br>
-        <br>
-        <br>
-        <div *ngIf="isSlide" >
-                <h2 text-center class="cent"> Running Clubs <ion-icon class="iconSize" name="people"></ion-icon></h2>
-                <br>
-                <br>
-            <ion-slides startAutoplay [options]="slideOpts">
-                <ion-slide *ngFor="let clubss of clubs">
-                    <ion-card class="slideCards" [ngStyle]="{'background-image':'url('+clubss.photoURL+')'}" >
-                        <ion-card-content>
-                            <h2 class="cName">{{clubss.name}}</h2>
-                        </ion-card-content>
-                    </ion-card>
-                   
-                </ion-slide>
-            </ion-slides>
-        </div>
-       
-    
+        <ion-slides startAutoplay [options]="slideOpts">
+            <ion-slide *ngFor="let clubss of clubs">
+                <ion-card class="slideCards" [ngStyle]="{'background-image':'url('+clubss.photoURL+')'}">
+                    <ion-card-content>
+                        <h2 class="cName">{{clubss.name}}</h2>
+                    </ion-card-content>
+                </ion-card>
+
+            </ion-slide>
+        </ion-slides>
+
+    </div>
+
+
     <!-- </body> -->
     <br>
     <br>
@@ -72,26 +73,26 @@
     <br>
     <ion-tabs class="icons">
         <ion-tab-bar slot="bottom">
-          <ion-tab-button tab="home" routerLink="/home">
-            <img class="tabIcons" src="\assets\images\home-icon-silhouette (1) - Copy.png"  />
-            <!-- <ion-label>Home</ion-label> -->
-            <!-- <ion-badge>6</ion-badge> -->
-          </ion-tab-button>
-      
-          <ion-tab-button tab="profile" routerLink="/profile">
-            <img class="tabIcons" src="\assets\images\man-user.png"  />
-            <!-- <ion-label>Profile</ion-label> -->
-          </ion-tab-button>
-      
-          <ion-tab-button tab="events" routerLink="/events">
-            <img class="tabIcons" src="assets\images\event-date-and-time-symbol - Copy.png"  />
-            <!-- <ion-label>Events</ion-label> -->
-          </ion-tab-button>
-      
-          <ion-tab-button tab="add" routerLink="/add">
-            <img class="tabIcons" src="\assets\images\add-icon.png"  />
-            <!-- <ion-label>About</ion-label> -->
-          </ion-tab-button>
+            <ion-tab-button tab="home" routerLink="/home">
+                <img class="tabIcons" src="\assets\images\home-icon-silhouette (1) - Copy.png" />
+                <!-- <ion-label>Home</ion-label> -->
+                <!-- <ion-badge>6</ion-badge> -->
+            </ion-tab-button>
+
+            <ion-tab-button tab="profile" routerLink="/profile">
+                <img class="tabIcons" src="\assets\images\man-user.png" />
+                <!-- <ion-label>Profile</ion-label> -->
+            </ion-tab-button>
+
+            <ion-tab-button tab="events" routerLink="/events">
+                <img class="tabIcons" src="assets\images\event-date-and-time-symbol - Copy.png" />
+                <!-- <ion-label>Events</ion-label> -->
+            </ion-tab-button>
+
+            <ion-tab-button tab="add" routerLink="/add">
+                <img class="tabIcons" src="\assets\images\add-icon.png" />
+                <!-- <ion-label>About</ion-label> -->
+            </ion-tab-button>
         </ion-tab-bar>
-      </ion-tabs>
+    </ion-tabs>
 </ion-content>

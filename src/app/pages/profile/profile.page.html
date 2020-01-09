@@ -1,5 +1,6 @@
 
 
+
 <ion-content class="theBody" >
         
 
@@ -8,10 +9,10 @@
         <div id="bg" >
             <ion-grid>
                 <ion-row color="primary" justify-content-center>
-<br>
+                    <br>
                     <ion-col align-self-center size-md="12" size-lg="11" size-xs="12">
-                       
-                        <div class="div1" >
+
+                        <div class="div1">
                             <!-- <ion-avatar class="avatar">
                                 <img src="assets/images/rep.jpg" alt="Avatar" class="img">
                             </ion-avatar> -->
@@ -44,14 +45,14 @@
                                                     <label for="file-input2">
                                                                     <ion-icon name="document" class="document"> </ion-icon> 
                                                             </label>
-                                                </ion-fab-button>
-                                            </ion-fab-list>
-                                        </ion-fab>
-            
-            
-                                        <input id="file-input2" class="input" type="file" (change)="uploadProfilePic($event)" />
-                                    </div>
+                                            </ion-fab-button>
+                                        </ion-fab-list>
+                                    </ion-fab>
+
+
+                                    <input id="file-input2" class="input" type="file" (change)="uploadProfilePic($event)" />
                                 </div>
+                            </div>
                             <br><br><br>
                             <div class="div2">
                                     <br><br><br>
@@ -67,10 +68,10 @@
                                     <br><br>
                                     <ion-item>
 
-                                            <ion-label (click)=" AddressUpdate(user)"> Innovation hub building 6</ion-label>
-                        
-                                            <ion-icon name="navigate" color="primary" slot="start"></ion-icon>
-                                            <!-- <ion-icon name="create" color="dark" slot="end" (click)=" AddressUpdate(user)"></ion-icon> -->
+                                        <ion-label (click)=" AddressUpdate(user)"> Innovation hub building 6</ion-label>
+
+                                        <ion-icon name="navigate" color="primary" slot="start"></ion-icon>
+                                        <!-- <ion-icon name="create" color="dark" slot="end" (click)=" AddressUpdate(user)"></ion-icon> -->
                                     </ion-item>
                                     <br><br>
                                     <ion-item>
@@ -89,7 +90,7 @@
                                             <!-- <ion-icon name="create" color="dark" slot="end" (click)=" GenderUpdate(user)"></ion-icon> -->
                                     </ion-item>
                                 </ion-list>
-                                      
+
                             </div>
                         </div>
 
@@ -110,26 +111,26 @@
     </body>
     <ion-tabs class="icons">
         <ion-tab-bar slot="bottom">
-          <ion-tab-button tab="home" routerLink="/home">
-            <img class="tabIcons" src="\assets\images\home-icon-silhouette - Copy.png"  />
-            <!-- <ion-label>Home</ion-label> -->
-            <!-- <ion-badge>6</ion-badge> -->
-          </ion-tab-button>
-      
-          <ion-tab-button tab="profile" routerLink="/profile">
-            <img class="tabIcons" src="\assets\images\man-user (1).png" />
-            <!-- <ion-label>Profile</ion-label> -->
-          </ion-tab-button>
-      
-          <ion-tab-button tab="events" routerLink="/events">
-            <img class="tabIcons" src="\assets\images\event-date-and-time-symbol - Copy.png"  />
-            <!-- <ion-label>Events</ion-label> -->
-          </ion-tab-button>
-      
-          <ion-tab-button tab="add" routerLink="/add">
-            <img class="tabIcons" src="\assets\images\add-icon.png"  />
-            <!-- <ion-label>About</ion-label> -->
-          </ion-tab-button>
+            <ion-tab-button tab="home" routerLink="/home">
+                <img class="tabIcons" src="\assets\images\home-icon-silhouette - Copy.png" />
+                <!-- <ion-label>Home</ion-label> -->
+                <!-- <ion-badge>6</ion-badge> -->
+            </ion-tab-button>
+
+            <ion-tab-button tab="profile" routerLink="/profile">
+                <img class="tabIcons" src="\assets\images\man-user (1).png" />
+                <!-- <ion-label>Profile</ion-label> -->
+            </ion-tab-button>
+
+            <ion-tab-button tab="events" routerLink="/events">
+                <img class="tabIcons" src="\assets\images\event-date-and-time-symbol - Copy.png" />
+                <!-- <ion-label>Events</ion-label> -->
+            </ion-tab-button>
+
+            <ion-tab-button tab="add" routerLink="/add">
+                <img class="tabIcons" src="\assets\images\add-icon.png" />
+                <!-- <ion-label>About</ion-label> -->
+            </ion-tab-button>
         </ion-tab-bar>
-      </ion-tabs>
+    </ion-tabs>
 </ion-content>
