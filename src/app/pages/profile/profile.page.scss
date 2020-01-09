@@ -8,8 +8,8 @@ $textcolor: #11C2D4;
 $fontsize: 18px;
 
 /* Use the variables */
-
-.body{
+.theBody{
+body{
     // background: $bgcolor;
     // color: $textcolor;
     font-size: $fontsize;
@@ -252,14 +252,15 @@ $fontsize: 18px;
     .fab {
         top: 80px !important;
     }
-    .icons{
-        zoom: 1.5;
-    }
-    .tabIcons
-    {
-        width:16px;
-        height: 16px;
     
-    }
 }
+.icons{
+    zoom: 1.5;
+}
+.tabIcons
+{
+    width:16px;
+    height: 16px;
 
+}
+}

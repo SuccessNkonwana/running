@@ -20,7 +20,6 @@ export class ProfilePage implements OnInit {
   username: string;
   photoURL: string;
   uploadPercent: number;
-  thegender: string;
   constructor(
     private authService: AuthService,
     public afs:AngularFirestore,
@@ -30,17 +29,17 @@ export class ProfilePage implements OnInit {
     public runn: RunningService
   ) { 
     this.theUser=[]    
-    // this.getdata()
+    this.getdata()
 
-    this.users=this.afs.collection('users',ref =>ref.orderBy('displayName')).valueChanges();
-    this.currentuser=this.authService.getUID();
-   
-    this.MUsers=afs.doc('users/${authService.getUID()}')
-    this.sub= this.MUsers.valueChanges().subscribe(event=>{
-      this.username=event.displayName
-      this.photoURL=event.photoURL
-      console.log("the user name"+ this.username)
-    })
+    // this.users=this.afs.collection('users',ref =>ref.orderBy('displayName')).valueChanges();
+    // this.currentuser=this.authService.getUID();
+    // console.log("current user=>>"+this.currentuser)
+    // this.MUsers=afs.doc('users/${authService.getUID()}')
+    // this.sub= this.MUsers.valueChanges().subscribe(event=>{
+    //   this.username=event.displayName
+    //   this.photoURL=event.photoURL
+    //   console.log("the user name"+ this.username)
+    // })
   }
 
   ngOnInit() {
@@ -91,32 +90,38 @@ export class ProfilePage implements OnInit {
   pickImage(){
     this.authService.pickImage();
   }
-  // getdata()
-  // {
-  //   return new Promise((resolve, reject) => {
-  //     this.runn.rtClubs().then(data =>{
+  getdata()
+  {
+    return new Promise((resolve, reject) => {
+      this.runn.rtClubs().then(data =>{
      
-  //       console.log( data.length);
-  //       for( let x = 0; x < data.length; x++ )
-  //       {
-  //        console.log(x);
+        console.log( data.length);
+        for( let x = 0; x < data.length; x++ )
+        {
+         console.log(x);
          
-  //       this.theUser.push({ 
-  //         todoKey:  data[x].todoKey,
-  //         name:  data[x].name,
-  //         age:  data[x].age,
-  //         email:  data[x].email,
-  //         gender:  data[x].gender,
-  //         photoURL:data[x].photoURL}
+        this.theUser.push({ 
+          userKey:  data[x].userKey,
+          name:  data[x].name,
+          age:  data[x].age,
+          email:  data[x].email,
+          gender:  data[x].gender,
+          photoURL:data[x].photoURL}
           
-  //         )
-         
-  //       }
-  //     console.log(this.theUser,"LAST ONE")
+          )
+          // userKey: doc.id,
+          //    name: doc.data().displayName,
+          //    age: doc.data().Age,
+          //    Email: doc.data().Email,
+          //    gender: doc.data().gender,
+          //    photoURL: doc.data().photoURL
+    
+        }
+      console.log(this.theUser,"LAST ONE")
 
-  //    })
-  //   })
+     })
+    })
   
-  // }
+  }
  
 }
