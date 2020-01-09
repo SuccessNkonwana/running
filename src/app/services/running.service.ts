@@ -55,6 +55,21 @@ export class RunningService {
   // console.log(this.todos,"hh")
    // return this.todos
   }
+  async rtUsers()
+  {
+    let result :any
+   await this.getUser().then(data =>{
+    result = data
+  
+   console.log(result.length);
+  })
+  console.log(result);
+  //this.LandMarks()
+  return  result 
+  
+  // console.log(this.todos,"hh")
+   // return this.todos
+  }
   //add a club
   addClub(newName,newAddress,newOpeningHours,newClosingHours)
   {
@@ -179,9 +194,9 @@ this.dbfire.collection("clubs").get().then((querySnapshot) => {
    console.log( this.clubsTemp.length,"club array SIZE")
    for(let x=0;x< this.clubsTemp.length;x++)
    {
-    console.log( this.clubsTemp[x].userID,"userid at x")
+    console.log( this.clubsTemp[x].clubKey,"userid at x")
 
-        if(this.clubsTemp[x].userID===userID)
+        if(this.clubsTemp[x].clubKey===userID)
         {
           this.clubs.push(this.clubsTemp[x])
 
@@ -314,7 +329,7 @@ addEvent(club,newName,newAddress,newOpeningHours,newClosingHours)
 
     let user=this.readCurrentSession()
     let userID=user.uid
-   
+   console.log(userID)
     return new Promise((resolve, reject) => {
       this.dbfire.collection("users").get().then((querySnapshot) => {
          querySnapshot.forEach((doc) => {
@@ -337,18 +352,20 @@ addEvent(club,newName,newAddress,newOpeningHours,newClosingHours)
            
          });
          console.log( this.usersTemp.length,"users array SIZE")
+        
          for(let x=0;x< this.usersTemp.length;x++)
          {
-          console.log( this.usersTemp[x].userID,"userid at x")
+         
       
-              if(this.usersTemp[x].userID===userID)
+              if(this.usersTemp[x].userKey===userID)
               {
+                console.log( this.usersTemp[x].userKey,"userid at x")
                 this.users.push(this.usersTemp[x])
       
               }
       
          }
-         resolve(this.usersTemp)
+         resolve(this.users)
       });
       });
       console.log(this.usersTemp,"clubs array")

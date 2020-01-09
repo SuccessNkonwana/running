@@ -41,7 +41,7 @@
         color: rgb(190, 186, 186);
     }
     .slideCards {
-        height: 250px;
+        height: 220px;
         width: 300px;
         background-size: cover;
         background-repeat: no-repeat;
@@ -87,10 +87,11 @@
         width: 90px;
         border-radius: 50%;
         float: right;
-        top: 64px;
-        right: 10px;
+        top: 28px;
+        right: 20px;
         width: 150px;
         height: 150px;
+       zoom: 0.7;
     }
     ion-card {
         width: 90% !important;

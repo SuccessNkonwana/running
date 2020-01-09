@@ -3,13 +3,14 @@
 // $bgcolor: #a2b9bc;
 // $bgcolor: linear-gradient(180deg, rgba(200, 116, 152, 0.969) 0%, rgba(196, 135, 161, 0.969) 39.74%, rgb(99, 57, 75) 100%);
 // $bgcolor: linear-gradient(#34e89e, #0f3443);
+
 $bgcolor: #11C2D4;
 $textcolor: #11C2D4;
 $fontsize: 18px;
 
 /* Use the variables */
-
-.body{
+.theBody{
+body{
     // background: $bgcolor;
     // color: $textcolor;
     font-size: $fontsize;
@@ -62,6 +63,22 @@ $fontsize: 18px;
         $textcolor: #11C2D4;
         color: $textcolor;
         text-align: start;
+    }
+    .line {
+        position: absolute;
+        top: 150px;
+        // left: 0;
+        // width: 100%;
+        // height: 100px;
+        bottom: 0px;
+        // margin: auto;
+        background-size: cover;
+        background-repeat: no-repeat;
+        zoom: 3;
+        width: 100%;
+        height: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
     }
     h2 {
         $fontsize: 25px;
@@ -252,14 +269,15 @@ $fontsize: 18px;
     .fab {
         top: 80px !important;
     }
-    .icons{
-        zoom: 1.5;
-    }
-    .tabIcons
-    {
-        width:16px;
-        height: 16px;
-    
-    }
+   
 }
+.icons{
+    zoom: 1.5;
+}
+.tabIcons
+{
+    width:16px;
+    height: 16px;
 
+}
+}

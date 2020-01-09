@@ -13,6 +13,7 @@ import { RunningService } from 'src/app/services/running.service';
 })
 export class ProfilePage implements OnInit {
   users: any;
+  defaultpic=true
   theUser=[];
   currentuser: string;
   private MUsers: AngularFirestoreDocument
@@ -32,15 +33,15 @@ export class ProfilePage implements OnInit {
     this.theUser=[]    
     this.getdata()
 
-    this.users=this.afs.collection('users',ref =>ref.orderBy('displayName')).valueChanges();
-    this.currentuser=this.authService.getUID();
-    console.log("current user=>>"+this.currentuser)
-    this.MUsers=afs.doc('users/${authService.getUID()}')
-    this.sub= this.MUsers.valueChanges().subscribe(event=>{
-      this.username=event.displayName
-      this.photoURL=event.photoURL
-      console.log("the user name"+ this.username)
-    })
+    // this.users=this.afs.collection('users',ref =>ref.orderBy('displayName')).valueChanges();
+    // this.currentuser=this.authService.getUID();
+    // console.log("current user=>>"+this.currentuser)
+    // this.MUsers=afs.doc('users/${authService.getUID()}')
+    // this.sub= this.MUsers.valueChanges().subscribe(event=>{
+    //   this.username=event.displayName
+    //   this.photoURL=event.photoURL
+    //   console.log("the user name"+ this.username)
+    // })
   }
 
   ngOnInit() {
@@ -87,14 +88,13 @@ export class ProfilePage implements OnInit {
       console.log(this.uploadPercent)
     })
   }
-
   pickImage(){
     this.authService.pickImage();
   }
   getdata()
   {
     return new Promise((resolve, reject) => {
-      this.runn.rtClubs().then(data =>{
+      this.runn.rtUsers().then(data =>{
      
         console.log( data.length);
         for( let x = 0; x < data.length; x++ )
@@ -102,7 +102,7 @@ export class ProfilePage implements OnInit {
          console.log(x);
          
         this.theUser.push({ 
-          todoKey:  data[x].todoKey,
+          userKey:  data[x].userKey,
           name:  data[x].name,
           age:  data[x].age,
           email:  data[x].email,
@@ -118,8 +118,12 @@ export class ProfilePage implements OnInit {
           //    photoURL: doc.data().photoURL
     
         }
-      console.log(this.theUser,"LAST ONE")
-
+      console.log(this.theUser,"the LAST ONE vele" )
+           if(this.theUser[0].photoURL==null)
+           {
+              this.defaultpic=false;
+            
+           }
      })
     })
   

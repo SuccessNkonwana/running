@@ -1,10 +1,10 @@
 
 
-<ion-content class="body" >
+<ion-content class="theBody" >
         
 
-    <!-- <body  > -->
-           
+    <body  >
+        <div *ngFor="let user of theUser ">
         <div id="bg" >
             <ion-grid>
                 <ion-row color="primary" justify-content-center>
@@ -16,12 +16,16 @@
                                 <img src="assets/images/rep.jpg" alt="Avatar" class="img">
                             </ion-avatar> -->
                             <h2 id="heading" text-center>My Profile</h2>
-                            <p id="name">Nokwanda</p>
-                            <div class="profile-image">
-                                    <div>
-                                        <img  src="/assets/images/profile-user.png">
+                           
+                            <p id="name">{{user.name}}</p>
+                        
+                            <div  class="profile-image">
+                                    <div *ngIf="defaultpic" >
+                                        <img  src="{{user.photoURL}}" >
                                     </div>
-            
+                                    <div *ngIf="!defaultpic">
+                                        <img  src="\assets\images\profile-user.png" >
+                                    </div>
             
                                     <div class="image-upload">
                                         <ion-fab horizontal="center" vertical="top" class="fab">
@@ -30,7 +34,7 @@
                                             </ion-fab-button>
                                             <ion-fab-list side="start">
                                                 <ion-fab-button color="primary">
-                                                    <ion-icon  name="camera" (click)="pickImage()" class="camera"> </ion-icon>
+                                                    <ion-icon name="camera" (click)="pickImage()" class="camera"> </ion-icon>
                                                 </ion-fab-button>
             
                                             </ion-fab-list>
@@ -52,10 +56,10 @@
                             <div class="div2">
                                     <br><br><br>
                                     <br><br><br>
-                                    <ion-list lines="none">
+                                    <ion-list lines="none" >
                                     <ion-item detail-push>
 
-                                            <ion-label (click)=" NameUpdate(user)"><Nav> Nokwanda@mlab.co.za</Nav></ion-label>
+                                            <ion-label (click)=" NameUpdate(user)"><Nav>{{user.email}}</Nav></ion-label>
                         
                                             <ion-icon  name="mail" color="primary" slot="start" ></ion-icon>
                                             <!-- <ion-icon name="create" color="dark" slot="end" (click)=" NameUpdate(user)"></ion-icon> -->
@@ -71,7 +75,7 @@
                                     <br><br>
                                     <ion-item>
 
-                                            <ion-label  (click)=" AgeUpdate(user)"> 27</ion-label>
+                                            <ion-label  (click)=" AgeUpdate(user)"> {{user.age}}</ion-label>
                         
                                             <ion-icon name="calendar" color="primary" slot="start"></ion-icon>
                                             <!-- <ion-icon name="create" color="dark" slot="end" (click)=" AgeUpdate(user)"></ion-icon> -->
@@ -79,7 +83,7 @@
                                     <br><br>
                                     <ion-item>
 
-                                            <ion-label (click)=" GenderUpdate(user)">female</ion-label>
+                                            <ion-label (click)=" GenderUpdate(user)">{{user.gender}}</ion-label>
                         
                                             <ion-icon name="person" color="primary" slot="start"></ion-icon>
                                             <!-- <ion-icon name="create" color="dark" slot="end" (click)=" GenderUpdate(user)"></ion-icon> -->
@@ -99,8 +103,11 @@
 
 
         </div>
-
-    <!-- </body> -->
+  </div>
+  <div class="line">
+    <img src="\assets\images\tbo-removebg-preview.png">
+</div>
+    </body>
     <ion-tabs class="icons">
         <ion-tab-bar slot="bottom">
           <ion-tab-button tab="home" routerLink="/home">

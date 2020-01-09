@@ -3,9 +3,16 @@
 <ion-content  class="body">
       
     <!-- <body> -->
-           
+        <div *ngFor="let user of theUser ">
         <br>
-        <img src="\assets\images\beepic.jpg" alt="Avatar" class="img">
+        <div *ngIf="defaultpic" >
+            <img class="img" src="{{user.photoURL}}" >
+        </div>
+        <div *ngIf="!defaultpic">
+            <img class="img" src="\assets\images\profile-user.png" >
+        </div>
+        </div>
+
         <h1>
             BE
         </h1>
