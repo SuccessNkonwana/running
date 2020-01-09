@@ -55,6 +55,22 @@ export class RunningService {
   // console.log(this.todos,"hh")
    // return this.todos
   }
+  //return individuals clubs
+  async rtMyClubs()
+  {
+    let result :any
+   await this.getIndividualsClubs().then(data =>{
+    result = data
+  
+   console.log(result.length);
+  })
+  console.log(result);
+  //this.LandMarks()
+  return  result 
+  
+  // console.log(this.todos,"hh")
+   // return this.todos
+  }
   async rtUsers()
   {
     let result :any
@@ -210,6 +226,57 @@ console.log(this.clubsTemp,"clubs array")
 console.log(ans,"ans array")
  
 }
+///get a individuals club
+getIndividualsClubs()
+{
+ this.clubs=[]
+ this.clubsTemp=[]
+  let ans=[]
+  let ans2=[]
+  let user=this.readCurrentSession()
+  let userID=user.uid
+  //
+return new Promise((resolve, reject) => {
+this.dbfire.collection("clubs").get().then((querySnapshot) => {
+   querySnapshot.forEach((doc) => {
+    
+    // ans.push(doc.data())
+     console.log(doc.id, '=>', doc.data());
+     this.clubsTemp.push({
+       clubKey: doc.id,
+       name: doc.data().name,
+       time: doc.data().time,
+       userID: doc.data().userID,
+       photoURL: doc.data().photoURL
+     })
+       console.log( this.clubsTemp,"club array")
+       console.log(name,"club array")
+   
+       console.log( this.clubsTemp.length,"club array SIZE")
+   //  this.todoTemp.push()
+     
+   });
+   console.log( this.clubsTemp.length,"club array SIZE")
+   for(let x=0;x< this.clubsTemp.length;x++)
+   {
+    console.log( this.clubsTemp[x].userID,"CLUB userid ")
+
+        if(this.clubsTemp[x].userID===userID)
+        {
+          this.clubs.push(this.clubsTemp[x])
+
+        }
+
+   }
+   resolve(this.clubs)
+});
+});
+console.log(this.clubs,"my clubs array")
+console.log(ans,"ans array")
+ 
+}
+
+
 ////upload a club pic
 uploadClubPic(event) {
   let user=this.readCurrentSession()
@@ -294,7 +361,7 @@ addEvent(club,newName,newAddress,newOpeningHours,newClosingHours)
     let user=this.readCurrentSession()
     let userID=user.uid
     let clubID= club.ID
-    console.log("HOT ",userID)
+    console.log("HOT ",clubID)
 
    
     this.dbfire.collection("clubs").add({
