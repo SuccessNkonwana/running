@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RunningService } from 'src/app/services/running.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -21,7 +22,7 @@ slideOpts = {
       slideShadows: true,
     }
     }
-  constructor(public runn: RunningService) {
+  constructor(public runn: RunningService, private router: Router) {
 
     this.clubs=[]      
     this.getdata()
@@ -60,6 +61,16 @@ slideOpts = {
           
    }
   ngOnInit() {
+  }
+
+
+  getAClubsEvents(myclub){
+
+    console.log(myclub);
+
+    this.router.navigateByUrl('club-profile');
+
+
   }
 
 }

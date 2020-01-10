@@ -19,10 +19,10 @@ export class AddEventPage implements OnInit {
     
     this.eventForm = fb.group({
 
-      event: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30), Validators.required])],
-      Address: ['', Validators.required],
-      Hours: ['', Validators.required],
-      Close: ['', Validators.required],
+      newName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30), Validators.required])],
+      newAddress: ['', Validators.required],
+      newOpeningHours: ['', Validators.required],
+      newClosingHours: ['', Validators.required],
 
     },
     );

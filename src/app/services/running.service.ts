@@ -18,6 +18,8 @@ export class RunningService {
   clubs=[]
   clubsTemp=[]
   usersTemp=[]
+  events=[]
+ eventsTemp=[]
   users=[]
   //INI values
   newName: string="";
@@ -276,7 +278,60 @@ console.log(ans,"ans array")
  
 }
 
+////single clubs events
+getAClubsEvents(myclub)
+{
+ this.events=[]
+ this.eventsTemp=[]
+  let ans=[]
+  let ans2=[]
+  // let user=this.readCurrentSession()
+  // let userID=user.uid
+let clubID=myclub.clubID
+  //
+return new Promise((resolve, reject) => {
+this.dbfire.collection("events").get().then((querySnapshot) => {
+   querySnapshot.forEach((doc) => {
+    
+    // ans.push(doc.data())
+     console.log(doc.id, '=>', doc.data());
+     this.clubsTemp.push({
+       eventKey: doc.id,
+       name: doc.data().name,
+       address: doc.data().address,
+       openingHours: doc.data().openingHours,
+       closingHours: doc.data().closingHours,
+       userID:doc.data().userID,
+       clubID: doc.data().clubID
 
+     })
+       console.log( this.eventsTemp,"events array")
+       console.log(name,"event array")
+   
+       console.log( this.eventsTemp.length,"events array SIZE")
+   //  this.todoTemp.push()
+     
+   });
+   console.log( this.eventsTemp.length,"events array SIZE")
+   for(let x=0;x< this.eventsTemp.length;x++)
+   {
+    console.log( this.eventsTemp[x].clubID,"CLUB id at x ")
+
+        if(this.eventsTemp[x].clubID===clubID)
+        {
+          this.events.push(this.eventsTemp[x])
+
+        }
+
+   }
+   console.log(this.events,"my clubs array")
+console.log(ans,"ans array")
+   resolve(this.events)
+});
+});
+
+ 
+}
 ////upload a club pic
 uploadClubPic(event) {
   let user=this.readCurrentSession()
