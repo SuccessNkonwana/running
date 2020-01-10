@@ -1,0 +1,65 @@
+<ion-content class="body">
+    
+    <ion-header text-center class="title">
+        Clubs Name 
+    </ion-header>
+    <br/>
+ <ion-item>
+ <ion-slides startAutoplay [options]="slideOpts">
+      <ion-slide >
+          <ion-button  routerLink="/add-event" class="actButtons" color="primary" shape="round"><ion-icon name="add-circle"></ion-icon> Create Event</ion-button>
+       </ion-slide>
+       <ion-slide>
+          <ion-button class="actButtons" color="primary" shape="round"><ion-icon name="information-circle"></ion-icon> About </ion-button>
+       </ion-slide>
+       <ion-slide>
+              <ion-button class="actButtons" color="primary" shape="round"><ion-icon name="people"></ion-icon> Members </ion-button>
+           </ion-slide>
+  </ion-slides>
+</ion-item>
+      <br/>  
+      <br/>
+       <ion-header class="subtitle">
+       Events
+      </ion-header>
+      <br/>
+ 
+    <ion-list lines="none" *ngFor="let myclubs of clubs">
+      <ion-item class="item"  *ngIf="hasAClub">
+           <ion-avatar > <img src="{{myclubs.photoURL}}"></ion-avatar> <p class="clubname"> {{myclubs.name}}</p>
+      </ion-item>
+   </ion-list>
+    <div class="noClubs" *ngIf="!hasAClub">
+          <br/>
+          <br/>
+      <p text-center color="medium" class="sadname">  No Events Are Scheduled ! </p>
+       <br/>
+      
+    </div>
+    <!-- <body> -->
+  <ion-tabs class="icons">
+      <ion-tab-bar slot="bottom">
+          <ion-tab-button tab="home" routerLink="/home">
+              <img class="tabIcons" src="\assets\images\home-icon-silhouette - Copy.png" />
+              <!-- <ion-label>Home</ion-label> -->
+              <!-- <ion-badge>6</ion-badge> -->
+          </ion-tab-button>
+
+          <ion-tab-button tab="profile" routerLink="/profile">
+              <img class="tabIcons" src="\assets\images\man-user.png" />
+              <!-- <ion-label>Profile</ion-label> -->
+          </ion-tab-button>
+
+          <ion-tab-button tab="events" routerLink="/events">
+              <img class="tabIcons" src="assets\images\event-date-and-time-symbol - Copy.png" />
+              <!-- <ion-label>Events</ion-label> -->
+          </ion-tab-button>
+
+          <ion-tab-button tab="add" routerLink="/add">
+              <img class="tabIcons" src="\assets\images\poker (1).png" />
+              <!-- <ion-label>About</ion-label> -->
+          </ion-tab-button>
+      </ion-tab-bar>
+  </ion-tabs>
+  <!-- </body> -->
+</ion-content>
