@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
+  myclubs
   clubs= [];
   hasAClub=false;
   isSlide: boolean = true;
@@ -67,7 +68,7 @@ slideOpts = {
   getAClubsEvents(myclub){
 
     console.log(myclub);
-
+     this.runn.getAClubsEvents(myclub)
     this.router.navigateByUrl('club-profile');
 
 

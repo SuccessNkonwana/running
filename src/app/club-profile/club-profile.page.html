@@ -1,14 +1,16 @@
-<ion-content class="body">
-    
-    <ion-header text-center class="title">
-        Clubs Name 
-    </ion-header>
+<ion-content class="body" >
+        <ion-header text-center class="h" >
+                <ion-avatar > <img src="{{photoURL}}"></ion-avatar>
+         </ion-header>
+        <ion-header text-center class="title" >
+          {{clubName}}
+        </ion-header>
     <br/>
-    <div *ngFor="let myclubs of clubs">
+    
  <ion-item>
  <ion-slides startAutoplay [options]="slideOpts">
       <ion-slide >
-          <ion-button (click)="currClub(myclubs)" routerLink="/add-event" class="actButtons" color="primary" shape="round"><ion-icon name="add-circle"></ion-icon> Create Event</ion-button>
+          <ion-button (click)="currentClub(myclubs)" routerLink="/add-event" class="actButtons" color="primary" shape="round"><ion-icon name="add-circle"></ion-icon> Create Event</ion-button>
        </ion-slide>
        <ion-slide>
           <ion-button class="actButtons" color="primary" shape="round"><ion-icon name="information-circle"></ion-icon> About </ion-button>
@@ -18,7 +20,7 @@
            </ion-slide>
   </ion-slides>
 </ion-item>
-    </div>
+    
       <br/>  
       <br/>
        <ion-header class="subtitle">
@@ -26,9 +28,9 @@
       </ion-header>
       <br/>
  
-    <ion-list lines="none" *ngFor="let myclubs of clubs">
+    <ion-list lines="none" *ngFor="let myevents of events">
       <ion-item class="item"  *ngIf="hasAClub">
-           <ion-avatar > <img src="{{myclubs.photoURL}}"></ion-avatar> <p class="clubname"> {{myclubs.name}}</p>
+           <p class="clubname"> {{myevents.name}}</p>
       </ion-item>
    </ion-list>
     <div class="noClubs" *ngIf="!hasAClub">

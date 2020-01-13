@@ -13,6 +13,8 @@ export class RunningService {
   userProfile = []
   currentState : boolean 
   currentUser
+  currClub=[]
+  theCurrentClub
   currentSessionId 
   user
   clubs=[]
@@ -21,6 +23,7 @@ export class RunningService {
   events=[]
  eventsTemp=[]
   users=[]
+  myclubs=[]
   //INI values
   newName: string="";
   newAddress: string="";
@@ -37,15 +40,67 @@ export class RunningService {
   uploadPercent: any;
   task: any;
   file: any;
+
+  clubKey:String
+ name:String 
+  time:String
+userID:String
+   photoURL:String
   ///
 
   constructor(public auths:AuthService,private storage:AngularFireStorage)
   { 
   }
+  currentClub(myclubs)
+  {
+    console.log(myclubs.id,"the current Choosen club ID");
+    this.currClub=[]
+   //
+   this.clubKey=""
+   this.name =""
+   this.time=""
+   this.userID=""
+   this.photoURL=""
+   //
+    this.clubKey=myclubs.id
+    this.name =myclubs.name
+    this.time=myclubs.time
+    this.userID=myclubs.userID
+    this.photoURL=myclubs.photoURL
+ 
+   this.currClub.push({
+     clubKey: this.clubKey,
+     name: this.name,
+     time: this.time,
+     userID: this.userID,
+     photoURL:this.photoURL
+   })
+   console.log(this.currClub,"the current club");
+  }
+ rtClubName()
+ {
+  
+   return this.currClub
+ }
   async rtClubs()
   {
     let result :any
    await this.getClubs().then(data =>{
+    result = data
+  
+   console.log(result.length);
+  })
+  console.log(result);
+  //this.LandMarks()
+  return  result 
+  
+  // console.log(this.todos,"hh")
+   // return this.todos
+  }
+  async rtClubEvents()
+  {
+    let result :any
+   await this.getAClubsEvents(this.myclubs).then(data =>{
     result = data
   
    console.log(result.length);
@@ -279,15 +334,41 @@ console.log(ans,"ans array")
 }
 
 ////single clubs events
-getAClubsEvents(myclub)
+getAClubsEvents(myclubs)
 {
+ 
  this.events=[]
  this.eventsTemp=[]
   let ans=[]
   let ans2=[]
+  this.currClub=[]
+
+  //
+  this.clubKey=""
+  this.name =""
+  this.time=""
+  this.userID=""
+  this.photoURL=""
+  //
+   this.clubKey=myclubs.id
+   this.name =myclubs.name
+   this.time=myclubs.time
+   this.userID=myclubs.userID
+   this.photoURL=myclubs.photoURL
+
+  this.currClub.push({
+    clubKey: this.clubKey,
+    name: this.name,
+    time: this.time,
+    userID: this.userID,
+    photoURL:this.photoURL
+  })
+  console.log(this.currClub,"the current club");
+  
   // let user=this.readCurrentSession()
   // let userID=user.uid
-let clubID=myclub.clubID
+let clubID=myclubs.id
+console.log(clubID," ClubID")
   //
 return new Promise((resolve, reject) => {
 this.dbfire.collection("events").get().then((querySnapshot) => {
@@ -408,14 +489,14 @@ returnUserProfile(){
 }
  
 ///create event 
-addEvent(club,newName,newAddress,newOpeningHours,newClosingHours)
+addEvent(newName,newAddress,newOpeningHours,newClosingHours)
   {
    
     var styt=newOpeningHours.substring(11,16);
     var etyt=newClosingHours.substring(11,16);
     let user=this.readCurrentSession()
     let userID=user.uid
-    let clubID= club.ID
+    let clubID= this.currClub[0].clubKey
     console.log("HOT ",clubID)
 
    

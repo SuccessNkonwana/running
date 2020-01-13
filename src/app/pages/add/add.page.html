@@ -7,7 +7,7 @@
 <ion-item>
    <ion-slides startAutoplay [options]="slideOpts">
          <ion-slide >
-            <ion-button routerLink="/add-club" (click)="getAClubsEvents(myclub)" class="actButtons" color="primary" shape="round"><ion-icon name="add-circle"></ion-icon> Create</ion-button>
+            <ion-button routerLink="/add-club"  class="actButtons" color="primary" shape="round"><ion-icon name="add-circle"></ion-icon> Create</ion-button>
          </ion-slide>
          <ion-slide>
             <ion-button class="actButtons" color="primary" shape="round"><ion-icon name="navigate"></ion-icon> Discover </ion-button>
@@ -26,7 +26,7 @@
         <br/>
    
       <ion-list lines="none" *ngFor="let myclubs of clubs">
-          <ion-item routerDirection="forward"  class="item"      *ngIf="hasAClub" (click)="getAClubsEvents(myclub)">
+          <ion-item routerDirection="forward"  class="item"      *ngIf="hasAClub" (click)="getAClubsEvents(myclubs)">
 
                <ion-avatar > <img src="{{myclubs.photoURL}}"></ion-avatar> <p class="clubname"> {{myclubs.name}}</p>
           </ion-item>
