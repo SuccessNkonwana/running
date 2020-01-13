@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './guards/auth.guard';
+import { HomePage } from './home/home.page';
 import { TabsPage } from './pages/tabs/tabs.page';
 
 const routes: Routes = [
@@ -13,23 +13,13 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+
+  
+
   // {
-  //   path: 'home',
-  //   loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+  //   path: 'list',
+  //   loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   // },
-  
-
-  { path: 'tabs', component: TabsPage, children:
-  [
-    { path: 'home', loadChildren: './home/home.module#HomePageModule'},
-     { path: 'add', loadChildren: './pages/add/add.module#AddPageModule' },
-    { path: 'events', loadChildren: './pages/events/events.module#EventsPageModule' },
-    { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' }
-  
-  ] 
-},
-
-
   {
     path: 'landing',
     loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
@@ -50,12 +40,15 @@ const routes: Routes = [
     path: 'club-home',
     loadChildren: () => import('./pages/club-home/club-home.module').then( m => m.ClubHomePageModule)
   },
- 
   // {
   //   path: 'profile',
-  //   loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  //   loadChildren: () => import('./page/profile/profile.module').then( m => m.ProfilePageModule)
   // },
-  
+ 
+  // {
+  //   path: 'payments',
+  //   loadChildren: () => import('./pages/payments/payments.module').then( m => m.PaymentsPageModule)
+  // },
   {
     path: 'payments',
     loadChildren: () => import('./pages/payments/payments.module').then( m => m.PaymentsPageModule)
@@ -75,10 +68,44 @@ const routes: Routes = [
   {
     path: 'schedule-event',
     loadChildren: () => import('./pages/schedule-event/schedule-event.module').then( m => m.ScheduleEventPageModule)
-  },  {
-    path: 'event-home',
-    loadChildren: () => import('./event-home/event-home.module').then( m => m.EventHomePageModule)
   },
+
+
+  {
+    path: 'club-profile',
+    loadChildren: () => import('./club-profile/club-profile.module').then( m => m.ClubProfilePageModule)
+  },
+
+  {
+
+    path: 'tabs', component: TabsPage, children:[
+
+      {
+        path: 'home',
+        loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+      },
+
+      {
+        path: 'profile',
+        loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+      },
+      {
+        path: 'add',
+        loadChildren: () => import('./pages/add/add.module').then( m => m.AddPageModule)
+      },
+      {
+        path: 'events',
+        loadChildren: () => import('./pages/events/events.module').then( m => m.EventsPageModule)
+      },
+    ]
+
+  }
+
+  
+
+
+
+];
 
   // {
   //   path: 'events',
@@ -96,7 +123,7 @@ const routes: Routes = [
 
 
 
-];
+
 
 @NgModule({
   imports: [
