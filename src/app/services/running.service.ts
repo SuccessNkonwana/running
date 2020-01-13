@@ -40,10 +40,11 @@ export class RunningService {
   uploadPercent: any;
   task: any;
   file: any;
-
+  clubID:String
   clubKey:String
  name:String 
-  time:String
+openingHours:String
+closingHours:String
 userID:String
    photoURL:String
   ///
@@ -58,20 +59,23 @@ userID:String
    //
    this.clubKey=""
    this.name =""
-   this.time=""
+   this.openingHours=""
+   this.closingHours=""
    this.userID=""
    this.photoURL=""
    //
     this.clubKey=myclubs.id
     this.name =myclubs.name
-    this.time=myclubs.time
+    this.openingHours=myclubs.openingHours
+    this.closingHours=myclubs.closingHours
     this.userID=myclubs.userID
     this.photoURL=myclubs.photoURL
  
    this.currClub.push({
      clubKey: this.clubKey,
-     name: this.name,
-     time: this.time,
+     name: this.openingHours,
+     openingHours: this.openingHours,
+     closingHours: this.closingHours,
      userID: this.userID,
      photoURL:this.photoURL
    })
@@ -293,6 +297,8 @@ getIndividualsClubs()
   let user=this.readCurrentSession()
   let userID=user.uid
   //
+ 
+
 return new Promise((resolve, reject) => {
 this.dbfire.collection("clubs").get().then((querySnapshot) => {
    querySnapshot.forEach((doc) => {
@@ -302,7 +308,8 @@ this.dbfire.collection("clubs").get().then((querySnapshot) => {
      this.clubsTemp.push({
        clubKey: doc.id,
        name: doc.data().name,
-       time: doc.data().time,
+      openingHours: doc.data().openingHours,
+      closingHours: doc.data().closingHours,
        userID: doc.data().userID,
        photoURL: doc.data().photoURL
      })
@@ -346,20 +353,23 @@ getAClubsEvents(myclubs)
   //
   this.clubKey=""
   this.name =""
-  this.time=""
+  this.openingHours=""
+  this.closingHours=""
   this.userID=""
   this.photoURL=""
   //
-   this.clubKey=myclubs.id
+   this.clubKey=myclubs.clubKey
    this.name =myclubs.name
-   this.time=myclubs.time
+   this.openingHours=myclubs.openingHours
+   this.closingHours=myclubs.closingHours
    this.userID=myclubs.userID
    this.photoURL=myclubs.photoURL
 
   this.currClub.push({
     clubKey: this.clubKey,
     name: this.name,
-    time: this.time,
+    openingHours: this.openingHours,
+    closingHours: this.closingHours,
     userID: this.userID,
     photoURL:this.photoURL
   })
@@ -367,8 +377,8 @@ getAClubsEvents(myclubs)
   
   // let user=this.readCurrentSession()
   // let userID=user.uid
-let clubID=myclubs.id
-console.log(clubID," ClubID")
+
+console.log(this.clubKey," ClubID vele")
   //
 return new Promise((resolve, reject) => {
 this.dbfire.collection("events").get().then((querySnapshot) => {
@@ -383,7 +393,7 @@ this.dbfire.collection("events").get().then((querySnapshot) => {
        openingHours: doc.data().openingHours,
        closingHours: doc.data().closingHours,
        userID:doc.data().userID,
-       clubID: doc.data().clubID
+       clubKey: doc.data().clubKey
 
      })
        console.log( this.eventsTemp,"events array")
@@ -396,9 +406,9 @@ this.dbfire.collection("events").get().then((querySnapshot) => {
    console.log( this.eventsTemp.length,"events array SIZE")
    for(let x=0;x< this.eventsTemp.length;x++)
    {
-    console.log( this.eventsTemp[x].clubID,"CLUB id at x ")
+    console.log( this.eventsTemp[x].clubKey,"CLUB id at x ")
 
-        if(this.eventsTemp[x].clubID===clubID)
+        if(this.eventsTemp[x].clubKey===this.clubKey)
         {
           this.events.push(this.eventsTemp[x])
 
@@ -496,8 +506,8 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours)
     var etyt=newClosingHours.substring(11,16);
     let user=this.readCurrentSession()
     let userID=user.uid
-    let clubID= this.currClub[0].clubKey
-    console.log("HOT ",clubID)
+    let clubKey= this.currClub[0].clubKey
+    console.log("HOT ",clubKey)
 
    
     this.dbfire.collection("clubs").add({
@@ -506,7 +516,7 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours)
       openingHours: styt,
       closingHours: etyt,
       userID:userID,
-      clubID: clubID
+      clubID: clubKey
       
     }).then((data)=>{
     
