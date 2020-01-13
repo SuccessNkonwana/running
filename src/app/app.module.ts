@@ -12,6 +12,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { TabsPage } from './pages/tabs/tabs.page';
+import { Ionic4MaskDirective } from "ionic4-mask-directive";
+import { CalendarModule } from 'ion2-calendar';
+ 
 // import { TabsPageModule } from './pages/tabs/tabs.module';
 const firebaseConfig = {
   apiKey: "AIzaSyAv85O55WcgVEXgWUTr5GVqspI__ywOSn4",
@@ -36,6 +39,8 @@ const firebaseConfig = {
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
+    CalendarModule,
+    
     // TabsPageModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],

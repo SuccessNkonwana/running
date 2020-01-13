@@ -31,12 +31,13 @@
                     </ion-col>
                 </ion-row>
             </ion-grid>
-            <ion-item></ion-item>
+            <ion-item ></ion-item>
+            <br>
             <ion-item lines="none" class="mon">
                 <ion-icon class="money" name="cash"></ion-icon> &nbsp;&nbsp;
 
 
-                <p> <sub class="bot">R150.00</sub> Per Person</p>
+                <p> <sub class="bot">R{{price}}.00</sub> Per Person</p>
             </ion-item>
 
         </ion-card>
@@ -44,22 +45,26 @@
             <br>
             <h5>how many tickets do you want?</h5>
             <br><br>
-            <ion-item lines="none" class="go">
-                <ion-fab-button color="light" size="small">
-                    <ion-icon color="primary" name="remove"></ion-icon>
-                </ion-fab-button>
-                1
-                <ion-fab-button color="light" size="small">
-                    <ion-icon color="primary" name="add"></ion-icon>
-                </ion-fab-button>
-            </ion-item>
+            <ion-item-divider  lines="none" class="go" >
+                <div style="width: 100%; text-align: center;">
+                    <ion-fab-button (click)="sub(1)" center color="light" size="small">
+                        <ion-icon color="primary" name="remove"></ion-icon>
+                    </ion-fab-button>
+                    {{tickets}}
+                    <ion-fab-button (click)="add(1)" color="light" size="small">
+                        <ion-icon color="primary" name="add"></ion-icon>
+                    </ion-fab-button>
+                
+                </div><br>
+                
+            </ion-item-divider>
             <br><br>
 
-            <h1>Total: R150.00
+            <h1>Total: R{{total}}.00
 
             </h1>
             <br><br><br>
-            <ion-button shape="round" expand="block"><b>Book now</b></ion-button>
+            <ion-button shape="round" expand="block" (click)="book()"><b>Book now</b></ion-button>
         </ion-card>
     </body>
 
