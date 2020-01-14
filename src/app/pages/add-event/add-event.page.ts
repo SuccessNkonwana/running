@@ -26,6 +26,7 @@ export class AddEventPage implements OnInit {
   newClosingHours
   newPrice
   user = {} as User;
+  
   public eventForm: FormGroup;
 
 

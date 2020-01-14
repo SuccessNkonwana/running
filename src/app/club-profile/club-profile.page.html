@@ -1,13 +1,11 @@
 <ion-content class="body">
-    <ion-buttons color="light" slot="start">
+
+    <!-- <ion-buttons color="light" slot="start">
         <ion-back-button defaultHref="tabs/add"></ion-back-button>
-    </ion-buttons>
+    </ion-buttons> -->
     <div *ngFor="let myclubs of clubs ">
         <ion-header text-center class="h">
             <ion-avatar> <img src="{{photoURL}}"></ion-avatar>
-        </ion-header>
-        <ion-header text-center class="title">
-            {{clubName}}
         </ion-header>
         <br/>
 
@@ -36,7 +34,7 @@
         <br/>
 
         <ion-list lines="none" *ngFor="let myevents of events">
-            <ion-item class="eventCard" class="item">
+            <ion-item class="eventCard" class="item" *ngIf="hasAEvent">
                 <ion-card>
                     <img class="ecardimg" src="\assets\images\pexels-photo-2283996event.jpeg" />
                     <ion-card-header>
@@ -60,8 +58,4 @@
             <br/>
 
         </div>
-        <!-- <body> -->
-
-        <!-- </body> -->
-    </div>
 </ion-content>
