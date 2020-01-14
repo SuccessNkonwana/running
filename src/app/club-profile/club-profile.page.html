@@ -30,7 +30,7 @@
       <br/>
  
     <ion-list lines="none" *ngFor="let myevents of events">
-      <ion-item class="eventCard" class="item"  >
+      <ion-item class="eventCard" class="item"  *ngIf="hasAEvent">
           <ion-card >
               <img class="ecardimg" src="\assets\images\pexels-photo-2283996event.jpeg" />
               <ion-card-header>
