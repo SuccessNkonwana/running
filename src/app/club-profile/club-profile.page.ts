@@ -45,6 +45,7 @@ export class ClubProfilePage implements OnInit {
   getdata()
   {
     this.clubs=[] 
+    this.events= []; 
   this.clubName=null
   this.photoURL=null
   this.clubs= this.runn.rtClubName() 
