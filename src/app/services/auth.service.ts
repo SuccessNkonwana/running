@@ -10,6 +10,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { switchMap, finalize } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
 
+declare var gapi:any;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +19,7 @@ export class AuthService {
  
 
   user: Observable<User>;
+  calendarItems:any;
   ​ currentSession
   currentUser
   currentSessionId
@@ -35,6 +38,7 @@ export class AuthService {
   theUser
   
     constructor(public alertCtrl:AlertController,  
+     
       private afs: AngularFirestore,
       public loadingCtrl: LoadingController,
       private db: AngularFirestore,
@@ -42,6 +46,7 @@ export class AuthService {
       private storage:AngularFireStorage,
       
       private afAuth:AngularFireAuth) {
+        this.initClient();
   
         afAuth.auth.onAuthStateChanged((user) => {
           if (user) {
@@ -202,10 +207,6 @@ export class AuthService {
   }
 
 
-
-
-
-
   getUsers() {
     return this.afs.collection('users', ref => ref.orderBy('displayName')).valueChanges()
   }
@@ -213,10 +214,17 @@ export class AuthService {
     return this.afAuth.auth.currentUser.uid;
   }
  
-  update(key, value) {
-    return this.afs.doc('users/' + key).update({
-      update: value,
-    })
-  }
+  initClient(){
+    gapi.load('client',()=>{
 
+      console.log('loaded client')
+// https://www.youtube.com/watch?v=Bj15-6rBHQw
+// https://developers.google.com/calendar/quickstart/js
+      gapi.client.init({
+        apiKey:'AIzaSyAv85O55WcgVEXgWUTr5GVqspI__ywOSn4',
+        clientId:'AIzaSyDYkSYgroyp5uv7g69WVXmC7rRAKdf8EmE',
+        discoveryDocs:["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]
+      })
+    });
+  }
 }

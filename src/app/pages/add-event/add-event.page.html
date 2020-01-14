@@ -29,7 +29,7 @@
 
                                         <ion-item id="item" color="transparent">
                                             <ion-label position="floating">Event name</ion-label>
-                                            <ion-input type="text" formControlName="newName"></ion-input>
+                                            <ion-input type="text" [(ngModel)]="newName" formControlName="newName"></ion-input>
                                         </ion-item>
                                         <div class="error" *ngIf="eventForm.get('newName').hasError('required') && eventForm.get('newName').touched">
                                             Please input your event
@@ -42,7 +42,7 @@
                                         </div>
                                         <ion-item id="item" color="transparent">
                                             <ion-label position="floating">Address</ion-label>
-                                            <ion-input type="text" formControlName="newAddress"></ion-input>
+                                            <ion-input type="text" [(ngModel)]="newAddress" formControlName="newAddress"></ion-input>
                                         </ion-item>
 
                                         <div *ngIf="eventForm.controls.newAddress.invalid && eventForm.controls.newAddress.dirty">
@@ -55,7 +55,7 @@
                                                 <ion-col>
                                                     <ion-item id="item" color="transparent">
                                                         <ion-label position="floating">Opening Time</ion-label>
-                                                        <ion-datetime formControlName="newOpeningHours" displayFormat="H:mm a"></ion-datetime>
+                                                        <ion-datetime [(ngModel)]="newOpeningHours" formControlName="newOpeningHours" displayFormat="H:mm a"></ion-datetime>
                                                     </ion-item>
                                                     <div *ngIf="eventForm.controls.newOpeningHours.invalid && eventForm.controls.newOpeningHours.dirty">
                                                     </div>
@@ -66,7 +66,7 @@
                                                 <ion-col>
                                                     <ion-item id="item" color="transparent">
                                                         <ion-label position="floating">Closing Time</ion-label>
-                                                        <ion-datetime formControlName="newClosingHours" displayFormat="H:mm a"></ion-datetime>
+                                                        <ion-datetime [(ngModel)]="newClosingHours" formControlName="newClosingHours" displayFormat="H:mm a"></ion-datetime>
                                                     </ion-item>
                                                     <div *ngIf="eventForm.controls.newClosingHours.invalid && eventForm.controls.newClosingHours.Close">
                                                     </div>
@@ -74,6 +74,19 @@
                                                         Please input your Close Hour
                                                     </div>
                                                 </ion-col>
+                                                <!-- price -->
+                                                <ion-item id="item" color="transparent">
+                                                    <ion-label position="floating">Price(R)</ion-label>
+                                                    <ion-input type="text" [(ngModel)]="newPrice" formControlName="newPrice"></ion-input>
+                                                </ion-item>
+
+                                                <div *ngIf="eventForm.controls.newPrice.invalid && eventForm.controls.newPrice.dirty">
+                                                </div>
+                                                <div class="error" *ngIf="eventForm.get('newPrice').hasError('required') && eventForm.get('newPrice').touched">
+                                                    Please input the Price
+                                                </div>
+
+                                                <!-- price -->
                                             </ion-row>
                                         </ion-grid>
 
@@ -94,7 +107,7 @@
                                         </ion-item> -->
                                         <br><br>
                                         <ion-col>
-                                            <ion-button routerLink='/club-profile' shape="round" expand="full" color="light" [disabled]="!eventForm.valid" (click)="addEvent(club,newName,newAddress,newOpeningHours,newClosingHours)">Add</ion-button>
+                                            <ion-button shape="round" routerLink="/club-profile" expand="full" color="light" [disabled]="!eventForm.valid" (click)="addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)">Add</ion-button>
                                         </ion-col>
 
                                         <br>
