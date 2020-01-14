@@ -23,7 +23,8 @@ const routes: Routes = [
   {
     path: 'schedule-event',
     loadChildren: () => import('./schedule-event/schedule-event.module').then( m => m.ScheduleEventPageModule)
-  },  {
+  },
+  {
     path: 'events',
     loadChildren: () => import('./events/events.module').then( m => m.EventsPageModule)
   },

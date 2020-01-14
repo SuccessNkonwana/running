@@ -101,13 +101,13 @@ slideOpts = {
   {
     this.router.navigateByUrl("add-club")
   }
-  // goHome()
-  // {
-  //   this.router.navigateByUrl("home")
-  // }
-  // gotoProfile(){
-  //   this.router.navigateByUrl("profile")
-  // }
+  goHome()
+  {
+    this.router.navigateByUrl("home")
+  }
+  gotoProfile(){
+    this.router.navigateByUrl("profile")
+  }
   // gotoEvents(){
   //   this.router.navigateByUrl("events")
   // }

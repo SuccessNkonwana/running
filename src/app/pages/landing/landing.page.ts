@@ -14,5 +14,6 @@ export class LandingPage implements OnInit {
   }
 goToLogin(){
   this.route.navigate(['/login']);
+  
 }
 }

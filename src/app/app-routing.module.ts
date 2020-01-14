@@ -107,6 +107,24 @@ const routes: Routes = [
 
 ];
 
+  // {
+  //   path: 'events',
+  //   loadChildren: () => import('./pages/events/events.module').then( m => m.EventsPageModule)
+  // },
+  // {
+  //   path: 'add',
+  //   loadChildren: () => import('./pages/add/add.module').then( m => m.AddPageModule)
+  // },
+  // {
+  //   path: 'tabs',
+  //   loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  // }
+  
+
+
+
+
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
