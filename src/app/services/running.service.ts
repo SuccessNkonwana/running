@@ -4,6 +4,9 @@ import 'firebase/firestore';
 import { AuthService } from './auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { switchMap, finalize } from 'rxjs/operators';
+import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { eventNames } from 'cluster';
 @Injectable({
   providedIn: 'root'
 })
@@ -48,7 +51,7 @@ userID:String
    photoURL:String
   ///
 
-  constructor(public auths:AuthService,private storage:AngularFireStorage)
+  constructor(public auths:AuthService,private storage:AngularFireStorage, public navCtrl:NavController, public route:Router)
   { 
   }
   currentClub(myclubs)
@@ -579,5 +582,78 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours)
 ///retrieve event
 ///update event
 ///delete event
+
+// booking the event
+BookEvent(eventName,eventAddress,eventOpeningHours,eventClosingHours,eventPrice,tickets,totalPrice)
+  {
+   
+    var styt=eventOpeningHours.substring(11,16);
+    var etyt=eventClosingHours.substring(11,16);
+    let user=this.readCurrentSession()
+    let userID=user.uid
+    // let clubID= this.currClub[0].clubKey
+    // console.log("HOT ",clubID)
+
+   
+    this.dbfire.collection("bookedEvents").add({
+      event: eventName,
+      address: eventAddress,
+      openingHours: styt,
+      closingHours: etyt,
+      userID:userID,
+      // clubID: clubID,
+      price:eventPrice,
+      tickets:tickets,
+      total:totalPrice
+      
+    }).then((data)=>{
+    
+    
+     
+      console.log(data)
+      // this.route.navigate(['/payments'],{queryParams:{name:eventNames}})
+      //  this.route.navigate(['/edit'],{queryParams:{name: item.name,price:item.price,type:item.type,key:item.key}})
+
+      // this.navCtrl.navigateRoot("/payments");
+    }).catch((error)=>{
+      console.log(error)
+    })
+  
+
+  }
+  // paying for the event
+  payment(eventName,eventAddress,eventPrice,tickets,totalPrice)
+  {
+   
+    
+    let user=this.readCurrentSession()
+    let userID=user.uid
+    // let clubID= this.currClub[0].clubKey
+    // console.log("HOT ",clubID)
+
+   
+    this.dbfire.collection("bookedEvents").add({
+      event: eventName,
+      address: eventAddress,
+      userID:userID,
+      // clubID: clubID,
+      price:eventPrice,
+      tickets:tickets,
+      total:totalPrice
+      
+    }).then((data)=>{
+    
+    
+     
+      console.log(data)
+      //  this.route.navigate(['/edit'],{queryParams:{name: item.name,price:item.price,type:item.type,key:item.key}})
+
+      // this.navCtrl.navigateRoot("/done");
+    }).catch((error)=>{
+      console.log(error)
+    })
+  
+
+  }
 }
 

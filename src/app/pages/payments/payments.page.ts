@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-payments',
@@ -19,9 +20,10 @@ export class PaymentsPage implements OnInit {
   // maxLength: number = 3;
 
 // this.card1=this.card.substring(0,3);
-
+objectA={
+  name:''}
   public paymentsForm: FormGroup;
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder,private route:ActivatedRoute) { 
     
     this.paymentsForm = fb.group({
        
@@ -45,6 +47,8 @@ export class PaymentsPage implements OnInit {
     this.date;
     this.name;
     this.card;
+
+    
   }
 
   pattern(card: string){
