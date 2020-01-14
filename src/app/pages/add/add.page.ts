@@ -43,9 +43,10 @@ slideOpts = {
           console.log(x);
           
          this.clubs.push({ 
-           todoKey:  data[x].todoKey,
+           clubKey:  data[x].clubKey,
            name:  data[x].name,
-           time:  data[x].time,
+           openingHours:  data[x].openingHours,
+           closingHours:  data[x].closingHours,
            userID:  data[x].userID,
            photoURL:data[x].photoURL})
            

@@ -9,6 +9,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class ClubProfilePage implements OnInit {
   clubs=[]
+  hasAEvent=true
   clubName:String=""
   photoURL:String=""
   events= [];
@@ -39,6 +40,7 @@ export class ClubProfilePage implements OnInit {
   }
   ngOnInit() {
   }
+ 
 
   getdata()
   {
@@ -46,8 +48,11 @@ export class ClubProfilePage implements OnInit {
   this.clubName=null
   this.photoURL=null
   this.clubs= this.runn.rtClubName() 
-  this.clubName=this.clubs[0].name
-  this.photoURL=this.clubs[0].photoURL
+  this.clubName=this.clubs[0].myclubs.name
+  this.photoURL=this.clubs[0].myclubs.photoURL
+  console.log(this.clubs," $$$$$$$$$$$$");
+  console.log(this.clubName," $$$$$$$$$$$$");
+  console.log(this.photoURL,"$$$$$$$$$");
 
     return new Promise((resolve, reject) => {
       this.runn.rtClubEvents().then(data =>{
@@ -63,12 +68,16 @@ export class ClubProfilePage implements OnInit {
           address:  data[x].address,
           openingHours:  data[x].openingHours,
           closingHours:data[x].closingHours,
-          clubID:data[x].clubID
+          price:data[x].price,
+          clubKey:data[x].clubKey
         
         })
          
         }
-      
+         if(this.events===null)
+         {
+           this.hasAEvent=false
+         }
  
       console.log(this.events,"LAST ONE")
 
@@ -79,6 +88,7 @@ export class ClubProfilePage implements OnInit {
   currentClub(myclubs)
   {
 
+    console.log(myclubs+"@@@@@@@@@@")
     this.runn.currentClub(myclubs)
   }
 
