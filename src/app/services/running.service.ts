@@ -89,6 +89,21 @@ userID:String
   // console.log(this.todos,"hh")
    // return this.todos
   }
+  async rtEvents()
+  {
+    let result :any
+   await this.getEvents().then(data =>{
+    result = data
+  
+   console.log(result.length);
+  })
+  console.log(result);
+  //this.LandMarks()
+  return  result 
+  
+  // console.log(this.todos,"hh")
+   // return this.todos
+  }
   async rtClubEvents()
   {
     let result :any
@@ -270,6 +285,49 @@ this.dbfire.collection("clubs").get().then((querySnapshot) => {
    }
    resolve(this.clubsTemp)
    console.log(this.clubsTemp,"clubs array")
+console.log(ans,"ans array")
+});
+});
+
+ 
+}
+///////get todos
+getEvents()
+{
+ this.events=[]
+ this.eventsTemp=[]
+  let ans=[]
+  let ans2=[]
+  let user=this.readCurrentSession()
+  let userID=user.uid
+  //
+  return new Promise((resolve, reject) => {
+    this.dbfire.collection("events").get().then((querySnapshot) => {
+       querySnapshot.forEach((doc) => {
+        
+        // ans.push(doc.data())
+         console.log(doc.id, '=>', doc.data());
+         this.eventsTemp.push({
+           eventKey: doc.id,
+           name: doc.data().name,
+           address: doc.data().address,
+           openingHours: doc.data().openingHours,
+           closingHours: doc.data().closingHours,
+           userID:doc.data().userID,
+           clubKey: doc.data().clubKey
+    
+         })
+           console.log( this.eventsTemp,"events array")
+           console.log(name,"event array")
+       
+           console.log( this.eventsTemp.length,"events array SIZE")
+       //  this.todoTemp.push()
+         
+       });
+       console.log( this.eventsTemp.length,"events array SIZE")
+   
+   resolve(this.eventsTemp)
+   console.log(this.eventsTemp,"events array")
 console.log(ans,"ans array")
 });
 });
