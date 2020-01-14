@@ -136,4 +136,72 @@ body {
         border-bottom-left-radius: 20%;
         padding: 10px 0px 0px 0px !important;
     }
+    img {
+        border-radius: 50%;
+        text-align: center;
+    }
+     :root {
+        .profile {
+            height: 100%;
+            width: 100%;
+            -webkit-box-shadow: 0px 0px 142px -37px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 0px 0px 142px -37px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 0px 142px -37px rgba(0, 0, 0, 0.75);
+        }
+    }
+    .profile-image img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .input {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .profile-image {
+        img {
+            background-color: white;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            -webkit-box-shadow: 0px 0px 142px -37px rgb(32, 114, 125);
+            -moz-box-shadow: 0px 0px 142px -37px rgb(32, 114, 125);
+            box-shadow: 0px 0px 142px -37px rgb(32, 114, 125);
+        }
+        .pro-pic {
+            size: 16px;
+        }
+    }
+    .profile-image {
+        position: absolute;
+        z-index: 5;
+        top: 8%;
+        left: 10%;
+    }
+    .image-upload>input {
+        display: none;
+        margin-top: 20px;
+    }
+    .input {
+        font-size: 25px;
+    }
+    ion-spinner {
+        display: block;
+        margin: auto;
+        top: -60px;
+        width: 30px;
+        height: 30px;
+    }
+    // ion-fab {}
+    .document {
+        font-size: 20px;
+    }
+    .camera {
+        font-size: 20px;
+    }
+    .fab {
+        top: 80px !important;
+    }
 }
