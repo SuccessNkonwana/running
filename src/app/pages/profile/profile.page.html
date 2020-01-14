@@ -3,7 +3,7 @@
 <ion-content class="theBody" >
         
 
-    <body  >
+    <body>  
         <div *ngFor="let user of theUser ">
         <div id="bg" >
             <ion-grid>
@@ -32,14 +32,10 @@
                                             <ion-fab-button color="primary" size="small">
                                                 <ion-icon name="camera" class="input"> </ion-icon>
                                             </ion-fab-button>
+                                            
+            
+            
                                             <ion-fab-list side="start">
-                                                <ion-fab-button color="primary">
-                                                    <ion-icon name="camera" (click)="pickImage()" class="camera"> </ion-icon>
-                                                </ion-fab-button>
-            
-                                            </ion-fab-list>
-            
-                                            <ion-fab-list side="end">
                                                 <ion-fab-button color="primary">
                                                     <label for="file-input2">
                                                                     <ion-icon name="document" class="document"> </ion-icon> 
@@ -59,7 +55,7 @@
                                     <ion-list lines="none" >
                                     <ion-item detail-push>
 
-                                            <ion-label (click)=" NameUpdate(user)"><Nav>{{user.email}}</Nav></ion-label>
+                                            <ion-label (click)=" EmailUpdate(user)"><Nav>{{user.email}}</Nav></ion-label>
                         
                                             <ion-icon  name="mail" color="primary" slot="start" ></ion-icon>
                                             <!-- <ion-icon name="create" color="dark" slot="end" (click)=" NameUpdate(user)"></ion-icon> -->
@@ -107,6 +103,6 @@
   <div class="line">
     <img src="\assets\images\tbo-removebg-preview.png">
 </div>
-    </body>
+    </body>>
     
 </ion-content>

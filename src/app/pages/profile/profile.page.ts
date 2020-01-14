@@ -12,6 +12,13 @@ import { RunningService } from 'src/app/services/running.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  objectA={
+    name:'',
+    email:'',
+  price:'',
+  type:'',
+  key:''
+  }
   users: any;
   defaultpic=true
   theUser=[];
@@ -22,6 +29,8 @@ export class ProfilePage implements OnInit {
   photoURL: string;
   uploadPercent: number;
   thegender: string;
+  theKey;
+  theEmail;
   constructor(
     private authService: AuthService,
     public afs:AngularFirestore,
@@ -46,42 +55,9 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
   }
-  // update name
-  async NameUpdate(user) {
-    const alert = await this.altctrl.create({
-      subHeader: 'Add/Edit Name',
-      inputs: [
-        {
-          name: 'displayName',
-          type: 'text',
-          value: user.displayName,
-          placeholder: 'displayName'
-        },
+  
 
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-          }
-        }, {
-          text: 'Ok',
-          handler: (inputData) => {
-            console.log(inputData.name1)
-            this.MUsers.update({
 
-              displayName: inputData.displayName,
-            })
-
-          }
-        }
-      ]
-    });
-    await alert.present();
-    let result = await alert.onDidDismiss();
-  }
   uploadProfilePic(event){
     this.authService.uploadProfilePic(event).subscribe((data:number)=>{
       this.uploadPercent=data
@@ -110,13 +86,6 @@ export class ProfilePage implements OnInit {
           photoURL:data[x].photoURL}
           
           )
-          // userKey: doc.id,
-          //    name: doc.data().displayName,
-          //    age: doc.data().Age,
-          //    Email: doc.data().Email,
-          //    gender: doc.data().gender,
-          //    photoURL: doc.data().photoURL
-    
         }
       console.log(this.theUser,"the LAST ONE vele" )
            if(this.theUser[0].photoURL==null)
@@ -125,8 +94,47 @@ export class ProfilePage implements OnInit {
             
            }
      })
-    })
+    }
+    )
   
+  }
+  async EmailUpdate(user) {
+
+    
+    const alert = await this.altctrl.create({
+      subHeader: 'Add/Edit Name',
+      inputs: [
+        {
+          name: 'Email address',
+          type: 'text',
+          value: user.Email,
+          placeholder: 'Email address'
+        },
+
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        }, {
+          text: 'Ok',
+          handler: (inputData) => {
+            // console.log(inputData.name1)
+            this.runn.update(this.objectA,this.objectA.key)
+          
+     console.log("email updated")
+            
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+    let result = await alert.onDidDismiss();
+
   }
  
 }

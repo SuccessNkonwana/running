@@ -7,6 +7,7 @@ import { switchMap, finalize } from 'rxjs/operators';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { eventNames } from 'cluster';
+import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
 })
@@ -52,8 +53,8 @@ closingHours:String
 userID:String
    photoURL:String
   ///
-
-  constructor(public auths:AuthService,private storage:AngularFireStorage, public navCtrl:NavController, public route:Router)
+  private itemDoc: AngularFirestoreDocument<Item>;
+  constructor(public auths:AuthService,private storage:AngularFireStorage,private afs: AngularFirestore, public navCtrl:NavController, public route:Router)
   { 
   }
   currentClub(myclubs)
@@ -639,6 +640,18 @@ BookEvent(eventName,eventAddress,eventOpeningHours,eventClosingHours,eventPrice,
     })
   
 
+  }
+  update(objectA,key){
+
+    this.itemDoc = this.afs.doc<Item>('users/'+key);
+    this.itemDoc.update(objectA);
+  }
+  delete(key){
+  
+    this.itemDoc = this.afs.doc<Item>('users/'+key);
+    // this.itemDoc.update(objectA);
+    this.itemDoc.delete();
+   
   }
 }
 

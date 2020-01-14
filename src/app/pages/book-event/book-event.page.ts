@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { RunningService } from 'src/app/services/running.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { eventNames } from 'cluster';
+// import { eventNames } from 'cluster';
 
 @Component({
   selector: 'app-book-event',
