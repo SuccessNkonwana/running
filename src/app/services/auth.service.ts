@@ -101,7 +101,7 @@ export class AuthService {
            
             this.theUser=firebase.auth()
             console.log("success",this.theUser);
-            this.navCtrl.navigateRoot("home");
+            this.navCtrl.navigateRoot("tabs/home");
           return this.theUser
         }).catch((err) => {
           this.alertCtrl.create({
@@ -213,5 +213,10 @@ export class AuthService {
     return this.afAuth.auth.currentUser.uid;
   }
  
+  update(key, value) {
+    return this.afs.doc('users/' + key).update({
+      update: value,
+    })
+  }
 
 }

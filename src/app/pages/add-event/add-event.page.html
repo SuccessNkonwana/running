@@ -11,6 +11,11 @@
                         <ion-col align-self-center size-md="11" size-lg="11" size-xs="12">
 
                             <div class="div1">
+                                <ion-buttons color="light" slot="start">
+                                    <ion-back-button defaultHref="club-profile"></ion-back-button>
+                                </ion-buttons>
+                                <!-- <ion-icon name="arrow-round-back" defaultHref="club-profile"></ion-icon> -->
+
 
                                 <h2 id="heading">Add Your Event!</h2>
                                 <br><br><br>
@@ -26,13 +31,13 @@
                                             <ion-label position="floating">Event name</ion-label>
                                             <ion-input type="text" formControlName="newName"></ion-input>
                                         </ion-item>
-                                        <div class="error" *ngIf="eventForm.get('event').hasError('required') && eventForm.get('event').touched">
+                                        <div class="error" *ngIf="eventForm.get('newName').hasError('required') && eventForm.get('newName').touched">
                                             Please input your event
                                         </div>
-                                        <div class="error" *ngIf="eventForm.get('event').hasError('minlength') && eventForm.get('event').touched">
+                                        <div class="error" *ngIf="eventForm.get('newName').hasError('minlength') && eventForm.get('newName').touched">
                                             Minimum 4 characters
                                         </div>
-                                        <div class="error" *ngIf="eventForm.get('event').hasError('maxlength') && eventForm.get('event').touched">
+                                        <div class="error" *ngIf="eventForm.get('newName').hasError('maxlength') && eventForm.get('newName').touched">
                                             Maximum 30 characters
                                         </div>
                                         <ion-item id="item" color="transparent">
@@ -40,9 +45,9 @@
                                             <ion-input type="text" formControlName="newAddress"></ion-input>
                                         </ion-item>
 
-                                        <div *ngIf="eventForm.controls.Address.invalid && eventForm.controls.Address.dirty">
+                                        <div *ngIf="eventForm.controls.newAddress.invalid && eventForm.controls.newAddress.dirty">
                                         </div>
-                                        <div class="error" *ngIf="eventForm.get('Address').hasError('required') && eventForm.get('Address').touched">
+                                        <div class="error" *ngIf="eventForm.get('newAddress').hasError('required') && eventForm.get('newAddress').touched">
                                             Please input your Address
                                         </div>
                                         <ion-grid>
@@ -52,9 +57,9 @@
                                                         <ion-label position="floating">Opening Time</ion-label>
                                                         <ion-datetime formControlName="newOpeningHours" displayFormat="H:mm a"></ion-datetime>
                                                     </ion-item>
-                                                    <div *ngIf="eventForm.controls.Hours.invalid && eventForm.controls.Hours.dirty">
+                                                    <div *ngIf="eventForm.controls.newOpeningHours.invalid && eventForm.controls.newOpeningHours.dirty">
                                                     </div>
-                                                    <div class="error" *ngIf="eventForm.get('Hours').hasError('required') && eventForm.get('Hours').touched">
+                                                    <div class="error" *ngIf="eventForm.get('newOpeningHours').hasError('required') && eventForm.get('newOpeningHours').touched">
                                                         Please input your Open Hour
                                                     </div>
                                                 </ion-col>
@@ -63,9 +68,9 @@
                                                         <ion-label position="floating">Closing Time</ion-label>
                                                         <ion-datetime formControlName="newClosingHours" displayFormat="H:mm a"></ion-datetime>
                                                     </ion-item>
-                                                    <div *ngIf="eventForm.controls.Close.invalid && eventForm.controls.Hours.Close">
+                                                    <div *ngIf="eventForm.controls.newClosingHours.invalid && eventForm.controls.newClosingHours.Close">
                                                     </div>
-                                                    <div class="error" *ngIf="eventForm.get('Close').hasError('required') && eventForm.get('Close').touched">
+                                                    <div class="error" *ngIf="eventForm.get('newClosingHours').hasError('required') && eventForm.get('newClosingHours').touched">
                                                         Please input your Close Hour
                                                     </div>
                                                 </ion-col>
@@ -89,7 +94,7 @@
                                         </ion-item> -->
                                         <br><br>
                                         <ion-col>
-                                            <ion-button shape="round" expand="full" color="light" [disabled]="!eventForm.valid" (click)="addEvent(club,newName,newAddress,newOpeningHours,newClosingHours)">Add</ion-button>
+                                            <ion-button routerLink='/club-profile' shape="round" expand="full" color="light" [disabled]="!eventForm.valid" (click)="addEvent(club,newName,newAddress,newOpeningHours,newClosingHours)">Add</ion-button>
                                         </ion-col>
 
                                         <br>

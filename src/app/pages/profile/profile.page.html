@@ -1,33 +1,30 @@
+<ion-content class="theBody">
 
 
-
-<ion-content class="theBody" >
-        
-
-    <body  >
+    <body>
         <div *ngFor="let user of theUser ">
-        <div id="bg" >
-            <ion-grid>
-                <ion-row color="primary" justify-content-center>
-                    <br>
-                    <ion-col align-self-center size-md="12" size-lg="11" size-xs="12">
+            <div id="bg">
+                <ion-grid>
+                    <ion-row color="primary" justify-content-center>
+                        <br>
+                        <ion-col align-self-center size-md="12" size-lg="11" size-xs="12">
 
-                        <div class="div1">
-                            <!-- <ion-avatar class="avatar">
+                            <div class="div1">
+                                <!-- <ion-avatar class="avatar">
                                 <img src="assets/images/rep.jpg" alt="Avatar" class="img">
                             </ion-avatar> -->
-                            <h2 id="heading" text-center>My Profile</h2>
-                           
-                            <p id="name">{{user.name}}</p>
-                        
-                            <div  class="profile-image">
-                                    <div *ngIf="defaultpic" >
-                                        <img  src="{{user.photoURL}}" >
+                                <h2 id="heading" text-center>My Profile</h2>
+
+                                <p id="name">{{user.name}}</p>
+
+                                <div class="profile-image">
+                                    <div *ngIf="defaultpic">
+                                        <img src="{{user.photoURL}}">
                                     </div>
                                     <div *ngIf="!defaultpic">
-                                        <img  src="\assets\images\profile-user.png" >
+                                        <img src="\assets\images\profile-user.png">
                                     </div>
-            
+
                                     <div class="image-upload">
                                         <ion-fab horizontal="center" vertical="top" class="fab">
                                             <ion-fab-button color="primary" size="small">
@@ -37,100 +34,81 @@
                                                 <ion-fab-button color="primary">
                                                     <ion-icon name="camera" (click)="pickImage()" class="camera"> </ion-icon>
                                                 </ion-fab-button>
-            
+
                                             </ion-fab-list>
-            
+
                                             <ion-fab-list side="end">
                                                 <ion-fab-button color="primary">
                                                     <label for="file-input2">
                                                                     <ion-icon name="document" class="document"> </ion-icon> 
                                                             </label>
-                                            </ion-fab-button>
-                                        </ion-fab-list>
-                                    </ion-fab>
+                                                </ion-fab-button>
+                                            </ion-fab-list>
+                                        </ion-fab>
 
 
-                                    <input id="file-input2" class="input" type="file" (change)="uploadProfilePic($event)" />
+                                        <input id="file-input2" class="input" type="file" (change)="uploadProfilePic($event)" />
+                                    </div>
                                 </div>
-                            </div>
-                            <br><br><br>
-                            <div class="div2">
+                                <br><br><br>
+                                <div class="div2">
                                     <br><br><br>
                                     <br><br><br>
-                                    <ion-list lines="none" >
-                                    <ion-item detail-push>
+                                    <ion-list lines="none">
+                                        <ion-item detail-push>
 
-                                            <ion-label (click)=" NameUpdate(user)"><Nav>{{user.email}}</Nav></ion-label>
-                        
-                                            <ion-icon  name="mail" color="primary" slot="start" ></ion-icon>
+                                            <ion-label (click)="NameUpdate(user)">
+                                                <Nav>{{user.email}}</Nav>
+                                            </ion-label>
+
+                                            <ion-icon name="mail" color="primary" slot="start"></ion-icon>
                                             <!-- <ion-icon name="create" color="dark" slot="end" (click)=" NameUpdate(user)"></ion-icon> -->
-                                    </ion-item>
-                                    <br><br>
-                                    <ion-item>
+                                        </ion-item>
+                                        <br><br>
+                                        <ion-item>
 
-                                        <ion-label (click)=" AddressUpdate(user)"> Innovation hub building 6</ion-label>
+                                            <ion-label (click)="AddressUpdate(user)"> Innovation hub building 6</ion-label>
 
-                                        <ion-icon name="navigate" color="primary" slot="start"></ion-icon>
-                                        <!-- <ion-icon name="create" color="dark" slot="end" (click)=" AddressUpdate(user)"></ion-icon> -->
-                                    </ion-item>
-                                    <br><br>
-                                    <ion-item>
+                                            <ion-icon name="navigate" color="primary" slot="start"></ion-icon>
+                                            <!-- <ion-icon name="create" color="dark" slot="end" (click)=" AddressUpdate(user)"></ion-icon> -->
+                                        </ion-item>
+                                        <br><br>
+                                        <ion-item (click)="AgeUpdate(user)">
 
-                                            <ion-label  (click)=" AgeUpdate(user)"> {{user.age}}</ion-label>
-                        
+                                            <ion-label>
+                                                <Nav>{{user.age}}</Nav>
+                                            </ion-label>
+
                                             <ion-icon name="calendar" color="primary" slot="start"></ion-icon>
-                                            <!-- <ion-icon name="create" color="dark" slot="end" (click)=" AgeUpdate(user)"></ion-icon> -->
-                                    </ion-item>
-                                    <br><br>
-                                    <ion-item>
+                                            <!-- <ion-icon name="create" color="dark" slot="end" (click)=" AddressUpdate(user)"></ion-icon> -->
+                                        </ion-item>
+                                        <br><br>
+                                        <ion-item>
 
-                                            <ion-label (click)=" GenderUpdate(user)">{{user.gender}}</ion-label>
-                        
+                                            <ion-label (click)="GenderUpdate(user)">{{user.gender}}</ion-label>
+
                                             <ion-icon name="person" color="primary" slot="start"></ion-icon>
                                             <!-- <ion-icon name="create" color="dark" slot="end" (click)=" GenderUpdate(user)"></ion-icon> -->
-                                    </ion-item>
-                                </ion-list>
+                                        </ion-item>
+                                    </ion-list>
 
+                                </div>
                             </div>
-                        </div>
 
-                    </ion-col>
+                        </ion-col>
 
-                </ion-row>
-            </ion-grid>
-
+                    </ion-row>
+                </ion-grid>
 
 
 
 
+
+            </div>
         </div>
-  </div>
-  <div class="line">
-    <img src="\assets\images\tbo-removebg-preview.png">
-</div>
+        <div class="line">
+            <img src="\assets\images\tbo-removebg-preview.png">
+        </div>
     </body>
-    <ion-tabs class="icons">
-        <ion-tab-bar slot="bottom">
-            <ion-tab-button tab="home" routerLink="/home">
-                <img class="tabIcons" src="\assets\images\home-icon-silhouette - Copy.png" />
-                <!-- <ion-label>Home</ion-label> -->
-                <!-- <ion-badge>6</ion-badge> -->
-            </ion-tab-button>
 
-            <ion-tab-button tab="profile" routerLink="/profile">
-                <img class="tabIcons" src="\assets\images\man-user (1).png" />
-                <!-- <ion-label>Profile</ion-label> -->
-            </ion-tab-button>
-
-            <ion-tab-button tab="events" routerLink="/events">
-                <img class="tabIcons" src="\assets\images\event-date-and-time-symbol - Copy.png" />
-                <!-- <ion-label>Events</ion-label> -->
-            </ion-tab-button>
-
-            <ion-tab-button tab="add" routerLink="/add">
-                <img class="tabIcons" src="\assets\images\poker.png" />
-                <!-- <ion-label>About</ion-label> -->
-            </ion-tab-button>
-        </ion-tab-bar>
-    </ion-tabs>
 </ion-content>

@@ -82,6 +82,87 @@ export class ProfilePage implements OnInit {
     await alert.present();
     let result = await alert.onDidDismiss();
   }
+  async  AddressUpdate(user){
+
+    const alert = await this.altctrl.create({
+      subHeader: 'Add/Edit Address',
+      inputs: [
+        {
+          name: 'address',
+          type: 'text',
+          value: user.address,
+          placeholder: 'address'
+        },
+
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        }, {
+          text: 'Ok',
+          handler: (inputData) => {
+            console.log(inputData.address1)
+            this.MUsers.update({
+              address: inputData.address,
+            })
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+    // let result = await alert.onDidDismiss();
+
+
+  }
+
+  async  AgeUpdate(user){
+
+    const alert = await this.altctrl.create({
+      subHeader: 'Add/Edit Age',
+      inputs: [
+        {
+          name: 'age',
+          type: 'text',
+          value: user.age,
+          placeholder: 'age'
+        },
+
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        }, {
+          text: 'Ok',
+          handler: (inputData) => {
+            console.log(inputData.age1)
+            this.MUsers.update({
+
+              age: inputData.age,
+            })
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+    let result = await alert.onDidDismiss();
+
+
+  }
+
+
+  
+
+ 
   uploadProfilePic(event){
     this.authService.uploadProfilePic(event).subscribe((data:number)=>{
       this.uploadPercent=data

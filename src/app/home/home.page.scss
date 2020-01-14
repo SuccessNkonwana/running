@@ -19,20 +19,24 @@
         height: $myheight;
         $margin-bottom: 0%;
         margin-bottom: $margin-bottom;
-        $border-top-left-radius: 30%;
+        $border-top-left-radius: 20%;
         border-top-left-radius: $border-top-left-radius;
-        $border-bottom-left-radius: 20%;
+        $border-bottom-left-radius: 15%;
         border-bottom-left-radius: $border-bottom-left-radius;
+        border-top-right-radius:35%;
+        border-bottom-right-radius:35%;
         .imgC {
             $myheight: 100%;
             height: $myheight;
             float: right;
             width: 100px;
             margin-top: -1px;
-            $border-top-left-radius: 35%;
+            $border-top-left-radius: 0%;
             border-top-left-radius: $border-top-left-radius;
             $border-bottom-left-radius: 0%;
             border-bottom-left-radius: $border-bottom-left-radius;
+            border-top-right-radius:35%;
+            border-bottom-right-radius:35%;
         }
     }
     .cent {
@@ -52,7 +56,7 @@
         bottom: 0;
         z-index: 10;
         background: black;
-        opacity: 0.6;
+        opacity: 0.8;
     }
     .cName {
         margin-top: 20px;
