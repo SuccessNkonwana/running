@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RunningService } from 'src/app/services/running.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -15,7 +16,7 @@ export class EventsPage implements OnInit {
     autoplay:true
    };
  
-  constructor(public runn: RunningService) {
+  constructor(public runn: RunningService,public route:Router) {
 
     this.events= []; 
     this.getdata()
@@ -48,13 +49,51 @@ export class EventsPage implements OnInit {
             this.hasAEvent=false
           }
   
-       console.log(this.events,"LAST ONE")
+       console.log(this.events,"the events")
  
       })
      })
    
    }
 
+   book()
+   {
+
+   return new Promise((resolve, reject) => {
+       this.runn.rtEvents().then(data =>{
+      
+         console.log( data.length);
+         for( let x = 0; x < data.length; x++ )
+         {
+          console.log(x);
+          
+         this.events.push({ 
+           eventKey:  data[x].eventKey,
+           name:  data[x].name,
+           address:  data[x].address,
+           openingHours:  data[x].openingHours,
+           closingHours:data[x].closingHours,
+           price:data[x].price,
+           clubKey:data[x].clubKey
+         
+         })
+          
+         }
+          if(this.events===null)
+          {
+            this.hasAEvent=false
+          }
+  
+       console.log(this.events,"the events")
+      //  this.route.navigate(['/book-event'],{queryParams:{name:this.events.eventk}})
+ 
+      })
+     })
+   
+   }
+   booking(myevents){
+    this.runn.booking(myevents)
+   }
   ngOnInit() {
   }
 

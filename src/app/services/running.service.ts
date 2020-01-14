@@ -53,6 +53,8 @@ closingHours:String
 userID:String
    photoURL:String
   ///
+
+  currentBook=[];
   private itemDoc: AngularFirestoreDocument<Item>;
   constructor(public auths:AuthService,private storage:AngularFireStorage,private afs: AngularFirestore, public navCtrl:NavController, public route:Router)
   { 
@@ -710,6 +712,17 @@ BookEvent(eventName,eventAddress,eventOpeningHours,eventClosingHours,eventPrice,
     // this.itemDoc.update(objectA);
     this.itemDoc.delete();
    
+  }
+  booking(myevents){
+    this.currentBook.push(
+      {
+        myevents
+        
+
+      }
+      
+    )
+    console.log(myevents);
   }
 }
 
