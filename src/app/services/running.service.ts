@@ -29,6 +29,7 @@ export class RunningService {
   newAddress: string="";
   newOpeningHours: string="";
   newClosingHours: string="";
+  newID: string="";
    fileRef
   editName: string="";
   editAddress: string="";
@@ -54,32 +55,15 @@ userID:String
   }
   currentClub(myclubs)
   {
-    console.log(myclubs.id,"the current Choosen club ID");
+  //  console.log(myclubs[0].myclubs.myclubs[0].myclubs.clubKey,"the current Choosen club ID");
     this.currClub=[]
-   //
-   this.clubKey=""
-   this.name =""
-   this.openingHours=""
-   this.closingHours=""
-   this.userID=""
-   this.photoURL=""
-   //
-    this.clubKey=myclubs.id
-    this.name =myclubs.name
-    this.openingHours=myclubs.openingHours
-    this.closingHours=myclubs.closingHours
-    this.userID=myclubs.userID
-    this.photoURL=myclubs.photoURL
+   
  
    this.currClub.push({
-     clubKey: this.clubKey,
-     name: this.openingHours,
-     openingHours: this.openingHours,
-     closingHours: this.closingHours,
-     userID: this.userID,
-     photoURL:this.photoURL
+    myclubs
    })
    console.log(this.currClub,"the current club");
+   console.log(this.currClub[0].myclubs.myclubs[0].myclubs.clubKey,"the current Choosen club ID");
   }
  rtClubName()
  {
@@ -281,10 +265,11 @@ this.dbfire.collection("clubs").get().then((querySnapshot) => {
 
    }
    resolve(this.clubsTemp)
-});
-});
-console.log(this.clubsTemp,"clubs array")
+   console.log(this.clubsTemp,"clubs array")
 console.log(ans,"ans array")
+});
+});
+
  
 }
 ///get a individuals club
@@ -333,10 +318,11 @@ this.dbfire.collection("clubs").get().then((querySnapshot) => {
 
    }
    resolve(this.clubs)
-});
-});
-console.log(this.clubs,"my clubs array")
+   console.log(this.clubs,"my clubs array")
 console.log(ans,"ans array")
+});
+});
+
  
 }
 
@@ -350,43 +336,26 @@ getAClubsEvents(myclubs)
   let ans2=[]
   this.currClub=[]
 
-  //
-  this.clubKey=""
-  this.name =""
-  this.openingHours=""
-  this.closingHours=""
-  this.userID=""
-  this.photoURL=""
-  //
-   this.clubKey=myclubs.clubKey
-   this.name =myclubs.name
-   this.openingHours=myclubs.openingHours
-   this.closingHours=myclubs.closingHours
-   this.userID=myclubs.userID
-   this.photoURL=myclubs.photoURL
+  
 
-  this.currClub.push({
-    clubKey: this.clubKey,
-    name: this.name,
-    openingHours: this.openingHours,
-    closingHours: this.closingHours,
-    userID: this.userID,
-    photoURL:this.photoURL
-  })
+    
+   //push current club
+   this.currClub.push({myclubs})
+  // this.currentClub(this.currClub)
   console.log(this.currClub,"the current club");
   
   // let user=this.readCurrentSession()
   // let userID=user.uid
-
-console.log(this.clubKey," ClubID vele")
+let clubKey=myclubs.clubKey
+console.log(clubKey," ClubID vele")
   //
-return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
 this.dbfire.collection("events").get().then((querySnapshot) => {
    querySnapshot.forEach((doc) => {
     
     // ans.push(doc.data())
      console.log(doc.id, '=>', doc.data());
-     this.clubsTemp.push({
+     this.eventsTemp.push({
        eventKey: doc.id,
        name: doc.data().name,
        address: doc.data().address,
@@ -408,14 +377,14 @@ this.dbfire.collection("events").get().then((querySnapshot) => {
    {
     console.log( this.eventsTemp[x].clubKey,"CLUB id at x ")
 
-        if(this.eventsTemp[x].clubKey===this.clubKey)
+        if(this.eventsTemp[x].clubKey===clubKey)
         {
           this.events.push(this.eventsTemp[x])
 
         }
 
    }
-   console.log(this.events,"my clubs array")
+   console.log(this.events,"my events array")
 console.log(ans,"ans array")
    resolve(this.events)
 });
@@ -499,24 +468,30 @@ returnUserProfile(){
 }
  
 ///create event 
-addEvent(newName,newAddress,newOpeningHours,newClosingHours)
+addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
   {
-   
-    var styt=newOpeningHours.substring(11,16);
-    var etyt=newClosingHours.substring(11,16);
+  
+  console.log(newOpeningHours,newClosingHours,"times as strings");
+  
+    let styt=newOpeningHours.substring(11,16);
+    let etyt=newClosingHours.substring(11,16);
+
     let user=this.readCurrentSession()
     let userID=user.uid
-    let clubKey= this.currClub[0].clubKey
-    console.log("HOT ",clubKey)
+    let clubKey=this.currClub[0].myclubs.myclubs[0].myclubs.clubKey
+    console.log(this.currClub[0].myclubs.myclubs[0].myclubs.clubKey," addevnt page club");
+    
+    console.log("HOT ",this.currClub[0].myclubs.myclubs[0].myclubs.clubKey)
 
    
-    this.dbfire.collection("clubs").add({
+    this.dbfire.collection("events").add({
       name: newName,
       address: newAddress,
       openingHours: styt,
       closingHours: etyt,
       userID:userID,
-      clubID: clubKey
+     clubID: clubKey,
+     newPrice:newPrice,
       
     }).then((data)=>{
     
