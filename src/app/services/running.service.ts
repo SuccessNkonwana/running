@@ -320,7 +320,7 @@ getEvents()
            closingHours: doc.data().closingHours,
            price: doc.data().newPrice,
            userID:doc.data().userID,
-           clubKey: doc.data().clubKey
+           clubKey: doc.data().clubID
     
          })
            console.log( this.eventsTemp,"events array")
@@ -430,7 +430,7 @@ this.dbfire.collection("events").get().then((querySnapshot) => {
        openingHours: doc.data().openingHours,
        closingHours: doc.data().closingHours,
        userID:doc.data().userID,
-       clubKey: doc.data().clubKey
+       clubKey: doc.data().clubID
 
      })
        console.log( this.eventsTemp,"events array")
