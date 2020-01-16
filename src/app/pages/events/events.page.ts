@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RunningService } from 'src/app/services/running.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -15,7 +16,7 @@ export class EventsPage implements OnInit {
     autoplay:true
    };
  
-  constructor(public runn: RunningService) {
+  constructor(public runn: RunningService,public route:Router) {
 
     this.events= []; 
     this.getdata()
@@ -48,13 +49,23 @@ export class EventsPage implements OnInit {
             this.hasAEvent=false
           }
   
-       console.log(this.events,"LAST ONE")
+       console.log(this.events,"the events")
  
       })
      })
    
    }
 
+   book()
+   {
+
+    this.route.navigate(['/book-event']);
+ 
+   
+   }
+   booking(myevents){
+    this.runn.booking(myevents)
+   }
   ngOnInit() {
   }
 

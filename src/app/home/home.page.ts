@@ -99,7 +99,7 @@ slideOpts = {
    }
   go()
   {
-    this.router.navigateByUrl("add-club")
+    this.router.navigateByUrl("book-event")
   }
   goHome()
   {

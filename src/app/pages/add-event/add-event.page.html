@@ -9,7 +9,9 @@
                     <ion-row justify-content-center>
 
                         <ion-col align-self-center size-md="11" size-lg="11" size-xs="12">
-
+                            <ion-buttons color="light" slot="start">
+                                <ion-back-button defaultHref="club-profile"></ion-back-button>
+                            </ion-buttons>
                             <div class="div1">
                                 <ion-buttons color="light" slot="start">
                                     <ion-back-button defaultHref="club-profile"></ion-back-button>
@@ -19,11 +21,12 @@
 
                                 <h2 id="heading">Add Your Event!</h2>
                                 <div class="profile-image">
-                                    <div *ngIf="defaultpic">
-                                        <img src="{{user.photoURL}}">
+                                    <div *ngIf="urlPath =='' ">
+                                        <img src="/assets/images/avatar.svg" class="x">
                                     </div>
-                                    <div *ngIf="!defaultpic">
-                                        <img src="\assets\images\profile-user.png">
+
+                                    <div *ngIf="urlPath !='' ">
+                                        <img data-src="{{urlPath}}" (click)="zoom(user)">
                                     </div>
 
                                     <div class="image-upload">
@@ -31,24 +34,19 @@
                                             <ion-fab-button color="primary" size="small">
                                                 <ion-icon name="camera" class="input"> </ion-icon>
                                             </ion-fab-button>
-                                            <ion-fab-list side="start">
-                                                <ion-fab-button color="primary">
-                                                    <ion-icon name="camera" (click)="pickImage()" class="camera"> </ion-icon>
-                                                </ion-fab-button>
 
-                                            </ion-fab-list>
 
                                             <ion-fab-list side="end">
                                                 <ion-fab-button color="primary">
                                                     <label for="file-input2">
-                                                                    <ion-icon name="document" class="document"> </ion-icon> 
-                                                            </label>
+                                                            <ion-icon name="document" class="document"> </ion-icon> 
+                                                    </label>
                                                 </ion-fab-button>
                                             </ion-fab-list>
                                         </ion-fab>
 
 
-                                        <input id="file-input2" class="input" type="file" (change)="uploadProfilePic($event)" />
+                                        <input id="file-input2" class="input" type="file" (change)="uploadEventPic($event)" />
                                     </div>
                                 </div>
                                 <br><br><br>

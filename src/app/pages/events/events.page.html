@@ -1,11 +1,13 @@
 <ion-header >
         <ion-toolbar color="primary">
-                <ion-title class="toolwords" >Join The Fun</ion-title>
+                <ion-title class="toolwords" >Event Feed</ion-title>
       </ion-toolbar>
     </ion-header>
 <ion-content class="body" >
         <div >
-                
+                <ion-header text-center class="title" >
+                        Sponsored*
+                     </ion-header>       
                       
           <br/>
           
@@ -52,7 +54,7 @@
                         <ion-icon name="alarm"></ion-icon>  closingHours: {{myevents.closingHours}} <br/>
                         <ion-icon name="cash"></ion-icon>   price: R{{myevents.price}} <br/>
                     </ion-card-content>
-                    <ion-button routerLink="/book-event" shape="round" fill="outline">Book Now</ion-button>
+                    <ion-button routerLink="/book-event" (click)="booking(myevents)" shape="round" fill="outline">Book Now</ion-button>
                   </ion-card>
                 
             </ion-item>

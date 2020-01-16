@@ -75,7 +75,10 @@ const routes: Routes = [
     path: 'club-profile',
     loadChildren: () => import('./club-profile/club-profile.module').then( m => m.ClubProfilePageModule)
   },
-
+  {
+    path: 'done',
+    loadChildren: () => import('./pages/done/done.module').then( m => m.DonePageModule)
+  },
   {
 
     path: 'tabs', component: TabsPage, children:[

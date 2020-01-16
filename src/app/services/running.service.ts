@@ -4,7 +4,10 @@ import 'firebase/firestore';
 import { AuthService } from './auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { switchMap, finalize } from 'rxjs/operators';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
+// import { eventNames } from 'cluster';
+import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
 })
@@ -51,7 +54,12 @@ userID:String
    photoURL:String
   ///
 
-  constructor(public auths:AuthService,private storage:AngularFireStorage, private afs: AngularFirestore,)
+  currentBook=[];
+  private itemDoc: AngularFirestoreDocument<Item>;
+  eventKey: string;
+  address: string;
+  price: string;
+  constructor(public auths:AuthService,private storage:AngularFireStorage,private afs: AngularFirestore, public navCtrl:NavController, public route:Router)
   { 
   }
   currentClub(myclubs)
@@ -310,8 +318,9 @@ getEvents()
            address: doc.data().address,
            openingHours: doc.data().openingHours,
            closingHours: doc.data().closingHours,
+           price: doc.data().newPrice,
            userID:doc.data().userID,
-           clubKey: doc.data().clubKey
+           clubKey: doc.data().clubID
     
          })
            console.log( this.eventsTemp,"events array")
@@ -421,7 +430,7 @@ this.dbfire.collection("events").get().then((querySnapshot) => {
        openingHours: doc.data().openingHours,
        closingHours: doc.data().closingHours,
        userID:doc.data().userID,
-       clubKey: doc.data().clubKey
+       clubKey: doc.data().clubID
 
      })
        console.log( this.eventsTemp,"events array")
@@ -541,7 +550,14 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
     console.log(this.currClub[0].myclubs.myclubs[0].myclubs.clubKey," addevnt page club");
     
     console.log("HOT ",this.currClub[0].myclubs.myclubs[0].myclubs.clubKey)
-
+    this.uniqkey = newName+'Logo';
+    const filePath = this.uniqkey;
+    this.fileRef = this.storage.ref(filePath);
+    this.task = this.storage.upload(filePath, this.file);
+      this.task.snapshotChanges().pipe(
+        finalize(() => {
+          this.downloadU = this.fileRef.getDownloadURL().subscribe(urlPath => {
+            console.log(urlPath);
    
     this.dbfire.collection("events").add({
       name: newName,
@@ -551,6 +567,7 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
       userID:userID,
      clubID: clubKey,
      newPrice:newPrice,
+     photoURL:urlPath
       
     }).then((data)=>{
     
@@ -560,7 +577,13 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
     }).catch((error)=>{
       console.log(error)
     })
-  
+    this.uploadPercent = null;
+  });
+})
+).subscribe();
+return this.uploadPercent = this.task.percentageChanges();
+   this.file=null;
+
 
   }
   updateUser(){
@@ -624,29 +647,117 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
 ///update event
 ///delete event
 
-uploadEvent(event) {
-  let user=this.readCurrentSession()
-let eventID=user['uid']
-console.log("the user",eventID);
-  const file = event.target.files[0];
-  this.uniqkey = 'PIC' + this.dateTime;
-  const filePath = this.uniqkey;
-  const fileRef = this.storage.ref(filePath);
-  const task = this.storage.upload(filePath, file);
-  // observe percentage changes
-  task.snapshotChanges().pipe(
-    finalize(() => {
-      this.downloadU = fileRef.getDownloadURL().subscribe(urlPath => {
-        console.log(urlPath);
-       
-        this.afs.doc('events/' + eventID).update({
-          photoURL: urlPath
-        })
-        this.uploadPercent = null;
-      });
+// booking the event
+BookEvent(event)
+  {
+  
+    console.log( "somethinf"+event)
+   
+    // this.dbfire.collection("bookedEvents").add({
+    //   eventKey: this.currentBook[0].eventKey,
+    //   event: eventName,
+    //   address: eventAddress,
+    //   // openingHours: styt,
+    //   // closingHours: etyt,
+    //   // userID:userID,
+    //   // clubID: clubID,
+    //   price:eventPrice,
+    //   tickets:tickets,
+    //   total:totalPrice
+      
+    // }).then((data)=>{
+    
+    
+     
+    //   console.log(data)
+    //   // this.route.navigate(['/payments'],{queryParams:{name:eventNames}})
+    //   //  this.route.navigate(['/edit'],{queryParams:{name: item.name,price:item.price,type:item.type,key:item.key}})
+
+    //   // this.navCtrl.navigateRoot("/payments");
+    // }).catch((error)=>{
+    //   console.log(error)
+    // })
+  
+
+  }
+  // paying for the event
+  payment(eventName,eventAddress,eventPrice,tickets,totalPrice)
+  {
+   
+    
+    let user=this.readCurrentSession()
+    let userID=user.uid
+    // let clubID= this.currClub[0].clubKey
+    // console.log("HOT ",clubID)
+
+   
+    this.dbfire.collection("bookedEvents").add({
+      event: eventName,
+      address: eventAddress,
+      userID:userID,
+      // clubID: clubID,
+      price:eventPrice,
+      tickets:tickets,
+      total:totalPrice
+      
+    }).then((data)=>{
+    
+    
+     
+      console.log(data)
+      //  this.route.navigate(['/edit'],{queryParams:{name: item.name,price:item.price,type:item.type,key:item.key}})
+
+      // this.navCtrl.navigateRoot("/done");
+    }).catch((error)=>{
+      console.log(error)
     })
-  ).subscribe();
-  return this.uploadPercent = task.percentageChanges();
+  
+
+  }
+  update(objectA,key){
+
+    this.itemDoc = this.afs.doc<Item>('users/'+key);
+    this.itemDoc.update(objectA);
+  }
+  delete(key){
+  
+    this.itemDoc = this.afs.doc<Item>('users/'+key);
+    // this.itemDoc.update(objectA);
+    this.itemDoc.delete();
+   
+  }
+  booking(myevents){
+   
+    
+    this.currentBook.push(
+
+      {
+       myevents
+
+      }
+     
+    )
+    this.BookEvent(this.currentBook[0]);
+    console.log(myevents);
+  }
+  uploadEventPic(event){
+    let user=this.readCurrentSession()
+    let userID=user['uid']
+    console.log("the user",userID);
+    this.file = event.target.files[0];
+      console.log(this.file)
+  }
+
+
+  updateName(userID,editName)
+{
+ 
+  this.dbfire.collection("users").doc(userID).update({displayName: editName}).then((data)=> {
+   
+    console.log("Document name successfully updated!",data);
+}).catch(function(error) {
+    console.error("Error updating document: ", error);
+});
 }
 
 }
