@@ -4,6 +4,7 @@ import 'firebase/firestore';
 import { AuthService } from './auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { switchMap, finalize } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
 })
@@ -50,7 +51,7 @@ userID:String
    photoURL:String
   ///
 
-  constructor(public auths:AuthService,private storage:AngularFireStorage)
+  constructor(public auths:AuthService,private storage:AngularFireStorage, private afs: AngularFirestore,)
   { 
   }
   currentClub(myclubs)
@@ -622,5 +623,31 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
 ///retrieve event
 ///update event
 ///delete event
+
+uploadEvent(event) {
+  let user=this.readCurrentSession()
+let eventID=user['uid']
+console.log("the user",eventID);
+  const file = event.target.files[0];
+  this.uniqkey = 'PIC' + this.dateTime;
+  const filePath = this.uniqkey;
+  const fileRef = this.storage.ref(filePath);
+  const task = this.storage.upload(filePath, file);
+  // observe percentage changes
+  task.snapshotChanges().pipe(
+    finalize(() => {
+      this.downloadU = fileRef.getDownloadURL().subscribe(urlPath => {
+        console.log(urlPath);
+       
+        this.afs.doc('events/' + eventID).update({
+          photoURL: urlPath
+        })
+        this.uploadPercent = null;
+      });
+    })
+  ).subscribe();
+  return this.uploadPercent = task.percentageChanges();
+}
+
 }
 

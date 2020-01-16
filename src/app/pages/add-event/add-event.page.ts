@@ -60,7 +60,7 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
 }
 
 uploadProfilePic(event){
-  this.authService.uploadProfilePic(event).subscribe((data:number)=>{
+  this.runn.uploadEvent(event).subscribe((data:number)=>{
     this.uploadPercent=data
     console.log(this.uploadPercent)
   })
