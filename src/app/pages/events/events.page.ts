@@ -59,36 +59,8 @@ export class EventsPage implements OnInit {
    book()
    {
 
-   return new Promise((resolve, reject) => {
-       this.runn.rtEvents().then(data =>{
-      
-         console.log( data.length);
-         for( let x = 0; x < data.length; x++ )
-         {
-          console.log(x);
-          
-         this.events.push({ 
-           eventKey:  data[x].eventKey,
-           name:  data[x].name,
-           address:  data[x].address,
-           openingHours:  data[x].openingHours,
-           closingHours:data[x].closingHours,
-           price:data[x].price,
-           clubKey:data[x].clubKey
-         
-         })
-          
-         }
-          if(this.events===null)
-          {
-            this.hasAEvent=false
-          }
-  
-       console.log(this.events,"the events")
-      //  this.route.navigate(['/book-event'],{queryParams:{name:this.events.eventk}})
+    this.route.navigate(['/book-event']);
  
-      })
-     })
    
    }
    booking(myevents){

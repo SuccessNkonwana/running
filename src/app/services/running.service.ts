@@ -6,7 +6,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { switchMap, finalize } from 'rxjs/operators';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { eventNames } from 'cluster';
+// import { eventNames } from 'cluster';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
@@ -56,6 +56,9 @@ userID:String
 
   currentBook=[];
   private itemDoc: AngularFirestoreDocument<Item>;
+  eventKey: string;
+  address: string;
+  price: string;
   constructor(public auths:AuthService,private storage:AngularFireStorage,private afs: AngularFirestore, public navCtrl:NavController, public route:Router)
   { 
   }
@@ -315,6 +318,7 @@ getEvents()
            address: doc.data().address,
            openingHours: doc.data().openingHours,
            closingHours: doc.data().closingHours,
+           price: doc.data().newPrice,
            userID:doc.data().userID,
            clubKey: doc.data().clubKey
     
@@ -546,7 +550,14 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
     console.log(this.currClub[0].myclubs.myclubs[0].myclubs.clubKey," addevnt page club");
     
     console.log("HOT ",this.currClub[0].myclubs.myclubs[0].myclubs.clubKey)
-
+    this.uniqkey = newName+'Logo';
+    const filePath = this.uniqkey;
+    this.fileRef = this.storage.ref(filePath);
+    this.task = this.storage.upload(filePath, this.file);
+      this.task.snapshotChanges().pipe(
+        finalize(() => {
+          this.downloadU = this.fileRef.getDownloadURL().subscribe(urlPath => {
+            console.log(urlPath);
    
     this.dbfire.collection("events").add({
       name: newName,
@@ -556,6 +567,7 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
       userID:userID,
      clubID: clubKey,
      newPrice:newPrice,
+     photoURL:urlPath
       
     }).then((data)=>{
     
@@ -565,7 +577,13 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
     }).catch((error)=>{
       console.log(error)
     })
-  
+    this.uploadPercent = null;
+  });
+})
+).subscribe();
+return this.uploadPercent = this.task.percentageChanges();
+   this.file=null;
+
 
   }
   updateUser(){
@@ -630,40 +648,35 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
 ///delete event
 
 // booking the event
-BookEvent(eventName,eventAddress,eventOpeningHours,eventClosingHours,eventPrice,tickets,totalPrice)
+BookEvent(event)
   {
+  
+    console.log( "somethinf"+event)
    
-    var styt=eventOpeningHours.substring(11,16);
-    var etyt=eventClosingHours.substring(11,16);
-    let user=this.readCurrentSession()
-    let userID=user.uid
-    // let clubID= this.currClub[0].clubKey
-    // console.log("HOT ",clubID)
-
-   
-    this.dbfire.collection("bookedEvents").add({
-      event: eventName,
-      address: eventAddress,
-      openingHours: styt,
-      closingHours: etyt,
-      userID:userID,
-      // clubID: clubID,
-      price:eventPrice,
-      tickets:tickets,
-      total:totalPrice
+    // this.dbfire.collection("bookedEvents").add({
+    //   eventKey: this.currentBook[0].eventKey,
+    //   event: eventName,
+    //   address: eventAddress,
+    //   // openingHours: styt,
+    //   // closingHours: etyt,
+    //   // userID:userID,
+    //   // clubID: clubID,
+    //   price:eventPrice,
+    //   tickets:tickets,
+    //   total:totalPrice
       
-    }).then((data)=>{
+    // }).then((data)=>{
     
     
      
-      console.log(data)
-      // this.route.navigate(['/payments'],{queryParams:{name:eventNames}})
-      //  this.route.navigate(['/edit'],{queryParams:{name: item.name,price:item.price,type:item.type,key:item.key}})
+    //   console.log(data)
+    //   // this.route.navigate(['/payments'],{queryParams:{name:eventNames}})
+    //   //  this.route.navigate(['/edit'],{queryParams:{name: item.name,price:item.price,type:item.type,key:item.key}})
 
-      // this.navCtrl.navigateRoot("/payments");
-    }).catch((error)=>{
-      console.log(error)
-    })
+    //   // this.navCtrl.navigateRoot("/payments");
+    // }).catch((error)=>{
+    //   console.log(error)
+    // })
   
 
   }
@@ -714,15 +727,38 @@ BookEvent(eventName,eventAddress,eventOpeningHours,eventClosingHours,eventPrice,
    
   }
   booking(myevents){
+   
+    
     this.currentBook.push(
+
       {
-        myevents
-        
+       myevents
 
       }
-      
+     
     )
+    this.BookEvent(this.currentBook[0]);
     console.log(myevents);
   }
+  uploadEventPic(event){
+    let user=this.readCurrentSession()
+    let userID=user['uid']
+    console.log("the user",userID);
+    this.file = event.target.files[0];
+      console.log(this.file)
+  }
+
+
+  updateName(userID,editName)
+{
+ 
+  this.dbfire.collection("users").doc(userID).update({displayName: editName}).then((data)=> {
+   
+    console.log("Document name successfully updated!",data);
+}).catch(function(error) {
+    console.error("Error updating document: ", error);
+});
+}
+
 }
 

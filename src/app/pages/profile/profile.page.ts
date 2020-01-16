@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { RunningService } from 'src/app/services/running.service';
@@ -31,29 +31,28 @@ export class ProfilePage implements OnInit {
   thegender: string;
   theKey;
   theEmail;
+  email;
+  nn:string="";
+  tempUser:string="";
+
+  private uid: string= null;
+
   constructor(
     private authService: AuthService,
     public afs:AngularFirestore,
     private altctrl: AlertController,
     public afAuth: AngularFireAuth,
     private router: Router,
-    public runn: RunningService
+    public runn: RunningService,
+    public loadingController: LoadingController
   ) { 
     this.theUser=[]    
     this.getdata()
 
-    // this.users=this.afs.collection('users',ref =>ref.orderBy('displayName')).valueChanges();
-    // this.currentuser=this.authService.getUID();
-    // console.log("current user=>>"+this.currentuser)
-    // this.MUsers=afs.doc('users/${authService.getUID()}')
-    // this.sub= this.MUsers.valueChanges().subscribe(event=>{
-    //   this.username=event.displayName
-    //   this.photoURL=event.photoURL
-    //   console.log("the user name"+ this.username)
-    // })
   }
 
   ngOnInit() {
+    
   }
   
 
@@ -61,8 +60,10 @@ export class ProfilePage implements OnInit {
   uploadProfilePic(event){
     this.authService.uploadProfilePic(event).subscribe((data:number)=>{
       this.uploadPercent=data
+     
       console.log(this.uploadPercent)
     })
+    this.filepresentLoading();
   }
   pickImage(){
     this.authService.pickImage();
@@ -76,6 +77,8 @@ export class ProfilePage implements OnInit {
         for( let x = 0; x < data.length; x++ )
         {
          console.log(x);
+
+         this.uid = data[0].userKey;
          
         this.theUser.push({ 
           userKey:  data[x].userKey,
@@ -87,6 +90,7 @@ export class ProfilePage implements OnInit {
           
           )
         }
+        this.email=this.theUser[0].Email
       console.log(this.theUser,"the LAST ONE vele" )
            if(this.theUser[0].photoURL==null)
            {
@@ -98,17 +102,17 @@ export class ProfilePage implements OnInit {
     )
   
   }
-  async EmailUpdate(user) {
+  async nameUpdate(user) {
 
     
     const alert = await this.altctrl.create({
       subHeader: 'Add/Edit Name',
       inputs: [
         {
-          name: 'Email address',
+          name: 'displayName',
           type: 'text',
-          value: user.Email,
-          placeholder: 'Email address'
+          // value: this.theUser[0].displayName,
+          placeholder: 'displayName'
         },
 
       ],
@@ -122,11 +126,13 @@ export class ProfilePage implements OnInit {
         }, {
           text: 'Ok',
           handler: (inputData) => {
-            // console.log(inputData.name1)
-            this.runn.update(this.objectA,this.objectA.key)
-          
-     console.log("email updated")
-            
+            this.nn=inputData.displayName;
+
+            // this.tempUser=this.theUser[0]
+            console.log(this.nn+"ddfdddfdfdd",user)
+            this.runn.updateName(this.uid,this.nn)
+            this.presentLoading();
+
 
           }
         }
@@ -136,5 +142,23 @@ export class ProfilePage implements OnInit {
     let result = await alert.onDidDismiss();
 
   }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'loading...',
+      duration: 4000
+    });
+    await loading.present();
+    this.getdata()
+    loading.dismiss()
+  }
  
+  async filepresentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'loading...',
+      duration: 15000
+    });
+    await loading.present();
+    this. getdata()
+    loading.dismiss()
+  }
 }

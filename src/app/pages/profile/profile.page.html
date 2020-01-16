@@ -17,7 +17,7 @@
                             </ion-avatar> -->
                             <h2 id="heading" text-center>My Profile</h2>
                            
-                            <p id="name">{{user.name}}</p>
+                            <ion-input (click)="nameUpdate(user)" id="name">{{user.name}}</ion-input>
                         
                             <div  class="profile-image">
                                     <div *ngIf="defaultpic" >
@@ -35,7 +35,7 @@
                                             
             
             
-                                            <ion-fab-list side="start">
+                                            <ion-fab-list side="end">
                                                 <ion-fab-button color="primary">
                                                     <label for="file-input2">
                                                                     <ion-icon name="document" class="document"> </ion-icon> 
@@ -52,10 +52,10 @@
                             <div class="div2">
                                     <br><br><br>
                                     <br><br><br>
-                                    <ion-list lines="none" >
+                                    <ion-list lines="none">
                                     <ion-item detail-push>
 
-                                            <ion-label (click)=" EmailUpdate(user)"><Nav>{{user.email}}</Nav></ion-label>
+                                            <ion-input [(ngModel)]="email" (click)="EmailUpdate()"><Nav>{{user.email}}</Nav></ion-input>
                         
                                             <ion-icon  name="mail" color="primary" slot="start" ></ion-icon>
                                             <!-- <ion-icon name="create" color="dark" slot="end" (click)=" NameUpdate(user)"></ion-icon> -->

@@ -45,6 +45,10 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
       this.runn.addEvent(this.newName,this.newAddress,this.newOpeningHours,this.newClosingHours,this.newPrice)
 }
 
+uploadEventPic(event){
+  this.runn.uploadEventPic(event)
+}
+
 
 
 }

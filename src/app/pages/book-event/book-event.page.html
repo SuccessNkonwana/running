@@ -1,8 +1,10 @@
 <ion-content>
     
-    <body>
+    <body *ngFor="let myevents of events">
         
-            <ion-icon color="primary"(click)="back" name="remove"></ion-icon>
+        <ion-buttons color="light" slot="start">
+            <ion-back-button defaultHref="events"></ion-back-button>
+        </ion-buttons>
       
         <br><br>
         <h2>Confirmation!</h2>
@@ -24,13 +26,13 @@
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                        <h6 class="endo">07:00</h6>
+                        <h6 class="endo">{{myevents.openingHours}}</h6>
                     </ion-col>
                     <ion-col>
                         <h6 class="end"> 10 Km</h6>
                     </ion-col>
                     <ion-col>
-                        <h6 class="endi"> 17:00</h6>
+                        <h6 class="endi">{{myevents.closingHours}}</h6>
                     </ion-col>
                 </ion-row>
             </ion-grid>
@@ -40,7 +42,7 @@
                 <ion-icon class="money" name="cash"></ion-icon> &nbsp;&nbsp;
 
 
-                <p> <sub class="bot">R{{price}}.00</sub> Per Person</p>
+                <p> <sub class="bot">R{{myevents.price}}.00</sub> Per Person</p>
             </ion-item>
 
         </ion-card>
@@ -63,7 +65,7 @@
             </ion-item-divider>
             <br><br>
 
-            <h1>Total: R{{total}}.00
+            <h1>Total: R {{myevents.price*this.tickets}}.00
 
             </h1>
             <br><br><br>
