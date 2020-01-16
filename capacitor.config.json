@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "funRace",
+  "appId": "io.ionic.paintfunrun",
+  "appName": "Paint-Fun-Run",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
