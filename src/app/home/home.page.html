@@ -1,40 +1,43 @@
 <ion-content class="body">
 
     <!-- <body> -->
-        <div *ngFor="let user of theUser ">
+    <div *ngFor="let user of theUser ">
         <br>
-        <div *ngIf="defaultpic" >
-            <img class="img" src="{{user.photoURL}}" >
+        <div *ngIf="defaultpic">
+            <img class="img" src="{{user.photoURL}}">
         </div>
         <div *ngIf="!defaultpic">
-            <img class="img" src="\assets\images\profile-user.png" >
+            <img class="img" src="\assets\images\profile-user.png">
         </div>
-        </div>
+    </div>
 
-        <h1>
-            BE
-        </h1>
-        <h1>
-            HEALTHY
-        </h1>
-        <h1>
-            MAKE FRIENDS
-        </h1>
-        <h1>
-            HAVE FUN
-        </h1>
-        <br>
-        <br>
-        
- <h2 text-center class="cent"> Events You Going To <ion-icon class="iconSize" name="compass"></ion-icon></h2>
-                <br>
-                <br>
-        <div class="cent">
-            <div class="cet">
-                <!-- <p>Paint Fun Race Club</p>
+    <h1>
+        BE
+    </h1>
+    <h1>
+        HEALTHY
+    </h1>
+    <h1>
+        MAKE FRIENDS
+    </h1>
+    <h1>
+        HAVE FUN
+    </h1>
+    <br>
+
+
+
+    <h2 text-center class="cent"> Events You Going To
+        <ion-icon class="iconSize" name="compass"></ion-icon>
+    </h2>
+    <br>
+
+    <div class="cent">
+        <div class="cet">
+            <!-- <p>Paint Fun Race Club</p>
                     <p>Redbull Run Sat</p>
                     <p>Date: 12/12/2019 Time: 11:00</p> -->
-            <img class="imgC" src="assets/images/go.png" alt="Avatar" (click)="go()">
+            <img class="imgC" src="assets/images/go.png" alt="Avatar" >
         </div>
     </div>
     <br>
@@ -44,7 +47,7 @@
             <ion-icon class="iconSize" name="people"></ion-icon>
         </h2>
         <br>
-        <br>
+
         <ion-slides startAutoplay [options]="slideOpts">
             <ion-slide *ngFor="let clubss of clubs">
                 <ion-card class="slideCards" [ngStyle]="{'background-image':'url('+clubss.photoURL+')'}">
@@ -58,11 +61,6 @@
 
     </div>
 
-
     <!-- </body> -->
-    <br>
-    <br>
-    <br>
-    <br>
- 
+
 </ion-content>

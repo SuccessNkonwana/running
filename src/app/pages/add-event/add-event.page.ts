@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { RunningService } from 'src/app/services/running.service';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-add-event',
@@ -8,6 +10,15 @@ import { RunningService } from 'src/app/services/running.service';
   styleUrls: ['./add-event.page.scss'],
 })
 export class AddEventPage implements OnInit {
+
+  users: any;
+  defaultpic=true
+  theUser=[];
+  photoURL: string;
+  uploadPercent: number;
+  currentuser: string;
+  
+
   clubs=[]
   newName
   newAddress
@@ -20,7 +31,7 @@ export class AddEventPage implements OnInit {
 
 
   constructor(
-    private fb: FormBuilder,public runn: RunningService) {
+    private fb: FormBuilder,public runn: RunningService, private authService: AuthService,) {
 
     
     this.eventForm = fb.group({
@@ -35,6 +46,9 @@ export class AddEventPage implements OnInit {
     );
 
    this.clubs=[]
+
+   this.theUser=[]    
+ 
    }
 
   ngOnInit() {

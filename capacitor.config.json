@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.paintfunrun",
-  "appName": "Paint-Fun-Run",
+  "appId": "com.winners.paintfunrun",
+  "appName": "Paint",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

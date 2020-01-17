@@ -1,11 +1,11 @@
 <ion-content>
-    
-    <body *ngFor="let myevents of events">
-        
-        <ion-buttons color="light" slot="start">
+    <ion-toolbar>
+        <ion-buttons slot="start">
             <ion-back-button defaultHref="events"></ion-back-button>
         </ion-buttons>
-      
+    </ion-toolbar>
+    <body *ngFor="let myevents of events">
+        
         <br><br>
         <h2>Confirmation!</h2>
         <br><br>
