@@ -1,13 +1,17 @@
 <ion-content class="body">
-
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-back-button defaultHref="tabs/add"></ion-back-button>
+            <ion-back-button defaultHref="add"></ion-back-button>
         </ion-buttons>
     </ion-toolbar>
+
     <div *ngFor="let myclubs of clubs ">
+        <br/>
         <ion-header text-center class="h">
             <ion-avatar> <img src="{{photoURL}}"></ion-avatar>
+            <ion-header class="title">
+                {{clubName}}
+            </ion-header>
         </ion-header>
         <br/>
 

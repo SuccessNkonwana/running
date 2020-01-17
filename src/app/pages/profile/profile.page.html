@@ -18,7 +18,7 @@
                             </ion-avatar> -->
                                     <h2 id="heading" text-center>My Profile</h2>
 
-                                    <ion-input (click)="nameUpdate(user)" id="name">{{user.name}}</ion-input>
+                                    <ion-label (click)="nameUpdate(user)" id="name" text-center>{{user.name}}</ion-label>
 
                                     <div class="profile-image">
                                         <div *ngIf="defaultpic">
@@ -105,13 +105,15 @@
 
                 </div>
             </div>
+
+
             <div class="line">
                 <img src="\assets\images\tbo-removebg-preview.png">
+
             </div>
-            </div>
-            <div class="line">
+            <!-- <div class="line">
                 <img src="\assets\images\tbo-removebg-preview.png">
-            </div>
-        </body>>
+            </div> -->
+        </body>
 
     </ion-content>
