@@ -1,8 +1,10 @@
 <ion-content class="body">
 
-    <!-- <ion-buttons color="light" slot="start">
-        <ion-back-button defaultHref="tabs/add"></ion-back-button>
-    </ion-buttons> -->
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/add"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
     <div *ngFor="let myclubs of clubs ">
         <ion-header text-center class="h">
             <ion-avatar> <img src="{{photoURL}}"></ion-avatar>
