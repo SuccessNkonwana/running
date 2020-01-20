@@ -14,6 +14,7 @@ export class BookEventPage implements OnInit {
   eventAddress;
   eventOpeningHours;
   eventClosingHours;
+  price:number;
   // eventPrice;
   // tickets;
   // totalPrice;
@@ -64,8 +65,8 @@ events=[];
          }
  
       console.log(this.events,"the events")
-     
-     //  this.route.navigate(['/book-event'],{queryParams:{name:this.events.eventk}})
+      this.price=data[0].myevents[0].myevents.price;
+    
 
      })
     })
@@ -98,9 +99,11 @@ sub(num:number) {
 //
 // this.total=this.price*this.tickets;
 }
-BookEvent(tickets,total)
+BookEvent(tickets,price)
   {
-    console.log(tickets,total,"=================");
+    this.clubService.BookEvent(tickets,this.price);
+    
+    console.log(tickets,this.price,"=================");
 
   }
 }

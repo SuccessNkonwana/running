@@ -72,7 +72,7 @@ userID:String
     myclubs
    })
    console.log(this.currClub,"the current club");
-   console.log(this.currClub[0].myclubs.myclubs[0].myclubs.clubKey,"the current Choosen club ID");
+   console.log(this.currClub[0].myclubs.myclubs.clubKey,"the current Choosen club ID");
   }
  rtClubName()
  {
@@ -559,10 +559,10 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice,newDistance
 
     let user=this.readCurrentSession()
     let userID=user.uid
-    let clubKey=this.currClub[0].myclubs.myclubs[0].myclubs.clubKey
-    console.log(this.currClub[0].myclubs.myclubs[0].myclubs.clubKey," addevnt page club");
+    let clubKey=this.currClub[0].myclubs.myclubs.clubKey
+    console.log(this.currClub," addevnt page club");
     
-    console.log("HOT ",this.currClub[0].myclubs.myclubs[0].myclubs.clubKey)
+    console.log("HOT ",this.currClub[0].myclubs.myclubs.clubKey) 
     this.uniqkey = newName+'Logo';
     const filePath = this.uniqkey;
     this.fileRef = this.storage.ref(filePath);
@@ -674,25 +674,28 @@ async rtBooking()
   return  result 
 }
 // booking the event
- BookEvent(tickets,total)
+ BookEvent(tickets,price)
   {
-    console.log(tickets,total,"=================");
-    
+    let user=this.readCurrentSession()
+    let userID=user.uid
+    console.log(tickets,price,"=================");
+    let total=tickets*price;
+    console.log(total,"total =================");
     ///method three
     return new Promise((resolve, reject) => {
       this.booking(this.currentBook).then(data =>{
      
-        console.log(data[0].myevents,"the selected one vele",data[0].myevents.eventKey);
+        console.log(data[0].myevents[0].myevents[0].myevents,"the selected one vele",data[0].myevents[0].myevents[0].myevents.eventKey);
         
       this.dbfire.collection("bookedEvents").add({
-      eventKey: this.currentBook[0].eventKey,
-      name: data[0].myevents.name,
-      address: data[0].myevents.address,
-       openingHours: data[0].myevents.openingHours,
-       closingHours: data[0].myevents.clossingHours,
-       userID:data[0].myevents.userID,
-       clubID: data[0].myevents.clubID,
-       price: data[0].myevents.price,
+      eventKey:data[0].myevents[0].myevents[0].myevents.eventKey,
+      name:data[0].myevents[0].myevents[0].myevents.name,
+      address: data[0].myevents[0].myevents[0].myevents.address,
+       openingHours: data[0].myevents[0].myevents[0].myevents.openingHours,
+       closingHours: data[0].myevents[0].myevents[0].myevents.closingHours,
+      userID: userID,
+      clubID: data[0].myevents[0].myevents[0].myevents.clubKey,
+       price: data[0].myevents[0].myevents[0].myevents.price,
        tickets:tickets,
        total:total
       
