@@ -10,6 +10,8 @@
 /* Use the variables */
 
 .theBody {
+    $mywidth: 100%;
+    width: $mywidth;
     body {
         // background: $bgcolor;
         // color: $textcolor;
@@ -22,7 +24,7 @@
         $myheight: 100%;
         height: $myheight;
         text-align: center;
-        overflow: scroll;
+        // overflow: scroll;
         .avatar {
             position: absolute;
             z-index: 5;
@@ -146,8 +148,7 @@
             $myheight: 100%;
             height: $myheight;
             padding: 10px 0px 0px 0px !important;
-
-            #age{
+            #age {
                 color: white;
             }
         }

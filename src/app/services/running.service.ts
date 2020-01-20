@@ -677,6 +677,36 @@ BookEvent(event)
     // }).catch((error)=>{
     //   console.log(error)
     // })
+
+    return new Promise((resolve, reject) => {
+      // this.booking().then(data =>{
+     
+      //   console.log( data.length);
+      //   for( let x = 0; x < data.length; x++ )
+      //   {
+      //    console.log(x);
+
+      //    this.uid = data[0].userKey;
+         
+      //   this.theUser.push({ 
+      //     userKey:  data[x].userKey,
+      //     name:  data[x].name,
+      //     age:  data[x].age,
+      //     email:  data[x].email,
+      //     gender:  data[x].gender,
+      //     photoURL:data[x].photoURL}
+          
+      //     )
+      //   }
+      //   this.email=this.theUser[0].Email
+      // console.log(this.theUser,"the LAST ONE vele" )
+      //      if(this.theUser[0].photoURL==null)
+      //      {
+      //         this.defaultpic=false;
+            
+      //      }
+     })
+    
   
 
   }
@@ -728,6 +758,7 @@ BookEvent(event)
   }
   booking(myevents){
    
+    return new Promise((resolve, reject) => {
     
     this.currentBook.push(
 
@@ -739,6 +770,9 @@ BookEvent(event)
     )
     this.BookEvent(this.currentBook[0]);
     console.log(myevents);
+    console.log(this.currentBook);
+    resolve(this.currentBook)
+  });
   }
   uploadEventPic(event){
     let user=this.readCurrentSession()

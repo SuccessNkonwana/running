@@ -19,6 +19,7 @@ body {
     color: $textcolor;
     height: 100%;
     width: 100%;
+    // overflow: scroll;
     background-image: url('/assets/icon/bgs.PNG');
     background-repeat: no-repeat;
     background-position: center;
@@ -41,9 +42,9 @@ body {
         height: $myheight;
     }
     .imgC {
-       width: 250px;
+        width: 250px;
         height: 250px;
-       // border-radius: 50%;
+        // border-radius: 50%;
     }
     .gett {
         text-align: center;
