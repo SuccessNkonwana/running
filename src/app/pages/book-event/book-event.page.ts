@@ -14,6 +14,7 @@ export class BookEventPage implements OnInit {
   eventAddress;
   eventOpeningHours;
   eventClosingHours;
+  price:number;
   // eventPrice;
   // tickets;
   // totalPrice;
@@ -24,58 +25,66 @@ export class BookEventPage implements OnInit {
  
  // adding tickets
  tickets:number=0;
- total:number;
+ total:number=0;
   hasAEvent=true;
 events=[];
 
   constructor(public navCtrl:NavController,private clubService:RunningService, public route:Router) {
     this.events= []; 
+    this.bookE();
+   
    }
 
   ngOnInit() {
-    this.bookE();
+    
   }
   bookE()
   {
-
+ 
   return new Promise((resolve, reject) => {
-      this.clubService.rtEvents().then(data =>{
-     
-        console.log( data.length);
-        for( let x = 0; x < data.length; x++ )
-        {
-         console.log(x);
-         
+      this.clubService.rtBooking().then(data =>{
+        this.events= [];
+        console.log(data.length," book ts selected event",data);
+        
+       
         this.events.push({ 
-          eventKey:  data[x].eventKey,
-          name:  data[x].name,
-          address:  data[x].address,
-          openingHours:  data[x].openingHours,
-          closingHours:data[x].closingHours,
-          price:data[x].price,
-          clubKey:data[x].clubKey
+          eventKey:  data[0].myevents[0].myevents.eventKey, 
+          name:  data[0].myevents[0].myevents.name,
+          address:  data[0].myevents[0].myevents.address,
+          openingHours:  data[0].myevents[0].myevents.openingHours,
+          closingHours:data[0].myevents[0].myevents.closingHours,
+          price:data[0].myevents[0].myevents.price,
+          clubKey:data[0].myevents[0].myevents.clubKey
         
         })
          
-        }
+        
          if(this.events===null)
          {
            this.hasAEvent=false
          }
  
       console.log(this.events,"the events")
-     //  this.route.navigate(['/book-event'],{queryParams:{name:this.events.eventk}})
+      this.price=data[0].myevents[0].myevents.price;
+    
 
      })
     })
   
   }
 
+
 back(){
   this.route.navigate(['/events'])
 }
+
   add(num:number) {
     this.tickets=this.tickets+num;
+
+
+    
+    //
+   
     // this.total=this.price*this.tickets;
 }
 // subtructing tickets
@@ -85,12 +94,16 @@ sub(num:number) {
   if(this.tickets<0){
     this.tickets=0;
 }
+
+
+//
 // this.total=this.price*this.tickets;
 }
-book(tickets,totalPrice,myevents){
-  tickets=this.tickets;
-  totalPrice=this.total;
-  
-  
+BookEvent(tickets,price)
+  {
+    this.clubService.BookEvent(tickets,this.price);
+    
+    console.log(tickets,this.price,"=================");
+
   }
 }

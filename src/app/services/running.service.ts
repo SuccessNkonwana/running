@@ -72,7 +72,7 @@ userID:String
     myclubs
    })
    console.log(this.currClub,"the current club");
-   console.log(this.currClub[0].myclubs.myclubs[0].myclubs.clubKey,"the current Choosen club ID");
+   console.log(this.currClub[0].myclubs.myclubs.clubKey,"the current Choosen club ID");
   }
  rtClubName()
  {
@@ -546,10 +546,10 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
 
     let user=this.readCurrentSession()
     let userID=user.uid
-    let clubKey=this.currClub[0].myclubs.myclubs[0].myclubs.clubKey
-    console.log(this.currClub[0].myclubs.myclubs[0].myclubs.clubKey," addevnt page club");
+    let clubKey=this.currClub[0].myclubs.myclubs.clubKey
+    console.log(this.currClub," addevnt page club");
     
-    console.log("HOT ",this.currClub[0].myclubs.myclubs[0].myclubs.clubKey)
+    console.log("HOT ",this.currClub[0].myclubs.myclubs.clubKey) 
     this.uniqkey = newName+'Logo';
     const filePath = this.uniqkey;
     this.fileRef = this.storage.ref(filePath);
@@ -646,67 +646,58 @@ return this.uploadPercent = this.task.percentageChanges();
 ///retrieve event
 ///update event
 ///delete event
-
-// booking the event
-BookEvent(event)
-  {
+async rtBooking()
+{
+    //method two
+    let result :any
+   await this.booking(this.currentBook).then(data =>{
+    result = data
   
-    console.log( "somethinf"+event)
-   
-    // this.dbfire.collection("bookedEvents").add({
-    //   eventKey: this.currentBook[0].eventKey,
-    //   event: eventName,
-    //   address: eventAddress,
-    //   // openingHours: styt,
-    //   // closingHours: etyt,
-    //   // userID:userID,
-    //   // clubID: clubID,
-    //   price:eventPrice,
-    //   tickets:tickets,
-    //   total:totalPrice
-      
-    // }).then((data)=>{
-    
-    
-     
-    //   console.log(data)
-    //   // this.route.navigate(['/payments'],{queryParams:{name:eventNames}})
-    //   //  this.route.navigate(['/edit'],{queryParams:{name: item.name,price:item.price,type:item.type,key:item.key}})
-
-    //   // this.navCtrl.navigateRoot("/payments");
-    // }).catch((error)=>{
-    //   console.log(error)
-    // })
-
+   console.log(result.length);
+  })
+  console.log(result);
+  return  result 
+}
+// booking the event
+ BookEvent(tickets,price)
+  {
+    let user=this.readCurrentSession()
+    let userID=user.uid
+    console.log(tickets,price,"=================");
+    let total=tickets*price;
+    console.log(total,"total =================");
+    ///method three
     return new Promise((resolve, reject) => {
-      // this.booking().then(data =>{
+      this.booking(this.currentBook).then(data =>{
      
-      //   console.log( data.length);
-      //   for( let x = 0; x < data.length; x++ )
-      //   {
-      //    console.log(x);
-
-      //    this.uid = data[0].userKey;
-         
-      //   this.theUser.push({ 
-      //     userKey:  data[x].userKey,
-      //     name:  data[x].name,
-      //     age:  data[x].age,
-      //     email:  data[x].email,
-      //     gender:  data[x].gender,
-      //     photoURL:data[x].photoURL}
-          
-      //     )
-      //   }
-      //   this.email=this.theUser[0].Email
-      // console.log(this.theUser,"the LAST ONE vele" )
-      //      if(this.theUser[0].photoURL==null)
-      //      {
-      //         this.defaultpic=false;
-            
-      //      }
-     })
+        console.log(data[0].myevents[0].myevents[0].myevents,"the selected one vele",data[0].myevents[0].myevents[0].myevents.eventKey);
+        
+      this.dbfire.collection("bookedEvents").add({
+      eventKey:data[0].myevents[0].myevents[0].myevents.eventKey,
+      name:data[0].myevents[0].myevents[0].myevents.name,
+      address: data[0].myevents[0].myevents[0].myevents.address,
+       openingHours: data[0].myevents[0].myevents[0].myevents.openingHours,
+       closingHours: data[0].myevents[0].myevents[0].myevents.closingHours,
+      userID: userID,
+      clubID: data[0].myevents[0].myevents[0].myevents.clubKey,
+       price: data[0].myevents[0].myevents[0].myevents.price,
+       tickets:tickets,
+       total:total
+      
+    }).then((data)=>{
     
+    
+     
+      console.log(data)
+   
+    
+    }).catch((error)=>{
+      console.log(error)
+    })
+
+     })
+    })
+  //   console.log( "somethinf"+event)
   
 
   }
@@ -757,9 +748,9 @@ BookEvent(event)
    
   }
   booking(myevents){
-   
+   this.currentBook=[]
     return new Promise((resolve, reject) => {
-    
+      
     this.currentBook.push(
 
       {
@@ -768,7 +759,7 @@ BookEvent(event)
       }
      
     )
-    this.BookEvent(this.currentBook[0]);
+    
     console.log(myevents);
     console.log(this.currentBook);
     resolve(this.currentBook)
