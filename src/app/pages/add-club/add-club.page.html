@@ -23,7 +23,7 @@
                           </ion-avatar> -->
                                 <div class="profile-image">
                                     <div *ngIf="urlPath =='' ">
-                                            <img src="\assets\images\profile-user.png" class="x">
+                                        <img src="\assets\images\profile-user.png" class="x">
                                     </div>
 
                                     <div *ngIf="urlPath !='' ">
@@ -35,7 +35,7 @@
                                             <ion-fab-button color="primary" size="small">
                                                 <ion-icon name="camera" class="input"> </ion-icon>
                                             </ion-fab-button>
-                                         
+
 
                                             <ion-fab-list side="end">
                                                 <ion-fab-button color="primary">
@@ -52,7 +52,7 @@
                                 </div>
                                 <br><br><br>
                             </div>
-                            
+
 
                             <div class="div2">
                                 <br><br><br><br>
@@ -124,7 +124,7 @@
                                     </div>
                                 </ion-item> -->
                                 <ion-col>
-                                    <ion-button shape="round" routerLink="/add" expand="full" color="primary" (click)="addClub()" [disabled]="!clubForm.valid">Submit</ion-button>
+                                    <ion-button shape="round" routerLink="tabs/add" expand="full" color="primary" (click)="addClub(club,Address,Hours,Close)" [disabled]="!clubForm.valid">Submit</ion-button>
                                 </ion-col>
 
 
