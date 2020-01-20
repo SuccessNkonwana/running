@@ -47,6 +47,11 @@ export class AddClubPage implements OnInit {
 
   photoURL: string;
   
+  club;
+  Address;
+  close;
+  Hours;
+
   constructor(private fb: FormBuilder,private clubService:RunningService) 
   { 
      
@@ -64,8 +69,7 @@ export class AddClubPage implements OnInit {
     );
   }
 
-
-  addClub(newName,newAddress,newOpeningHours,newClosingHours)
+  addClub()
   {
        this.newName = this.clubForm.get('club').value
        this.newAddress = this.clubForm.get('Address').value
@@ -75,6 +79,7 @@ export class AddClubPage implements OnInit {
 
     this.clubService.addClub(this.newName,this.newAddress,this.newOpeningHours,this.newClosingHours)
   }
+
   uploadClubPic(event){
     this.clubService.uploadClubPic(event)
   }

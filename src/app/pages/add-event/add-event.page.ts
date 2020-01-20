@@ -25,6 +25,8 @@ export class AddEventPage implements OnInit {
   newOpeningHours
   newClosingHours
   newPrice
+  newDate
+  newDistance
   user = {} as User;
   
   public eventForm: FormGroup;
@@ -37,10 +39,12 @@ export class AddEventPage implements OnInit {
     this.eventForm = fb.group({
 
       newName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30), Validators.required])],
+      newDistance: ['', Validators.compose([Validators.pattern('[0-9 ]*'), Validators.required])],
       newAddress: ['', Validators.required],
       newOpeningHours: ['', Validators.required],
       newClosingHours: ['', Validators.required],
-      newPrice: ['', Validators.required],
+      newDate: ['', Validators.required],
+      newPrice: ['',Validators.compose([Validators.pattern('[0-9 ]{2,4}$'), Validators.required])],
 
     },
     );
@@ -53,10 +57,10 @@ export class AddEventPage implements OnInit {
 
   ngOnInit() {
   }
-addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice)
+addEvent()
 {
 
-      this.runn.addEvent(this.newName,this.newAddress,this.newOpeningHours,this.newClosingHours,this.newPrice)
+      this.runn.addEvent(this.newName,this.newAddress,this.newOpeningHours,this.newClosingHours,this.newPrice,this.newDistance,this.newDate)
 }
 
 uploadEventPic(event){

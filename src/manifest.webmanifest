@@ -1,8 +1,8 @@
 {
-  "name": "app",
-  "short_name": "app",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Running club",
+  "short_name": "run",
+  "theme_color": "#11C2D4",
+  "background_color": "#000000",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

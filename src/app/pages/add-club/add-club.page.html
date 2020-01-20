@@ -27,7 +27,7 @@
                                     </div>
 
                                     <div *ngIf="urlPath !='' ">
-                                        <img data-src="{{urlPath}}" (click)="zoom(user)">
+                                        <img data-src="{{urlPath}}">
                                     </div>
 
                                     <div class="image-upload">
@@ -99,8 +99,8 @@
                                                 <ion-label position="floating">Close Time</ion-label>
                                                 <ion-datetime formControlName="Close" displayFormat="H:mm a"></ion-datetime>
                                             </ion-item>
-                                            <div *ngIf="clubForm.controls.Close.invalid && clubForm.controls.Hours.Close">
-                                            </div>
+                                            <!-- <div *ngIf="clubForm.controls.Close.invalid && clubForm.controls.Hours.Close">
+                                            </div> -->
                                             <div class="error" *ngIf="clubForm.get('Close').hasError('required') && clubForm.get('Close').touched">
                                                 Please input your Close Hour
                                             </div>
