@@ -186,6 +186,7 @@ userID:String
     
      
       console.log(data)
+      this.navCtrl.navigateRoot("/tabs/add")
     }).catch((error)=>{
       console.log(error)
     })
@@ -467,15 +468,27 @@ let userID=user['uid']
 console.log("the user",userID);
 this.file = event.target.files[0];
   console.log(this.file)
- 
+  this.uniqkey = 'PIC' + this.dateTime;
+  const filePath = this.uniqkey;
+  const fileRef = this.storage.ref(filePath);
+  const task = this.storage.upload(filePath, this.file);
   // observe percentage changes
-  
+  task.snapshotChanges().pipe(
+    finalize(() => {
+      this.downloadU = fileRef.getDownloadURL().subscribe(urlPath => {
+        console.log(urlPath);
        
-       
-  //////////////////////
+        this.afs.doc('users/' + userID).update({
+          photoURL: urlPath
+        })
+        this.uploadPercent = null;
+      });
+    })
+  ).subscribe();
+  return this.uploadPercent = task.percentageChanges();
 }
 
-///////delete todo
+
 deleteTodo(clubs)
 {
  this.dbfire.collection("todos").doc(clubs.todoKey).delete().then((data)=> {
@@ -653,32 +666,7 @@ BookEvent(event)
   
     console.log( "somethinf"+event)
    
-    // this.dbfire.collection("bookedEvents").add({
-    //   eventKey: this.currentBook[0].eventKey,
-    //   event: eventName,
-    //   address: eventAddress,
-    //   // openingHours: styt,
-    //   // closingHours: etyt,
-    //   // userID:userID,
-    //   // clubID: clubID,
-    //   price:eventPrice,
-    //   tickets:tickets,
-    //   total:totalPrice
-      
-    // }).then((data)=>{
-    
-    
-     
-    //   console.log(data)
-    //   // this.route.navigate(['/payments'],{queryParams:{name:eventNames}})
-    //   //  this.route.navigate(['/edit'],{queryParams:{name: item.name,price:item.price,type:item.type,key:item.key}})
-
-    //   // this.navCtrl.navigateRoot("/payments");
-    // }).catch((error)=>{
-    //   console.log(error)
-    // })
-  
-
+   
   }
   // paying for the event
   payment(eventName,eventAddress,eventPrice,tickets,totalPrice)

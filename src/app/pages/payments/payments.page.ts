@@ -22,6 +22,7 @@ export class PaymentsPage implements OnInit {
 // this.card1=this.card.substring(0,3);
 objectA={
   name:''}
+  number;
   public paymentsForm: FormGroup;
   constructor(private fb: FormBuilder,private route:ActivatedRoute) { 
     

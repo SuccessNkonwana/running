@@ -56,7 +56,7 @@
                                         <ion-list lines="none">
                                             <ion-item detail-push>
 
-                                                <ion-input [(ngModel)]="email" (click)="EmailUpdate()">
+                                                <ion-input>
                                                     <Nav>{{user.email}}</Nav>
                                                 </ion-input>
 
@@ -66,13 +66,13 @@
                                             <br><br>
                                             <ion-item>
 
-                                                <ion-label (click)="AddressUpdate(user)"> Innovation hub building 6</ion-label>
+                                                <ion-label> Innovation hub building 6</ion-label>
 
                                                 <ion-icon name="navigate" color="primary" slot="start"></ion-icon>
                                                 <!-- <ion-icon name="create" color="dark" slot="end" (click)=" AddressUpdate(user)"></ion-icon> -->
                                             </ion-item>
                                             <br><br>
-                                            <ion-item (click)="AgeUpdate(user)">
+                                            <ion-item>
 
                                                 <ion-label>
                                                     <Nav>{{user.age}}</Nav>
@@ -84,7 +84,7 @@
                                             <br><br>
                                             <ion-item>
 
-                                                <ion-label (click)="GenderUpdate(user)">{{user.gender}}</ion-label>
+                                                <ion-label>{{user.gender}}</ion-label>
 
                                                 <ion-icon name="person" color="primary" slot="start"></ion-icon>
                                                 <!-- <ion-icon name="create" color="dark" slot="end" (click)=" GenderUpdate(user)"></ion-icon> -->
