@@ -20,7 +20,7 @@ body {
     height: 100%;
     width: 100%;
     // overflow: scroll;
-    background-image: url('/assets/icon/bgs.PNG');
+    background-image: url('/assets/images/YELLOW.png');
     background-repeat: no-repeat;
     background-position: center;
     // background: url(/assets/icon/bgs.PNG) no-repeat center center;
@@ -42,8 +42,8 @@ body {
         height: $myheight;
     }
     .imgC {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
         // border-radius: 50%;
     }
     .gett {
@@ -59,6 +59,7 @@ body {
     ion-button {
         width: 160px;
         font-size: 15px;
+        margin-top: 100px;
     }
     h1 {
         font-size: 26px;
