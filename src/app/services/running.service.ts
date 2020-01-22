@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+import * as moment from 'moment';
 import 'firebase/firestore';
 import { AuthService } from './auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -321,6 +322,7 @@ getEvents()
            closingHours: doc.data().closingHours,
            price: doc.data().newPrice,
            userID:doc.data().userID,
+          //  date:doc.data().date,
            clubKey: doc.data().clubID
     
          })
@@ -576,7 +578,8 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice,newDistance
       name: newName,
       address: newAddress,
       distance: newDistance,
-      date:newDate,
+      date:new Date(newDate),
+    
       openingHours: styt,
       closingHours: etyt,
       userID:userID,
@@ -661,6 +664,9 @@ return this.uploadPercent = this.task.percentageChanges();
 ///retrieve event
 ///update event
 ///delete event
+async rtAccount(){
+
+}
 async rtBooking()
 {
     //method two
@@ -678,13 +684,14 @@ async rtBooking()
   {
     let user=this.readCurrentSession()
     let userID=user.uid
-    console.log(tickets,price,"=================");
+    // console.log(tickets,price,"=================",userID);
     let total=tickets*price;
-    console.log(total,"total =================");
+    // console.log(total,"total =================",userID);
     ///method three
+    let aproved="false"
     return new Promise((resolve, reject) => {
       this.booking(this.currentBook).then(data =>{
-     
+     console.log("leswinga kwala>>>>>>>>>>>",data);
         console.log(data[0].myevents[0].myevents[0].myevents,"the selected one vele",data[0].myevents[0].myevents[0].myevents.eventKey);
         
       this.dbfire.collection("bookedEvents").add({
@@ -696,13 +703,16 @@ async rtBooking()
       userID: userID,
       clubID: data[0].myevents[0].myevents[0].myevents.clubKey,
        price: data[0].myevents[0].myevents[0].myevents.price,
+      //  date: data[0].myevents[0].myevents[0].myevents.date,
+      //  {{element.data.TimeStamp.toDate() | date:'dd-MM-yyy'}}
        tickets:tickets,
-       total:total
+       total:total,
+       aproved:aproved
       
     }).then((data)=>{
     
     
-     
+    //  this.navCtrl.navigateRoot('/done')
       console.log(data)
    
     
@@ -779,6 +789,14 @@ async rtBooking()
     console.log(this.currentBook);
     resolve(this.currentBook)
   });
+  }
+  getAccount(){
+  
+    return this.afs.collection('account').snapshotChanges();
+  }
+  getBooked(){
+  
+    return this.afs.collection('bookedEvents').snapshotChanges();
   }
   uploadEventPic(event){
     let user=this.readCurrentSession()

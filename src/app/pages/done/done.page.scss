@@ -60,6 +60,7 @@ body {
     }
     .cd {
         margin-left: 70px;
+        color: black;
     }
     h6 {
         text-align: start;
@@ -115,11 +116,14 @@ body {
     .div1 {
         $background-color: #11C2D4;
         background-color: $background-color;
-        $myheight: 100%;
-        height: $myheight;
+        // $myheight: 100%;
+        // height: $myheight;
         border-bottom-right-radius: 20%;
         border-bottom-left-radius: 20%;
         padding: 10px 0px 0px 0px !important;
+        .price {
+            color: whitesmoke;
+        }
     }
     .bah {
         top: 60px;
@@ -149,18 +153,24 @@ body {
     }
     .card1 {
         background-color: white;
-        top: 120px;
+        top: 100px;
         padding: 0 !important;
         border: 55px;
         color: #11C2D4;
     }
     .ref {
-        color: black
+        color: black;
+        font-weight: bold;
     }
     .blac {
         color: black;
     }
-    ion-label {
+    .label {
         font-weight: bold;
+        float: left;
+        color: black;
+    }
+    p {
+        float: left;
     }
 }

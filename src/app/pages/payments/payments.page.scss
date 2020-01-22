@@ -1,5 +1,4 @@
-
-.the-card{
+.the-card {
     width: 75%;
     height: 30%;
     border: 1px solid red;
@@ -12,19 +11,19 @@
     // background-color: ;
     .icons {
         zoom: 1.5;
-    }  
-    .logo{
+    }
+    .logo {
         zoom: 1.5;
         float: right;
     }
-    .cardNo{
+    .cardNo {
         // font-size: 30px;
         text-align: center;
     }
-    .exp{
+    .exp {
         float: right;
     }
-    .date{
+    .date {
         float: right;
     }
 }
@@ -190,8 +189,6 @@ body {
         width: 90%;
     }
     .imgC {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
+        width: 50%;
     }
 }

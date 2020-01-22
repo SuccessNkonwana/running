@@ -114,7 +114,7 @@
             width: $mywidth;
             $margin-left: 0%;
             margin-left: $margin-left;
-            $myheight: 500px;
+            $myheight: 300px;
             height: $myheight;
             $margin-bottom: 0%;
             margin-bottom: $margin-bottom;
@@ -224,7 +224,7 @@
         .profile-image {
             position: absolute;
             z-index: 5;
-            top: 20%;
+            top: 14%;
             left: 5%;
         }
         .image-upload>input {
