@@ -578,7 +578,8 @@ addEvent(newName,newAddress,newOpeningHours,newClosingHours,newPrice,newDistance
       name: newName,
       address: newAddress,
       distance: newDistance,
-      date:newDate,
+      date:new Date(newDate),
+    
       openingHours: styt,
       closingHours: etyt,
       userID:userID,

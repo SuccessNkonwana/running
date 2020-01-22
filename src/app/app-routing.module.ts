@@ -80,6 +80,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/done/done.module').then( m => m.DonePageModule)
   },
   {
+    path: 'complete',
+    loadChildren: () => import('./pages/complete/complete.module').then( m => m.CompletePageModule)
+  },
+  {
 
     path: 'tabs', component: TabsPage, children:[
 

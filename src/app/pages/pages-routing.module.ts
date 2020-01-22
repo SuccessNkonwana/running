@@ -38,6 +38,10 @@ const routes: Routes = [
   },  {
     path: 'done',
     loadChildren: () => import('./done/done.module').then( m => m.DonePageModule)
+  },
+  {
+    path: 'complete',
+    loadChildren: () => import('./complete/complete.module').then( m => m.CompletePageModule)
   }
 
 
