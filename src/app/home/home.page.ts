@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RunningService } from '../services/running.service';
 @Component({
@@ -6,7 +6,7 @@ import { RunningService } from '../services/running.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   clubs= [];
   theUser=[];
   defaultpic=true;
@@ -29,6 +29,9 @@ slideOpts = {
     this.theUser=[]     
     this.getdata()
     this.getUser()
+  }
+  ngOnInit() {
+    this.getBooked();
   }
   getdata()
   {
@@ -108,16 +111,22 @@ slideOpts = {
   gotoProfile(){
     this.router.navigateByUrl("profile")
   }
-  // gotoEvents(){
-  //   this.router.navigateByUrl("events")
-  // }
-  // gotoAdd(){
-  //   this.router.navigateByUrl("add")
-  // }
-//  getClubs()
-//   {
-     
-//    this.runn.getClubs();
-//   }
+  myEvents;closingHours;openingHours;address;date;name
+getBooked(){
+  this.runn.getBooked().subscribe(data=>{
+    this.myEvents=data.map(e=>{
+      return{
+        key: e.payload.doc.id,
+        closingHours: e.payload.doc.data()['closingHours'],
+        openingHours: e.payload.doc.data()['openingHours'],
+        address: e.payload.doc.data()['address'],
+        name: e.payload.doc.data()['name'],
+        // date: e.payload.doc.data()['date'],
+       
+      }as Events;// the Item is the class name in the item.ts
+    });
+    console.log(this.myEvents);
+  });
+}
 
 }
