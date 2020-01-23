@@ -46,7 +46,7 @@
                                         </ion-fab>
 
 
-                                        <input id="file-input2" class="input" type="file" (change)="uploadEventPic($event)" />
+                                        <input id="file-input2" class="input" type="file" (change)="uploadEventPic($event)" [(ngModel)]="pic" formControlName="pic"/>
                                     </div>
                                 </div>
                                 <br><br><br>
@@ -100,7 +100,7 @@
 
                                         <ion-item id="item" color="transparent">
                                             <ion-label position="floating">Date: MM DD YY</ion-label>
-                                            <ion-datetime displayFormat=" MM DD YY" [(ngModel)]="newDate" formControlName="newDate"></ion-datetime>
+                                            <ion-datetime displayFormat="MM DD YY" [(ngModel)]="newDate" formControlName="newDate"></ion-datetime>
 
                                            
                                         </ion-item>
@@ -169,7 +169,7 @@
                                         </ion-item> -->
                                         <br><br>
                                         <ion-col>
-                                            <ion-button shape="round" routerLink="/club-profile" expand="full" color="light" [disabled]="!eventForm.valid" (click)="addEvent()">Add</ion-button>
+                                            <ion-button shape="round"  expand="full" color="light" [disabled]="!eventForm.valid" (click)="addEvent()">Add</ion-button>
                                         </ion-col>
 
                                         <br>

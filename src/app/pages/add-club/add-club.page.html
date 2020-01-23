@@ -47,7 +47,7 @@
                                         </ion-fab>
 
 
-                                        <input id="file-input2" class="input" type="file" (change)="uploadClubPic($event)" />
+                                        <input id="file-input2" class="input" type="file" (change)="uploadClubPic($event)" formControlName="pic"/>
                                     </div>
                                 </div>
                                 <br><br><br>
@@ -111,20 +111,9 @@
 
 
                                 <br>
-                                <!-- <ion-item lines="none">
-                                    <div id="h">
-                                        <h2 color="primary" >Submit</h2>
-                                    </div>
-
-                                    <div id="but">
-                                        <ion-fab-button (click)="addClub(club,Address,Hours,Close)"  [disabled]="!clubForm.valid"  color="primary" size="small">
-                                            <ion-icon name="arrow-forward"></ion-icon>
-                                        </ion-fab-button>
-
-                                    </div>
-                                </ion-item> -->
+                               
                                 <ion-col>
-                                    <ion-button shape="round" routerLink="tabs/add" expand="full" color="primary" (click)="addClub(club,Address,Hours,Close)" [disabled]="!clubForm.valid">Submit</ion-button>
+                                    <ion-button shape="round" routerLink="tabs/add" expand="full" color="primary" (click)="addClub()" [disabled]="!clubForm.valid">Submit</ion-button>
                                 </ion-col>
 
 

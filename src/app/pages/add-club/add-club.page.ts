@@ -62,6 +62,7 @@ export class AddClubPage implements OnInit {
       Address: ['', Validators.required],
       Hours: ['', Validators.required],
       Close: ['', Validators.required],
+      pic: ['', Validators.required],
 
 
 

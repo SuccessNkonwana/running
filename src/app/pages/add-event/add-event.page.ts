@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { RunningService } from 'src/app/services/running.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.page.html',
   styleUrls: ['./add-event.page.scss'],
+  providers:[DatePipe]
 })
 export class AddEventPage implements OnInit {
 
@@ -32,7 +34,7 @@ export class AddEventPage implements OnInit {
   public eventForm: FormGroup;
 
 
-  constructor(
+  constructor(private datePipe: DatePipe,
     private fb: FormBuilder,public runn: RunningService, private authService: AuthService,) {
 
     
@@ -43,6 +45,7 @@ export class AddEventPage implements OnInit {
       newAddress: ['', Validators.required],
       newOpeningHours: ['', Validators.required],
       newClosingHours: ['', Validators.required],
+      pic: ['', Validators.required],
       newDate: ['', Validators.required],
       newPrice: ['',Validators.compose([Validators.pattern('[0-9 ]{2,4}$'), Validators.required])],
 
@@ -56,10 +59,12 @@ export class AddEventPage implements OnInit {
    }
 
   ngOnInit() {
+    
   }
 addEvent()
 {
-
+ this.newDate=this.datePipe.transform(this.newDate,"dd-MM-yyyy");
+ console.log(this.newDate)
       this.runn.addEvent(this.newName,this.newAddress,this.newOpeningHours,this.newClosingHours,this.newPrice,this.newDistance,this.newDate)
 }
 
