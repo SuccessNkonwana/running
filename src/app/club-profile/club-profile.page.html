@@ -42,7 +42,7 @@
         <ion-list lines="none" *ngFor="let myevents of events">
             <ion-item class="eventCard" class="item" *ngIf="hasAEvent">
                 <ion-card>
-                    <img class="ecardimg" src="\assets\images\pexels-photo-2283996event.jpeg" />
+                    <img class="ecardimg" src="{{myevents.photoURL}}" />
                     <ion-card-header>
                         <ion-card-subtitle>
                             <ion-icon name="pin"></ion-icon> {{myevents.address}} </ion-card-subtitle>
@@ -51,7 +51,7 @@
                     <ion-card-content>
                         <ion-icon name="alarm"></ion-icon> openingHours: {{myevents.openingHours}} <br/>
                         <ion-icon name="alarm"></ion-icon> closingHours: {{myevents.closingHours}} <br/>
-                        <ion-icon name="cash"></ion-icon> price: R{{myevents.price}} <br/>
+                        <ion-icon name="cash"></ion-icon> price: R{{myevents.newPrice}} <br/>
                     </ion-card-content>
                 </ion-card>
 

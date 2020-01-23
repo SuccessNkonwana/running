@@ -5,7 +5,7 @@ import 'firebase/firestore';
 import { AuthService } from './auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { switchMap, finalize, map } from 'rxjs/operators';
-import { NavController } from '@ionic/angular';
+import { NavController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 // import { eventNames } from 'cluster';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
@@ -61,7 +61,7 @@ export class RunningService {
   eventKey: string;
   address: string;
   price: string;
-  constructor(public auths: AuthService, private storage: AngularFireStorage, private afs: AngularFirestore, public navCtrl: NavController, public route: Router) {
+  constructor(public loadingController: LoadingController,public auths: AuthService, private storage: AngularFireStorage, private afs: AngularFirestore, public navCtrl: NavController, public route: Router) {
   }
   currentClub(myclubs) {
     //  console.log(myclubs[0].myclubs.myclubs[0].myclubs.clubKey,"the current Choosen club ID");
@@ -370,6 +370,8 @@ export class RunningService {
           this.eventsTemp.push({
             eventKey: doc.id,
             name: doc.data().name,
+            newPrice: doc.data().newPrice,
+            photoURL: doc.data().photoURL,
             address: doc.data().address,
             openingHours: doc.data().openingHours,
             closingHours: doc.data().closingHours,
@@ -404,29 +406,35 @@ export class RunningService {
   }
   ////upload a club pic
   uploadClubPic(event) {
+
     let user = this.readCurrentSession()
     let userID = user['uid']
     console.log("the user", userID);
     this.file = event.target.files[0];
     console.log(this.file)
-    this.uniqkey = 'PIC' + this.dateTime;
-    const filePath = this.uniqkey;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, this.file);
-    // observe percentage changes
-    task.snapshotChanges().pipe(
-      finalize(() => {
-        this.downloadU = fileRef.getDownloadURL().subscribe(urlPath => {
-          console.log(urlPath);
+    // let user = this.readCurrentSession()
+    // let userID = user['uid']
+    // console.log("the user", userID);
+    // this.file = event.target.files[0];
+    // console.log(this.file)
+    // this.uniqkey = 'PIC' + this.dateTime;
+    // const filePath = this.uniqkey;
+    // const fileRef = this.storage.ref(filePath);
+    // const task = this.storage.upload(filePath, this.file);
+    // // observe percentage changes
+    // task.snapshotChanges().pipe(
+    //   finalize(() => {
+    //     this.downloadU = fileRef.getDownloadURL().subscribe(urlPath => {
+    //       console.log(urlPath);
 
-          this.afs.doc('users/' + userID).update({
-            photoURL: urlPath
-          })
-          this.uploadPercent = null;
-        });
-      })
-    ).subscribe();
-    return this.uploadPercent = task.percentageChanges();
+    //       this.afs.doc('clubs/' + userID).update({
+    //         photoURL: urlPath
+    //       })
+    //       this.uploadPercent = null;
+    //     });
+    //   })
+    // ).subscribe();
+    // return this.uploadPercent = task.percentageChanges();
   }
 
 
@@ -525,6 +533,7 @@ export class RunningService {
 
           }).then((data) => {
             console.log(data)
+            this.presentLoading();
             this.navCtrl.navigateRoot("/club-profile")
 
 
@@ -539,6 +548,15 @@ export class RunningService {
     this.file = null;
 
 
+  }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'loading...',
+      duration: 4000
+    });
+    await loading.present();
+    // this.getdata()
+    loading.dismiss()
   }
   updateUser() {
     let user = this.readCurrentSession()
@@ -736,8 +754,18 @@ export class RunningService {
     this.file = event.target.files[0];
     console.log(this.file)
   }
+  uploadProfilePic(event){
+    let user = this.readCurrentSession()
+    let userID = user['uid']
+    console.log("the user", userID);
+    this.file = event.target.files[0];
+    console.log(this.file)
+  }
 
 
+
+
+  
   updateName(userID, editName) {
 
     this.dbfire.collection("users").doc(userID).update({ displayName: editName }).then((data) => {

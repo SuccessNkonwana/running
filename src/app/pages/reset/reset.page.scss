@@ -8,7 +8,7 @@ body {
     $myheight: 100%;
     height: $myheight;
     text-align: center;
-    overflow: scroll;
+    // overflow: scroll;
     #bg {
         // background-color: #11C2D4;
         $mywidth: 100%;
@@ -50,5 +50,8 @@ body {
     }
     #buts {
         margin-left: 85px;
+    }
+    .imgC {
+        width: 37%;
     }
 }

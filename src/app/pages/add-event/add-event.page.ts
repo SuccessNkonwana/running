@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { RunningService } from 'src/app/services/running.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { DatePipe } from '@angular/common';
+import { LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class AddEventPage implements OnInit {
   public eventForm: FormGroup;
 
 
-  constructor(private datePipe: DatePipe,
+  constructor(private datePipe: DatePipe,public loadingController: LoadingController,
     private fb: FormBuilder,public runn: RunningService, private authService: AuthService,) {
 
     
@@ -66,12 +67,21 @@ addEvent()
  this.newDate=this.datePipe.transform(this.newDate,"dd-MM-yyyy");
  console.log(this.newDate)
       this.runn.addEvent(this.newName,this.newAddress,this.newOpeningHours,this.newClosingHours,this.newPrice,this.newDistance,this.newDate)
-}
+this.presentLoading()
+    }
 
 uploadEventPic(event){
   this.runn.uploadEventPic(event)
 }
 
-
+async presentLoading() {
+  const loading = await this.loadingController.create({
+    message: 'loading...',
+    duration: 4000
+  });
+  await loading.present();
+  
+  loading.dismiss()
+}
 
 }

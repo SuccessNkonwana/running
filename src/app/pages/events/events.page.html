@@ -43,8 +43,11 @@
        
           <ion-list lines="none" *ngFor="let myevents of events">
             <ion-item  class="item"  *ngIf="hasAEvent" >
-                <ion-card >
-                    <img class="ecardimg" src="\assets\images\pexels-photo-2283996event.jpeg" />
+                <ion-card class="ecardimg" >
+                    <!-- <img class="ecardimg" src="\assets\images\pexels-photo-2283996event.jpeg" /> -->
+                   <ion-card>
+                    <img class="dimg" src="{{myevents.photoURL}}">
+                   </ion-card>
                     <ion-card-header>
                       <ion-card-subtitle><ion-icon name="pin"></ion-icon> {{myevents.address}} </ion-card-subtitle>
                       <ion-card-title>{{myevents.name}}</ion-card-title>

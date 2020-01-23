@@ -47,7 +47,7 @@
                                         </ion-fab>
 
 
-                                        <input id="file-input2" class="input" type="file" (change)="uploadClubPic($event)" formControlName="pic"/>
+                                        <input id="file-input2" class="input" type="file" (change)="uploadClubPic($event)" [(ngModel)]="pic" formControlName="pic"/>
                                     </div>
                                 </div>
                                 <br><br><br>

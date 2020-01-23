@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RunningService } from 'src/app/services/running.service';
 import { Observable } from 'rxjs';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-club',
@@ -52,7 +53,7 @@ export class AddClubPage implements OnInit {
   close;
   Hours;
 
-  constructor(private fb: FormBuilder,private clubService:RunningService) 
+  constructor(private fb: FormBuilder,private clubService:RunningService, public loadingController: LoadingController) 
   { 
      
 
@@ -60,9 +61,10 @@ export class AddClubPage implements OnInit {
 
       club: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30), Validators.required])],
       Address: ['', Validators.required],
+      pic: ['', Validators.required],
       Hours: ['', Validators.required],
       Close: ['', Validators.required],
-      pic: ['', Validators.required],
+     
 
 
 
@@ -75,6 +77,7 @@ export class AddClubPage implements OnInit {
        this.newName = this.clubForm.get('club').value
        this.newAddress = this.clubForm.get('Address').value
        this.newOpeningHours = this.clubForm.get('Hours').value   
+       
        this.newClosingHours = this.clubForm.get('Close').value
 
 
@@ -83,11 +86,12 @@ export class AddClubPage implements OnInit {
 
   uploadClubPic(event){
     this.clubService.uploadClubPic(event)
+    // this.presentLoading();
   }
   ngOnInit() {
-    if (this.UpdateForm == "true") {
+    // if (this.UpdateForm == "true") {
      
-    }
+    // }
   }
   ionViewDidEnter() {
     if (this.UpdateForm == "true") {
@@ -95,8 +99,15 @@ export class AddClubPage implements OnInit {
     }
 
   }
-
-
-
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'loading...',
+      duration: 4000
+    });
+    await loading.present();
+    this.addClub()
+    loading.dismiss()
+  }
+  
 
 }

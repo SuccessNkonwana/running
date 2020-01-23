@@ -1,10 +1,9 @@
-
 <ion-content>
 
 
     <body>
 
-        <div id="bg" >
+        <div id="bg">
 
             <ion-grid>
                 <ion-row color="primary" justify-content-center>
@@ -12,7 +11,7 @@
                     <ion-col align-self-center size-md="6" size-lg="11" size-xs="12">
 
                         <div class="div1">
-                            
+
                             <ion-buttons color="light" slot="start">
                                 <ion-back-button defaultHref="book-event"></ion-back-button>
                             </ion-buttons>
@@ -39,33 +38,30 @@
                             <h6>RECIPIENT NAME</h6>
                             <ion-label class="label">{{item.recipient}}</ion-label><br>
                             <h6>BANK NAME</h6>
-                            <ion-label  class="label">{{item.bank}}</ion-label><br>
+                            <ion-label class="label">{{item.bank}}</ion-label><br>
                             <h6>ACCOUNT NUMBER</h6>
-                            <ion-label  class="label">{{item.account}}</ion-label><br>
+                            <ion-label class="label">{{item.account}}</ion-label><br>
                             <h6>BRANCH</h6>
-                            <ion-label  class="label">{{item.branch}}</ion-label>
+                            <ion-label class="label">{{item.branch}}</ion-label>
                             <br>
                             <h6>REFERENCE</h6>
-                            <ion-label  class="label">{{theName}}</ion-label><br>
+                            <ion-label class="label">{{theName}}</ion-label><br>
                             <h6>AMOUNT</h6>
-                            <ion-label  class="label">{{total}}</ion-label><br>
+                            <ion-label class="label">{{total}}</ion-label><br>
                             <P>Use payment reference: {{theName}} </P>
+                            <br>
                             <ion-col>
-                                <ion-button shape="round" routerLink="done" expand="full" color="primary">I've made the deposit</ion-button>
+                                <ion-button shape="round" routerLink="/complete" expand="full" color="primary">I've made the deposit</ion-button>
                             </ion-col>
-
+                            <br><br>
 
                         </div>
-
-
-
 
                     </ion-col>
 
                 </ion-row>
             </ion-grid>
         </div>
-
     </body>
 
 </ion-content>

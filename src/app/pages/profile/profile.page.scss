@@ -24,7 +24,7 @@
         $myheight: 100%;
         height: $myheight;
         text-align: center;
-        // overflow: scroll;
+        overflow: scroll;
         .avatar {
             position: absolute;
             z-index: 5;
@@ -114,12 +114,12 @@
             width: $mywidth;
             $margin-left: 0%;
             margin-left: $margin-left;
-            $myheight: 500px;
+            $myheight: 80px;
             height: $myheight;
             $margin-bottom: 0%;
             margin-bottom: $margin-bottom;
-            $order-top-right-radius: 20%;
-            border-top-left-radius: 20%;
+            border-top-right-radius: 30%;
+            border-top-left-radius: 30%;
             padding-left: 15px;
         }
         .line {
@@ -224,8 +224,8 @@
         .profile-image {
             position: absolute;
             z-index: 5;
-            top: 20%;
-            left: 5%;
+            top: 30%;
+            left: 6%;
         }
         .image-upload>input {
             display: none;

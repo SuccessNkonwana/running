@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RunningService } from 'src/app/services/running.service';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-events',
@@ -16,7 +17,7 @@ export class EventsPage implements OnInit {
     autoplay:true
    };
  
-  constructor(public runn: RunningService,public route:Router) {
+  constructor(public runn: RunningService,public route:Router, public loadingController: LoadingController) {
 
     this.events= []; 
     this.getdata()
@@ -35,7 +36,8 @@ export class EventsPage implements OnInit {
           closingHours:eventList[x].closingHours,
           price:eventList[x].newPrice,
           clubKey:eventList[x].clubID,
-          date:eventList[x].date
+          date:eventList[x].date,
+          photoURL:eventList[x].photoURL
         })
         console.log("<<<<<",this.events[x])
        }
@@ -75,7 +77,16 @@ export class EventsPage implements OnInit {
   //    })
    
    }
-
+   async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'loading...',
+      duration: 4000
+    });
+    await loading.present();
+    this.getdata()
+    loading.dismiss()
+  }
+  
    book()
    {
 
