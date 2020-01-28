@@ -42,6 +42,10 @@ const routes: Routes = [
   {
     path: 'complete',
     loadChildren: () => import('./complete/complete.module').then( m => m.CompletePageModule)
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
   }
 
 

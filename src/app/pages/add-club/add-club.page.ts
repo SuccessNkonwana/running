@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RunningService } from 'src/app/services/running.service';
 import { Observable } from 'rxjs';
 import { LoadingController } from '@ionic/angular';
+import { MapboxService,Feature } from 'src/app/services/mapbox.service';
 
 @Component({
   selector: 'app-add-club',
@@ -10,6 +11,15 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./add-club.page.scss'],
 })
 export class AddClubPage implements OnInit {
+ // map
+ list:any;
+ addresses:string[]=[];
+ selectedAddress=null;
+ coordinates;
+ lat;
+ lng;
+ userZ : any;
+
   user = {} as User;
   public clubForm: FormGroup;
   RegisterForm: string = "true";
@@ -23,10 +33,10 @@ export class AddClubPage implements OnInit {
   startPosition;
 
   uid: any;
-  addresses: string[] = [];
+  // addresses: string[] = [];
   coodinateses: string[] = [];
 
-  selectedAddress = null;
+  // selectedAddress = null;
   selectedcoodinates = null;
 
   uploadPercent: number;
@@ -36,10 +46,10 @@ export class AddClubPage implements OnInit {
 
 
   urlPath = '';
-  list: any;
+  // list: any;
 
-  lng;
-  lat;
+  // lng;
+  // lat;
 
   newName;
   newAddress;
@@ -53,7 +63,7 @@ export class AddClubPage implements OnInit {
   close;
   Hours;
 
-  constructor(private fb: FormBuilder,private clubService:RunningService, public loadingController: LoadingController) 
+  constructor(private mapboxService:MapboxService,private fb: FormBuilder,private clubService:RunningService, public loadingController: LoadingController) 
   { 
      
 
@@ -61,11 +71,10 @@ export class AddClubPage implements OnInit {
 
       club: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30), Validators.required])],
       Address: ['', Validators.required],
-      pic: ['', Validators.required],
+      // pic: ['', Validators.required],
       Hours: ['', Validators.required],
       Close: ['', Validators.required],
      
-
 
 
     },
@@ -109,5 +118,36 @@ export class AddClubPage implements OnInit {
     loading.dismiss()
   }
   
-
+  search(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    if (searchTerm && searchTerm.length > 0) {
+      this.mapboxService.search_word(searchTerm)
+        .subscribe((features: Feature[]) => {
+          this.coordinates = features.map(feat => feat.geometry)
+          this.addresses = features.map(feat => feat.place_name)
+          this.list = features;
+          console.log(this.list)
+        });
+    } else {
+      this.addresses = [];
+    }
+  }
+  
+  
+  onSelect(address:string,i){
+    this.selectedAddress=address;
+     //  selectedcoodinates=
+     console.log("lng:" + JSON.stringify(this.list[i].geometry.coordinates[0]))
+     console.log("lat:" + JSON.stringify(this.list[i].geometry.coordinates[1]))
+     this.lng = JSON.stringify(this.list[i].geometry.coordinates[0])
+     this.lat = JSON.stringify(this.list[i].geometry.coordinates[1])
+    //  this.userZ.coords = [this.lng,this.lat];
+     console.log("index =" + i)
+  
+     console.log(this.selectedAddress)
+     this.userZ= this.selectedAddress;
+     console.log(this.userZ)
+    //  this.addresses = [];
+    this.addresses=[];
+  }
 }

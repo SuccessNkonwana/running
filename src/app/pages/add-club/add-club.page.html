@@ -47,7 +47,7 @@
                                         </ion-fab>
 
 
-                                        <input id="file-input2" class="input" type="file" (change)="uploadClubPic($event)" [(ngModel)]="pic" formControlName="pic"/>
+                                        <input id="file-input2" class="input" type="file" (change)="uploadClubPic($event)" />
                                     </div>
                                 </div>
                                 <br><br><br>
@@ -69,7 +69,7 @@
                                 <div class="error" *ngIf="clubForm.get('club').hasError('maxlength') && clubForm.get('club').touched">
                                     Maximum 30 characters
                                 </div>
-
+<!-- 
                                 <ion-item id="item" color="transparent">
                                     <ion-label position="floating">Address</ion-label>
                                     <ion-input type="text" formControlName="Address"></ion-input>
@@ -79,8 +79,29 @@
                                 </div>
                                 <div class="error" *ngIf="clubForm.get('Address').hasError('required') && clubForm.get('Address').touched">
                                     Please input your Address
-                                </div>
+                                </div> -->
 
+                                <ion-item id="item" color="transparent">
+                                    <ion-label position="floating">Address</ion-label>
+                                
+                                    <ion-input type="text" [(ngModel)]="Address" formControlName="Address" (ionInput)="search($event)"  [value]="selectedAddress" clearInput></ion-input>
+                                        
+                                </ion-item>
+                                <div style="position: absolute; max-width: 90%; min-width: 90%; z-index: 999; " class="search">
+                                    <ion-list lines="none" *ngIf="addresses.length > 0" color="lightb" style="background: var(--ion-item-background,var(--ion-background-color, black)); ">
+                                        <ion-item *ngFor="let address of addresses ; let i=index" (click)="onSelect(address, i)" color="dark">
+                                            <ion-icon name="pin"></ion-icon>
+                                            <p class="searchv">{{ address}}</p>
+                                        </ion-item>
+                                    </ion-list>
+                                
+                                </div>
+                                <div *ngIf="clubForm.controls.Address.invalid && clubForm.controls.Address.dirty">
+                                </div>
+                                <div class="error" *ngIf="clubForm.get('Address').hasError('required') && clubForm.get('Address').touched">
+                                    Please input your Address
+                                </div>
+                                <!--  -->
                                 <ion-grid>
                                     <ion-row>
                                         <ion-col>
