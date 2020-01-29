@@ -5,7 +5,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { RunningService } from 'src/app/services/running.service';
-
+import { MapboxService,Feature } from 'src/app/services/mapbox.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -34,7 +34,13 @@ export class ProfilePage implements OnInit {
   email;
   nn:string="";
   tempUser:string="";
-
+  addresses:string[]=[];
+  selectedAddress=null;
+  coordinates;
+  lat;
+  lng;
+  user : any;
+  list:any;
   private uid: string= null;
 
   constructor(
@@ -44,7 +50,8 @@ export class ProfilePage implements OnInit {
     public afAuth: AngularFireAuth,
     private router: Router,
     public runn: RunningService,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    private mapboxService:MapboxService
   ) { 
     this.theUser=[]    
     this.getdata()
@@ -55,7 +62,37 @@ export class ProfilePage implements OnInit {
     
   }
   
-
+//address
+search(event: any) {
+  const searchTerm = event.target.value.toLowerCase();
+  if (searchTerm && searchTerm.length > 0) {
+    this.mapboxService.search_word(searchTerm)
+      .subscribe((features: Feature[]) => {
+        this.coordinates = features.map(feat => feat.geometry)
+        this.addresses = features.map(feat => feat.place_name)
+        this.list = features;
+        console.log(this.list)
+      });
+  } else {
+    this.addresses = [];
+  }
+}
+onSelect(address:string,i){
+  this.selectedAddress=address;
+   //  selectedcoodinates=
+   console.log("lng:" + JSON.stringify(this.list[i].geometry.coordinates[0]))
+   console.log("lat:" + JSON.stringify(this.list[i].geometry.coordinates[1]))
+   this.lng = JSON.stringify(this.list[i].geometry.coordinates[0])
+   this.lat = JSON.stringify(this.list[i].geometry.coordinates[1])
+  //  this.user.coords = [this.lng,this.lat];
+   console.log("index =" + i)
+   console.log(this.selectedAddress)
+   this.user= this.selectedAddress;
+   console.log(this.user)
+  //  this.addresses = [];
+  // this.addresses=[];
+}
+//address
 
   uploadProfilePic(event){
     this.authService.uploadProfilePic(event).subscribe((data:number)=>{
@@ -83,10 +120,12 @@ export class ProfilePage implements OnInit {
         this.theUser.push({ 
           userKey:  data[x].userKey,
           name:  data[x].name,
+          address:  data[x].address,
           age:  data[x].age,
           email:  data[x].email,
           gender:  data[x].gender,
-          photoURL:data[x].photoURL}
+          photoURL:data[x].photoURL
+        }
           
           )
         }

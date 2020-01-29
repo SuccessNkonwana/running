@@ -71,10 +71,20 @@
                                         <div class="error" *ngIf="eventForm.get('newName').hasError('maxlength') && eventForm.get('newName').touched">
                                             Maximum 20 characters
                                         </div>
-                                        <ion-item id="item" color="transparent">
-                                            <ion-label position="floating">Address</ion-label>
-                                            <ion-input type="text" [(ngModel)]="newAddress" formControlName="newAddress"></ion-input>
-                                        </ion-item>
+                                        <!-- address search -->
+<ion-item id="item" color="transparent">
+    <ion-label position="floating">Address</ion-label>
+    <ion-input type="text" [(ngModel)]="newAddress" formControlName="newAddress" (ionInput)="search($event)"  [value]="selectedAddress" clearInput></ion-input>
+</ion-item>
+<div style="position: absolute; max-width: 90%; min-width: 90%; z-index: 999; " class="search">
+    <ion-list lines="none" *ngIf="addresses.length > 0" color="lightb" style="background: var(--ion-item-background,var(--ion-background-color, black)); ">
+        <ion-item *ngFor="let address of addresses ; let i=index" (click)="onSelect(address, i)" color="dark">
+            <ion-icon name="pin"></ion-icon>
+            <p class="searchv">{{address}}</p>
+        </ion-item>
+    </ion-list>
+</div>
+<!-- address search -->
 
                                         <div *ngIf="eventForm.controls.newAddress.invalid && eventForm.controls.newAddress.dirty">
                                         </div>

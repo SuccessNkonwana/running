@@ -624,6 +624,7 @@ return this.uploadPercent = this.task.percentageChanges();
            this.usersTemp.push({
             userKey: doc.id,
              name: doc.data().displayName,
+              address: doc.data().address,
              age: doc.data().Age,
              email: doc.data().Email,
              gender: doc.data().gender,

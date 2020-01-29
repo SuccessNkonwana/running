@@ -14,6 +14,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { TabsPage } from './pages/tabs/tabs.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 const firebaseConfig = {
   apiKey: "AIzaSyAv85O55WcgVEXgWUTr5GVqspI__ywOSn4",
     authDomain: "runningclub-46ede.firebaseapp.com",
@@ -36,6 +37,7 @@ const firebaseConfig = {
     AppRoutingModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
+    HttpClientModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(firebaseConfig),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
