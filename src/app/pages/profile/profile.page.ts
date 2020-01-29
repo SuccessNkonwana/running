@@ -95,16 +95,11 @@ onSelect(address:string,i){
 //address
 
   uploadProfilePic(event){
-    this.authService.uploadProfilePic(event).subscribe((data:number)=>{
-      this.uploadPercent=data
-     
-      console.log(this.uploadPercent)
-    })
-    this.filepresentLoading();
+    this.runn.uploadProfilePic(event)
+   
+    // this.filepresentLoading();
   }
-  pickImage(){
-    this.authService.pickImage();
-  }
+
   getdata()
   {
     return new Promise((resolve, reject) => {

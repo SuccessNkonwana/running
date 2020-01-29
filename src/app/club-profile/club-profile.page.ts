@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RunningService } from '../services/running.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-club-profile',
@@ -25,7 +26,7 @@ export class ClubProfilePage implements OnInit {
       slideShadows: true,
     }
     }
-  constructor(public runn: RunningService) {
+  constructor(public runn: RunningService, public loadingController: LoadingController) {
     this.clubs=[] 
     this.events= []; 
     this.clubName=null
@@ -39,6 +40,7 @@ export class ClubProfilePage implements OnInit {
    this.slides.startAutoplay();
   }
   ngOnInit() {
+    // this.presentLoading();
   }
  
 
@@ -69,7 +71,8 @@ export class ClubProfilePage implements OnInit {
           address:  data[x].address,
           openingHours:  data[x].openingHours,
           closingHours:data[x].closingHours,
-          price:data[x].price,
+          newPrice:data[x].newPrice,
+          photoURL:data[x].photoURL,
           clubKey:data[x].clubKey
         
         })
@@ -92,5 +95,13 @@ export class ClubProfilePage implements OnInit {
     console.log(myclubs+"@@@@@@@@@@")
     this.runn.currentClub(myclubs)
   }
-
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'loading...',
+      duration: 4000
+    });
+    await loading.present();
+    this.getdata()
+    loading.dismiss()
+  }
 }

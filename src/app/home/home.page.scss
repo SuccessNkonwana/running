@@ -125,4 +125,46 @@
         width: 16px;
         height: 16px;
     }
+    .booked{
+      
+        $background-color:#11C2D4;
+        background-color: $background-color;
+        $mywidth: 100%;
+        width: $mywidth;
+        // $margin-left: 0%;
+        // margin-left: $margin-left;
+        $myheight: 100px;
+        height: $myheight;
+        $margin-bottom: 0%;
+        margin-bottom: $margin-bottom;
+        $border-top-left-radius: 20%;
+        border-top-left-radius: $border-top-left-radius;
+        $border-bottom-left-radius: 20%;
+        border-bottom-left-radius: $border-bottom-left-radius;
+        border-top-right-radius:35%;
+        border-bottom-right-radius:35%;
+        
+    padding-right: 0px;
+        color: rgb(190, 186, 186);
+    }
+    .imgC {
+        // position: absolute;
+        $myheight: 100%;
+        height: $myheight;
+        float: right;
+        width: 100px;
+        margin-top: -1px;
+        margin-right: 0px;
+        $border-top-left-radius: 0%;
+        border-top-left-radius: $border-top-left-radius;
+        $border-bottom-left-radius: 0%;
+        border-bottom-left-radius: $border-bottom-left-radius;
+        border-top-right-radius:70%;
+        border-bottom-right-radius:70%;
+    //   right: 100px;
+
+    }
+    ion-item{
+       color: #11C2D4;
+    }
 }

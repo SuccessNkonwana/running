@@ -54,6 +54,7 @@ events=[];
           openingHours:  data[0].myevents[0].myevents.openingHours,
           closingHours:data[0].myevents[0].myevents.closingHours,
           price:data[0].myevents[0].myevents.price,
+          date:data[0].myevents[0].myevents.date,
           clubKey:data[0].myevents[0].myevents.clubKey
         
         })
@@ -101,9 +102,10 @@ sub(num:number) {
 }
 BookEvent(tickets,price)
   {
-    this.clubService.BookEvent(tickets,this.price);
-    
-    console.log(tickets,this.price,"=================");
+    this.clubService.BookEvent(tickets,price);
+    this.route.navigate(['/done'],{queryParams:{tickets:tickets,price:price}})
+
+    // console.log(tickets,price,"=================",this.tickets,this.price);
 
   }
 }

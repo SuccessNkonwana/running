@@ -13,10 +13,9 @@
 
                             <div class="div1">
                                 <br><br><br>
-
-                                <img src="assets/images/Captures.JPG" alt="Avatar" class="imgC">
+                                <img src="assets/images/logo.png" alt="Avatar" class="imgC">
                                 <br><br>
-                               
+
                                 <br>
                                 <div class="div2">
                                     <br>
@@ -24,33 +23,33 @@
                                     <ion-card class="the-card">
                                         <ion-item lines="none">
                                             <h3>Cheque</h3>
-                                            <ion-icon class="logo"slot="end" name="logo-google"></ion-icon>
+                                            <ion-icon class="logo" slot="end" name="logo-google"></ion-icon>
                                         </ion-item>
                                         <ion-item lines="none">
-                                            <ion-icon class="icons"slot="start" name="barcode"></ion-icon>
+                                            <ion-icon class="icons" slot="start" name="barcode"></ion-icon>
                                         </ion-item>
                                         <div class="cardNo">
                                             <h2>{{card1}}-{{card2}}-{{card3}}-{{card4}}</h2>
                                         </div>
-                                        
+
                                         <ion-item lines="none" class="exp">
                                             <p>expires end</p>
                                         </ion-item>
-                                        <ion-item lines="none" >
+                                        <ion-item lines="none">
                                             <h3>{{name}}</h3>
                                         </ion-item>
                                         <ion-item lines="none" class="date">
                                             <h3>{{date}}</h3>
                                         </ion-item>
                                     </ion-card>
-<br>
+                                    <br>
                                     <ion-grid>
                                         <ion-row>
                                             <ion-col>
                                                 <ion-label class="labels">Name on card</ion-label>
                                                 <br><br><br>
                                                 <ion-item class="roundedInput" lines="none">
-                                                    <ion-input type="text"[(ngModel)]='name' formControlName="name"></ion-input>
+                                                    <ion-input type="text" [(ngModel)]='name' formControlName="name"></ion-input>
                                                 </ion-item>
                                                 <div class="error" *ngIf="paymentsForm.get('name').hasError('required') && paymentsForm.get('name').touched">
                                                     Please input your card name
@@ -67,12 +66,11 @@
                                         <ion-row>
                                             <ion-col>
                                                 <ion-label class="labels">Card No.</ion-label>
-                                                
+
                                                 <br><br>
                                                 <ion-item class="roundedInput" lines="none">
                                                     <!-- <ion-input type="text" maxlength="3"></ion-input> -->
-                                                    <ion-input pattern="'([0-9]{3})'" type="tel" maxlength="16" [(ngModel)]='card'
-                                                     (input)="pattern($event.target.value)" formControlName="card" required></ion-input>
+                                                    <ion-input pattern="'([0-9]{3})'" type="tel" maxlength="16" [(ngModel)]='card' (input)="pattern($event.target.value)" formControlName="card" required></ion-input>
                                                 </ion-item>
                                                 <div *ngIf="paymentsForm.controls.card.invalid && paymentsForm.controls.card.dirty">
                                                 </div>
@@ -115,7 +113,7 @@
                                                 <ion-label class="labels">Expiry Date</ion-label>
                                                 <br><br>
                                                 <ion-item class="roundedInput" lines="none">
-                                                    <ion-input type="text"[(ngModel)]='date' formControlName="date"></ion-input>
+                                                    <ion-input type="text" [(ngModel)]='date' formControlName="date"></ion-input>
                                                     <!-- <ion-input></ion-input> -->
                                                 </ion-item>
                                                 <div *ngIf="paymentsForm.controls.date.invalid && paymentsForm.controls.date.dirty">

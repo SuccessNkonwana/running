@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RunningService } from 'src/app/services/running.service';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-events',
@@ -16,46 +17,76 @@ export class EventsPage implements OnInit {
     autoplay:true
    };
  
-  constructor(public runn: RunningService,public route:Router) {
+  constructor(public runn: RunningService,public route:Router, public loadingController: LoadingController) {
 
     this.events= []; 
     this.getdata()
    }
+  //  date1;
    getdata()
    {
-
-   return new Promise((resolve, reject) => {
-       this.runn.rtEvents().then(data =>{
-      
-         console.log( data.length);
-         for( let x = 0; x < data.length; x++ )
-         {
-          console.log(x);
-          
-         this.events.push({ 
-           eventKey:  data[x].eventKey,
-           name:  data[x].name,
-           address:  data[x].address,
-           openingHours:  data[x].openingHours,
-           closingHours:data[x].closingHours,
-           price:data[x].price,
-           clubKey:data[x].clubKey
-         
-         })
-          
-         }
-          if(this.events===null)
-          {
-            this.hasAEvent=false
-          }
-  
-       console.log(this.events,"the events")
- 
-      })
+     console.log(this.runn.rtEvents())
+     this.runn.getEvent().subscribe(eventList=>{
+       for(let x=0;x< eventList.length;x++){
+        this.events.push({
+          // eventKey:eventList[x].eventID,
+          name: eventList[x].name,
+          address:eventList[x].address,
+          openingHours:eventList[x].openingHours,
+          closingHours:eventList[x].closingHours,
+          price:eventList[x].newPrice,
+          clubKey:eventList[x].clubID,
+          date:eventList[x].date,
+          photoURL:eventList[x].photoURL
+        })
+        console.log("<<<<<",this.events[x])
+       }
+       
      })
+
+  //  return new Promise((resolve, reject) => {
+  //      this.runn.rtEvents().then(data =>{
+      
+  //        console.log( data.length);
+  //        for( let x = 0; x < data.length; x++ )
+  //        {
+  //         console.log(x);
+          
+  //        this.events.push({ 
+  //          eventKey:  data[x].eventKey,
+  //          name:  data[x].name,
+  //          address:  data[x].address,
+  //          openingHours:  data[x].openingHours,
+  //          closingHours:data[x].closingHours,
+  //          price:data[x].price,
+  //          clubKey:data[x].clubKey,
+  //          date:data[x].date
+  //         //  [""0""].date
+         
+  //        })
+          
+  //        }
+  //         if(this.events===null)
+  //         {
+  //           this.hasAEvent=false
+  //         }
+  
+  //      console.log(this.events,"the events")
+ 
+  //     })
+  //    })
    
    }
-
+   async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'loading...',
+      duration: 4000
+    });
+    await loading.present();
+    this.getdata()
+    loading.dismiss()
+  }
+  
    book()
    {
 

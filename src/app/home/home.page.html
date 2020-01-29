@@ -1,5 +1,12 @@
 <ion-content class="body">
-
+    <!-- <div *ngFor="let event of myEvents">
+    <h1>
+        {{event.address}}
+    </h1>
+    <h1>
+        {{event.date}}
+    </h1>
+</div> -->
     <!-- <body> -->
     <div *ngFor="let user of theUser ">
         <br>
@@ -13,6 +20,7 @@
 
     <h1>
         BE
+
     </h1>
     <h1>
         HEALTHY
@@ -23,24 +31,33 @@
     <h1>
         HAVE FUN
     </h1>
-    <br>
+
     <br>
 
     <h2 text-center class="cent"> Events You Going To
         <ion-icon class="iconSize" name="compass"></ion-icon>
     </h2>
     <br>
-    <br>
-    <div class="cent">
-        <div class="cet">
-            <!-- <p>Paint Fun Race Club</p>
+
+    <!-- <div class="cent"> -->
+
+    <!-- <div class="cet"> -->
+    <ion-card class="booked" *ngFor="let event of myEvents">
+        <ion-item color="primary">
+            <p>{{event.name}}</p>
+            <p> {{event.address}}</p>
+            <p>Date: 12/12/2019 Time: 11:00</p>
+            <img class="imgC" src="assets/images/go.png" alt="Avatar">
+        </ion-item>
+    </ion-card>
+    <!-- <p>Paint Fun Race Club</p>
                     <p>Redbull Run Sat</p>
                     <p>Date: 12/12/2019 Time: 11:00</p> -->
-            <img class="imgC" src="assets/images/go.png" alt="Avatar" >
-        </div>
-    </div>
+
+    <!-- </div> -->
+    <!-- </div> -->
     <br>
-    <br>
+
     <div *ngIf="isSlide">
         <h2 text-center class="cent"> Running Clubs
             <ion-icon class="iconSize" name="people"></ion-icon>

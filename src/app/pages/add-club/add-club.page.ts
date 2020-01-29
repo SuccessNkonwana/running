@@ -2,24 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RunningService } from 'src/app/services/running.service';
 import { Observable } from 'rxjs';
+import { LoadingController } from '@ionic/angular';
 import { MapboxService,Feature } from 'src/app/services/mapbox.service';
+
 @Component({
   selector: 'app-add-club',
   templateUrl: './add-club.page.html',
   styleUrls: ['./add-club.page.scss'],
 })
 export class AddClubPage implements OnInit {
+ // map
+ list:any;
+ addresses:string[]=[];
+ selectedAddress=null;
+ coordinates;
+ lat;
+ lng;
+ userZ : any;
+
   user = {} as User;
   public clubForm: FormGroup;
   RegisterForm: string = "true";
   UpdateForm: string = "false";
   selectedFile = null;
-  list:any;
-  addresses:string[]=[];
-  selectedAddress=null;
-  coordinates;
-  lat;
-  lng;
+  
   userr : any;
   map: any;
 
@@ -58,9 +64,10 @@ export class AddClubPage implements OnInit {
 
       club: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30), Validators.required])],
       Address: ['', Validators.required],
+      // pic: ['', Validators.required],
       Hours: ['', Validators.required],
       Close: ['', Validators.required],
-
+     
 
 
     },
@@ -72,6 +79,7 @@ export class AddClubPage implements OnInit {
        this.newName = this.clubForm.get('club').value
        this.newAddress = this.clubForm.get('Address').value
        this.newOpeningHours = this.clubForm.get('Hours').value   
+       
        this.newClosingHours = this.clubForm.get('Close').value
 
 
@@ -80,11 +88,12 @@ export class AddClubPage implements OnInit {
 
   uploadClubPic(event){
     this.clubService.uploadClubPic(event)
+    // this.presentLoading();
   }
   ngOnInit() {
-    if (this.UpdateForm == "true") {
+    // if (this.UpdateForm == "true") {
      
-    }
+    // }
   }
   ionViewDidEnter() {
     if (this.UpdateForm == "true") {

@@ -3,11 +3,13 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { RunningService } from 'src/app/services/running.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { MapboxService,Feature } from 'src/app/services/mapbox.service';
-
+import { LoadingController } from '@ionic/angular';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.page.html',
   styleUrls: ['./add-event.page.scss'],
+  providers:[DatePipe]
 })
 export class AddEventPage implements OnInit {
 
@@ -34,7 +36,10 @@ export class AddEventPage implements OnInit {
   newDate
   newDistance
   user = {} as User;
-  
+  // map
+ 
+ 
+  userZ : any;
   public eventForm: FormGroup;
 //adress
   search(event: any) {
@@ -67,8 +72,8 @@ export class AddEventPage implements OnInit {
     // this.addresses=[];
   }
   //address
-  constructor(
-    private fb: FormBuilder,public runn: RunningService, private authService: AuthService,private mapboxService:MapboxService) {
+  constructor(private datePipe:DatePipe,
+    private fb: FormBuilder,public runn: RunningService, private authService: AuthService,private mapboxService:MapboxService,private loadingController:LoadingController) {
 
     
     this.eventForm = fb.group({
@@ -78,6 +83,7 @@ export class AddEventPage implements OnInit {
       newAddress: ['', Validators.required],
       newOpeningHours: ['', Validators.required],
       newClosingHours: ['', Validators.required],
+      // pic: ['', Validators.required],
       newDate: ['', Validators.required],
       newPrice: ['',Validators.compose([Validators.pattern('[0-9 ]{2,4}$'), Validators.required])],
 
@@ -91,17 +97,28 @@ export class AddEventPage implements OnInit {
    }
 
   ngOnInit() {
+    
   }
 addEvent()
 {
-
+ this.newDate=this.datePipe.transform(this.newDate,"dd-MM-yyyy");
+ console.log(this.newDate)
       this.runn.addEvent(this.newName,this.newAddress,this.newOpeningHours,this.newClosingHours,this.newPrice,this.newDistance,this.newDate)
-}
+this.presentLoading()
+    }
 
 uploadEventPic(event){
   this.runn.uploadEventPic(event)
 }
 
-
+async presentLoading() {
+  const loading = await this.loadingController.create({
+    message: 'loading...',
+    duration: 4000
+  });
+  await loading.present();
+  
+  loading.dismiss()
+}
 
 }
