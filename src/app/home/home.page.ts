@@ -10,6 +10,7 @@ export class HomePage implements OnInit {
   clubs= [];
   tickets=[];
   theUser=[];
+  hasATicket=false;
   defaultpic=true;
   isSlide: boolean = true;
   slides: any;
@@ -62,6 +63,11 @@ slideOpts = {
     
         })
       console.log(this.tickets,"LAST ONE")
+
+      }
+      if(this.tickets!=null)
+      {
+        this.hasATicket=true;
       }
      })
      

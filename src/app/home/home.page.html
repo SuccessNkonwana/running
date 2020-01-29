@@ -42,7 +42,10 @@
     <!-- <div class="cent"> -->
 
     <!-- <div class="cet"> -->
-    <ion-card class="booked" *ngFor="let event of tickets">
+        <div *ngIf="hasAClub">
+ <ion-slides startAutoplay [options]="slideOpts">
+    <ion-slide   *ngFor="let event of tickets">
+    <ion-card class="booked">
         <ion-item color="primary">
             <p>{{event.name}}</p>
             <p> {{event.address}}</p>
@@ -50,12 +53,16 @@
             <img class="imgC" src="assets/images/go.png" alt="Avatar">
         </ion-item>
     </ion-card>
-    <!-- <p>Paint Fun Race Club</p>
-                    <p>Redbull Run Sat</p>
-                    <p>Date: 12/12/2019 Time: 11:00</p> -->
+</ion-slide>
+</ion-slides>
+</div>
+    <div class="noClubs" *ngIf="!hasAClub">
+        <br/>
+        <br/>
+        <p text-center color="medium" class="sadname"> You Don't Have Any Tickets Yet ! </p>
+        <br/>
 
-    <!-- </div> -->
-    <!-- </div> -->
+    </div>
     <br>
 
     <div *ngIf="isSlide">
