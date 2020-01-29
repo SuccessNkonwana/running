@@ -42,11 +42,11 @@
     <!-- <div class="cent"> -->
 
     <!-- <div class="cet"> -->
-    <ion-card class="booked" *ngFor="let event of myEvents">
+    <ion-card class="booked" *ngFor="let event of tickets">
         <ion-item color="primary">
             <p>{{event.name}}</p>
             <p> {{event.address}}</p>
-            <p>Date: 12/12/2019 Time: 11:00</p>
+            <p>Date:{{event.date}} Open Time: {{event.openingHours}} Close Time: {{event.closingHours}}</p>
             <img class="imgC" src="assets/images/go.png" alt="Avatar">
         </ion-item>
     </ion-card>
