@@ -8,6 +8,7 @@ import { RunningService } from '../services/running.service';
 })
 export class HomePage implements OnInit {
   clubs= [];
+  tickets=[];
   theUser=[];
   defaultpic=true;
   isSlide: boolean = true;
@@ -29,10 +30,45 @@ slideOpts = {
     this.theUser=[]     
     this.getdata()
     this.getUser()
+    this.getTickets()
   }
   ngOnInit() {
     this.getBooked();
   }
+  getTickets()
+  {
+    return new Promise((resolve, reject) => {
+      this.runn.rtTickets().then(data =>{
+     
+        console.log( data.length);
+        for( let x = 0; x < data.length; x++ )
+        {
+         console.log(x);
+         
+        this.tickets.push({ 
+         eventKey: data[x].eventKey,
+          name: data[x].name,
+          address: data[x].s.address,
+          openingHours: data[x].openingHours,
+          closingHours: data[x].closingHours,
+          userID:data[x].userID,
+          clubID: data[x].clubKey,
+          price: data[x].price,
+          date: data[x].date,
+          tickets: data[x].tickets,
+          total: data[x].total,
+          aproved: data[x].aproved,
+          deposited:data[x].deposited
+    
+        })
+      console.log(this.tickets,"LAST ONE")
+      }
+     })
+     
+    })
+  
+  }
+
   getdata()
   {
     return new Promise((resolve, reject) => {

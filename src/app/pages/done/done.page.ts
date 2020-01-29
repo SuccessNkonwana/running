@@ -9,6 +9,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./done.page.scss'],
 })
 export class DonePage implements OnInit {
+ 
   theAccount={
     name:'',
     account:0,
@@ -27,7 +28,7 @@ export class DonePage implements OnInit {
   theName:string;
   constructor(private route:ActivatedRoute, public runn:RunningService,private navCtrl: NavController,) 
   {
-    
+   
      this.runn.getAccount().subscribe(data=>{
       this.myAccount=data.map(e=>{
         return{
@@ -50,6 +51,8 @@ export class DonePage implements OnInit {
     console.log("loged in user: ",this.theName)
 
    }
+
+
 tickets;price;total;
   ngOnInit() {
     this.route.queryParams.subscribe(data=>{
