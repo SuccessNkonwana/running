@@ -642,7 +642,8 @@ export class RunningService {
     let total = tickets * price;
     // console.log(total,"total =================",userID);
     ///method three
-    let aproved = "false"
+    let aproved = "no"
+    let deposited = "no"
     return new Promise((resolve, reject) => {
       this.booking(this.currentBook).then(data => {
         console.log("the data>>>>>>>>>>>", data);
@@ -661,10 +662,11 @@ export class RunningService {
           //  {{element.data.TimeStamp.toDate() | date:'dd-MM-yyy'}}
           tickets: tickets,
           total: total,
-          aproved: aproved
+          aproved: aproved,
+          deposited:deposited
 
         }).then((data) => {
-
+          resolve(data)
 
           //  this.navCtrl.navigateRoot('/done')
           console.log(data)
@@ -675,6 +677,7 @@ export class RunningService {
         })
 
       })
+     
     })
     //   console.log( "somethinf"+event)
 
