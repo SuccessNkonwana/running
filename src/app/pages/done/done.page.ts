@@ -66,6 +66,10 @@ tickets;price;total;
     })
    this.user();
   }
-  
+  updateDeposit()
+  {
+
+    this.runn.updateDeposit();
+  }
 
 }
