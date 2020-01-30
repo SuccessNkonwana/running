@@ -125,15 +125,14 @@
         width: 16px;
         height: 16px;
     }
-    .booked{
-      
-        $background-color:#11C2D4;
+    .booked {
+        $background-color: rgba(17, 192, 212, 0.678);
         background-color: $background-color;
         $mywidth: 100%;
         width: $mywidth;
         // $margin-left: 0%;
         // margin-left: $margin-left;
-        $myheight: 100px;
+        $myheight: 90px;
         height: $myheight;
         $margin-bottom: 0%;
         margin-bottom: $margin-bottom;
@@ -141,10 +140,9 @@
         border-top-left-radius: $border-top-left-radius;
         $border-bottom-left-radius: 20%;
         border-bottom-left-radius: $border-bottom-left-radius;
-        border-top-right-radius:35%;
-        border-bottom-right-radius:35%;
-        
-    padding-right: 0px;
+        border-top-right-radius: 20%;
+        border-bottom-right-radius: 20%;
+        padding-right: 0px;
         color: rgb(190, 186, 186);
     }
     .imgC {

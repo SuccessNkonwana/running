@@ -5,5 +5,6 @@ class Events{
     openingHours:string;
     date:string;
     name:string;
+    approved:string;
   
 }

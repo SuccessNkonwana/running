@@ -631,6 +631,7 @@ export class RunningService {
     return result
   }
   // booking the event
+  // approved:boolean=false;
   BookEvent(tickets, price) {
     let user = this.readCurrentSession()
     let userID = user.uid
@@ -638,14 +639,14 @@ export class RunningService {
     let total = tickets * price;
     // console.log(total,"total =================",userID);
     ///method three
-    let aproved = "false"
+    
     return new Promise((resolve, reject) => {
       this.booking(this.currentBook).then(data => {
         console.log("the data>>>>>>>>>>>", data);
         console.log(data[0].myevents[0].myevents[0].myevents, "the selected one vele", data[0].myevents[0].myevents[0].myevents.eventKey);
 
         this.dbfire.collection("bookedEvents").add({
-          eventKey: data[0].myevents[0].myevents[0].myevents.eventKey,
+          // eventKey: data[0].myevents[0].myevents[0].myevents.eventKey,
           name: data[0].myevents[0].myevents[0].myevents.name,
           address: data[0].myevents[0].myevents[0].myevents.address,
           openingHours: data[0].myevents[0].myevents[0].myevents.openingHours,
@@ -657,7 +658,7 @@ export class RunningService {
           //  {{element.data.TimeStamp.toDate() | date:'dd-MM-yyy'}}
           tickets: tickets,
           total: total,
-          aproved: aproved
+          approved: false
 
         }).then((data) => {
 

@@ -80,13 +80,9 @@ back(){
 }
 
   add(num:number) {
+ 
+    if(this.tickets<=5)
     this.tickets=this.tickets+num;
-
-
-    
-    //
-   
-    // this.total=this.price*this.tickets;
 }
 // subtructing tickets
 sub(num:number) {

@@ -121,7 +121,9 @@ getBooked(){
         openingHours: e.payload.doc.data()['openingHours'],
         address: e.payload.doc.data()['address'],
         name: e.payload.doc.data()['name'],
-        // date: e.payload.doc.data()['date'],
+        date: e.payload.doc.data()['date'],
+        approved: e.payload.doc.data()['approved'],
+
        
       }as Events;// the Item is the class name in the item.ts
     });
