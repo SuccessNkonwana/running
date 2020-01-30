@@ -46,22 +46,23 @@
                                 <br>
 
                                 <div class="div2">
-                                    <br><br><br><br><br><br>
-
+                                    <br><br><br>
+                                    <br><br><br>
                                     <ion-list lines="none">
                                         <ion-item detail-push>
 
-                                            <ion-input>
+                                            <ion-label>
                                                 <Nav>{{user.email}}</Nav>
-                                            </ion-input>
+                                            </ion-label>
 
                                             <ion-icon name="mail" color="primary" slot="start"></ion-icon>
                                             <!-- <ion-icon name="create" color="dark" slot="end" (click)=" NameUpdate(user)"></ion-icon> -->
                                         </ion-item>
-                                        <br>
+                                        <br><br>
+                                    
                                         <ion-item>
 
-                                            <ion-label> Innovation hub building 6</ion-label>
+                                            <ion-label (click)="AddressUpdate(user)">{{user.address}}</ion-label>
 
                                             <ion-icon name="navigate" color="primary" slot="start"></ion-icon>
                                             <!-- <ion-icon name="create" color="dark" slot="end" (click)=" AddressUpdate(user)"></ion-icon> -->

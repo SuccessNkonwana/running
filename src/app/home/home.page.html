@@ -43,33 +43,21 @@
        <div class="sly">
         <div *ngIf="isSlide">
             <ion-slides startAutoplay [options]="slideOpts">
-                <img class="imgC" src="assets/images/event icon.png" alt="Avatar">
+               
                 <ion-slide *ngFor="let event of myEvents">
                     <ion-card class="booked"*ngIf="event.approved != false">
-                        <ion-card-content>
-                            <p>{{event.name}}</p>
-                            <p> {{event.address}}</p>
-                            <p>{{event.date}}</p>
+                        <ion-card-content class="info">
+                            {{event.name}}<br>
+                            {{event.address}}<br>
+                            {{event.date}}
                         </ion-card-content>
                     </ion-card>
                 </ion-slide>
             </ion-slides>
         </div>
         </div>
-   <!-- <ion-card class="booked" *ngFor="let event of myEvents">
-        <ion-item color="primary"*ngIf="event.approved == false"lines="none">
-            <p>{{event.name}}</p>
-            <p> {{event.address}}</p>
-            <p>{{event.date}}</p>
-            <img class="imgC" src="assets/images/go.png" alt="Avatar">
-        </ion-item>
-    </ion-card> -->
-    <!-- <p>Paint Fun Race Club</p>
-                    <p>Redbull Run Sat</p>
-                    <p>Date: 12/12/2019 Time: 11:00</p> -->
+ 
 
-    <!-- </div> -->
-    <!-- </div> -->
     <br>
 
     <div *ngIf="isSlide">

@@ -27,6 +27,8 @@ export class RunningService {
   usersTemp = []
   events = []
   eventsTemp = []
+  tickets = []
+  ticketsTemp = []
   users = []
   myclubs = []
   //INI values
@@ -54,6 +56,8 @@ export class RunningService {
   closingHours: String
   userID: String
   photoURL: String
+  thetickets=[]
+   theprice: string 
   ///
 
   currentBook = [];
@@ -92,6 +96,22 @@ export class RunningService {
     // console.log(this.todos,"hh")
     // return this.todos
   }
+  //tickets
+  async rtTickets() {
+    let result: any
+    await this.getTickets().then(data => {
+      result = data
+
+      console.log(result.length);
+    })
+    console.log(result);
+    //this.LandMarks()
+    return result
+
+    // console.log(this.todos,"hh")
+    // return this.todos
+  }
+  //tickets
   async rtEvents() {
     let result: any
     await this.getEvent().subscribe(data => {
@@ -150,6 +170,7 @@ export class RunningService {
     // console.log(this.todos,"hh")
     // return this.todos
   }
+  
   //add a club
   addClub(newName, newAddress, newOpeningHours, newClosingHours) {
 
@@ -580,39 +601,106 @@ export class RunningService {
           console.log(doc.id, '=>', doc.data());
           this.usersTemp.push({
             userKey: doc.id,
-            name: doc.data().displayName,
-            age: doc.data().Age,
-            email: doc.data().Email,
-            gender: doc.data().gender,
-            photoURL: doc.data().photoURL
-          })
-          console.log(this.usersTemp, "users array")
-          console.log(name, "users array")
-
-          console.log(this.usersTemp.length, "users array SIZE")
-          //  this.todoTemp.push()
-
-        });
-        console.log(this.usersTemp.length, "users array SIZE")
-
-        for (let x = 0; x < this.usersTemp.length; x++) {
-
-
-          if (this.usersTemp[x].userKey === userID) {
-            console.log(this.usersTemp[x].userKey, "userid at x")
-            this.users.push(this.usersTemp[x])
-
-          }
-
-        }
-        resolve(this.users)
+             name: doc.data().displayName,
+              address: doc.data().address,
+             age: doc.data().Age,
+             email: doc.data().Email,
+             gender: doc.data().gender,
+             photoURL: doc.data().photoURL
+           })
+             console.log( this.usersTemp,"users array")
+             console.log(name,"users array")
+         
+             console.log( this.usersTemp.length,"users array SIZE")
+         //  this.todoTemp.push()
+           
+         });
+         console.log( this.usersTemp.length,"users array SIZE")
+        
+         for(let x=0;x< this.usersTemp.length;x++)
+         {
+         
+      
+              if(this.usersTemp[x].userKey===userID)
+              {
+                console.log( this.usersTemp[x].userKey,"userid at x")
+                this.users.push(this.usersTemp[x])
+      
+              }
+      
+         }
+         resolve(this.users)
       });
-    });
+      });
+    
     console.log(this.usersTemp, "clubs array")
     console.log(ans, "ans array")
 
   }
+///get tickets
+getTickets() {
+   this.tickets = []
+  this.ticketsTemp = []
+  let ans = []
+  let ans2 = []
+  
 
+  let user = this.readCurrentSession()
+  let userID = user.uid
+  console.log(userID)
+  return new Promise((resolve, reject) => {
+    this.dbfire.collection("bookedEvents").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+
+        // ans.push(doc.data())
+        console.log(doc.id, '=>', doc.data());
+        this.ticketsTemp.push({
+           eventKey: doc.id,
+           name: doc.data().name,
+           address: doc.data().address,
+           openingHours:  doc.data().openingHours,
+           closingHours:  doc.data().closing,
+           userID:  doc.data().userID,
+           clubID:  doc.data().clubID,
+           price:  doc.data().price,
+           date:  doc.data().date,
+   //  {{element.data.TimeStamp.toDate() | date:'dd-MM-yyy'}}
+           tickets: doc.data().tickets,
+           total:  doc.data().total,
+           aproved: doc.data().approved,
+           deposited: doc.data().deposited
+ 
+         })
+           console.log( this.ticketsTemp,"ticket array")
+           console.log(name,"users array")
+       
+           console.log( this.ticketsTemp.length,"tickets array SIZE")
+       //  this.todoTemp.push()
+         
+       });
+       console.log( this.ticketsTemp.length,"users array SIZE")
+      
+       for(let x=0;x< this.ticketsTemp.length;x++)
+       {
+       
+    
+            if(this.usersTemp[x].approved==="yes")
+            {
+              console.log( this.ticketsTemp[x].approved,"userid at x")
+              this.tickets.push(this.ticketsTemp[x])
+    
+            }
+    
+       }
+       resolve(this.tickets)
+    });
+    });
+  
+  console.log(this.usersTemp, "clubs array")
+  console.log(ans, "ans array")
+
+}
+///get tickets
   ///retrieve event
   ///update event
   ///delete event
@@ -658,10 +746,12 @@ export class RunningService {
           //  {{element.data.TimeStamp.toDate() | date:'dd-MM-yyy'}}
           tickets: tickets,
           total: total,
-          approved: false
+          approved: false,
+          deposited:false
 
         }).then((data) => {
-
+       
+          resolve(data) 
 
           //  this.navCtrl.navigateRoot('/done')
           console.log(data)
@@ -672,6 +762,7 @@ export class RunningService {
         })
 
       })
+     
     })
     //   console.log( "somethinf"+event)
 
@@ -834,6 +925,11 @@ export class RunningService {
    
     )
     ;
+  }
+  updateDeposit()
+  {
+
+    
   }
 
 }

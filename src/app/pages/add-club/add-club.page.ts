@@ -26,6 +26,7 @@ export class AddClubPage implements OnInit {
   UpdateForm: string = "false";
   selectedFile = null;
   
+  userr : any;
   map: any;
 
   itemList;
@@ -33,12 +34,7 @@ export class AddClubPage implements OnInit {
   startPosition;
 
   uid: any;
-  // addresses: string[] = [];
-  coodinateses: string[] = [];
-
-  // selectedAddress = null;
-  selectedcoodinates = null;
-
+ 
   uploadPercent: number;
   downloadU: any;
   uniqkey: any;
@@ -46,10 +42,7 @@ export class AddClubPage implements OnInit {
 
 
   urlPath = '';
-  // list: any;
-
-  // lng;
-  // lat;
+ 
 
   newName;
   newAddress;
@@ -63,7 +56,7 @@ export class AddClubPage implements OnInit {
   close;
   Hours;
 
-  constructor(private mapboxService:MapboxService,private fb: FormBuilder,private clubService:RunningService, public loadingController: LoadingController) 
+  constructor(private mapboxService:MapboxService,private fb: FormBuilder,private clubService:RunningService) 
   { 
      
 
@@ -108,46 +101,38 @@ export class AddClubPage implements OnInit {
     }
 
   }
-  async presentLoading() {
-    const loading = await this.loadingController.create({
-      message: 'loading...',
-      duration: 4000
-    });
-    await loading.present();
-    this.addClub()
-    loading.dismiss()
+//adress
+search(event: any) {
+  const searchTerm = event.target.value.toLowerCase();
+  if (searchTerm && searchTerm.length > 0) {
+    this.mapboxService.search_word(searchTerm)
+      .subscribe((features: Feature[]) => {
+        this.coordinates = features.map(feat => feat.geometry)
+        this.addresses = features.map(feat => feat.place_name)
+        this.list = features;
+        console.log(this.list)
+      });
+  } else {
+    this.addresses = [];
   }
-  
-  search(event: any) {
-    const searchTerm = event.target.value.toLowerCase();
-    if (searchTerm && searchTerm.length > 0) {
-      this.mapboxService.search_word(searchTerm)
-        .subscribe((features: Feature[]) => {
-          this.coordinates = features.map(feat => feat.geometry)
-          this.addresses = features.map(feat => feat.place_name)
-          this.list = features;
-          console.log(this.list)
-        });
-    } else {
-      this.addresses = [];
-    }
-  }
-  
-  
-  onSelect(address:string,i){
-    this.selectedAddress=address;
-     //  selectedcoodinates=
-     console.log("lng:" + JSON.stringify(this.list[i].geometry.coordinates[0]))
-     console.log("lat:" + JSON.stringify(this.list[i].geometry.coordinates[1]))
-     this.lng = JSON.stringify(this.list[i].geometry.coordinates[0])
-     this.lat = JSON.stringify(this.list[i].geometry.coordinates[1])
-    //  this.userZ.coords = [this.lng,this.lat];
-     console.log("index =" + i)
-  
-     console.log(this.selectedAddress)
-     this.userZ= this.selectedAddress;
-     console.log(this.userZ)
-    //  this.addresses = [];
-    this.addresses=[];
-  }
+}
+onSelect(address:string,i){
+  this.selectedAddress=address;
+   //  selectedcoodinates=
+   console.log("lng:" + JSON.stringify(this.list[i].geometry.coordinates[0]))
+   console.log("lat:" + JSON.stringify(this.list[i].geometry.coordinates[1]))
+   this.lng = JSON.stringify(this.list[i].geometry.coordinates[0])
+   this.lat = JSON.stringify(this.list[i].geometry.coordinates[1])
+  //  this.user.coords = [this.lng,this.lat];
+   console.log("index =" + i)
+   console.log(this.selectedAddress)
+   this.userr= this.selectedAddress;
+   console.log(this.user)
+  //  this.addresses = [];
+  // this.addresses=[];
+}
+//address
+
+
+
 }

@@ -69,7 +69,10 @@ const routes: Routes = [
     path: 'schedule-event',
     loadChildren: () => import('./pages/schedule-event/schedule-event.module').then( m => m.ScheduleEventPageModule)
   },
-
+  {
+    path: 'map',
+    loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule)
+  },
 
   {
     path: 'club-profile',

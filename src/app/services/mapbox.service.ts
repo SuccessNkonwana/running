@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-
 export interface MapboxOutput{
   attribute:string;
   features:Feature[];
@@ -12,19 +11,15 @@ export interface MapboxOutput{
 export interface Feature{
   geometry: any;
   place_name:string;
-  
 }
 export interface Geometry {
   coordinates: string;
 }
-
 @Injectable({
   providedIn: 'root'
 })
 export class MapboxService {
-
-  constructor(private http: HttpClient) { 
-
+  constructor(private http: HttpClient) {
   }
   search_word(query:string){
     const url="https://api.mapbox.com/geocoding/v5/mapbox.places/";
@@ -32,6 +27,5 @@ export class MapboxService {
     .pipe(map((res:MapboxOutput)=>{
       return res.features;
     }));
-
   }
 }

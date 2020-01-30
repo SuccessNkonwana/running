@@ -1,23 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { MapboxService,Feature } from 'src/app/services/mapbox.service';
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
   styleUrls: ['./map.page.scss'],
 })
 export class MapPage implements OnInit {
-list:any;
+
   constructor( private mapboxService:MapboxService) { }
+  list:any;
   addresses:string[]=[];
   selectedAddress=null;
   coordinates;
   lat;
   lng;
   user : any;
-
-
-
 search(event: any) {
     const searchTerm = event.target.value.toLowerCase();
     if (searchTerm && searchTerm.length > 0) {
@@ -32,8 +29,6 @@ search(event: any) {
       this.addresses = [];
     }
   }
- 
-
   onSelect(address:string,i){
     this.selectedAddress=address;
      //  selectedcoodinates=
@@ -43,7 +38,6 @@ search(event: any) {
      this.lat = JSON.stringify(this.list[i].geometry.coordinates[1])
     //  this.user.coords = [this.lng,this.lat];
      console.log("index =" + i)
-
      console.log(this.selectedAddress)
      this.user= this.selectedAddress;
      console.log(this.user)
@@ -52,5 +46,4 @@ search(event: any) {
   }
   ngOnInit() {
   }
-
 }

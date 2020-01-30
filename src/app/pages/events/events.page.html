@@ -42,12 +42,9 @@
             <br/>
        
           <ion-list lines="none" *ngFor="let myevents of events">
-            <ion-item  class="item"  *ngIf="hasAEvent" >
-                <ion-card class="ecardimg" >
-                    <!-- <img class="ecardimg" src="\assets\images\pexels-photo-2283996event.jpeg" /> -->
-                   <ion-card>
-                    <img class="dimg" src="{{myevents.photoURL}}">
-                   </ion-card>
+            <ion-item  class="eventCard" class="item" *ngIf="hasAEvent" >
+               <ion-card>
+                   <img class="ecardimg" src="{{myevents.photoURL}}">
                     <ion-card-header>
                       <ion-card-subtitle><ion-icon name="pin"></ion-icon> {{myevents.address}} </ion-card-subtitle>
                       <ion-card-title>{{myevents.name}}</ion-card-title>
@@ -58,9 +55,8 @@
                         <ion-icon name="cash"></ion-icon>   price: R{{myevents.price}} <br/>
                     </ion-card-content>
                     <ion-button routerLink="/book-event" (click)="booking(myevents)" shape="round" fill="outline">Book Now</ion-button>
-                  </ion-card>
-                
-            </ion-item>
+                </ion-card>
+           </ion-item>
          </ion-list>
 
           <div class="noClubs" *ngIf="!hasAEvent" >

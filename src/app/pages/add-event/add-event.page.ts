@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { RunningService } from 'src/app/services/running.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { DatePipe } from '@angular/common';
-import { LoadingController } from '@ionic/angular';
 import { MapboxService,Feature } from 'src/app/services/mapbox.service';
-
-
+import { LoadingController } from '@ionic/angular';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.page.html',
@@ -21,7 +19,13 @@ export class AddEventPage implements OnInit {
   photoURL: string;
   uploadPercent: number;
   currentuser: string;
-  urlPath = '';
+  list:any;
+  addresses:string[]=[];
+  selectedAddress=null;
+  coordinates;
+  lat;
+  lng;
+  userr : any;
 
   clubs=[]
   newName
@@ -33,18 +37,43 @@ export class AddEventPage implements OnInit {
   newDistance
   user = {} as User;
   // map
-  list:any;
-  addresses:string[]=[];
-  selectedAddress=null;
-  coordinates;
-  lat;
-  lng;
+ 
+ 
   userZ : any;
   public eventForm: FormGroup;
-
-
-  constructor(private datePipe: DatePipe,private mapboxService:MapboxService,public loadingController: LoadingController,
-    private fb: FormBuilder,public runn: RunningService, private authService: AuthService,) {
+//adress
+  search(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    if (searchTerm && searchTerm.length > 0) {
+      this.mapboxService.search_word(searchTerm)
+        .subscribe((features: Feature[]) => {
+          this.coordinates = features.map(feat => feat.geometry)
+          this.addresses = features.map(feat => feat.place_name)
+          this.list = features;
+          console.log(this.list)
+        });
+    } else {
+      this.addresses = [];
+    }
+  }
+  onSelect(address:string,i){
+    this.selectedAddress=address;
+     //  selectedcoodinates=
+     console.log("lng:" + JSON.stringify(this.list[i].geometry.coordinates[0]))
+     console.log("lat:" + JSON.stringify(this.list[i].geometry.coordinates[1]))
+     this.lng = JSON.stringify(this.list[i].geometry.coordinates[0])
+     this.lat = JSON.stringify(this.list[i].geometry.coordinates[1])
+    //  this.user.coords = [this.lng,this.lat];
+     console.log("index =" + i)
+     console.log(this.selectedAddress)
+     this.userr= this.selectedAddress;
+     console.log(this.user)
+    //  this.addresses = [];
+    // this.addresses=[];
+  }
+  //address
+  constructor(private datePipe:DatePipe,
+    private fb: FormBuilder,public runn: RunningService, private authService: AuthService,private mapboxService:MapboxService,private loadingController:LoadingController) {
 
     
     this.eventForm = fb.group({
@@ -91,36 +120,5 @@ async presentLoading() {
   
   loading.dismiss()
 }
-search(event: any) {
-  const searchTerm = event.target.value.toLowerCase();
-  if (searchTerm && searchTerm.length > 0) {
-    this.mapboxService.search_word(searchTerm)
-      .subscribe((features: Feature[]) => {
-        this.coordinates = features.map(feat => feat.geometry)
-        this.addresses = features.map(feat => feat.place_name)
-        this.list = features;
-        console.log(this.list)
-      });
-  } else {
-    this.addresses = [];
-  }
-}
 
-
-onSelect(address:string,i){
-  this.selectedAddress=address;
-   //  selectedcoodinates=
-   console.log("lng:" + JSON.stringify(this.list[i].geometry.coordinates[0]))
-   console.log("lat:" + JSON.stringify(this.list[i].geometry.coordinates[1]))
-   this.lng = JSON.stringify(this.list[i].geometry.coordinates[0])
-   this.lat = JSON.stringify(this.list[i].geometry.coordinates[1])
-  //  this.userZ.coords = [this.lng,this.lat];
-   console.log("index =" + i)
-
-   console.log(this.selectedAddress)
-   this.userZ= this.selectedAddress;
-   console.log(this.userZ)
-  //  this.addresses = [];
-  this.addresses=[];
-}
 }

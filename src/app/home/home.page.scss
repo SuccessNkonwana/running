@@ -145,6 +145,12 @@
         padding-right: 0px;
         color: rgb(190, 186, 186);
     }
+    .sadname
+    {
+        zoom:1.5;
+        left: 20px;
+        color: rgba(190, 186, 186, 0.993);
+    }
     .imgC {
         // position: absolute;
         $myheight: 100%;
@@ -164,5 +170,8 @@
     }
     ion-item{
        color: #11C2D4;
+    }
+    .info{
+        zoom: 0.8;
     }
 }
