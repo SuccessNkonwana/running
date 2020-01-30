@@ -29,7 +29,7 @@ export class EventsPage implements OnInit {
      this.runn.getEvent().subscribe(eventList=>{
        for(let x=0;x< eventList.length;x++){
         this.events.push({
-          // eventKey:eventList[x].eventID,
+          eventKey:eventList[x].id,
           name: eventList[x].name,
           address:eventList[x].address,
           openingHours:eventList[x].openingHours,
@@ -44,38 +44,7 @@ export class EventsPage implements OnInit {
        
      })
 
-  //  return new Promise((resolve, reject) => {
-  //      this.runn.rtEvents().then(data =>{
-      
-  //        console.log( data.length);
-  //        for( let x = 0; x < data.length; x++ )
-  //        {
-  //         console.log(x);
-          
-  //        this.events.push({ 
-  //          eventKey:  data[x].eventKey,
-  //          name:  data[x].name,
-  //          address:  data[x].address,
-  //          openingHours:  data[x].openingHours,
-  //          closingHours:data[x].closingHours,
-  //          price:data[x].price,
-  //          clubKey:data[x].clubKey,
-  //          date:data[x].date
-  //         //  [""0""].date
-         
-  //        })
-          
-  //        }
-  //         if(this.events===null)
-  //         {
-  //           this.hasAEvent=false
-  //         }
-  
-  //      console.log(this.events,"the events")
  
-  //     })
-  //    })
-   
    }
    async presentLoading() {
     const loading = await this.loadingController.create({

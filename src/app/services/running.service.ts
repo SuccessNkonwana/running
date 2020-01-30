@@ -18,6 +18,7 @@ export class RunningService {
   userProfile = []
   currentState: boolean
   currentUser
+  bookingID
   currClub = []
   theCurrentClub
   currentSessionId
@@ -68,7 +69,7 @@ export class RunningService {
   constructor(public loadingController: LoadingController,public auths: AuthService, private storage: AngularFireStorage, private afs: AngularFirestore, public navCtrl: NavController, public route: Router) {
   }
   currentClub(myclubs) {
-    //  console.log(myclubs[0].myclubs.myclubs[0].myclubs.clubKey,"the current Choosen club ID");
+      console.log(myclubs[0].myclubs.myclubs[0].myclubs.clubKey,"the current Choosen club ID");
     this.currClub = []
 
 
@@ -655,11 +656,12 @@ getTickets() {
         // ans.push(doc.data())
         console.log(doc.id, '=>', doc.data());
         this.ticketsTemp.push({
-           eventKey: doc.id,
+           bookingID: doc.id,
+           eventKey: doc.data().eventKey,
            name: doc.data().name,
            address: doc.data().address,
            openingHours:  doc.data().openingHours,
-           closingHours:  doc.data().closing,
+           closingHours:  doc.data().closingHours,
            userID:  doc.data().userID,
            clubID:  doc.data().clubID,
            price:  doc.data().price,
@@ -667,7 +669,7 @@ getTickets() {
    //  {{element.data.TimeStamp.toDate() | date:'dd-MM-yyy'}}
            tickets: doc.data().tickets,
            total:  doc.data().total,
-           aproved: doc.data().approved,
+           approved: doc.data().approved,
            deposited: doc.data().deposited
  
          })
@@ -676,28 +678,32 @@ getTickets() {
        
            console.log( this.ticketsTemp.length,"tickets array SIZE")
        //  this.todoTemp.push()
-         
-       });
-       console.log( this.ticketsTemp.length,"users array SIZE")
+       console.log( this.ticketsTemp.length,"all bookings array SIZE")
       
        for(let x=0;x< this.ticketsTemp.length;x++)
        {
        
-    
-            if(this.usersTemp[x].approved==="yes")
+        if(this.ticketsTemp[x].userID===userID)
+        {
+          console.log( this.ticketsTemp[x].userID,"USER at x", userID," logged in user")
+          console.log( this.ticketsTemp[x].approved,"approved at x")
+
+          if(this.ticketsTemp[x].approved==true)
             {
-              console.log( this.ticketsTemp[x].approved,"userid at x")
+              console.log( this.ticketsTemp[x].approved,"approved at x")
               this.tickets.push(this.ticketsTemp[x])
     
             }
-    
+          }
        }
+       console.log(this.tickets,"+++++++++++")
        resolve(this.tickets)
+       });
+     
     });
+    
     });
-  
-  console.log(this.usersTemp, "clubs array")
-  console.log(ans, "ans array")
+ 
 
 }
 ///get tickets
@@ -734,7 +740,7 @@ getTickets() {
         console.log(data[0].myevents[0].myevents[0].myevents, "the selected one vele", data[0].myevents[0].myevents[0].myevents.eventKey);
 
         this.dbfire.collection("bookedEvents").add({
-          // eventKey: data[0].myevents[0].myevents[0].myevents.eventKey,
+          eventKey:  data[0].myevents[0].myevents[0].myevents.eventKey,
           name: data[0].myevents[0].myevents[0].myevents.name,
           address: data[0].myevents[0].myevents[0].myevents.address,
           openingHours: data[0].myevents[0].myevents[0].myevents.openingHours,
@@ -747,15 +753,15 @@ getTickets() {
           tickets: tickets,
           total: total,
           approved: false,
-          deposited:false
+          deposited: false
 
         }).then((data) => {
-       
+            
           resolve(data) 
 
           //  this.navCtrl.navigateRoot('/done')
           console.log(data)
-
+          this.bookingID=data.id;
 
         }).catch((error) => {
           console.log(error)
@@ -816,7 +822,7 @@ getTickets() {
   booking(myevents) {
     this.currentBook = []
     return new Promise((resolve, reject) => {
-
+   
       this.currentBook.push(
 
         {
@@ -928,7 +934,14 @@ getTickets() {
   }
   updateDeposit()
   {
-
+    let dep=true
+    console.log( this.bookingID,"oooooooo")
+    this.dbfire.collection("bookedEvents").doc(this.bookingID).update('deposited',dep).then((data)=> {
+   
+      console.log("Document name successfully updated!",data);
+  }).catch(function(error) {
+      console.error("Error updating document: ", error);
+  });  
     
   }
 

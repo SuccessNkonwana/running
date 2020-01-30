@@ -25,6 +25,7 @@ export class DonePage implements OnInit {
   email: any;
   myAccount;
   name:string;
+  eventKey
   theName:string;
   constructor(private route:ActivatedRoute, public runn:RunningService,private navCtrl: NavController,) 
   {
@@ -43,6 +44,10 @@ export class DonePage implements OnInit {
       });
       console.log(this.myAccount);
     });
+
+
+
+    
    }
    user(){
     let user=this.runn.readCurrentSession()
@@ -59,6 +64,7 @@ tickets;price;total;
       // console.log(data);
       this.tickets=data.tickets;
       this.price=data.price;
+      this.eventKey=data.eventKey;
       this.total=this.tickets*this.price;
       console.log(this.price);
       console.log(this.tickets);

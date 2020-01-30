@@ -10,7 +10,8 @@ export class HomePage implements OnInit {
   clubs= [];
   tickets=[];
   theUser=[];
-  hasATicket=false;
+  hasATicket=true;
+  hasAClub=true;
   defaultpic=true;
   isSlide: boolean = true;
   slides: any;
@@ -34,40 +35,42 @@ slideOpts = {
     this.getTickets()
   }
   ngOnInit() {
-    this.getBooked();
+  //  this.getBooked();
   }
   getTickets()
   {
     return new Promise((resolve, reject) => {
       this.runn.rtTickets().then(data =>{
      
-        console.log( data.length);
+        console.log(data.length);
         for( let x = 0; x < data.length; x++ )
         {
          console.log(x);
          
         this.tickets.push({ 
+         bookingID:data[x].bookingID,
          eventKey: data[x].eventKey,
           name: data[x].name,
-          address: data[x].s.address,
+          address: data[x].address,
           openingHours: data[x].openingHours,
           closingHours: data[x].closingHours,
-          userID:data[x].userID,
+          userID: data[x].userID,
           clubID: data[x].clubKey,
           price: data[x].price,
           date: data[x].date,
           tickets: data[x].tickets,
           total: data[x].total,
-          aproved: data[x].aproved,
-          deposited:data[x].deposited
+          approved: data[x].approved,
+          deposited: data[x].deposited
     
         })
       console.log(this.tickets,"LAST ONE")
 
       }
-      if(this.tickets!=null)
+    
+      if(this.tickets.length===0 && this.tickets===null)
       {
-        this.hasATicket=true;
+        this.hasATicket=false;
       }
      })
      
@@ -96,6 +99,10 @@ slideOpts = {
         }
       console.log(this.clubs,"LAST ONE")
 
+      if(this.clubs.length===0 && this.clubs===null)
+      {
+        this.hasAClub=false;
+      }
      })
     })
   
@@ -170,6 +177,32 @@ getBooked(){
       }as Events;// the Item is the class name in the item.ts
     });
     console.log(this.myEvents);
+
+    for(let r=0;r<this.myEvents.length;r++)
+    {
+      console.log(this.myEvents[r].approved,"&&&&&&");
+     if(this.myEvents[r].approved===true) 
+     {
+      this.tickets.push({
+
+        key: this.myEvents[r].key,
+        closingHours: this.myEvents[r].closingHours,
+        openingHours:this.myEvents[r].openingHours ,
+        address: this.myEvents[r].address,
+        name:this.myEvents[r].name ,
+        date: this.myEvents[r].date,
+        approved: this.myEvents[r].approved
+      })
+      
+     }
+     console.log(this.tickets);
+    }
+if(this.tickets===null)
+{
+
+this.hasATicket=false
+}
+
   });
 }
 

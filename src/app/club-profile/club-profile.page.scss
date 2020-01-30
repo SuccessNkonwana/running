@@ -19,16 +19,17 @@
         left: 10px;
 
     }
-.eventCard
-{
-    width: 250px;
-    height:150px;
-    position: center;
-}
+    .eventCard
+    {
+        width: 80%;
+        height:80%;
+     //   position: relative;
+    }
 .ecardimg
 {
-    width: 250px;
-    height:150px;
+    width: 100%;
+    height:15%;
+    position: relative;
 }
     .actButtons
     {

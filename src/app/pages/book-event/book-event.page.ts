@@ -11,10 +11,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class BookEventPage implements OnInit {
   eventName;
+  bookingID
   eventAddress;
   eventOpeningHours;
   eventClosingHours;
   price:number;
+  eventKey
   // eventPrice;
   // tickets;
   // totalPrice;
@@ -58,7 +60,8 @@ events=[];
           clubKey:data[0].myevents[0].myevents.clubKey
         
         })
-         
+        this.eventKey=""
+         this.eventKey=data[0].myevents[0].myevents.eventKey
         
          if(this.events===null)
          {
@@ -99,7 +102,7 @@ sub(num:number) {
 BookEvent(tickets,price)
   {
     this.clubService.BookEvent(tickets,price);
-    this.route.navigate(['/done'],{queryParams:{tickets:tickets,price:price}})
+    this.route.navigate(['/done'],{queryParams:{tickets:tickets,price:price,eventKey:this.eventKey}})
 
     // console.log(tickets,price,"=================",this.tickets,this.price);
 

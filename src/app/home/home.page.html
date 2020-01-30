@@ -40,23 +40,31 @@
     <br>
 
       
-       <div class="sly">
+       <div class="sly"  *ngIf="!hasATicket">
         <div *ngIf="isSlide">
             <ion-slides startAutoplay [options]="slideOpts">
                
-                <ion-slide *ngFor="let event of myEvents">
-                    <ion-card class="booked"*ngIf="event.approved != false">
-                        <ion-card-content class="info">
-                            {{event.name}}<br>
-                            {{event.address}}<br>
-                            {{event.date}}
-                        </ion-card-content>
-                    </ion-card>
+                <ion-slide *ngFor="let event of tickets">
+                    
+                        <ion-card class="booked">
+                          <p class="wordsCard"><ion-icon name="information-circle"></ion-icon> {{event.name}}</p> <br/>     
+                          <p class="wordsCard"><ion-icon name="calendar"></ion-icon> {{event.date}}<br/> </p>
+                        </ion-card>
+                        <ion-icon name="clock" class="info"></ion-icon>
+                   
                 </ion-slide>
             </ion-slides>
         </div>
+        
         </div>
- 
+    
+    <div class="noClubs" *ngIf="hasATicket">
+        <br/>
+        <br/>
+        <p text-center color="medium" class="sadname"> You Don't Have Any Tickets Yet ! </p>
+        <br/>
+
+    </div>
 
     <br>
 
@@ -65,7 +73,7 @@
             <ion-icon class="iconSize" name="people"></ion-icon>
         </h2>
         <br>
-
+        <div *ngIf="!hasAClub">
         <ion-slides startAutoplay [options]="slideOpts">
             <ion-slide *ngFor="let clubss of clubs">
                 <ion-card class="slideCards" [ngStyle]="{'background-image':'url('+clubss.photoURL+')'}">
@@ -76,6 +84,14 @@
 
             </ion-slide>
         </ion-slides>
+
+    </div>
+</div>
+    <div class="noClubs" *ngIf="hasAClub">
+        <br/>
+        <br/>
+        <p text-center color="medium" class="sadname"> There Are No Clubs To View Yet ! </p>
+        <br/>
 
     </div>
 
