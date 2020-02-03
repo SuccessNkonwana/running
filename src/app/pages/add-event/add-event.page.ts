@@ -68,7 +68,7 @@ export class AddEventPage implements OnInit {
      console.log(this.selectedAddress)
      this.userr= this.selectedAddress;
      console.log(this.user)
-    //  this.addresses = [];
+      this.addresses = [];
     // this.addresses=[];
   }
   //address

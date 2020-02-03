@@ -61,7 +61,7 @@ onSelect(address:string,i){
    console.log(this.selectedAddress)
    this.userr= this.selectedAddress;
    console.log(this.userr)
-  //  this.addresses = [];
+   this.addresses = [];
   // this.addresses=[];
 }
 //address
@@ -99,7 +99,7 @@ onSelect(address:string,i){
         photoURL: '',
         Registered: "no",
       }).then(() => {
-        this.navCtrl.navigateRoot('home');
+        this.navCtrl.navigateRoot('/login');
       }).catch(err => {
 ​
         alert(err.message)

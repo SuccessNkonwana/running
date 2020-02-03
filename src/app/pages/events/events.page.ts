@@ -9,7 +9,7 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./events.page.scss'],
 })
 export class EventsPage implements OnInit {
-  hasAEvent=true
+  hasAEvent=false
   events= [];
   slideOpts= {
     initialSlide: 0,
@@ -41,7 +41,10 @@ export class EventsPage implements OnInit {
         })
         console.log("<<<<<",this.events[x])
        }
-       
+       if(this.events.length!=0 && this.events!=null)
+      {
+        this.hasAEvent=true;
+      }
      })
 
  
@@ -52,7 +55,7 @@ export class EventsPage implements OnInit {
       duration: 4000
     });
     await loading.present();
-    this.getdata()
+    
     loading.dismiss()
   }
   

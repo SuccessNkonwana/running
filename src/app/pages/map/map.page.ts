@@ -41,7 +41,7 @@ search(event: any) {
      console.log(this.selectedAddress)
      this.user= this.selectedAddress;
      console.log(this.user)
-    //  this.addresses = [];
+      this.addresses = [];
     // this.addresses=[];
   }
   ngOnInit() {

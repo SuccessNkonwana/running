@@ -10,7 +10,7 @@ import { LoadingController } from '@ionic/angular';
 })
 export class ClubProfilePage implements OnInit {
   clubs=[]
-  hasAEvent=true
+  hasAEvent=false
   clubName:String=""
   photoURL:String=""
   events= [];
@@ -78,14 +78,15 @@ export class ClubProfilePage implements OnInit {
         })
          
         }
-         if(this.events===null)
-         {
-           this.hasAEvent=false
-         }
+        if(this.events.length!=0 && this.events!=null)
+        {
+          this.hasAEvent=true;
+        }
  
       console.log(this.events,"LAST ONE")
 
      })
+     this.presentLoading();
     })
   
   }
@@ -101,7 +102,7 @@ export class ClubProfilePage implements OnInit {
       duration: 4000
     });
     await loading.present();
-    this.getdata()
+    
     loading.dismiss()
   }
 }

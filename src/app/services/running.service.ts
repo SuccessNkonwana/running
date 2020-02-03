@@ -271,6 +271,7 @@ export class RunningService {
     let userID = user.uid
     //
     return new Promise((resolve, reject) => {
+     
       this.dbfire.collection("clubs").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
 
@@ -873,6 +874,27 @@ getTickets() {
       console.error("Error updating document: ", error);
     });
   }
+
+  updateAge(userID, editAge) {
+
+    this.dbfire.collection("users").doc(userID).update({ Age: editAge }).then((data) => {
+
+      console.log("Document name successfully updated!", data);
+    }).catch(function (error) {
+      console.error("Error updating document: ", error);
+    });
+  }
+
+  updateAddress(userID, editAddress) {
+
+    this.dbfire.collection("users").doc(userID).update({ address: editAddress }).then((data) => {
+
+      console.log("Document name successfully updated!", data);
+    }).catch(function (error) {
+      console.error("Error updating document: ", error);
+    });
+  }
+
   getEvents() {
     this.events = []
     this.eventsTemp = []

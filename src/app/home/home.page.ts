@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RunningService } from '../services/running.service';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,8 +11,8 @@ export class HomePage implements OnInit {
   clubs= [];
   tickets=[];
   theUser=[];
-  hasATicket=true;
-  hasAClub=true;
+  hasATicket=false;
+  hasAClub=false;
   defaultpic=true;
   isSlide: boolean = true;
   slides: any;
@@ -25,21 +26,24 @@ slideOpts = {
       slideShadows: true,
     }
     }
-  constructor(private  router:  Router,public runn: RunningService)
+  constructor(private  router:  Router,public runn: RunningService,public loadingController: LoadingController,)
   {
-    
+    this.tickets=[]
     this.clubs=[]  
     this.theUser=[]     
     this.getdata()
     this.getUser()
     this.getTickets()
+    this.presentLoading();
   }
   ngOnInit() {
   //  this.getBooked();
   }
   getTickets()
   {
+   
     return new Promise((resolve, reject) => {
+      this.tickets=[]
       this.runn.rtTickets().then(data =>{
      
         console.log(data.length);
@@ -68,9 +72,9 @@ slideOpts = {
 
       }
     
-      if(this.tickets.length===0 && this.tickets===null)
+      if(this.tickets.length!=0 && this.tickets!=null)
       {
-        this.hasATicket=false;
+        this.hasATicket=true;
       }
      })
      
@@ -80,7 +84,9 @@ slideOpts = {
 
   getdata()
   {
+    this.clubs=[]  
     return new Promise((resolve, reject) => {
+      this.clubs=[]  
       this.runn.rtClubs().then(data =>{
      
         console.log( data.length);
@@ -99,18 +105,21 @@ slideOpts = {
         }
       console.log(this.clubs,"LAST ONE")
 
-      if(this.clubs.length===0 && this.clubs===null)
+      if(this.clubs.length!=0 && this.clubs!=null)
       {
-        this.hasAClub=false;
+        this.hasAClub=true;
       }
      })
+    
     })
   
   }
 
   getUser()
   {
+    
     return new Promise((resolve, reject) => {
+      this.theUser=[] 
       this.runn.rtUsers().then(data =>{
      
         console.log( data.length);
@@ -142,6 +151,7 @@ slideOpts = {
             
            }
      })
+    
     })
   
   }
@@ -196,14 +206,24 @@ getBooked(){
       
      }
      console.log(this.tickets);
+
     }
-if(this.tickets===null)
+if(this.tickets.length===0 && this.tickets===null)
 {
 
 this.hasATicket=false
 }
 
   });
+}
+async presentLoading() {
+  const loading = await this.loadingController.create({
+    message: 'loading...',
+    duration: 4000
+  });
+  await loading.present();
+
+  loading.dismiss()
 }
 
 }

@@ -40,7 +40,7 @@
     <br>
 
       
-       <div class="sly"  *ngIf="!hasATicket">
+       <div class="sly"  *ngIf="hasATicket">
         <div *ngIf="isSlide">
             <ion-slides startAutoplay [options]="slideOpts">
                
@@ -58,7 +58,7 @@
         
         </div>
     
-    <div class="noClubs" *ngIf="hasATicket">
+    <div class="noClubs" *ngIf="!hasATicket">
         <br/>
         <br/>
         <p text-center color="medium" class="sadname"> You Don't Have Any Tickets Yet ! </p>
@@ -72,8 +72,9 @@
         <h2 text-center class="cent"> Running Clubs
             <ion-icon class="iconSize" name="people"></ion-icon>
         </h2>
+        <div *ngIf="hasAClub" >
         <br>
-        <div *ngIf="!hasAClub">
+       
         <ion-slides startAutoplay [options]="slideOpts">
             <ion-slide *ngFor="let clubss of clubs">
                 <ion-card class="slideCards" [ngStyle]="{'background-image':'url('+clubss.photoURL+')'}">
@@ -87,7 +88,8 @@
 
     </div>
 </div>
-    <div class="noClubs" *ngIf="hasAClub">
+
+    <div class="noClubs" *ngIf="!hasAClub">
         <br/>
         <br/>
         <p text-center color="medium" class="sadname"> There Are No Clubs To View Yet ! </p>

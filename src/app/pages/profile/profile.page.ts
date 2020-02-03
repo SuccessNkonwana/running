@@ -97,7 +97,7 @@ onSelect(address:string,i){
   uploadProfilePic(event){
     this.runn.uploadProfilePic(event)
    
-    // this.filepresentLoading();
+    this.filepresentLoading();
   }
 
   getdata()
@@ -176,6 +176,90 @@ onSelect(address:string,i){
     let result = await alert.onDidDismiss();
 
   }
+
+  // 
+  async AgeUpdate(user) {
+
+    
+    const alert = await this.altctrl.create({
+      subHeader: 'Add/Edit Name',
+      inputs: [
+        {
+          name: 'displayName',
+          type: 'number',
+          // value: this.theUser[0].displayName,
+          placeholder: 'Age'
+        },
+
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        }, {
+          text: 'Ok',
+          handler: (inputData) => {
+            this.nn=inputData.displayName;
+
+            // this.tempUser=this.theUser[0]
+            console.log(this.nn+"ddfdddfdfdd",user)
+            this.runn.updateAge(this.uid,this.nn)
+            this.presentLoading();
+
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+    let result = await alert.onDidDismiss();
+
+  }
+
+  // 
+  async AddressUpdate(user) {
+
+    
+    const alert = await this.altctrl.create({
+      subHeader: 'Add/Edit Name',
+      inputs: [
+        {
+          name: 'displayName',
+          type: 'text',
+          // value: this.theUser[0].displayName,
+          placeholder: 'Address'
+        },
+
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        }, {
+          text: 'Ok',
+          handler: (inputData) => {
+            this.nn=inputData.displayName;
+
+            // this.tempUser=this.theUser[0]
+            console.log(this.nn+"ddfdddfdfdd",user)
+            this.runn.updateAddress(this.uid,this.nn)
+            this.presentLoading();
+
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+    let result = await alert.onDidDismiss();
+
+  }
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'loading...',
@@ -192,7 +276,7 @@ onSelect(address:string,i){
       duration: 15000
     });
     await loading.present();
-    this. getdata()
+    // this. getdata()
     loading.dismiss()
   }
 }

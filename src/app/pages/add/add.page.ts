@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RunningService } from 'src/app/services/running.service';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add',
@@ -23,10 +24,11 @@ slideOpts = {
       slideShadows: true,
     }
     }
-  constructor(public runn: RunningService, private router: Router) {
+  constructor(public runn: RunningService, private router: Router, public loadingController: LoadingController,) {
 
     this.clubs=[]      
     this.getdata()
+  
    }
    slideChanged()
    {
@@ -34,6 +36,7 @@ slideOpts = {
    }
    getdata()
    {
+     
      return new Promise((resolve, reject) => {
        this.runn.rtMyClubs().then(data =>{
       
@@ -53,14 +56,16 @@ slideOpts = {
      
          }
        console.log(this.clubs,"LAST ONE")
+       
        if(this.clubs!=null)
        {
          this.hasAClub=true;
-
        }
+
       })
+      this.presentLoading();
      })
-          
+    
    }
   ngOnInit() {
   }
@@ -73,6 +78,15 @@ slideOpts = {
     this.router.navigateByUrl('club-profile');
 
 
+  }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'loading...',
+      duration: 4000
+    });
+    await loading.present();
+    // this.getdata()
+    // loading.dismiss()
   }
 
 }
