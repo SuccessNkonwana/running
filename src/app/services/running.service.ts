@@ -69,15 +69,17 @@ export class RunningService {
   constructor(public loadingController: LoadingController,public auths: AuthService, private storage: AngularFireStorage, private afs: AngularFirestore, public navCtrl: NavController, public route: Router) {
   }
   currentClub(myclubs) {
-      console.log(myclubs[0].myclubs.myclubs[0].myclubs.clubKey,"the current Choosen club ID");
+    console.log(myclubs,"the current Choosen club ");
+    
+      console.log(myclubs.clubKey,"the current Choosen club ID");
     this.currClub = []
 
 
     this.currClub.push({
       myclubs
     })
-    console.log(this.currClub, "the current club");
-    console.log(this.currClub[0].myclubs.myclubs.clubKey, "the current Choosen club ID");
+    console.log(this.currClub, "the current club pushed");
+    console.log(this.currClub[0].myclubs.clubKey, "the current Choosen club ID");
   }
   rtClubName() {
 
@@ -528,10 +530,10 @@ export class RunningService {
 
     let user = this.readCurrentSession()
     let userID = user.uid
-    let clubKey = this.currClub[0].myclubs.myclubs.clubKey
+    let clubKey = this.currClub[0].myclubs.clubKey
     console.log(this.currClub, " addevnt page club");
 
-    console.log("HOT ", this.currClub[0].myclubs.myclubs.clubKey)
+    console.log("HOT ", this.currClub[0].myclubs.clubKey)
     this.uniqkey = newName + 'Logo';
     const filePath = this.uniqkey;
     this.fileRef = this.storage.ref(filePath);
