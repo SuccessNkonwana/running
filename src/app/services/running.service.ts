@@ -550,7 +550,7 @@ export class RunningService {
             openingHours: styt,
             closingHours: etyt,
             userID: userID,
-            clubID: clubKey,
+            clubKey: clubKey,
             newPrice: newPrice,
             photoURL: urlPath
 
@@ -664,7 +664,8 @@ getTickets() {
            openingHours:  doc.data().openingHours,
            closingHours:  doc.data().closingHours,
            userID:  doc.data().userID,
-           clubID:  doc.data().clubID,
+          //  clubID:  doc.data().clubID,
+          clubKey :  doc.data().clubKey,
            price:  doc.data().price,
            date:  doc.data().date,
    //  {{element.data.TimeStamp.toDate() | date:'dd-MM-yyy'}}
