@@ -35,7 +35,7 @@ export class EventsPage implements OnInit {
           openingHours:eventList[x].openingHours,
           closingHours:eventList[x].closingHours,
           price:eventList[x].newPrice,
-          clubKey:eventList[x].clubID,
+          clubKey:eventList[x].clubKey,
           date:eventList[x].date,
           photoURL:eventList[x].photoURL
         })

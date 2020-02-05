@@ -4,7 +4,9 @@ import { RunningService } from 'src/app/services/running.service';
 import { Observable } from 'rxjs';
 import { LoadingController } from '@ionic/angular';
 import { MapboxService,Feature } from 'src/app/services/mapbox.service';
-
+import * as firebase from 'firebase';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
 @Component({
   selector: 'app-add-club',
   templateUrl: './add-club.page.html',
@@ -55,8 +57,11 @@ export class AddClubPage implements OnInit {
   Address;
   close;
   Hours;
+  fileRef: any;
+  task: any;
+  
 
-  constructor(private mapboxService:MapboxService,private fb: FormBuilder,private clubService:RunningService) 
+  constructor( private storage: AngularFireStorage,private mapboxService:MapboxService,private fb: FormBuilder,private clubService:RunningService) 
   { 
      
 
@@ -84,12 +89,36 @@ export class AddClubPage implements OnInit {
 
 
     this.clubService.addClub(this.newName,this.newAddress,this.newOpeningHours,this.newClosingHours)
+ 
   }
 
   uploadClubPic(event){
     this.clubService.uploadClubPic(event)
+    
+    //
+    this.file = event.target.files[0];
+    this.uniqkey = this.newName + 'Logo';
+    const filePath = this.uniqkey;
+    this.fileRef = this.storage.ref(filePath);
+    this.task = this.storage.upload(filePath, this.file);
+    this.task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadU = this.fileRef.getDownloadURL().subscribe(urlPath => {
+          console.log(urlPath);
+
+          this.urlPath=urlPath
+          console.log(this.urlPath,"fighter");
+          
+        });
+      })
+    ).subscribe();
+  }
+  file(filePath: any, file: any): any {
+    throw new Error("Method not implemented.");
+    //
     // this.presentLoading();
   }
+
   ngOnInit() {
     // if (this.UpdateForm == "true") {
      

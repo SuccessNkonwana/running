@@ -42,14 +42,15 @@
     .cent {
         margin-left: 20px;
         margin-right: 20px;
-        color: rgb(190, 186, 186);
+        color: rgb(150, 147, 147);
     }
     .slideCards {
         height: 160px;
-        width: 160px;
+        width: 180px;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
+        
         left: 0;
         right: 0;
         top: 0;
@@ -58,10 +59,16 @@
         background: black;
         opacity: 0.8;
     }
+    .slick-slide {
+        margin: 0 10px;
+    }
     .cName {
         margin-top: 20px;
         // margin-bottom: 50px;
+        position: absolute;
         zoom: 1.5;
+        background-color:rgba(126, 126, 126, 0.336);
+      
     }
     .iconSize {
         // margin-top: 50px;

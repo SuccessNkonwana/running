@@ -6,6 +6,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { RunningService } from 'src/app/services/running.service';
 import { MapboxService,Feature } from 'src/app/services/mapbox.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -42,8 +44,15 @@ export class ProfilePage implements OnInit {
   user : any;
   list:any;
   private uid: string= null;
+  downloadU: any;
+  uniqkey: string;
+  fileRef: any;
+  task: any;
+  urlPath: any;
+ aname 
 
   constructor(
+    private storage: AngularFireStorage,
     private authService: AuthService,
     public afs:AngularFirestore,
     private altctrl: AlertController,
@@ -96,8 +105,29 @@ onSelect(address:string,i){
 
   uploadProfilePic(event){
     this.runn.uploadProfilePic(event)
-   
-    this.filepresentLoading();
+   //
+   this.file = event.target.files[0];
+         
+   this.uniqkey = this.aname + 'Logo';
+   const filePath = this.uniqkey;
+   this.fileRef = this.storage.ref(filePath);
+   this.task = this.storage.upload(filePath, this.file);
+   this.task.snapshotChanges().pipe(
+     finalize(() => {
+       this.downloadU = this.fileRef.getDownloadURL().subscribe(urlPath => {
+         console.log(urlPath);
+
+         this.urlPath=urlPath
+         console.log(this.urlPath,"fighter");
+         
+       });
+     })
+   ).subscribe();
+ }
+ file(filePath: any, file: any): any {
+   throw new Error("Method not implemented.");
+   //
+  //  this.filepresentLoading();
   }
 
   getdata()
@@ -124,6 +154,7 @@ onSelect(address:string,i){
           
           )
         }
+        this.aname =this.theUser[0].name
         this.email=this.theUser[0].Email
       console.log(this.theUser,"the LAST ONE vele" )
            if(this.theUser[0].photoURL==null)

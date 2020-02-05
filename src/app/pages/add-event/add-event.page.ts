@@ -5,6 +5,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MapboxService,Feature } from 'src/app/services/mapbox.service';
 import { LoadingController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.page.html',
@@ -41,6 +43,11 @@ export class AddEventPage implements OnInit {
  
   userZ : any;
   public eventForm: FormGroup;
+  uniqkey: string;
+  fileRef: any;
+  task: any;
+  downloadU: any;
+  urlPath: any;
 //adress
   search(event: any) {
     const searchTerm = event.target.value.toLowerCase();
@@ -72,7 +79,7 @@ export class AddEventPage implements OnInit {
     // this.addresses=[];
   }
   //address
-  constructor(private datePipe:DatePipe,
+  constructor(private storage: AngularFireStorage,private datePipe:DatePipe,
     private fb: FormBuilder,public runn: RunningService, private authService: AuthService,private mapboxService:MapboxService,private loadingController:LoadingController) {
 
     
@@ -109,6 +116,28 @@ this.presentLoading()
 
 uploadEventPic(event){
   this.runn.uploadEventPic(event)
+
+    //
+    this.file = event.target.files[0];
+    this.uniqkey = this.newName + 'Logo';
+    const filePath = this.uniqkey;
+    this.fileRef = this.storage.ref(filePath);
+    this.task = this.storage.upload(filePath, this.file);
+    this.task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadU = this.fileRef.getDownloadURL().subscribe(urlPath => {
+          console.log(urlPath);
+
+          this.urlPath=urlPath
+          console.log(this.urlPath,"fighter");
+          
+        });
+      })
+    ).subscribe();
+  }
+  file(filePath: any, file: any): any {
+    throw new Error("Method not implemented.");
+    //
 }
 
 async presentLoading() {

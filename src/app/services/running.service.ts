@@ -403,7 +403,7 @@ export class RunningService {
             openingHours: doc.data().openingHours,
             closingHours: doc.data().closingHours,
             userID: doc.data().userID,
-            clubKey: doc.data().clubID
+            clubKey: doc.data().clubKey
 
           })
           console.log(this.eventsTemp, "events array")
@@ -647,8 +647,7 @@ export class RunningService {
 getTickets() {
    this.tickets = []
   this.ticketsTemp = []
-  let ans = []
-  let ans2 = []
+  
   
 
   let user = this.readCurrentSession()
@@ -656,6 +655,7 @@ getTickets() {
   console.log(userID)
   return new Promise((resolve, reject) => {
     this.dbfire.collection("bookedEvents").get().then((querySnapshot) => {
+     
       querySnapshot.forEach((doc) => {
 
         // ans.push(doc.data())
@@ -669,7 +669,7 @@ getTickets() {
            closingHours:  doc.data().closingHours,
            userID:  doc.data().userID,
           //  clubID:  doc.data().clubID,
-          clubKey :  doc.data().clubKey,
+          clubKey :  doc.data().clubID,
            price:  doc.data().price,
            date:  doc.data().date,
    //  {{element.data.TimeStamp.toDate() | date:'dd-MM-yyy'}}
@@ -679,39 +679,41 @@ getTickets() {
            deposited: doc.data().deposited
  
          })
-           console.log( this.ticketsTemp,"ticket array")
-           console.log(name,"users array")
+           console.log(this.ticketsTemp,"ticket array")
+          
        
-           console.log( this.ticketsTemp.length,"tickets array SIZE")
-       //  this.todoTemp.push()
+     
        console.log( this.ticketsTemp.length,"all bookings array SIZE")
+   
       
-       for(let x=0;x< this.ticketsTemp.length;x++)
+       });
+       for(let t=0;t<this.ticketsTemp.length;t++)
        {
-       
-        if(this.ticketsTemp[x].userID===userID)
+        console.log( this.ticketsTemp,"tick %")
+        if(this.ticketsTemp[t].userID===userID && this.ticketsTemp[t].approved==true)
         {
-          console.log( this.ticketsTemp[x].userID,"USER at x", userID," logged in user")
-          console.log( this.ticketsTemp[x].approved,"approved at x")
+          console.log( this.ticketsTemp[t].userID,"USER at x", userID," logged in user")
+          console.log( this.ticketsTemp[t].approved,"approved at t")
 
-          if(this.ticketsTemp[x].approved==true)
-            {
-              console.log( this.ticketsTemp[x].approved,"approved at x")
-              this.tickets.push(this.ticketsTemp[x])
-    
-            }
-          }
+          
+              console.log( this.ticketsTemp[t].approved,"approved at t")
+              this.tickets.push(this.ticketsTemp[t])
+              console.log(this.tickets,"+++++++++++")
+        }
+
        }
+
+   
        console.log(this.tickets,"+++++++++++")
        resolve(this.tickets)
-       });
-     
     });
     
     });
  
 
 }
+
+
 ///get tickets
   ///retrieve event
   ///update event
@@ -827,6 +829,7 @@ getTickets() {
   }
   booking(myevents) {
     this.currentBook = []
+    console.log(myevents);
     return new Promise((resolve, reject) => {
    
       this.currentBook.push(
