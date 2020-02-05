@@ -375,11 +375,13 @@ export class RunningService {
 
 
 
-
+ console.log(myclubs, "the club select");
+ 
     //push current club
-    this.currClub.push({ myclubs })
+    this.currClub.push({ myclubs})
     // this.currentClub(this.currClub)
-    console.log(this.currClub, "the current club");
+    console.log(this.currClub, "the current club hai");
+    console.log(myclubs, "the current club from function");
 
     // let user=this.readCurrentSession()
     // let userID=user.uid
@@ -529,11 +531,11 @@ export class RunningService {
     let etyt = newClosingHours.substring(11, 16);
 
     let user = this.readCurrentSession()
-    let userID = user.uid
-    let clubKey = this.currClub[0].myclubs.clubKey
+    let userID = user.uid 
+    let clubKey = this.currClub[0].myclubs.myclubs.clubKey
     console.log(this.currClub, " addevnt page club");
 
-    console.log("HOT ", this.currClub[0].myclubs.clubKey)
+    console.log("HOT ", this.currClub[0].myclubs.myclubs.clubKey)
     this.uniqkey = newName + 'Logo';
     const filePath = this.uniqkey;
     this.fileRef = this.storage.ref(filePath);
@@ -856,13 +858,31 @@ getTickets() {
     this.file = event.target.files[0];
     console.log(this.file)
   }
-  uploadProfilePic(event){
-    let user = this.readCurrentSession()
-    let userID = user['uid']
-    console.log("the user", userID);
-    this.file = event.target.files[0];
-    console.log(this.file)
+  uploadProfilePic(event) {
+    let user=this.readCurrentSession()
+  let userID=user['uid']
+  console.log("the user",userID);
+    const file = event.target.files[0];
+    this.uniqkey = 'PIC' + this.dateTime;
+    const filePath = this.uniqkey;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+    // observe percentage changes
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadU = fileRef.getDownloadURL().subscribe(urlPath => {
+          console.log(urlPath);
+         
+          this.afs.doc('users/' + userID).update({
+            photoURL: urlPath
+          })
+          this.uploadPercent = null;
+        });
+      })
+    ).subscribe();
+    return this.uploadPercent = task.percentageChanges();
   }
+
 
 
 
