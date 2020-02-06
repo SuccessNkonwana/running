@@ -82,7 +82,7 @@ slideOpts = {
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'loading...',
-      duration: 4000
+      duration: 2000
     });
     await loading.present();
     // this.getdata()

@@ -117,7 +117,7 @@ onSelect(address:string,i){
        this.downloadU = this.fileRef.getDownloadURL().subscribe(urlPath => {
          console.log(urlPath);
 
-         this.urlPath=urlPath
+         this.photoURL=urlPath
          console.log(this.urlPath,"fighter");
          
        });
@@ -156,6 +156,7 @@ onSelect(address:string,i){
         }
         this.aname =this.theUser[0].name
         this.email=this.theUser[0].Email
+        this.photoURL=this.theUser[0].photoURL
       console.log(this.theUser,"the LAST ONE vele" )
            if(this.theUser[0].photoURL==null)
            {
