@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
   isSlide: boolean = true;
   slides: any;
 slideOpts = {
-    slidesPerView: 2.5,
+    slidesPerView: 2.1,
     coverflowEffect: {
       rotate: 50,
       stretch: 0,
@@ -26,6 +26,16 @@ slideOpts = {
       slideShadows: true,
     }
     }
+    slideOptsT = {
+      slidesPerView: 1.1,
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      }
+      }
   constructor(private  router:  Router,public runn: RunningService,public loadingController: LoadingController,)
   {
     this.tickets=[]
@@ -95,9 +105,10 @@ slideOpts = {
          console.log(x);
          
         this.clubs.push({ 
-          todoKey:  data[x].todoKey,
+          clubKey:  data[x].clubKey,
           name:  data[x].name,
-          time:  data[x].time,
+          openingHours:  data[x].openingHours,
+          closingHours:  data[x].closingHours,
           userID:  data[x].userID,
           photoURL:data[x].photoURL})
           
@@ -224,6 +235,11 @@ async presentLoading() {
   await loading.present();
 
   loading.dismiss()
+}
+chooseClub(myclubs)
+{
+
+  this.runn.chooseClub(myclubs);
 }
 
 }

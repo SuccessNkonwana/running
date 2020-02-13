@@ -67,11 +67,11 @@ export class AddClubPage implements OnInit {
 
     this.clubForm = fb.group({
 
-      club: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30), Validators.required])],
-      Address: ['', Validators.required],
+      newName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30), Validators.required])],
+      newAddress: ['', Validators.required],
       // pic: ['', Validators.required],
-      Hours: ['', Validators.required],
-      Close: ['', Validators.required],
+      newOpeningHours: ['', Validators.required],
+      newClosingHours: ['', Validators.required],
      
 
 
@@ -79,13 +79,13 @@ export class AddClubPage implements OnInit {
     );
   }
 
-  addClub()
+  addClub(newName, newAddress, newOpeningHours, newClosingHours) 
   {
-       this.newName = this.clubForm.get('club').value
-       this.newAddress = this.clubForm.get('Address').value
-       this.newOpeningHours = this.clubForm.get('Hours').value   
+       this.newName = this.clubForm.get('newName').value
+       this.newAddress = this.clubForm.get('newAddress').value
+       this.newOpeningHours = this.clubForm.get('newOpeningHours').value   
        
-       this.newClosingHours = this.clubForm.get('Close').value
+       this.newClosingHours = this.clubForm.get('newClosingHours').value
 
 
     this.clubService.addClub(this.newName,this.newAddress,this.newOpeningHours,this.newClosingHours)

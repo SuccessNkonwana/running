@@ -1,40 +1,56 @@
-<ion-content>
+<ion-content class="body">
+   
+      
+      <div class="div2"  *ngFor="let myclub of club" [ngStyle]="{'background-image':'url('+myclub.photoURL+')'}">
+          <!-- <img src="/assets/images/rep.jpg">      -->
+          <div class="backbutton">
+            <ion-fab  horizontal="start" slot="start">
 
-    <body>
-            <ion-tabs class="icons">
-                    <ion-tab-bar slot="bottom">
-                      <ion-tab-button tab="home" routerLink="/home">
-                        <ion-icon name="home"></ion-icon>
-                        <!-- <ion-label>Home</ion-label> -->
-                        <!-- <ion-badge>6</ion-badge> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="profile" routerLink="/profile">
-                        <ion-icon name="person"></ion-icon>
-                        <!-- <ion-label>Profile</ion-label> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="events" routerLink="/events">
-                        <ion-icon name="calendar"></ion-icon>
-                        <!-- <ion-label>Events</ion-label> -->
-                      </ion-tab-button>
-                  
-                      <ion-tab-button tab="add" routerLink="/add">
-                        <ion-icon name="add"></ion-icon>
-                        <!-- <ion-label>About</ion-label> -->
-                      </ion-tab-button>
-                    </ion-tab-bar>
-                  </ion-tabs>
-                  
-        <h1>Paint Fun</h1>
-        <h1>Race Club</h1>
-        <img src="assets/images/rep.jpg">
-        <ion-item lines="none" class="buu">
-            <ion-button class="jay">
-                <ion-icon name="navigate"></ion-icon>
-            </ion-button>
-            <ion-button class="tee" color="primary">Events</ion-button>
+              <ion-fab-button color="light" routerLink="/tabs/home">
+                <ion-icon color="dark"  name="arrow-back"></ion-icon> 
+              </ion-fab-button>
+
+            </ion-fab>
+
+            
+        </div>
+
+      </div>
+      <div class="div1"   *ngFor="let myclub of club">
+          <div class="div3" >
+        <ion-list  >
+            <ion-item lines="none">
+              <ion-label >Name: {{myclub.name}}</ion-label>
+          </ion-item>
+          <ion-item lines="none">
+              <ion-label>Location: </ion-label>
+              
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label>Operating Hours: {{myclub.openingHours}} To {{myclub.closingHours}}</ion-label>
         </ion-item>
+          </ion-list>
+          <br>
+          <ion-button *ngIf="!saved" (click)="getAClubsEvents(myclub)" shape="round"  expand="full" color="primary" fill="outline">View Events</ion-button>
+          <ion-button *ngIf="saved" (click)="clearEvents()" shape="round"  expand="full" color="primary" fill="outline">Close</ion-button>
+             </div>  
+   
+    <div *ngIf="saved">
+    <div   *ngFor="let ev of events" class="div3">
+      <ion-item >
+        <ion-icon name="calendar"></ion-icon>     Event Name: {{ev.name}}<br/>
+        Date: {{ev.date}}
+        
+    </ion-item>   
 
-    </body>
-</ion-content>
+    </div>
+  </div>
+
+
+  <div class="div3" *ngIf="!saved">
+       <p>---None Load Events---</p>
+
+  </div>
+      </div>
+     
+  </ion-content>

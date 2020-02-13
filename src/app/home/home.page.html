@@ -42,13 +42,16 @@
       
        <div class="sly"  *ngIf="hasATicket">
         <div *ngIf="isSlide">
-            <ion-slides startAutoplay [options]="slideOpts">
+            <ion-slides startAutoplay [options]="slideOptsT">
                
                 <ion-slide *ngFor="let event of tickets">
                     
                         <ion-card class="booked">
-                          <p class="wordsCard"><ion-icon name="information-circle"></ion-icon> {{event.name}}</p> <br/>     
-                          <p class="wordsCard"><ion-icon name="calendar"></ion-icon> {{event.date}}<br/> </p>
+                            <ion-card-content  class="wordsCard">
+                          <ion-card-title class="wordsCard"><ion-icon name="information-circle"></ion-icon> {{event.name}}</ion-card-title> <br/>   
+                         Time: {{event.openingHours}} <br/>
+                         Date: {{event.date}}
+                            </ion-card-content>
                         </ion-card>
                         <ion-icon name="clock" class="info"></ion-icon>
                    
@@ -77,7 +80,7 @@
        
         <ion-slides class="slick-slide" startAutoplay [options]="slideOpts" >
             <ion-slide *ngFor="let clubss of clubs">
-                <ion-card class="slideCards" [ngStyle]="{'background-image':'url('+clubss.photoURL+')'}">
+                <ion-card class="slideCards" [ngStyle]="{'background-image':'url('+clubss.photoURL+')'}" routerLink="/club-home" (click)="chooseClub(clubss)">
                     <ion-card-content>
                         <h2 class="cName">{{clubss.name}}</h2>
                     </ion-card-content>

@@ -58,6 +58,7 @@ export class RunningService {
   userID: String
   photoURL: String
   thetickets=[]
+  clubOne=[]
    theprice: string 
   ///
 
@@ -69,6 +70,8 @@ export class RunningService {
   constructor(public loadingController: LoadingController,public auths: AuthService, private storage: AngularFireStorage, private afs: AngularFirestore, public navCtrl: NavController, public route: Router) {
   }
   currentClub(myclubs) {
+   
+
     console.log(myclubs,"the current Choosen club ");
     
       console.log(myclubs.clubKey,"the current Choosen club ID");
@@ -80,11 +83,37 @@ export class RunningService {
     })
     console.log(this.currClub, "the current club pushed");
     console.log(this.currClub[0].myclubs.clubKey, "the current Choosen club ID");
+
+
   }
+  chooseClub(myclubs)
+  {
+    return new Promise((resolve, reject) => {
+console.log(myclubs,"***");
+
+   this.clubOne.push({myclubs})
+   console.log(this.clubOne,"oooo");
+   
+      resolve(this.clubOne)
+    })
+  }
+
   rtClubName() {
 
     return this.currClub
   }
+  async rtAClubs() {
+    let result: any
+    await this.chooseClub(this.clubOne).then(data => {
+      result = data
+
+      console.log(result.length);
+    })
+    console.log(result);
+
+    return result
+  }
+
   async rtClubs() {
     let result: any
     await this.getClubs().then(data => {
@@ -132,7 +161,7 @@ export class RunningService {
   }
   async rtClubEvents() {
     let result: any
-    await this.getAClubsEvents(this.myclubs).then(data => {
+    await this.getAClubsEvents(this.currClub).then(data => {
       result = data
 
       console.log(result.length);
@@ -282,7 +311,8 @@ export class RunningService {
           this.clubsTemp.push({
             clubKey: doc.id,
             name: doc.data().name,
-            time: doc.data().time,
+            openingHours: doc.data().openingHours,
+            closingHours: doc.data().closingHours,
             userID: doc.data().userID,
             photoURL: doc.data().photoURL
           })
@@ -400,6 +430,7 @@ export class RunningService {
             newPrice: doc.data().newPrice,
             photoURL: doc.data().photoURL,
             address: doc.data().address,
+            date:doc.data().date,
             openingHours: doc.data().openingHours,
             closingHours: doc.data().closingHours,
             userID: doc.data().userID,
