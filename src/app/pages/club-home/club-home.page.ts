@@ -98,6 +98,9 @@ hasAEvent=false
     })
 
   }
+  booking(myevents){
+    this.runn.booking(myevents)
+   }
   clearEvents()
   {
 

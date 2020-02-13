@@ -581,12 +581,11 @@ console.log(myclubs,"***");
             address: newAddress,
             distance: newDistance,
             date: newDate,
-
             openingHours: styt,
             closingHours: etyt,
             userID: userID,
             clubKey: clubKey,
-            newPrice: newPrice,
+            price: newPrice,
             photoURL: urlPath
 
           }).then((data) => {

@@ -32,12 +32,12 @@
           </ion-list>
           <br>
           <ion-button *ngIf="!saved" (click)="getAClubsEvents(myclub)" shape="round"  expand="full" color="primary" fill="outline">View Events</ion-button>
-          <ion-button *ngIf="saved" (click)="clearEvents()" shape="round"  expand="full" color="primary" fill="outline">Close</ion-button>
+          <ion-button *ngIf="saved" (click)="clearEvents()" shape="round"  expand="full" color="primary" fill="outline"><ion-icon name="close"></ion-icon></ion-button>
              </div>  
    
     <div *ngIf="saved">
     <div   *ngFor="let ev of events" class="div3">
-      <ion-item >
+      <ion-item  routerLink="/book-event" (click)="booking(ev)" >
         <ion-icon name="calendar"></ion-icon>     Event Name: {{ev.name}}<br/>
         Date: {{ev.date}}
         
