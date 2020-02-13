@@ -427,7 +427,7 @@ console.log(myclubs,"***");
           this.eventsTemp.push({
             eventKey: doc.id,
             name: doc.data().name,
-            newPrice: doc.data().newPrice,
+            price: doc.data().price,
             photoURL: doc.data().photoURL,
             address: doc.data().address,
             date:doc.data().date,
@@ -972,7 +972,7 @@ getTickets() {
             address: doc.data().address,
             openingHours: doc.data().openingHours,
             closingHours: doc.data().closingHours,
-            price: doc.data().newPrice,
+            price: doc.data().price,
             userID: doc.data().userID,
             date: doc.data().date.toDate,
             clubKey: doc.data().clubID

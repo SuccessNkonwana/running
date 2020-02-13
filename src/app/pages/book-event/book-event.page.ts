@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { RunningService } from 'src/app/services/running.service';
+import { Directive, HostListener } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 // import { eventNames } from 'cluster';
 
@@ -31,7 +33,7 @@ export class BookEventPage implements OnInit {
   hasAEvent=true;
 events=[];
 
-  constructor(public navCtrl:NavController,private clubService:RunningService, public route:Router) {
+  constructor(public navCtrl:NavController,private clubService:RunningService, public route:Router,private location: Location) {
     this.events= []; 
     this.bookE();
    
@@ -39,6 +41,9 @@ events=[];
 
   ngOnInit() {
     
+  }
+  backClicked() {
+    this.location.back();
   }
   bookE()
   {

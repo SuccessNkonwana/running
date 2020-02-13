@@ -78,7 +78,7 @@ hasAEvent=false
           date: data[x].date,
           openingHours:  data[x].openingHours,
           closingHours:data[x].closingHours,
-          newPrice:data[x].newPrice,
+          price:data[x].price,
           photoURL:data[x].photoURL,
           clubKey:data[x].clubKey
         
