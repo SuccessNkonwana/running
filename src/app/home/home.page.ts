@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
   isSlide: boolean = true;
   slides: any;
 slideOpts = {
-    slidesPerView: 2.1,
+    slidesPerView: 1.1,
     coverflowEffect: {
       rotate: 50,
       stretch: 0,

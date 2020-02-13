@@ -45,27 +45,22 @@
         color: rgb(150, 147, 147);
     }
     .slideCards {
-        height: 160px;
+        height: 180px;
         width: 180px;
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: center center;
+        background-position: center;
+    
         
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        z-index: 10;
-        background: black;
+     
+     //   background: black;
         opacity: 0.8;
     }
-    .slick-slide {
-        margin: 0 10px;
-    }
+   
     .cName {
-        margin-top: 20px;
+     //   margin-top: 20px;
         // margin-bottom: 50px;
-        position: absolute;
+        position: center;
         zoom: 1.5;
        // background-color:rgba(126, 126, 126, 0.336);
       
