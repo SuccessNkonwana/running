@@ -313,6 +313,7 @@ this.clubOne = []
           this.clubsTemp.push({
             clubKey: doc.id,
             name: doc.data().name,
+           address: doc.data().address,
             openingHours: doc.data().openingHours,
             closingHours: doc.data().closingHours,
             userID: doc.data().userID,

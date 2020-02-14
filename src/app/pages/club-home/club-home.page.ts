@@ -35,6 +35,7 @@ hasAEvent=false
         this.club.push({ 
           clubKey: data[0].myclubs[0].myclubs.clubKey,
           name: data[0].myclubs[0].myclubs.name,
+          address: data[0].myclubs[0].myclubs.address,
           openingHours: data[0].myclubs[0].myclubs.openingHours,
           closingHours:  data[0].myclubs[0].myclubs.closingHours,
           userID:  data[0].myclubs[0].myclubs.userID,

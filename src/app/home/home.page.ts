@@ -108,6 +108,7 @@ slideOpts = {
           clubKey:  data[x].clubKey,
           name:  data[x].name,
           openingHours:  data[x].openingHours,
+          address:  data[x].address,
           closingHours:  data[x].closingHours,
           userID:  data[x].userID,
           photoURL:data[x].photoURL})
