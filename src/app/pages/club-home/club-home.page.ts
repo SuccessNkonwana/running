@@ -30,15 +30,15 @@ hasAEvent=false
      
         console.log( data.length);
         
-         
+         console.log(data[0].myclubs[0].myclubs.clubKey,"flower child")
          
         this.club.push({ 
-          clubKey:  data[0].myclubs.clubKey,
-          name:  data[0].myclubs.name,
-          openingHours:  data[0].myclubs.openingHours,
-          closingHours:  data[0].myclubs.closingHours,
-          userID:  data[0].myclubs.userID,
-          photoURL:data[0].myclubs.photoURL})
+          clubKey: data[0].myclubs[0].myclubs.clubKey,
+          name: data[0].myclubs[0].myclubs.name,
+          openingHours: data[0].myclubs[0].myclubs.openingHours,
+          closingHours:  data[0].myclubs[0].myclubs.closingHours,
+          userID:  data[0].myclubs[0].myclubs.userID,
+          photoURL:data[0].myclubs[0].myclubs.photoURL})
           
     
         

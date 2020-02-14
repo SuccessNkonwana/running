@@ -88,9 +88,11 @@ export class RunningService {
   }
   chooseClub(myclubs)
   {
+    
     return new Promise((resolve, reject) => {
+      
 console.log(myclubs,"***");
-
+this.clubOne = []
    this.clubOne.push({myclubs})
    console.log(this.clubOne,"oooo");
    
