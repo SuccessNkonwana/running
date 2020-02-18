@@ -47,10 +47,10 @@
                 <ion-slide *ngFor="let event of tickets">
                     
                         <ion-card class="booked">
+                            <ion-card-title class="wordsCard"><ion-icon name="information-circle"></ion-icon> {{event.name}}</ion-card-title> <br/>   
                             <ion-card-content  class="wordsCard">
-                          <ion-card-title class="wordsCard"><ion-icon name="information-circle"></ion-icon> {{event.name}}</ion-card-title> <br/>   
-                         Time: {{event.openingHours}} <br/>
-                         Date: {{event.date}}
+                             Time: {{event.openingHours}}<br/>
+                             Date: {{event.date}}
                             </ion-card-content>
                         </ion-card>
                           

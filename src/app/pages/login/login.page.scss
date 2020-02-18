@@ -28,7 +28,7 @@ body {
     $myheight: 100%;
     height: $myheight;
     text-align: center;
-    overflow: scroll;
+    overflow-y: auto;
     #bg {
         // background-color: #11C2D4;
         width: 106% !important;

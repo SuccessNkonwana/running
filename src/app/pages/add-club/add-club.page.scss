@@ -13,7 +13,7 @@ body {
     $myheight: 100%;
     height: $myheight;
     text-align: center;
-    overflow: scroll;
+    overflow-y: auto;
     .avatar {
         position: absolute;
         z-index: 5;

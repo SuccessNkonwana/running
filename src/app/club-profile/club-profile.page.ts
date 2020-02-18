@@ -17,7 +17,7 @@ export class ClubProfilePage implements OnInit {
   isSlide: boolean = true;
   slides: any;
   slideOpts = {
-    slidesPerView: 1.5,
+    slidesPerView: 1.7,
     coverflowEffect: {
       rotate: 50,
       stretch: 0,
@@ -71,7 +71,7 @@ export class ClubProfilePage implements OnInit {
           address:  data[x].address,
           openingHours:  data[x].openingHours,
           closingHours:data[x].closingHours,
-          newPrice:data[x].newPrice,
+          price:data[x].price,
           photoURL:data[x].photoURL,
           clubKey:data[x].clubKey
         

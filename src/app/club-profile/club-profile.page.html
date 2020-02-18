@@ -8,12 +8,12 @@
 
     <div *ngFor="let myclubs of clubs">
         <br/>
-        <ion-header text-center class="h">
+        <h1 text-center class="h">
             <ion-avatar> <img src="{{photoURL}}"></ion-avatar>
-            <ion-header class="title">
+            <h1 class="title">
                 {{clubName}}
-            </ion-header>
-        </ion-header>
+            </h1>
+        </h1>
         <br/>
 
         <ion-item>
@@ -35,9 +35,9 @@
 
         <br/>
         <br/>
-        <ion-header class="subtitle">
+        <h1 class="subtitle">
             Events
-        </ion-header>
+        </h1>
         <br/>
 
         <ion-list lines="none" *ngFor="let myevents of events">
@@ -52,7 +52,7 @@
                     <ion-card-content>
                         <ion-icon name="alarm"></ion-icon> Opening Hours: {{myevents.openingHours}} <br/>
                         <ion-icon name="alarm"></ion-icon> Closing Hours: {{myevents.closingHours}} <br/>
-                        <ion-icon name="cash"></ion-icon> Price: R{{myevents.newPrice}} <br/>
+                        <ion-icon name="cash"></ion-icon> Price: R{{myevents.price}} <br/>
                     </ion-card-content>
                 </ion-card>
 

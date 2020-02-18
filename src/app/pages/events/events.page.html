@@ -1,13 +1,13 @@
-<ion-header >
+
         <ion-toolbar color="primary">
                 <ion-title class="toolwords" >Event Feed</ion-title>
       </ion-toolbar>
-    </ion-header>
+ 
 <ion-content class="body" >
         <div >
-                <ion-header text-center class="title" >
+                <h1 text-center class="title" >
                         Sponsored*
-                     </ion-header>       
+                </h1>       
                       
           <br/>
           
@@ -36,9 +36,9 @@
           
             <br/>  
             <br/>
-             <ion-header class="subtitle">
+             <h1 class="subtitle">
              Events
-            </ion-header>
+             </h1>
             <br/>
        
           <ion-list lines="none" *ngFor="let myevents of events">
@@ -54,7 +54,7 @@
                         <ion-icon name="alarm"></ion-icon>  Closing Hours: {{myevents.closingHours}} <br/>
                         <ion-icon name="cash"></ion-icon>   Price: R{{myevents.price}} <br/>
                     </ion-card-content>
-                    <ion-button routerLink="/book-event" (click)="booking(myevents)" shape="round" fill="outline">Book Now</ion-button>
+                    <ion-button routerLink="/book-event" (click)="booking(myevents)" shape="round" fill="outline" style="width:30%">Book Now</ion-button>
                 </ion-card>
            </ion-item>
          </ion-list>

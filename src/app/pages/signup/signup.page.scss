@@ -18,12 +18,12 @@ body {
     $myheight: 100%;
     height: $myheight;
     text-align: center;
-    overflow: scroll;
+    overflow-y: auto;
   //  $font-family: "Microsoft Sans Serif";
   //  font-family: $font-family;
     // 
     #bg {
-        overflow: scroll;
+        overflow-y: auto;
         // background-color: #11C2D4;
         // $mywidth: 100%;
         // width: $mywidth;

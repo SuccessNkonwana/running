@@ -24,12 +24,12 @@
         $myheight: 100%;
         height: $myheight;
         text-align: center;
-        overflow: scroll;
+        overflow-y: auto;
         .avatar {
             position: absolute;
             z-index: 5;
             top: 10%;
-            right: 80%;
+            right: 0%;
         }
         #bg {
             // background-color: #11C2D4;
