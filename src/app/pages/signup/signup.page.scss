@@ -19,8 +19,8 @@ body {
     height: $myheight;
     text-align: center;
     overflow: scroll;
-    $font-family: "Microsoft Sans Serif";
-    font-family: $font-family;
+  //  $font-family: "Microsoft Sans Serif";
+  //  font-family: $font-family;
     // 
     #bg {
         overflow: scroll;
@@ -51,8 +51,8 @@ body {
     h3 {
         $fontsize: 25px;
         font-size: $fontsize;
-        $font-family: "Comic Sans MS";
-        font-family: $font-family;
+      //  $font-family: "Comic Sans MS";
+      //  font-family: $font-family;
         $textcolor: #11C2D4;
         color: $textcolor;
         text-align: start;
@@ -60,8 +60,8 @@ body {
     h2 {
         $fontsize: 25px;
         font-size: $fontsize;
-        $font-family: "Comic Sans MS";
-        font-family: $font-family;
+      //  $font-family: "Comic Sans MS";
+       // font-family: $font-family;
         $textcolor: #11C2D4;
         color: $textcolor;
     }

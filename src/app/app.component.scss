@@ -6,3 +6,11 @@ ion-toolbar {
 ion-button {
     margin-left: 130px;
 }
+@font-face{
+
+    font-family: Roboto;
+    src: url('../assets/fonts/roboto.woff2');
+}
+*{
+    font-family: Roboto;
+}

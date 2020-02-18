@@ -63,8 +63,8 @@
         h3 {
             $fontsize: 25px;
             font-size: $fontsize;
-            $font-family: "Times New Roman", Times, serif;
-            font-family: $font-family;
+         //   $font-family: "Times New Roman", Times, serif;
+         //   font-family: $font-family;
             $textcolor: #11C2D4;
             color: $textcolor;
             text-align: start;
@@ -72,8 +72,8 @@
         h2 {
             $fontsize: 25px;
             font-size: $fontsize;
-            $font-family: "Times New Roman", Times, serif;
-            font-family: $font-family;
+            //$font-family: "Times New Roman", Times, serif;
+           // font-family: $font-family;
             $textcolor: #11C2D4;
             color: $textcolor;
             // $padding: 0px 280px 50px 0px;
@@ -166,16 +166,16 @@
         #heading {
             $fontsize: 25px;
             font-size: $fontsize;
-            $font-family: "Comic Sans MS";
-            font-family: $font-family;
+           // $font-family: "Comic Sans MS";
+          //  font-family: $font-family;
             $textcolor: #ffff;
             color: $textcolor;
         }
         #name {
             $fontsize: 15px;
             font-size: $fontsize;
-            $font-family: "Comic Sans MS";
-            font-family: $font-family;
+           // $font-family: "Comic Sans MS";
+          //  font-family: $font-family;
             $textcolor: #ffff;
             color: $textcolor;
         }

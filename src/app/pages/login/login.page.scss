@@ -61,8 +61,8 @@ body {
     h3 {
         $fontsize: 25px;
         font-size: $fontsize;
-        $font-family: "Times New Roman", Times, serif;
-        font-family: $font-family;
+     //   $font-family: "Times New Roman", Times, serif;
+     //   font-family: $font-family;
         $textcolor: #11C2D4;
         color: $textcolor;
         text-align: start;
@@ -70,8 +70,8 @@ body {
     h2 {
         $fontsize: 25px;
         font-size: $fontsize;
-        $font-family: "Times New Roman", Times, serif;
-        font-family: $font-family;
+        //$font-family: "Times New Roman", Times, serif;
+      //  font-family: $font-family;
         $textcolor: #11C2D4;
         color: $textcolor;
         // $padding: 0px 280px 50px 0px;

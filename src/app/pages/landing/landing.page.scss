@@ -32,8 +32,8 @@ body {
     #h1 {
         $fontsize: 25px;
         font-size: $fontsize;
-        $font-family: "Times New Roman", Times, serif;
-        font-family: $font-family;
+      //  $font-family: "Times New Roman", Times, serif;
+      //  font-family: $font-family;
         margin-bottom: 200%;
         text-align: center;
     }
@@ -48,7 +48,7 @@ body {
     }
     .gett {
         text-align: center;
-        font-family: "Times New Roman", Times, serif;
+      //  font-family: "Times New Roman", Times, serif;
     }
     .content {
         max-width: 500px;
