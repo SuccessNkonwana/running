@@ -19,12 +19,12 @@
 
                                     <div padding>
                                         <div text-center>
-                                            <h3>Tell us about yourself!</h3>
+                                            <h3>Tell us about yourself</h3>
                                         </div>
                                         <br>
-
-                                        <ion-item id="item" color="transparent">
-                                            <ion-label position="floating">Username</ion-label>
+                                        <ion-label position="floating">Username</ion-label>
+                                        <ion-item id="item" lines="none">
+                                          
                                             <ion-input type="tel" maxLength="20" formControlName="username" required></ion-input>
                                         </ion-item>
                                         <div class="error" *ngIf="signupForm.get('username').hasError('required') && signupForm.get('username').touched">
@@ -36,9 +36,10 @@
                                         <div class="error" *ngIf="signupForm.get('username').hasError('maxlength') && signupForm.get('username').touched">
                                             Maximum 30 characters
                                         </div>
-
-                                        <ion-item id="item" color="transparent">
-                                            <ion-label position="floating">Email</ion-label>
+                                        <br>
+                                        <ion-label position="floating">Email</ion-label>
+                                        <ion-item id="item" lines="none">
+                                          
                                             <ion-input type="email" formControlName="email"></ion-input>
                                         </ion-item>
                                         <div class="error" *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched">
@@ -47,8 +48,10 @@
                                         <div class="error" *ngIf="signupForm.get('email').hasError('pattern') && signupForm.get('email').touched">
                                             Email address invalid
                                         </div>
-                                        <ion-item id="item" color="transparent">
-                                            <ion-label position="floating">Password</ion-label>
+                                        <br>
+                                        <ion-label position="floating">Password</ion-label>
+                                        <ion-item id="item" lines="none">
+                                           
                                             <ion-input type="password" formControlName="password"></ion-input>
                                         </ion-item>
                                         <div class="error" *ngIf="signupForm.get('password').hasError('required') && signupForm.get('password').touched">
@@ -62,9 +65,11 @@
                                         <div class="error" *ngIf="signupForm.get('password').hasError('maxlength') && signupForm.get('password').touched">
                                             Maximum 12 characters
                                         </div>
- <!-- address search -->
-<ion-item id="item" color="transparent">
-    <ion-label position="floating">Address</ion-label>
+ <!-- address search -->  <br>
+  <ion-label position="floating">Address</ion-label>
+
+<ion-item id="item" lines="none">
+   
     <ion-input type="text"  formControlName="address" (ionInput)="search($event)"  [value]="selectedAddress" clearInput></ion-input>
 </ion-item>
 <div style="position: absolute; max-width: 90%; min-width: 90%; z-index: 999; " class="search">
@@ -96,9 +101,10 @@
                                     </div>
 
                                     <div class="error" *ngIf="signupForm.get('cpassword').hasError('mustMatch') ">Passwords must match</div> -->
-
-                                        <ion-item id="item" color="transparent">
-                                            <ion-label position="floating">Gender</ion-label>
+                                    <br>
+                                    <ion-label position="floating">Gender</ion-label>
+                                        <ion-item id="item" lines="none">
+                                            
                                             <ion-select formControlName="gender">
                                                 <ion-select-option value="Female">Female</ion-select-option>
                                                 <ion-select-option value="Male">Male</ion-select-option>
@@ -117,9 +123,10 @@
                                                 <ion-select-option value="38-45">38-45</ion-select-option>
                                             </ion-select>
                                         </ion-item> -->
-
-                                        <ion-item id="item" color="transparent">
-                                            <ion-label position="floating">Age</ion-label>
+                                        <br>
+                                        <ion-label position="floating">Age</ion-label>
+                                        <ion-item id="item" lines="none">
+                                           
                                             <ion-input type="number" max="2" formControlName="age" required></ion-input>
                                         </ion-item>
                                         <div class="error" *ngIf="signupForm.get('age').hasError('required') && signupForm.get('age').touched">

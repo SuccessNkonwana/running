@@ -17,7 +17,7 @@ body {
     width: $mywidth;
     $myheight: 100%;
     height: $myheight;
-    text-align: center;
+   
     overflow-y: auto;
   //  $font-family: "Microsoft Sans Serif";
   //  font-family: $font-family;
@@ -55,7 +55,7 @@ body {
       //  font-family: $font-family;
         $textcolor: #11C2D4;
         color: $textcolor;
-        text-align: start;
+        text-align: center;
     }
     h2 {
         $fontsize: 25px;
@@ -72,8 +72,11 @@ body {
         font-size: $font-size;
     }
     #item {
-        $textcolor: #11C2D4;
-        color: $textcolor;
+    
+            border: 1px solid rgb(199, 199, 199);
+          padding: 0px;
+          border-radius: 25px;
+        
     }
     #cen {
         $margin: 5px 20px 5px 300px;
@@ -121,8 +124,18 @@ body {
         height: $myheight;
     }
     .imgC {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
         width: 150px;
         height: 150px;
-       // border-radius: 50%;
+    }
+    ion-select{
+      margin-left: 80%;
+    }
+    a {
+        color: #11C2D4;
+        text-decoration: none;
+        margin-left: 15%;
     }
 }

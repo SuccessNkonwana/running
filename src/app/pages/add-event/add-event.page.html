@@ -13,7 +13,7 @@
                            
                             <div class="div1">
                                 <ion-buttons slot="start"  routerLink="/club-profile">
-                                    <ion-icon color="primary" name="arrow-back" style="zoom:1.5"></ion-icon>
+                                    <ion-icon color="light" name="arrow-back" style="zoom:1.5"></ion-icon>
                                 </ion-buttons> 
                                 <!-- <ion-icon name="arrow-round-back" defaultHref="club-profile"></ion-icon> -->
 
@@ -48,6 +48,7 @@
                                         <input id="file-input2" class="input" type="file" (change)="uploadEventPic($event)" />
                                     </div>
                                 </div>
+                            </div>
                                 <br><br><br>
                                 <div class="div2">
 
@@ -178,7 +179,7 @@
                                         </ion-item> -->
                                         <br><br>
                                         <ion-col>
-                                            <ion-button style="margin-right: 4%;margin-left: 4%;"  shape="round"  expand="full" color="light" [disabled]="!eventForm.valid" (click)="addEvent()">Add</ion-button>
+                                            <ion-button style="margin-right: 4%;margin-left: 4%;"  shape="round"  expand="full" color="primary" [disabled]="!eventForm.valid" (click)="addEvent()">Add</ion-button>
                                         </ion-col>
 
                                         <br>
@@ -187,7 +188,7 @@
 
                                     </div>
                                 </div>
-                            </div>
+                          
                         </ion-col>
 
                     </ion-row>

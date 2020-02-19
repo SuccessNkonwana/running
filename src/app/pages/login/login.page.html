@@ -26,11 +26,12 @@
                                         <br>
                                         <div padding>
                                             <div text-center>
-                                                <h3>Welcome !</h3>
+                                                <h3>Welcome </h3>
                                             </div>
                                             <br><br>
-                                            <ion-item id="item" color="transparent">
-                                                <ion-label position="floating">Your@email.com</ion-label>
+                                            <ion-label position="floating">Email</ion-label>
+                                            <ion-item id="item" lines="none">
+                                                
                                                 <ion-input type="email" formControlName="email"></ion-input>
                                             </ion-item>
                                             <div class="error" *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched">
@@ -39,8 +40,9 @@
                                             <div class="error" *ngIf="loginForm.get('email').hasError('pattern') && loginForm.get('email').touched">
                                                 Email address invalid
                                             </div>
-                                            <ion-item id="item" color="transparent">
-                                                <ion-label position="floating">Password</ion-label>
+                                            <ion-label position="floating">Password</ion-label>
+                                            <ion-item id="item" lines="none">
+                                                
                                                 <ion-input  type="password" formControlName="password"></ion-input>
                                             </ion-item>
                                             <div class="error" *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">
