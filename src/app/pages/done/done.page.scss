@@ -59,8 +59,9 @@ body {
         text-align: center;
     }
     .cd {
-        margin-left: 70px;
+        margin-left: 40%;
         color: black;
+       
     }
     h6 {
         text-align: start;
@@ -116,8 +117,8 @@ body {
     .div1 {
         $background-color: #11C2D4;
         background-color: $background-color;
-        // $myheight: 100%;
-        // height: $myheight;
+        $myheight: 40%;
+        height: $myheight;
         border-bottom-right-radius: 20%;
         border-bottom-left-radius: 20%;
         padding: 10px 0px 0px 0px !important;
@@ -153,7 +154,7 @@ body {
     }
     .card1 {
         background-color: white;
-        top: 100px;
+        top: 30px;
         padding: 0 !important;
         border: 55px;
         color: #11C2D4;

@@ -25,10 +25,9 @@ body {
         background-color: $background-color;
         $mywidth: 100%;
         width: $mywidth;
+        height:70%;
         $margin-left: 0%;
         margin-left: $margin-left;
-        $myheight: 500px;
-        height: $myheight;
         $margin-bottom: 0%;
         margin-bottom: $margin-bottom;
         $order-top-right-radius: 8%;
@@ -45,7 +44,7 @@ body {
     #div1 {
         $background-color: #11C2D4;
         background-color: $background-color;
-        $myheight: 100%;
+        $myheight: 30%;
         height: $myheight;
     }
     #buts {

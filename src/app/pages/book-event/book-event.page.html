@@ -7,7 +7,7 @@
                     </ion-buttons>
                 </ion-toolbar>
         <br><br>
-        <h2>Confirmation!</h2>
+        <h2>Confirmation</h2>
         <br><br>
         <ion-card class="card1">
 
@@ -55,7 +55,7 @@
                     <ion-fab-button (click)="sub(1)" center color="light" size="small">
                         <ion-icon color="primary" name="remove"></ion-icon>
                     </ion-fab-button>
-                    {{tickets}}
+                  <p style="zoom: 1.5;"> {{tickets}}</p> 
                     <ion-fab-button (click)="add(1)" color="light" size="small">
                         <ion-icon color="primary" name="add"></ion-icon>
                     </ion-fab-button>
@@ -82,7 +82,7 @@
 
             </h1>
             <br><br><br>
-            <ion-button routerLink="/tabs/events" shape="round" expand="block" (click)="BookEvent(tickets,price)"><b>Book now</b></ion-button>
+            <ion-button style="margin-left: 4%;margin-right: 4%;margin-bottom: 4%;" routerLink="/tabs/events" shape="round" expand="block" (click)="BookEvent(tickets,price)"><b>Book now</b></ion-button>
         </ion-card>
     </body>
 

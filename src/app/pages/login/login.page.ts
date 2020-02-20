@@ -32,8 +32,8 @@ export class LoginPage implements OnInit {
 ngOnInit() {
   
   this.loginForm = this.fb.group({
-    email: [ 'nhlanhla@gmail.com',Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
-    password: ['nhlanhla', Validators.compose([Validators.minLength(6), Validators.maxLength(12), Validators.required])],
+    email: [ '',Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
+    password: ['', Validators.compose([Validators.minLength(6), Validators.maxLength(12), Validators.required])],
   });
   this.forgotpasswordForm = this.fb.group({
     email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
