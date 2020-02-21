@@ -1,21 +1,27 @@
-<ion-content class="body">
-    <ion-toolbar>
-        
-        <ion-buttons slot="start"  routerLink="/tabs/add">
-            <ion-icon color="primary" name="arrow-back" style="zoom:1.5"></ion-icon>
-        </ion-buttons>
-    </ion-toolbar>
+<ion-content class="body" *ngFor="let myclubs of clubs">
 
-    <div *ngFor="let myclubs of clubs">
-        <br/>
-        <h1 text-center class="h">
-            <ion-avatar style="margin-left: 2%;"> <img src="{{photoURL}}"></ion-avatar>
+<div class="topTing">
+   
+        
+        <ion-buttons  slot="start"  routerLink="/tabs/add">
+            <ion-icon  color="light" name="arrow-back" style="zoom:1.5;margin-top: 4%;"></ion-icon>
+        </ion-buttons>
+   
+
+    <div >
+       
+        <h1 class="h">
+            <ion-avatar style="width:100px;height:100px;margin-left: 30%;border: 3px solid #fff;"> <img src="{{photoURL}}"></ion-avatar> 
             <h1 class="title">
-                {{clubName}}
+               {{clubName}}
             </h1>
         </h1>
+    </div>
+    <!-- end -->
         <br/>
-
+       
+<!-- middle -->
+<div class="bottomTing" >
         <ion-item>
             <ion-slides startAutoplay [options]="slideOpts">
                 <ion-slide>
@@ -32,9 +38,11 @@
                 </ion-slide>
             </ion-slides>
         </ion-item>
-
+<!-- middle -->
         <br/>
         <br/>
+        <!-- bottom -->
+    
         <h1 class="subtitle">
             Events
         </h1>
@@ -66,4 +74,6 @@
 
         </div>
     </div>
+</div>
+
 </ion-content>
