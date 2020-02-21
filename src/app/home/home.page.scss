@@ -1,6 +1,7 @@
 .body {
     overflow: scroll;
     height: 100%;
+    width: 100%;
     ion-toolbar {
         color: white;
         color: white;
@@ -50,10 +51,6 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
-    
-        
-     
-     //   background: black;
         opacity: 0.8;
     }
    
@@ -86,17 +83,57 @@
     .booke {
         right: 3000px;
     }
+    .grid{
+        margin-top:20%;
+        text-align: center;
+        width: 50%;
+        color:#fff;
+        // height:100px;
+
+        .col{
+            border-right: 2px solid #fff;
+            // color: rgb(150, 147, 147);
+        }
+        
+    }
     .img {
         position: absolute;
-        height: 90px;
-        width: 90px;
+        height: 100px;
+        width: 100px;
         border-radius: 50%;
         float: right;
-        top: 28px;
-        right: 20px;
+        top: 30px;
+        right: 35%;
         width: 150px;
         height: 150px;
+        border: 5px solid #fff;
        zoom: 0.7;
+    }
+    .topTing
+    {
+        $background-color: #11C2D4;
+        background-color: $background-color;
+        $mywidth: 100%;
+        width: $mywidth;
+        height: 35%;
+        border-bottom-right-radius: 20%;
+        border-bottom-left-radius: 20%;
+    }
+    .bottomTing
+    {
+        $background-color: #fff;
+        background-color: $background-color;
+        $mywidth: 100%;
+        width: $mywidth;
+        $margin-left: 0%;
+        margin-left: $margin-left;
+       
+        height: 65%;
+        $margin-bottom: 0%;
+        margin-bottom: $margin-bottom;
+       
+        padding-left: 10px;
+
     }
     ion-card {
         width: 90% !important;
@@ -128,7 +165,7 @@
         height: 16px;
     }
     .booked {
-        $background-color: rgba(17, 192, 212, 0.678);
+        $background-color: #11C2D4;
         background-color: $background-color;
         $mywidth: 100%;
         width: $mywidth;
@@ -138,12 +175,12 @@
         height: $myheight;
         $margin-bottom: 0%;
         margin-bottom: $margin-bottom;
-        $border-top-left-radius: 30%;
+        $border-top-left-radius: 20%;
         border-top-left-radius: $border-top-left-radius;
-        $border-bottom-left-radius: 0%;
+        $border-bottom-left-radius: 20%;
         border-bottom-left-radius: $border-bottom-left-radius;
-        border-top-right-radius: 0%;
-        border-bottom-right-radius: 30%;
+        border-top-right-radius: 20%;
+        border-bottom-right-radius: 20%;
         padding-right: 0px;
         color: #fff;
     }
@@ -155,6 +192,7 @@
     }
     .wordsCard
     {
+        margin-top:2%;
      margin-left: 0px ;
         font-size: 15px;
       

@@ -8,6 +8,7 @@
     </h1>
 </div> -->
     <!-- <body> -->
+        <div class="topTing">
     <div *ngFor="let user of theUser ">
         <br>
         <div *ngIf="defaultpic">
@@ -17,23 +18,36 @@
             <img class="img" src="\assets\images\profile-user.png">
         </div>
     </div>
-
-    <h1>
-        BE
-
-    </h1>
-    <h1>
-        HEALTHY
-    </h1>
-    <h1>
-        MAKE FRIENDS
-    </h1>
-    <h1>
-        HAVE FUN
-    </h1>
-
-    <br>
-
+    <br/>
+    <br/>
+    
+    <ion-grid class="grid">
+        <ion-row>
+            <ion-col class="col">
+                <h2>50</h2>
+            </ion-col>
+            <ion-col class="col">
+                <h2>584</h2>
+            </ion-col>
+            <ion-col>
+                <h2>789</h2>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="col">
+                <p>kilo</p>
+            </ion-col>
+            <ion-col class="col">
+           <p>kilo used</p>
+            </ion-col>
+            <ion-col>
+                <p>kilos</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>
+   <br>
+    <div class="bottomTing">
     <h2 text-center class="cent"> Events You Going To
         <ion-icon class="iconSize" name="compass"></ion-icon>
     </h2>
@@ -99,7 +113,7 @@
         <br/>
 
     </div>
-
+</div>
     <!-- </body> -->
 
 </ion-content>
