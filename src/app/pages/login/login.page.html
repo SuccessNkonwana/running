@@ -29,7 +29,7 @@
                                                 <h3>Welcome </h3>
                                             </div>
                                             <br><br>
-                                            <ion-label position="floating">Email</ion-label>
+                                            <ion-label color="primary" position="floating">Email</ion-label>
                                             <ion-item id="item" lines="none">
                                                 
                                                 <ion-input type="email" formControlName="email"></ion-input>
@@ -40,7 +40,7 @@
                                             <div class="error" *ngIf="loginForm.get('email').hasError('pattern') && loginForm.get('email').touched">
                                                 Email address invalid
                                             </div>
-                                            <ion-label position="floating">Password</ion-label>
+                                            <ion-label color="primary" position="floating">Password</ion-label>
                                             <ion-item id="item" lines="none">
                                                 
                                                 <ion-input  type="password" formControlName="password"></ion-input>
@@ -72,7 +72,7 @@
                                         <ion-col>
                                             <ion-button style="width: 95%;" shape="round" expand="full" color="primary" [disabled]="!loginForm.valid" (click)="login()">Login</ion-button>
                                         </ion-col>
-                                        <br><br>
+                                        <br>
                                         <!-- <div class="centered">
                                             <ion-item lines="none">
                                                 No account yet? <a routerLink='/signup'>Create an account.</a>
