@@ -15,7 +15,7 @@ export class AddPage implements OnInit {
   isSlide: boolean = true;
   slides: any;
 slideOpts = {
-    slidesPerView: 2.5,
+    slidesPerView: 1,
     coverflowEffect: {
       rotate: 50,
       stretch: 0,
@@ -27,7 +27,7 @@ slideOpts = {
   constructor(public runn: RunningService, private router: Router, public loadingController: LoadingController,) {
 
     this.clubs=[]      
-    this.getdata()
+  //  this.getdata()
   
    }
    slideChanged()
@@ -68,14 +68,25 @@ slideOpts = {
     
    }
   ngOnInit() {
+  
   }
-
+  ngOnDestroy() {
+    console.log('foo destroy')
+  }
+  ionViewDidEnter(){
+    this.getdata()
+  }
+  ionViewDidLeave(){
+    this.clubs=[]
+    console.log("k");
+     
+  }
 
   getAClubsEvents(myclub){
 
     console.log(myclub);
      this.runn.getAClubsEvents(myclub)
-    this.router.navigateByUrl('club-profile');
+    this.router.navigateByUrl('tabs/club-profile');
 
 
   }
@@ -88,5 +99,7 @@ slideOpts = {
     // this.getdata()
     // loading.dismiss()
   }
+  
+  
 
 }

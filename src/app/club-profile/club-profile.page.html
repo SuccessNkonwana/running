@@ -18,25 +18,15 @@
         </h1>
     </div>
     <!-- end -->
-        <br/>
+       
        
 <!-- middle -->
 <div class="bottomTing" >
         <ion-item>
-            <ion-slides startAutoplay [options]="slideOpts">
-                <ion-slide>
-                    <ion-button (click)="currentClub(myclubs)" routerLink="/add-event" class="actButtons" color="primary" shape="round">
+          
+                    <ion-button style="margin-left: 7.5%;margin-right: 2%;width:80%;" (click)="currentClub(myclubs)" routerLink="/tabs/add-event"  color="primary" shape="round"  expand="full">
                         <ion-icon name="add-circle"></ion-icon> Create Event</ion-button>
-                </ion-slide>
-                <ion-slide>
-                    <ion-button [disabled]="true"  class="actButtons" color="primary" shape="round">
-                        <ion-icon name="information-circle"></ion-icon> About </ion-button>
-                </ion-slide>
-                <ion-slide>
-                    <ion-button [disabled]="true" class="actButtons" color="primary" shape="round">
-                        <ion-icon name="people"></ion-icon> Members </ion-button>
-                </ion-slide>
-            </ion-slides>
+              
         </ion-item>
 <!-- middle -->
         <br/>

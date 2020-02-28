@@ -22,6 +22,18 @@ export class EventsPage implements OnInit {
     this.events= []; 
     this.getdata()
    }
+   ngOnDestroy() {
+    console.log('foo destroy')
+  }
+  ionViewDidEnter(){
+    this.getdata()
+  }
+  ionViewDidLeave(){
+    this.events=[]
+    console.log("k");
+     
+  }
+
   //  date1;
    getdata()
    {

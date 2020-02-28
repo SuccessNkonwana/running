@@ -128,7 +128,7 @@ export class AuthService {
         await this.afAuth.auth.signOut().then((success) => {
           console.log(success);
           console.log("success");
-          this.navCtrl.navigateRoot("login");
+          this.navCtrl.navigateRoot("tabs/login");
         }).catch((error) => {
           console.log(error)
         })

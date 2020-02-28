@@ -17,7 +17,7 @@ export class ClubProfilePage implements OnInit {
   isSlide: boolean = true;
   slides: any;
   slideOpts = {
-    slidesPerView: 2.5,
+    slidesPerView: 1,
     coverflowEffect: {
       rotate: 50,
       stretch: 0,
@@ -31,7 +31,7 @@ export class ClubProfilePage implements OnInit {
     this.events= []; 
     this.clubName=null
   this.photoURL=null    
-    this.getdata()
+    // this.getdata()
    
 
    }
@@ -40,9 +40,21 @@ export class ClubProfilePage implements OnInit {
    this.slides.startAutoplay();
   }
   ngOnInit() {
-    // this.presentLoading();
+   //  this.presentLoading();
   }
  
+  ngOnDestroy() {
+    console.log('foo destroy')
+  }
+  ionViewDidEnter(){
+    this.getdata()
+    console.log("In",  this.getdata());
+  }
+  ionViewDidLeave(){
+this.ngOnDestroy()
+    console.log("out");
+     
+  }
 
   getdata()
   {

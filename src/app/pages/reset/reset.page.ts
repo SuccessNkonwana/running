@@ -24,7 +24,7 @@ export class ResetPage implements OnInit {
     this.isForgotPassword = false;
   }
   Cancel() {
-    this.navCtrl.navigateRoot("login");
+    this.navCtrl.navigateRoot("/tabs/login");
   }
   reset() {
     this.authService.sendPasswordResetEmail(this.forgotpasswordForm.value.email)

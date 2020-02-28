@@ -13,7 +13,7 @@ export class LandingPage implements OnInit {
   ngOnInit() {
   }
 goToLogin(){
-  this.route.navigate(['/login']);
+  this.route.navigate(['tabs/login']);
   
 }
 }

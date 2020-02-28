@@ -46,6 +46,19 @@ slideOpts = {
     this.getTickets()
     this.presentLoading();
   }
+  ngOnDestroy() {
+    console.log('foo destroy')
+  }
+  ionViewDidEnter(){
+    this.getdata()
+  }
+  ionViewDidLeave(){
+    this.tickets=[]
+    this.clubs=[]  
+    this.theUser=[]  
+    console.log("k");
+     
+  }
   ngOnInit() {
   //  this.getBooked();
   }

@@ -84,7 +84,7 @@ events=[];
 
 
 back(){
-  this.route.navigate(['/events'])
+  this.route.navigate(['/tabs/events'])
 }
 
   add(num:number) {
@@ -107,7 +107,7 @@ sub(num:number) {
 BookEvent(tickets,price)
   {
     this.clubService.BookEvent(tickets,price);
-    this.route.navigate(['/done'],{queryParams:{tickets:tickets,price:price,eventKey:this.eventKey}})
+    this.route.navigate(['/tabs/done'],{queryParams:{tickets:tickets,price:price,eventKey:this.eventKey}})
 
     // console.log(tickets,price,"=================",this.tickets,this.price);
 

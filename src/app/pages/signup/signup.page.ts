@@ -99,7 +99,7 @@ onSelect(address:string,i){
         photoURL: '',
         Registered: "no",
       }).then(() => {
-        this.navCtrl.navigateRoot('/login');
+        this.navCtrl.navigateRoot('/tabs/login');
       }).catch(err => {
 ​
         alert(err.message)
@@ -111,7 +111,7 @@ onSelect(address:string,i){
   }
  
   goLoginPage(){
-    this.navCtrl.navigateForward('/login');
+    this.navCtrl.navigateForward('/tabs/login');
   }
 
   //getting selected type of gender
